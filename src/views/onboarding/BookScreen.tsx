@@ -5,7 +5,7 @@ import { COLORS } from '../../constants/colors';
 import OnboardingListItem from './components/OnboardingListItem';
 import OnboardingNav from './components/OnboardingNav';
 
-export default function TipsPage() {
+export default function BookScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -24,18 +24,18 @@ export default function TipsPage() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Korzystaj ze wskazówek Holiego</Text>
+          <Text style={styles.header}>Umawiaj wizyty szybko i wygodnie</Text>
           <OnboardingListItem
-            bullet='💡'
-            text='Zacznij od małych kroków, żeby wdrożyć wielkie zmiany!'
+            bullet='🔹'
+            text='Umów wizytę, badanie lub szczepienie'
           />
           <OnboardingListItem
-            bullet='🧠'
-            text='Holi dostarczy Ci krótkie, praktyczne porady dotyczące zdrowia i profilaktyki.'
+            bullet='🔹'
+            text='Sprawdź dostępne terminy na mapie lub liście'
           />
           <OnboardingListItem
-            bullet='🌱'
-            text='Zadbaj o siebie na co dzień i czerp wiedzę w prosty, przystępny sposób!'
+            bullet='🔹'
+            text='Otrzymuj spersonalizowane rekomendacje badań'
           />
         </View>
       </ImageBackground>

@@ -5,7 +5,7 @@ import { COLORS } from '../../constants/colors';
 import OnboardingListItem from './components/OnboardingListItem';
 import OnboardingNav from './components/OnboardingNav';
 
-export default function BookPage() {
+export default function CollectScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -24,18 +24,18 @@ export default function BookPage() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Umawiaj wizyty szybko i wygodnie</Text>
+          <Text style={styles.header}>Zbieraj wyniki i badania</Text>
           <OnboardingListItem
             bullet='🔹'
-            text='Umów wizytę, badanie lub szczepienie'
+            text='Korzystaj z dostępu do wyników badań w apce'
           />
           <OnboardingListItem
             bullet='🔹'
-            text='Sprawdź dostępne terminy na mapie lub liście'
+            text='Dodawaj własne wyniki - śledź postępy'
           />
           <OnboardingListItem
             bullet='🔹'
-            text='Otrzymuj spersonalizowane rekomendacje badań'
+            text='Śledź historię wizyt i badań - od teraz jest zawsze pod ręką'
           />
         </View>
       </ImageBackground>
@@ -60,9 +60,9 @@ export const styles = StyleSheet.create({
     height: '10%',
   },
   omega: {
-    width: '100%',
+    width: '80%',
     paddingTop: '100%',
-    marginLeft: 180,
+    marginLeft: 30,
   },
   header: {
     textAlign: 'center',

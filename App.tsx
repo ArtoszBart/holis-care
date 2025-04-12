@@ -1,5 +1,5 @@
-import HelloPage from './src/views/onboarding/HelloPage';
+import HelloScreen from './src/views/onboarding/HelloScreen';
 
 export default function App() {
-  return <HelloPage />;
+  return <HelloScreen />;
 }

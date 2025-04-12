@@ -2,9 +2,10 @@ import { Image } from 'expo-image';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import OnboardingListItem from './components/OnboardingListItem';
 import OnboardingNav from './components/OnboardingNav';
 
-export default function HelloPage() {
+export default function ManageScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -23,12 +24,19 @@ export default function HelloPage() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Witamy w Twoim centrum zdrowia</Text>
-          <Text style={styles.paragraph}>
-            👋 Cześć! Cieszę się, że jesteś. Jestem Holis, Twój osobisty doradca
-            profilaktyki zdrowotnej. Razem zadbamy o Twoje zdrowie w wygodny i
-            nowoczesny sposób! 🌿✨
-          </Text>
+          <Text style={styles.header}>Zarządzaj wizytami z łatwością</Text>
+          <OnboardingListItem
+            bullet='🔹'
+            text='Korzystaj z podglądu do zaplanowanych wizyt w kalendarzu'
+          />
+          <OnboardingListItem
+            bullet='🔹'
+            text='Przypomnimy Ci o nadchodzących wizytach - już nic Ci nie umknie!'
+          />
+          <OnboardingListItem
+            bullet='🔹'
+            text='Zmieniaj terminy lub anuluj wizyty bez kontaktu z infolinią'
+          />
         </View>
       </ImageBackground>
       <OnboardingNav />
@@ -54,7 +62,7 @@ export const styles = StyleSheet.create({
   omega: {
     width: '100%',
     paddingTop: '100%',
-    marginLeft: 30,
+    marginLeft: 180,
   },
   header: {
     textAlign: 'center',

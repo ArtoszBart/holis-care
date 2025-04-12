@@ -5,7 +5,7 @@ import { COLORS } from '../../constants/colors';
 import OnboardingListItem from './components/OnboardingListItem';
 import OnboardingNav from './components/OnboardingNav';
 
-export default function CollectPage() {
+export default function TipsScreen() {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -24,18 +24,18 @@ export default function CollectPage() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Zbieraj wyniki i badania</Text>
+          <Text style={styles.header}>Korzystaj ze wskazówek Holiego</Text>
           <OnboardingListItem
-            bullet='🔹'
-            text='Korzystaj z dostępu do wyników badań w apce'
+            bullet='💡'
+            text='Zacznij od małych kroków, żeby wdrożyć wielkie zmiany!'
           />
           <OnboardingListItem
-            bullet='🔹'
-            text='Dodawaj własne wyniki - śledź postępy'
+            bullet='🧠'
+            text='Holi dostarczy Ci krótkie, praktyczne porady dotyczące zdrowia i profilaktyki.'
           />
           <OnboardingListItem
-            bullet='🔹'
-            text='Śledź historię wizyt i badań - od teraz jest zawsze pod ręką'
+            bullet='🌱'
+            text='Zadbaj o siebie na co dzień i czerp wiedzę w prosty, przystępny sposób!'
           />
         </View>
       </ImageBackground>
@@ -60,9 +60,9 @@ export const styles = StyleSheet.create({
     height: '10%',
   },
   omega: {
-    width: '80%',
+    width: '100%',
     paddingTop: '100%',
-    marginLeft: 30,
+    marginLeft: 180,
   },
   header: {
     textAlign: 'center',
