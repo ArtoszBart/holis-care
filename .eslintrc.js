@@ -17,6 +17,8 @@ module.exports = {
   plugins: ['prettier', 'react-hooks'],
   rules: {
     '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-confusing-void-expression': 'off',
+    'import/order': 'off',
     'prettier/prettier': 'off',
   },
   env: {
