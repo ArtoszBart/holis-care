@@ -3,7 +3,6 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
 import OnboardingListItem from './components/OnboardingListItem';
-import OnboardingNav from './components/OnboardingNav';
 
 export default function BookScreen() {
   return (
@@ -39,7 +38,6 @@ export default function BookScreen() {
           />
         </View>
       </ImageBackground>
-      <OnboardingNav />
     </View>
   );
 }

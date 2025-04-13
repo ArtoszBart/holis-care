@@ -1,21 +1,31 @@
 import React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 
-import { COLORS } from '../../../constants/colors';
-import OnboardingNavButton from './OnboardingNavButton';
+import { COLORS } from '../../../../constants/colors';
+import OnboardingNavButton from '../OnboardingNavButton';
+import useOnboardingNav from './useOnboardingNavigation';
 
-export default function OnboardingNav() {
+export default function OnboardingNavigation() {
+  const hook = useOnboardingNav();
+
   return (
     <View style={styles.nav}>
-      <OnboardingNavButton label='Pomiń' />
+      <OnboardingNavButton label='Pomiń' onPress={hook.handleSkipPress} />
       <View style={styles.pageIndicator}>
-        <View style={[styles.circle, { backgroundColor: COLORS.primary600 }]} />
-        <View style={styles.circle} />
-        <View style={styles.circle} />
-        <View style={styles.circle} />
-        <View style={styles.circle} />
+        {hook.routeList.map((_, idx) => (
+          <View
+            key={idx}
+            style={[
+              styles.circle,
+              {
+                backgroundColor:
+                  hook.currentNo === idx ? COLORS.primary600 : COLORS.orange400,
+              },
+            ]}
+          />
+        ))}
       </View>
-      <OnboardingNavButton label='Dalej' />
+      <OnboardingNavButton label='Dalej' onPress={hook.handleNextPress} />
     </View>
   );
 }
@@ -27,6 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingTop: 10,
     paddingBottom: Platform.OS === 'android' ? 10 : 40,
+    backgroundColor: '#fff',
   },
   navButton: {
     display: 'flex',

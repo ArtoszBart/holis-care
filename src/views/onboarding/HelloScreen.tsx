@@ -2,7 +2,6 @@ import { Image } from 'expo-image';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
-import OnboardingNav from './components/OnboardingNav';
 
 export default function HelloScreen() {
   return (
@@ -31,7 +30,6 @@ export default function HelloScreen() {
           </Text>
         </View>
       </ImageBackground>
-      <OnboardingNav />
     </View>
   );
 }

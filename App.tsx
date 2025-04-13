@@ -1,5 +1,11 @@
-import HelloScreen from './src/views/onboarding/HelloScreen';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { OnboardingNavigator } from './src/navigation/onboarding';
 
 export default function App() {
-  return <HelloScreen />;
+  return (
+    <NavigationContainer>
+      <OnboardingNavigator />
+    </NavigationContainer>
+  );
 }
