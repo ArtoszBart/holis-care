@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import CustomText from '../common/CustomText';
 import OnboardingListItem from './components/OnboardingListItem';
 
 export default function ManageScreen() {
@@ -23,7 +24,9 @@ export default function ManageScreen() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Zarządzaj wizytami z łatwością</Text>
+          <CustomText style={styles.header}>
+            Zarządzaj wizytami z łatwością
+          </CustomText>
           <OnboardingListItem
             bullet='🔹'
             text='Korzystaj z podglądu do zaplanowanych wizyt w kalendarzu'

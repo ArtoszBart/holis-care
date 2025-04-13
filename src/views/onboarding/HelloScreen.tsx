@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import CustomText from '../common/CustomText';
 
 export default function HelloScreen() {
   return (
@@ -22,12 +23,14 @@ export default function HelloScreen() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Witamy w Twoim centrum zdrowia</Text>
-          <Text style={styles.paragraph}>
+          <CustomText style={styles.header}>
+            Witamy w Twoim centrum zdrowia
+          </CustomText>
+          <CustomText style={styles.paragraph}>
             👋 Cześć! Cieszę się, że jesteś. Jestem Holis, Twój osobisty doradca
             profilaktyki zdrowotnej. Razem zadbamy o Twoje zdrowie w wygodny i
             nowoczesny sposób! 🌿✨
-          </Text>
+          </CustomText>
         </View>
       </ImageBackground>
     </View>

@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+
+import CustomText from '../../common/CustomText';
 
 interface IOnboardingNavButton {
   label: string;
@@ -12,7 +14,7 @@ export default function OnboardingNavButton({
 }: IOnboardingNavButton) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.buttonText}>{label}</Text>
+      <CustomText style={styles.buttonText}>{label}</CustomText>
     </TouchableOpacity>
   );
 }

@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import CustomText from '../common/CustomText';
 import OnboardingListItem from './components/OnboardingListItem';
 
 export default function TipsScreen() {
@@ -23,7 +24,9 @@ export default function TipsScreen() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Korzystaj ze wskazówek Holiego</Text>
+          <CustomText style={styles.header}>
+            Korzystaj ze wskazówek Holiego
+          </CustomText>
           <OnboardingListItem
             bullet='💡'
             text='Zacznij od małych kroków, żeby wdrożyć wielkie zmiany!'

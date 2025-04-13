@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import CustomText from '../common/CustomText';
 import OnboardingListItem from './components/OnboardingListItem';
 
 export default function BookScreen() {
@@ -23,7 +24,9 @@ export default function BookScreen() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Umawiaj wizyty szybko i wygodnie</Text>
+          <CustomText style={styles.header}>
+            Umawiaj wizyty szybko i wygodnie
+          </CustomText>
           <OnboardingListItem
             bullet='🔹'
             text='Umów wizytę, badanie lub szczepienie'

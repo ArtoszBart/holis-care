@@ -23,6 +23,14 @@
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./src/assets/fonts/LexendDeca-Bold.ttf"]
+        }
+      ]
+    ]
   }
 }

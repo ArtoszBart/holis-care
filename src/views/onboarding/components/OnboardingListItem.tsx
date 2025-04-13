@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
 import { COLORS } from '../../../constants/colors';
+import CustomText from '../../common/CustomText';
 
 interface IOnboardingListItem {
   bullet: string;
@@ -13,8 +15,8 @@ export default function OnboardingListItem({
 }: IOnboardingListItem) {
   return (
     <View style={styles.listItem}>
-      <Text>{bullet}</Text>
-      <Text style={styles.paragraph}>{text}</Text>
+      <CustomText>{bullet}</CustomText>
+      <CustomText style={styles.paragraph}>{text}</CustomText>
     </View>
   );
 }

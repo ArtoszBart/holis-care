@@ -16,10 +16,24 @@ module.exports = {
   ],
   plugins: ['prettier', 'react-hooks'],
   rules: {
+    '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-confusing-void-expression': 'off',
     'import/order': 'off',
     'prettier/prettier': 'off',
+    'no-restricted-imports': [
+      'warn',
+      {
+        paths: [
+          {
+            name: 'react-native',
+            importNames: ['Text'],
+            message:
+              "Please use CustomText component instead of 'react-native/Text'.",
+          },
+        ],
+      },
+    ],
   },
   env: {
     node: true,

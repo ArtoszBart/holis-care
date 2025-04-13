@@ -1,7 +1,8 @@
 import { Image } from 'expo-image';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import CustomText from '../common/CustomText';
 import OnboardingListItem from './components/OnboardingListItem';
 
 export default function CollectScreen() {
@@ -23,7 +24,9 @@ export default function CollectScreen() {
           style={styles.omega}
         />
         <View>
-          <Text style={styles.header}>Zbieraj wyniki i badania</Text>
+          <CustomText style={styles.header}>
+            Zbieraj wyniki i badania
+          </CustomText>
           <OnboardingListItem
             bullet='🔹'
             text='Korzystaj z dostępu do wyników badań w apce'
