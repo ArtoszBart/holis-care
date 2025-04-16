@@ -25,14 +25,13 @@ export const styles = StyleSheet.create({
   listItem: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 2,
-    paddingInline: 25,
     marginBottom: 4,
+    alignItems: 'flex-start',
+    maxWidth: 300,
   },
   paragraph: {
-    flex: 1,
-    fontSize: 16,
+    fontSize: 14,
     color: COLORS.typo2,
+    marginLeft: 4,
   },
 });
