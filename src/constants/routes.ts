@@ -5,3 +5,7 @@ export const ONBOARDING_ROUTES = Object.freeze({
   COLLECT_SCREEN: 'OnboardingCollect',
   TIPS_SCREEN: 'OnboardingTips',
 });
+
+export const AUTH_ROUTES = Object.freeze({
+  MAIN_SCREEN: 'MainAuthScreen',
+});

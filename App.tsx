@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 
 import useApp from './src/config/useApp';
-import { OnboardingNavigator } from './src/navigation/onboarding';
+import AuthNavigator from './src/navigation/auth/AuthNavigator';
 
 export default function App() {
   const hook = useApp();
@@ -12,7 +12,8 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <OnboardingNavigator />
+      {/* <OnboardingNavigator /> */}
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
