@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { PERSONALIZATION_ROUTES } from '../../constants/routes';
+import SexScreen from '../../views/personalization/SexScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ export default function PersonalizationNavigator() {
     >
       <Stack.Screen
         name={PERSONALIZATION_ROUTES.SEX_SCREEN}
-        component={() => <></>}
+        component={SexScreen}
       />
     </Stack.Navigator>
   );

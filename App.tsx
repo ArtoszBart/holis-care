@@ -1,7 +1,7 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 import useApp from './src/config/useApp';
-import { AuthNavigator } from './src/navigation/auth';
+import PersonalizationNavigator from './src/navigation/personalization/PersonalizationNavigator';
 
 export default function App() {
   const hook = useApp();
@@ -21,7 +21,8 @@ export default function App() {
   return (
     <NavigationContainer theme={Theme}>
       {/* <OnboardingNavigator /> */}
-      <AuthNavigator />
+      {/* <AuthNavigator /> */}
+      <PersonalizationNavigator />
     </NavigationContainer>
   );
 }
