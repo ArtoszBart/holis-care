@@ -12,14 +12,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 interface Props {
   children: React.ReactNode;
   style?: ViewStyle;
-  image: ImageSourcePropType;
+  image?: ImageSourcePropType;
   opacity?: number;
 }
 
 export default function BackgroundWrapper({
   children,
   style,
-  image,
+  image = require('../../assets/images/background.png'),
   opacity = 0.3,
 }: Props) {
   const insets = useSafeAreaInsets();

@@ -15,10 +15,7 @@ export default function SignUpScreen() {
   const navigation = useNavigation<AuthNavigationProp>();
 
   return (
-    <BackgroundWrapper
-      style={styles.container}
-      image={require('../../assets/images/background.png')}
-    >
+    <BackgroundWrapper style={styles.container}>
       <Logo />
 
       <Form>
