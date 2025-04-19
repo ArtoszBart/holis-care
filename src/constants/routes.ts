@@ -11,3 +11,7 @@ export const AUTH_ROUTES = Object.freeze({
   SIGN_UP_SCREEN: 'SignUpScreen',
   SIGN_IN_SCREEN: 'SignInScreen',
 });
+
+export const PERSONALIZATION_ROUTES = Object.freeze({
+  SEX_SCREEN: 'PersonalizationSexScreen',
+});
