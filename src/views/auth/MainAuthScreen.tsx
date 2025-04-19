@@ -30,9 +30,7 @@ export default function MainAuthScreen() {
       <View style={styles.buttonContainer}>
         <Button
           label='Zaloguj się'
-          onPress={() => {
-            // TODO:
-          }}
+          onPress={() => navigation.navigate(AUTH_ROUTES.SIGN_IN_SCREEN)}
         />
         <Button
           label='Załóż konto'

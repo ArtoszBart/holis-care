@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AUTH_ROUTES } from '../../constants/routes';
 import MainAuthScreen from '../../views/auth/MainAuthScreen';
+import SignInScreen from '../../views/auth/SignInScreen';
 import SignUpScreen from '../../views/auth/SignUpScreen';
 import Header from '../../views/common/Header';
 
@@ -27,6 +28,13 @@ export default function AuthNavigator() {
         component={SignUpScreen}
         options={{
           title: 'Załóż konto',
+        }}
+      />
+      <Stack.Screen
+        name={AUTH_ROUTES.SIGN_IN_SCREEN}
+        component={SignInScreen}
+        options={{
+          title: 'Logowanie',
         }}
       />
     </Stack.Navigator>
