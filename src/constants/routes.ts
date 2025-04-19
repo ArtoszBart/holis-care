@@ -8,4 +8,5 @@ export const ONBOARDING_ROUTES = Object.freeze({
 
 export const AUTH_ROUTES = Object.freeze({
   MAIN_SCREEN: 'MainAuthScreen',
+  SIGN_UP_SCREEN: 'SignUpScreen',
 });

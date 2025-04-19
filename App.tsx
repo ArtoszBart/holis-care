@@ -1,7 +1,7 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 import useApp from './src/config/useApp';
-import AuthNavigator from './src/navigation/auth/AuthNavigator';
+import { AuthNavigator } from './src/navigation/auth';
 
 export default function App() {
   const hook = useApp();
@@ -10,8 +10,16 @@ export default function App() {
     return null;
   }
 
+  const Theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: 'transparent',
+    },
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={Theme}>
       {/* <OnboardingNavigator /> */}
       <AuthNavigator />
     </NavigationContainer>

@@ -1,47 +1,53 @@
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
 import React from 'react';
-import { ImageBackground, Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import { AUTH_ROUTES } from '../../constants/routes';
+import { AuthNavigationProp } from '../../navigation/auth';
+import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 
 export default function MainAuthScreen() {
+  const navigation = useNavigation<AuthNavigationProp>();
+
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../../assets/images/background-onboarding.png')}
-        resizeMode='stretch'
-        style={styles.mainView}
-      >
-        <Image
-          source={require('../../assets/images/logo.svg')}
-          contentFit='contain'
-          style={styles.logo}
+    <BackgroundWrapper
+      style={styles.container}
+      image={require('../../assets/images/background-onboarding.png')}
+      opacity={1}
+    >
+      <Image
+        source={require('../../assets/images/logo.svg')}
+        contentFit='contain'
+        style={styles.logo}
+      />
+      <Image
+        source={require('../../assets/images/omega.png')}
+        contentFit='contain'
+        style={styles.omega}
+      />
+      <View style={styles.buttonContainer}>
+        <Button
+          label='Zaloguj się'
+          onPress={() => {
+            // TODO:
+          }}
         />
-        <Image
-          source={require('../../assets/images/omega.png')}
-          contentFit='contain'
-          style={styles.omega}
+        <Button
+          label='Załóż konto'
+          invertedStyle
+          onPress={() => navigation.navigate(AUTH_ROUTES.SIGN_UP_SCREEN)}
         />
-        <View style={styles.buttonContainer}>
-          <Button label='Zaloguj się' onPress={() => {}} />
-          <Button label='Załóż konto' invertedStyle onPress={() => {}} />
-        </View>
-      </ImageBackground>
-    </View>
+      </View>
+    </BackgroundWrapper>
   );
 }
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  mainView: {
-    flex: 1,
     justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: 50,
-    paddingBottom: Platform.OS === 'android' ? 20 : 50,
-    paddingHorizontal: 15,
   },
   logo: {
     width: '30%',
