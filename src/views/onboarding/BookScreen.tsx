@@ -1,7 +1,8 @@
-import { Image } from 'expo-image';
 import { ImageBackground, View } from 'react-native';
 
 import CustomText from '../common/CustomText';
+import Logo from '../common/Logo';
+import Omega from '../common/Omega';
 import OnboardingListItem from './components/OnboardingListItem';
 import { onboardingScreenStyles as styles } from './onboardingScreen.styles';
 
@@ -13,16 +14,9 @@ export default function BookScreen() {
         resizeMode='stretch'
         style={styles.mainView}
       >
-        <Image
-          source={require('../../assets/images/logo.svg')}
-          contentFit='contain'
-          style={styles.logo}
-        />
-        <Image
-          source={require('../../assets/images/omega.png')}
-          contentFit='contain'
-          style={styles.omega}
-        />
+        <Logo />
+        <Omega />
+
         <View style={styles.textContainer}>
           <CustomText style={styles.header}>
             Umawiaj wizyty szybko i wygodnie

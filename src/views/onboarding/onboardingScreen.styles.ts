@@ -12,15 +12,6 @@ export const onboardingScreenStyles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
   },
-  logo: {
-    width: '30%',
-    height: '10%',
-  },
-  omega: {
-    width: '100%',
-    paddingTop: '100%',
-    marginLeft: 30,
-  },
   textContainer: {
     maxWidth: 400,
   },

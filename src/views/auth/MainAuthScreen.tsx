@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -7,6 +6,8 @@ import { AUTH_ROUTES } from '../../constants/routes';
 import { AuthNavigationProp } from '../../navigation/auth';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
+import Logo from '../common/Logo';
+import Omega from '../common/Omega';
 
 export default function MainAuthScreen() {
   const navigation = useNavigation<AuthNavigationProp>();
@@ -17,16 +18,8 @@ export default function MainAuthScreen() {
       image={require('../../assets/images/background-onboarding.png')}
       opacity={1}
     >
-      <Image
-        source={require('../../assets/images/logo.svg')}
-        contentFit='contain'
-        style={styles.logo}
-      />
-      <Image
-        source={require('../../assets/images/omega.png')}
-        contentFit='contain'
-        style={styles.omega}
-      />
+      <Logo />
+      <Omega />
       <View style={styles.buttonContainer}>
         <Button
           label='Zaloguj się'
@@ -46,15 +39,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-  },
-  logo: {
-    width: '30%',
-    height: '10%',
-  },
-  omega: {
-    width: '100%',
-    paddingTop: '100%',
-    marginLeft: 30,
   },
   buttonContainer: {
     width: '100%',

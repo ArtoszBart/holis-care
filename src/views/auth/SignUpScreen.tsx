@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -10,6 +9,7 @@ import Button from '../common/Button';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
+import Logo from '../common/Logo';
 
 export default function SignUpScreen() {
   const navigation = useNavigation<AuthNavigationProp>();
@@ -19,11 +19,7 @@ export default function SignUpScreen() {
       style={styles.container}
       image={require('../../assets/images/background.png')}
     >
-      <Image
-        source={require('../../assets/images/logo.svg')}
-        contentFit='contain'
-        style={styles.logo}
-      />
+      <Logo />
 
       <Form>
         <TextInput
@@ -73,10 +69,6 @@ export default function SignUpScreen() {
 export const styles = StyleSheet.create({
   container: {
     paddingTop: 20,
-  },
-  logo: {
-    width: '30%',
-    height: '10%',
   },
   bottomLink: {
     marginTop: 'auto',
