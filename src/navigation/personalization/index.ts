@@ -1,2 +1,2 @@
-export { default as AuthNavigator } from './AuthNavigator';
+export { default as PersonalizationNavigator } from './PersonalizationNavigator';
 export * from './types';

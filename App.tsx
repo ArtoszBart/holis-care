@@ -1,7 +1,7 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 import useApp from './src/config/useApp';
-import PersonalizationNavigator from './src/navigation/personalization/PersonalizationNavigator';
+import { PersonalizationNavigator } from './src/navigation/personalization';
 
 export default function App() {
   const hook = useApp();
