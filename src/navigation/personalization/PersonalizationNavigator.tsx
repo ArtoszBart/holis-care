@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { PERSONALIZATION_ROUTES } from '../../constants/routes';
+import BirthDateScreen from '../../views/personalization/BirthDateScreen';
 import SexScreen from '../../views/personalization/SexScreen';
 
 const Stack = createNativeStackNavigator();
@@ -9,7 +10,7 @@ export default function PersonalizationNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        animation: 'slide_from_left',
+        animation: 'slide_from_right',
         headerTransparent: true,
         headerShown: false,
       }}
@@ -18,6 +19,10 @@ export default function PersonalizationNavigator() {
       <Stack.Screen
         name={PERSONALIZATION_ROUTES.SEX_SCREEN}
         component={SexScreen}
+      />
+      <Stack.Screen
+        name={PERSONALIZATION_ROUTES.BIRTH_DATE_SCREEN}
+        component={BirthDateScreen}
       />
     </Stack.Navigator>
   );

@@ -1,11 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+
 import { COLORS } from '../../constants/colors';
+import { PERSONALIZATION_ROUTES } from '../../constants/routes';
+import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 
 export default function SexScreen() {
+  const navigation = useNavigation<PersonalizationNavigationProp>();
+
   return (
     <BackgroundWrapper style={styles.container}>
       <CustomText style={styles.title}>Jakiej jesteś płci?</CustomText>
@@ -20,15 +26,15 @@ export default function SexScreen() {
       <View style={styles.buttonContainer}>
         <Button
           label='Kobieta'
-          onPress={() => {
-            //TODO:
-          }}
+          onPress={() =>
+            navigation.navigate(PERSONALIZATION_ROUTES.BIRTH_DATE_SCREEN)
+          }
         />
         <Button
           label='Mężczyzna'
-          onPress={() => {
-            //TODO:
-          }}
+          onPress={() =>
+            navigation.navigate(PERSONALIZATION_ROUTES.BIRTH_DATE_SCREEN)
+          }
         />
       </View>
     </BackgroundWrapper>
