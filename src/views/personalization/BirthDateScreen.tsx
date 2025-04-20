@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { PERSONALIZATION_ROUTES } from '../../constants/routes';
+import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
@@ -11,15 +14,19 @@ const maxBirthDate = new Date();
 maxBirthDate.setFullYear(maxBirthDate.getFullYear() - minAge);
 
 export default function BirthDateScreen() {
+  const navigation = useNavigation<PersonalizationNavigationProp>();
+
   return (
     <BackgroundWrapper style={styles.container}>
       <CustomText style={styles.title}>Podaj datę urodzenia</CustomText>
 
       <DateTimePicker maxDate={maxBirthDate} style={styles.datePicker} />
 
-      <View style={styles.buttonContainer}>
-        <Button label='Dalej' onPress={() => {}} />
-      </View>
+      <Button
+        label='Dalej'
+        onPress={() => navigation.navigate(PERSONALIZATION_ROUTES.NAME_SCREEN)}
+        style={styles.button}
+      />
     </BackgroundWrapper>
   );
 }
@@ -27,7 +34,7 @@ export default function BirthDateScreen() {
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    gap: 20,
+    gap: 60,
   },
   title: {
     fontSize: 32,
@@ -35,10 +42,8 @@ export const styles = StyleSheet.create({
   },
   datePicker: {
     alignSelf: 'center',
-    marginTop: 40,
   },
-  buttonContainer: {
+  button: {
     marginTop: 'auto',
-    width: '100%',
   },
 });

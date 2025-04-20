@@ -3,8 +3,9 @@ import {
   StyleSheet,
   TextStyle,
   TouchableOpacity,
-  ViewStyle,
+  type ViewStyle,
 } from 'react-native';
+
 import { COLORS } from '../../constants/colors';
 import CustomText from './CustomText';
 
@@ -12,9 +13,15 @@ interface IButton {
   label: string;
   onPress: VoidFunction;
   invertedStyle?: boolean;
+  style?: ViewStyle;
 }
 
-export default function Button({ label, onPress, invertedStyle }: IButton) {
+export default function Button({
+  label,
+  onPress,
+  invertedStyle,
+  style,
+}: IButton) {
   const buttonStyle: ViewStyle = {
     backgroundColor: !invertedStyle ? COLORS.primary600 : 'white',
   };
@@ -23,7 +30,10 @@ export default function Button({ label, onPress, invertedStyle }: IButton) {
   };
 
   return (
-    <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.button, buttonStyle, style]}
+      onPress={onPress}
+    >
       <CustomText style={[styles.buttonText, textStyle]}>{label}</CustomText>
     </TouchableOpacity>
   );

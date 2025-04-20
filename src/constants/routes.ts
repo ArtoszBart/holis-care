@@ -15,4 +15,5 @@ export const AUTH_ROUTES = Object.freeze({
 export const PERSONALIZATION_ROUTES = Object.freeze({
   SEX_SCREEN: 'PersonalizationSexScreen',
   BIRTH_DATE_SCREEN: 'PersonalizationBirthDateScreen',
+  NAME_SCREEN: 'PersonalizationNameScreen',
 });
