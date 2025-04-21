@@ -18,3 +18,11 @@ export const PERSONALIZATION_ROUTES = Object.freeze({
   NAME_SCREEN: 'PersonalizationNameScreen',
   GET_STARTED_SCREEN: 'GetStartedScreen',
 });
+
+export const MAIN_ROUTES = Object.freeze({
+  DASHBOARD_SCREEN: 'DashboardScreen',
+  APPOINTMENTS_SCREEN: 'AppointmentsScreen',
+  RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
+  RESULTS_SCREEN: 'ResultsScreen',
+  ACCOUNT_SCREEN: 'AccountScreen',
+});
