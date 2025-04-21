@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { PERSONALIZATION_ROUTES } from '../../constants/routes';
 import BirthDateScreen from '../../views/personalization/BirthDateScreen';
+import LetsStartScreen from '../../views/personalization/GetStartedScreen';
 import NameScreen from '../../views/personalization/NameScreen';
 import SexScreen from '../../views/personalization/SexScreen';
 
@@ -28,6 +29,13 @@ export default function PersonalizationNavigator() {
       <Stack.Screen
         name={PERSONALIZATION_ROUTES.NAME_SCREEN}
         component={NameScreen}
+      />
+      <Stack.Screen
+        name={PERSONALIZATION_ROUTES.GET_STARTED_SCREEN}
+        component={LetsStartScreen}
+        options={{
+          gestureEnabled: false,
+        }}
       />
     </Stack.Navigator>
   );

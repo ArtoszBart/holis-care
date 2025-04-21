@@ -1,13 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Linking, StyleSheet, Switch, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
+import { PERSONALIZATION_ROUTES } from '../../constants/routes';
+import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import TextInput from '../common/forms/TextInput';
 
 export default function NameScreen() {
+  const navigation = useNavigation<PersonalizationNavigationProp>();
   const [isConsentGiven, setConsentGiven] = useState(false);
 
   return (
@@ -47,7 +51,12 @@ export default function NameScreen() {
         />
       </View>
 
-      <Button label='Przejdź do aplikacji' onPress={() => {}} />
+      <Button
+        label='Przejdź do aplikacji'
+        onPress={() =>
+          navigation.navigate(PERSONALIZATION_ROUTES.GET_STARTED_SCREEN)
+        }
+      />
     </BackgroundWrapper>
   );
 }
