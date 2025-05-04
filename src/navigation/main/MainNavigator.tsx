@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { COLORS } from '../../constants/colors';
 import { MAIN_ROUTES } from '../../constants/routes';
+import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,10 +24,11 @@ export default function MainNavigator() {
     >
       <Tab.Screen
         name={MAIN_ROUTES.DASHBOARD_SCREEN}
-        component={() => null}
+        component={DashboardScreen}
         options={{
           title: 'Dashboard',
           tabBarAccessibilityLabel: 'Dashboard',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name='view-dashboard-outline'
@@ -38,7 +40,7 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.APPOINTMENTS_SCREEN}
-        component={() => null}
+        component={DashboardScreen}
         options={{
           title: 'Terminy',
           tabBarAccessibilityLabel: 'Terminy',
@@ -49,7 +51,7 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.RECOMMENDATIONS_SCREEN}
-        component={() => null}
+        component={DashboardScreen}
         options={{
           title: 'Zalecane wizyty',
           tabBarAccessibilityLabel: 'Zalecane wizyty',
@@ -60,7 +62,7 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.RESULTS_SCREEN}
-        component={() => null}
+        component={DashboardScreen}
         options={{
           title: 'Wyniki',
           tabBarAccessibilityLabel: 'Wyniki',
@@ -71,7 +73,7 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.ACCOUNT_SCREEN}
-        component={() => null}
+        component={DashboardScreen}
         options={{
           title: 'Moje konto',
           tabBarAccessibilityLabel: 'Moje konto',

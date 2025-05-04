@@ -14,6 +14,8 @@ interface Props {
   style?: ViewStyle;
   image?: ImageSourcePropType;
   opacity?: number;
+  noHeader?: boolean;
+  bottomSafeView?: boolean;
 }
 
 export default function BackgroundWrapper({
@@ -21,19 +23,38 @@ export default function BackgroundWrapper({
   style,
   image = require('../../assets/images/background.png'),
   opacity = 0.3,
+  noHeader,
+  bottomSafeView,
 }: Props) {
   const insets = useSafeAreaInsets();
-  const marginTop = insets.top + 70;
+  const marginTop = noHeader ? 0 : 70;
+  // TODO: apply to screens without tab navigator
+  const paddingBottom = bottomSafeView
+    ? Platform.OS === 'android'
+      ? 20
+      : 50
+    : 0;
 
   return (
     <View style={styles.container}>
       <ImageBackground
         source={image}
         resizeMode='cover'
-        style={styles.mainView}
+        style={[styles.mainView, { paddingBottom }]}
         imageStyle={{ opacity }}
       >
-        <View style={[styles.wrapper, { marginTop }, style]}>{children}</View>
+        <View style={[styles.wrapper, { marginTop: insets.top }]}>
+          <View
+            style={[
+              styles.wrapper,
+              { paddingHorizontal: 15 },
+              style,
+              { marginTop },
+            ]}
+          >
+            {children}
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -46,11 +67,10 @@ const styles = StyleSheet.create({
   },
   mainView: {
     flex: 1,
-    paddingBottom: Platform.OS === 'android' ? 20 : 50,
-    paddingHorizontal: 15,
   },
   wrapper: {
     flex: 1,
     alignItems: 'center',
+    width: '100%',
   },
 });
