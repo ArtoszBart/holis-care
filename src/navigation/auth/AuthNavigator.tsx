@@ -4,7 +4,7 @@ import { AUTH_ROUTES } from '../../constants/routes';
 import MainAuthScreen from '../../views/auth/MainAuthScreen';
 import SignInScreen from '../../views/auth/SignInScreen';
 import SignUpScreen from '../../views/auth/SignUpScreen';
-import Header from '../../views/common/Header';
+import AuthHeader from '../../views/common/AuthHeader';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +13,7 @@ export default function AuthNavigator() {
     <Stack.Navigator
       screenOptions={{
         animation: 'fade',
-        header: ({ options }) => <Header title={options.title} />,
+        header: ({ options }) => <AuthHeader title={options.title} />,
         headerTransparent: true,
       }}
       initialRouteName={AUTH_ROUTES.MAIN_SCREEN}

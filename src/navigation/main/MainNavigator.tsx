@@ -1,12 +1,12 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Feather from '@expo/vector-icons/Feather';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Octicons from '@expo/vector-icons/Octicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { COLORS } from '../../constants/colors';
 import { MAIN_ROUTES } from '../../constants/routes';
+import AppointmentsScreen from '../../views/AppointmentsScreen';
+import Header from '../../views/common/Header';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
 
 const Tab = createBottomTabNavigator();
@@ -20,6 +20,7 @@ export default function MainNavigator() {
         tabBarActiveTintColor: COLORS.primary600,
         tabBarInactiveTintColor: COLORS.typo4,
         animation: 'shift',
+        header: ({ options }) => <Header title={options.title} />,
       }}
     >
       <Tab.Screen
@@ -40,7 +41,7 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.APPOINTMENTS_SCREEN}
-        component={DashboardScreen}
+        component={AppointmentsScreen}
         options={{
           title: 'Terminy',
           tabBarAccessibilityLabel: 'Terminy',

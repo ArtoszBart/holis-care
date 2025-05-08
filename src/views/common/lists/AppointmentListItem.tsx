@@ -1,6 +1,7 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+
 import { COLORS } from '../../../constants/colors';
 import { Appointment } from '../../../models/Appointment';
 import {
@@ -12,11 +13,13 @@ import CustomText from '../CustomText';
 
 export default function AppointmentListItem({
   appointment,
+  summary,
 }: {
   appointment: Appointment;
+  summary?: boolean;
 }) {
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.dateContainer}>
         <View>
           <CustomText style={styles.normalText}>
@@ -30,8 +33,10 @@ export default function AppointmentListItem({
           {getDisplayTime(appointment.date)}
         </CustomText>
       </View>
+
       <View style={styles.separator} />
-      <View>
+
+      <View style={styles.mainContainer}>
         <View style={styles.badgeContainer}>
           <MaterialCommunityIcons
             name='record-circle'
@@ -40,12 +45,15 @@ export default function AppointmentListItem({
           />
           <CustomText style={styles.badgeText}>{appointment.type}</CustomText>
         </View>
+
         <CustomText style={styles.mainText}>{appointment.title}</CustomText>
+
         {appointment.doctorName && (
           <CustomText style={styles.normalText}>
             {appointment.doctorName}
           </CustomText>
         )}
+
         {appointment.facility && (
           <View style={styles.additionalInfoContainer}>
             <CustomText style={styles.additionalInfo}>
@@ -57,6 +65,22 @@ export default function AppointmentListItem({
           </View>
         )}
       </View>
+
+      {summary ? (
+        <TouchableOpacity style={styles.actionButton}>
+          <Octicons name='bell-fill' size={22} color={COLORS.typo4} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={[styles.actionButton, { justifyContent: 'center' }]}
+        >
+          <MaterialCommunityIcons
+            name='chevron-right'
+            size={25}
+            color={COLORS.primary600}
+          />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
@@ -68,7 +92,6 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     gap: 2,
-    width: 284,
   },
   dateContainer: {
     justifyContent: 'space-between',
@@ -77,6 +100,10 @@ const styles = StyleSheet.create({
     width: 2,
     backgroundColor: COLORS.babyBlue,
     marginHorizontal: 10,
+  },
+  mainContainer: {
+    flexShrink: 1,
+    gap: 2,
   },
   badgeContainer: {
     flexDirection: 'row',
@@ -96,15 +123,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   additionalInfoContainer: {
-    marginTop: 5,
+    marginTop: 'auto',
+    paddingTop: 5,
   },
   additionalInfo: {
     color: COLORS.typo3,
     fontSize: 12,
   },
   actionButton: {
-    position: 'absolute',
-    top: 15,
-    right: 15,
+    marginLeft: 'auto',
+    paddingLeft: 10,
   },
 });

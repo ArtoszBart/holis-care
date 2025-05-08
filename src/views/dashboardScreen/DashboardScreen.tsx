@@ -1,8 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
+
+import { MAIN_ROUTES } from '../../constants/routes';
 import { appointments } from '../../mocks/appointments';
 import { recommendations } from '../../mocks/recommendations';
 import { tips } from '../../mocks/tips';
+import { MainNavigationProp } from '../../navigation/main';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
@@ -11,6 +15,8 @@ import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
 
 export default function DashboardScreen() {
+  const navigation = useNavigation<MainNavigationProp>();
+
   return (
     <BackgroundWrapper
       noHeader
@@ -41,9 +47,11 @@ export default function DashboardScreen() {
             title='Następna wizyta'
             items={appointments}
             renderItem={({ item }) => (
-              <AppointmentListItem appointment={item} />
+              <AppointmentListItem appointment={item} summary />
             )}
-            onSeeAllPress={() => {}}
+            onSeeAllPress={() =>
+              navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
+            }
           />
         </View>
       </ScrollView>
