@@ -4,7 +4,7 @@ import { Appointment } from '../models/Appointment';
 export const appointments: Appointment[] = [
   {
     id: '1',
-    date: new Date(2025, 2, 26, 9, 30),
+    date: new Date(2030, 2, 26, 9, 30),
     badgeColor: COLORS.blue,
     type: 'Wizyta w placówce',
     title: 'Internista',
@@ -17,7 +17,7 @@ export const appointments: Appointment[] = [
   },
   {
     id: '2',
-    date: new Date(2025, 4, 19, 17, 10),
+    date: new Date(2030, 3, 19, 17, 10),
     badgeColor: COLORS.purple,
     type: 'Badanie',
     title: 'Morfologia krwi',
@@ -29,7 +29,19 @@ export const appointments: Appointment[] = [
   },
   {
     id: '3',
-    date: new Date(2025, 2, 26, 9, 30),
+    date: new Date(2025, 3, 19, 17, 10),
+    badgeColor: COLORS.purple,
+    type: 'Badanie',
+    title: 'Morfologia krwi',
+    facility: {
+      name: 'Centrum medyczne',
+      street: 'Zdrowia 15',
+      city: 'Warszawa',
+    },
+  },
+  {
+    id: '4',
+    date: new Date(2030, 2, 26, 9, 30),
     badgeColor: COLORS.yellow,
     type: 'Szczepienie',
     title: 'Kleszczowe zapalenie mózgu',
@@ -41,8 +53,16 @@ export const appointments: Appointment[] = [
     },
   },
   {
-    id: '4',
-    date: new Date(2025, 4, 19, 17, 10),
+    id: '5',
+    date: new Date(2030, 3, 19, 17, 10),
+    badgeColor: COLORS.red,
+    type: 'Konsultacja Online',
+    title: 'Internista',
+    doctorName: 'Anna Nowak',
+  },
+  {
+    id: '6',
+    date: new Date(2025, 3, 19, 17, 10),
     badgeColor: COLORS.red,
     type: 'Konsultacja Online',
     title: 'Internista',
