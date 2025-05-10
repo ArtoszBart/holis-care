@@ -7,6 +7,7 @@ import { COLORS } from '../../constants/colors';
 import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScreen';
 import Header from '../../views/common/Header';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
+import { AccountNavigator } from '../account';
 import { MAIN_ROUTES } from '../routes';
 
 const Tab = createBottomTabNavigator();
@@ -73,8 +74,8 @@ export default function MainNavigator() {
         }}
       />
       <Tab.Screen
-        name={MAIN_ROUTES.ACCOUNT_SCREEN}
-        component={DashboardScreen}
+        name={MAIN_ROUTES.ACCOUNT_NAVIGATOR}
+        component={AccountNavigator}
         options={{
           title: 'Moje konto',
           tabBarAccessibilityLabel: 'Moje konto',

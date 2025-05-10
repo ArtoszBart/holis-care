@@ -24,5 +24,9 @@ export const MAIN_ROUTES = Object.freeze({
   APPOINTMENTS_SCREEN: 'AppointmentsScreen',
   RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
   RESULTS_SCREEN: 'ResultsScreen',
+  ACCOUNT_NAVIGATOR: 'AccountNavigator',
+});
+
+export const ACCOUNT_ROUTES = Object.freeze({
   ACCOUNT_SCREEN: 'AccountScreen',
 });
