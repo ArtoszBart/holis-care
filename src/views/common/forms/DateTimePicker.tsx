@@ -1,4 +1,3 @@
-import { AntDesign as Icon } from '@expo/vector-icons';
 import DefaultDateTimePicker, {
   DateTimePickerAndroid,
 } from '@react-native-community/datetimepicker';
@@ -12,6 +11,7 @@ import {
 } from 'react-native';
 
 import { COLORS } from '../../../constants/colors';
+import { Icon, ICONS } from '../icon';
 import TextInput from './TextInput';
 
 interface IDateTimePicker {
@@ -44,7 +44,7 @@ export default function DateTimePicker({
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={openAndroidPicker}>
-            <Icon name='calendar' size={26} style={styles.icon} />
+            <Icon icon={ICONS.CALENDAR} style={styles.icon} />
           </TouchableOpacity>
         </View>
       ) : (
@@ -71,5 +71,6 @@ export const styles = StyleSheet.create({
   },
   icon: {
     color: COLORS.primary600,
+    fontSize: 26,
   },
 });

@@ -1,10 +1,10 @@
-import { Feather } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
 import { personMock } from '../../../mocks/person';
 import CustomText from '../../common/CustomText';
+import { Icon, ICONS } from '../../common/icon';
 
 export default function DashboardHeader() {
   return (
@@ -31,7 +31,7 @@ export default function DashboardHeader() {
           </CustomText>
         </View>
         <TouchableOpacity>
-          <Feather name='bell' size={24} style={styles.bellIcon} />
+          <Icon icon={ICONS.BELL} style={styles.bellIcon} />
         </TouchableOpacity>
       </View>
     </>
@@ -74,5 +74,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fffa',
     padding: 10,
     borderRadius: 999,
+    fontSize: 24,
   },
 });

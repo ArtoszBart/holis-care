@@ -1,11 +1,9 @@
-import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import Octicons from '@expo/vector-icons/Octicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { COLORS } from '../../constants/colors';
 import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScreen';
 import Header from '../../views/common/Header';
+import { Icon, ICONS } from '../../views/common/icon';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
 import { AccountNavigator } from '../account';
 import { MAIN_ROUTES } from '../routes';
@@ -31,12 +29,8 @@ export default function MainNavigator() {
           title: 'Dashboard',
           tabBarAccessibilityLabel: 'Dashboard',
           headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name='view-dashboard-outline'
-              color={color}
-              size={size}
-            />
+          tabBarIcon: ({ color, size: fontSize }) => (
+            <Icon icon={ICONS.DASHBOARD} style={{ fontSize, color }} />
           ),
         }}
       />
@@ -46,8 +40,8 @@ export default function MainNavigator() {
         options={{
           title: 'Terminy',
           tabBarAccessibilityLabel: 'Terminy',
-          tabBarIcon: ({ color, size }) => (
-            <Feather name='calendar' color={color} size={size} />
+          tabBarIcon: ({ color, size: fontSize }) => (
+            <Icon icon={ICONS.CALENDAR} style={{ fontSize, color }} />
           ),
         }}
       />
@@ -57,8 +51,8 @@ export default function MainNavigator() {
         options={{
           title: 'Zalecane wizyty',
           tabBarAccessibilityLabel: 'Zalecane wizyty',
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name='plus' color={color} size={size} />
+          tabBarIcon: ({ color, size: fontSize }) => (
+            <Icon icon={ICONS.PLUS} style={{ fontSize, color }} />
           ),
         }}
       />
@@ -68,8 +62,8 @@ export default function MainNavigator() {
         options={{
           title: 'Wyniki',
           tabBarAccessibilityLabel: 'Wyniki',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name='document-text-outline' color={color} size={size} />
+          tabBarIcon: ({ color, size: fontSize }) => (
+            <Icon icon={ICONS.BULB} style={{ fontSize, color }} />
           ),
         }}
       />
@@ -79,8 +73,8 @@ export default function MainNavigator() {
         options={{
           title: 'Moje konto',
           tabBarAccessibilityLabel: 'Moje konto',
-          tabBarIcon: ({ color, size }) => (
-            <Octicons name='person' color={color} size={size} />
+          tabBarIcon: ({ color, size: fontSize }) => (
+            <Icon icon={ICONS.PERSON} style={{ fontSize, color }} />
           ),
         }}
       />

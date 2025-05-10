@@ -1,4 +1,3 @@
-import { AntDesign as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
@@ -6,6 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { COLORS } from '../../constants/colors';
 import CustomText from './CustomText';
+import { Icon, ICONS } from './icon';
 
 interface IHeader {
   title?: string;
@@ -19,7 +19,7 @@ export default function AuthHeader({ title }: IHeader) {
   return (
     <View style={[styles.container, { paddingTop }]}>
       <TouchableOpacity onPress={() => nav.goBack()}>
-        <Icon name='arrowleft' size={25} style={styles.icon} />
+        <Icon icon={ICONS.ARROW_LEFT} style={styles.icon} />
       </TouchableOpacity>
 
       <CustomText style={styles.title}>{title}</CustomText>
@@ -36,6 +36,7 @@ export const styles = StyleSheet.create({
   },
   icon: {
     color: COLORS.typo4,
+    fontSize: 25,
   },
   title: {
     fontSize: 20,

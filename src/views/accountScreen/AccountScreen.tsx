@@ -1,9 +1,9 @@
 import React from 'react';
-
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
+
 import { COLORS } from '../../constants/colors';
 import BackgroundWrapper from '../common/BackgroundWrapper';
+import { Icon, ICONS } from '../common/icon';
 import AccountListItem from './components/AccountListItem';
 import UserContainer from './components/UserContainer';
 
@@ -16,40 +16,34 @@ export default function AccountScreen() {
         label='Ustawienia'
         onPress={() => {}}
         navigationIcon={
-          <MaterialCommunityIcons
-            name='chevron-right'
-            style={styles.nextIcon}
-          />
+          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
         }
       />
       <AccountListItem
         label='Ustawienia powiadomień'
         onPress={() => {}}
         navigationIcon={
-          <MaterialCommunityIcons
-            name='chevron-right'
-            style={styles.nextIcon}
-          />
+          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
         }
       />
       <AccountListItem
         label='Regulamin'
         onPress={() => {}}
         navigationIcon={
-          <Feather name='external-link' style={styles.linkIcon} />
+          <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
       />
       <AccountListItem
         label='Polityka prywatności'
         onPress={() => {}}
         navigationIcon={
-          <Feather name='external-link' style={styles.linkIcon} />
+          <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
       />
       <AccountListItem
         label='Wyloguj'
         onPress={() => {}}
-        icon={<Feather name='log-out' style={styles.signOutIcon} />}
+        icon={<Icon icon={ICONS.SIGN_OUT} style={styles.signOutIcon} />}
       />
     </BackgroundWrapper>
   );

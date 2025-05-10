@@ -1,4 +1,3 @@
-import { Feather as Icon } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
   TextInput as ReactTextInput,
@@ -9,6 +8,7 @@ import {
 } from 'react-native';
 
 import { COLORS } from '../../../constants/colors';
+import { Icon, ICONS } from '../icon';
 
 export default function TextInput({
   secureTextEntry,
@@ -34,7 +34,7 @@ export default function TextInput({
             setIsDotted(true);
           }}
         >
-          <Icon name='eye-off' size={16} style={styles.icon} />
+          <Icon icon={ICONS.EYE} style={styles.icon} />
         </TouchableOpacity>
       )}
     </View>
@@ -59,5 +59,6 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 4,
     color: COLORS.typo4,
+    fontSize: 16,
   },
 });

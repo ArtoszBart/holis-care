@@ -1,9 +1,9 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { COLORS } from '../../../constants/colors';
 import CustomText from '../CustomText';
+import { Icon, ICONS } from '../icon';
 
 interface ITabBar<T extends string> {
   options: readonly {
@@ -34,7 +34,7 @@ export default function TabBar<T extends string>({
           ]}
         >
           {key === activeTab && (
-            <MaterialIcons name='check' size={16} color='white' />
+            <Icon icon={ICONS.CHECK} style={styles.checkIcon} />
           )}
           <CustomText
             style={[
@@ -70,5 +70,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12,
+  },
+  checkIcon: {
+    fontSize: 16,
+    color: 'white',
   },
 });

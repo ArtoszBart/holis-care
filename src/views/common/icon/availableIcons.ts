@@ -1,0 +1,70 @@
+import {
+  AntDesign,
+  Feather,
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Octicons,
+} from '@expo/vector-icons';
+
+export const ICONS = {
+  ARROW_LEFT: {
+    provider: AntDesign,
+    name: 'arrowleft',
+  },
+  BELL: {
+    provider: Feather,
+    name: 'bell',
+  },
+  BELL_FILL: {
+    provider: Octicons,
+    name: 'bell-fill',
+  },
+  BULB: {
+    provider: MaterialIcons,
+    name: 'lightbulb-outline',
+  },
+  CALENDAR: {
+    provider: Feather,
+    name: 'calendar',
+  },
+  CHECK: {
+    provider: MaterialIcons,
+    name: 'check',
+  },
+  CIRCLE: {
+    provider: MaterialCommunityIcons,
+    name: 'record-circle',
+  },
+  CHEVRON_RIGHT: {
+    provider: MaterialCommunityIcons,
+    name: 'chevron-right',
+  },
+  DASHBOARD: {
+    provider: MaterialCommunityIcons,
+    name: 'view-dashboard-outline',
+  },
+  EXTERNAL_LINK: {
+    provider: Feather,
+    name: 'external-link',
+  },
+  EYE: {
+    provider: Feather,
+    name: 'eye-off',
+  },
+  HEART: {
+    provider: AntDesign,
+    name: 'heart',
+  },
+  PERSON: {
+    provider: Octicons,
+    name: 'person',
+  },
+  PLUS: {
+    provider: AntDesign,
+    name: 'plus',
+  },
+  SIGN_OUT: {
+    provider: Feather,
+    name: 'log-out',
+  },
+} as const;

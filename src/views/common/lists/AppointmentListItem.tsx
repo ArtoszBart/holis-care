@@ -1,4 +1,3 @@
-import { MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
@@ -10,6 +9,7 @@ import {
   getDisplayTime,
 } from '../../../utils/dateTime';
 import CustomText from '../CustomText';
+import { Icon, ICONS } from '../icon';
 
 export default function AppointmentListItem({
   appointment,
@@ -38,10 +38,9 @@ export default function AppointmentListItem({
 
       <View style={styles.mainContainer}>
         <View style={styles.badgeContainer}>
-          <MaterialCommunityIcons
-            name='record-circle'
-            size={12}
-            color={appointment.badgeColor}
+          <Icon
+            icon={ICONS.CIRCLE}
+            style={{ fontSize: 12, color: appointment.badgeColor }}
           />
           <CustomText style={styles.badgeText}>{appointment.type}</CustomText>
         </View>
@@ -68,17 +67,13 @@ export default function AppointmentListItem({
 
       {summary ? (
         <TouchableOpacity style={styles.actionButton}>
-          <Octicons name='bell-fill' size={22} color={COLORS.typo4} />
+          <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
           style={[styles.actionButton, { justifyContent: 'center' }]}
         >
-          <MaterialCommunityIcons
-            name='chevron-right'
-            size={25}
-            color={COLORS.primary600}
-          />
+          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
         </TouchableOpacity>
       )}
     </View>
@@ -133,5 +128,13 @@ const styles = StyleSheet.create({
   actionButton: {
     marginLeft: 'auto',
     paddingLeft: 10,
+  },
+  summaryActionButtonIcon: {
+    fontSize: 22,
+    color: COLORS.typo4,
+  },
+  actionButtonIcon: {
+    fontSize: 25,
+    color: COLORS.primary600,
   },
 });

@@ -1,10 +1,9 @@
-import { Octicons } from '@expo/vector-icons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
 import { Recommendation } from '../../../models/RecomendationListItem.type';
 import CustomText from '../CustomText';
+import { Icon, ICONS } from '../icon';
 
 export default function RecommendationListItem({
   recommendation,
@@ -14,10 +13,9 @@ export default function RecommendationListItem({
   return (
     <View style={styles.container}>
       <View style={styles.badgeContainer}>
-        <MaterialCommunityIcons
-          name='record-circle'
-          size={12}
-          color={recommendation.badgeColor}
+        <Icon
+          icon={ICONS.CIRCLE}
+          style={{ fontSize: 12, color: recommendation.badgeColor }}
         />
         <CustomText style={styles.badgeText}>{recommendation.type}</CustomText>
       </View>
@@ -27,7 +25,7 @@ export default function RecommendationListItem({
         {recommendation.additionalInfo}
       </CustomText>
       <TouchableOpacity style={styles.actionButton}>
-        <Octicons name='bell-fill' size={22} color={COLORS.typo4} />
+        <Icon icon={ICONS.BELL_FILL} style={styles.actionButtonIcon} />
       </TouchableOpacity>
     </View>
   );
@@ -67,5 +65,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 15,
     right: 15,
+  },
+  actionButtonIcon: {
+    fontSize: 22,
+    color: COLORS.typo4,
   },
 });

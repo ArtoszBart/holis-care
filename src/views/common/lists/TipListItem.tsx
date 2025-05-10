@@ -1,10 +1,10 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
 import { Tip } from '../../../models/Tip';
 import CustomText from '../CustomText';
 import LinkButton from '../LinkButton';
+import { Icon, ICONS } from '../icon';
 
 export default function TipListItem({ tip }: { tip: Tip }) {
   return (
@@ -18,7 +18,7 @@ export default function TipListItem({ tip }: { tip: Tip }) {
         />
       </View>
       <TouchableOpacity>
-        <AntDesign name='heart' size={22} color={COLORS.typo4} />
+        <Icon icon={ICONS.HEART} style={styles.heartIcon} />
       </TouchableOpacity>
     </View>
   );
@@ -41,5 +41,9 @@ const styles = StyleSheet.create({
   },
   title: {
     color: COLORS.typo1,
+  },
+  heartIcon: {
+    fontSize: 22,
+    color: COLORS.typo4,
   },
 });
