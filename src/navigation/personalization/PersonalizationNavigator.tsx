@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { PERSONALIZATION_ROUTES } from '../../constants/routes';
 import BirthDateScreen from '../../views/personalization/BirthDateScreen';
 import LetsStartScreen from '../../views/personalization/GetStartedScreen';
 import NameScreen from '../../views/personalization/NameScreen';
 import SexScreen from '../../views/personalization/SexScreen';
+import { PERSONALIZATION_ROUTES } from '../routes';
 
 const Stack = createNativeStackNavigator();
 

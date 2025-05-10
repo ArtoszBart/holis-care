@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Linking, StyleSheet, Switch, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
-import { PERSONALIZATION_ROUTES } from '../../constants/routes';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
+import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';

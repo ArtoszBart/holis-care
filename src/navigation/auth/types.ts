@@ -1,6 +1,6 @@
 import { type NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { AUTH_ROUTES } from '../../constants/routes';
+import { AUTH_ROUTES } from '../routes';
 
 type AuthRouteName = (typeof AUTH_ROUTES)[keyof typeof AUTH_ROUTES];
 

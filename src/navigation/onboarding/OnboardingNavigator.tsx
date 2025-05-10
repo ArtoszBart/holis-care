@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { ONBOARDING_ROUTES } from '../../constants/routes';
 import BookScreen from '../../views/onboarding/BookScreen';
 import CollectScreen from '../../views/onboarding/CollectScreen';
 import HelloScreen from '../../views/onboarding/HelloScreen';
 import ManageScreen from '../../views/onboarding/ManageScreen';
 import TipsScreen from '../../views/onboarding/TipsScreen';
 import OnboardingNavigation from '../../views/onboarding/components/OnboardingNav/OnboardingNavigation';
+import { ONBOARDING_ROUTES } from '../routes';
 
 const Stack = createNativeStackNavigator();
 

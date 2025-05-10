@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { AUTH_ROUTES } from '../../constants/routes';
 import { AuthNavigationProp } from '../../navigation/auth';
+import { AUTH_ROUTES } from '../../navigation/routes';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import Logo from '../common/Logo';

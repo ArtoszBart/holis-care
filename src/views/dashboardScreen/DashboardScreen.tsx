@@ -2,11 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { MAIN_ROUTES } from '../../constants/routes';
 import { appointments } from '../../mocks/appointments';
 import { recommendations } from '../../mocks/recommendations';
 import { tips } from '../../mocks/tips';
 import { MainNavigationProp } from '../../navigation/main';
+import { MAIN_ROUTES } from '../../navigation/routes';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';

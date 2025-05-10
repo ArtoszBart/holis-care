@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { PERSONALIZATION_ROUTES } from '../../constants/routes';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
+import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 
-import { ONBOARDING_ROUTES } from '../../../../constants/routes';
 import { type OnboardingNavigationProp } from '../../../../navigation/onboarding';
+import { ONBOARDING_ROUTES } from '../../../../navigation/routes';
 import useOnboardingNavStore from './store';
 
 const routeList = Object.values(ONBOARDING_ROUTES);

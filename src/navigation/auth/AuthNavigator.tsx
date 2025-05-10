@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AUTH_ROUTES } from '../../constants/routes';
 import MainAuthScreen from '../../views/auth/MainAuthScreen';
 import SignInScreen from '../../views/auth/SignInScreen';
 import SignUpScreen from '../../views/auth/SignUpScreen';
 import AuthHeader from '../../views/common/AuthHeader';
+import { AUTH_ROUTES } from '../routes';
 
 const Stack = createNativeStackNavigator();
 

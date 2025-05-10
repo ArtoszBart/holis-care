@@ -4,10 +4,10 @@ import Octicons from '@expo/vector-icons/Octicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { COLORS } from '../../constants/colors';
-import { MAIN_ROUTES } from '../../constants/routes';
 import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScreen';
 import Header from '../../views/common/Header';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
+import { MAIN_ROUTES } from '../routes';
 
 const Tab = createBottomTabNavigator();
 
