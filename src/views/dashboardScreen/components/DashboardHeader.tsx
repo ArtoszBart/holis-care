@@ -25,7 +25,7 @@ export default function DashboardHeader() {
           <CustomText style={styles.greetings}>
             Cześć{' '}
             <CustomText style={{ fontWeight: 700, color: COLORS.primary600 }}>
-              {personMock.name}!
+              {personMock.firstName}!
             </CustomText>{' '}
             👋
           </CustomText>
