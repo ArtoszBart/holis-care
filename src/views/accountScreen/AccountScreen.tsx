@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Linking, StyleSheet } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
 import BackgroundWrapper from '../common/BackgroundWrapper';
@@ -28,14 +28,14 @@ export default function AccountScreen() {
       />
       <AccountListItem
         label='Regulamin'
-        onPress={() => {}}
+        onPress={() => Linking.openURL('https://google.pl/')}
         navigationIcon={
           <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
       />
       <AccountListItem
         label='Polityka prywatności'
-        onPress={() => {}}
+        onPress={() => Linking.openURL('https://google.pl/')}
         navigationIcon={
           <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
