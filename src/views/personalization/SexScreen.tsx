@@ -5,15 +5,15 @@ import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
-import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
+import PageWrapper from '../common/PageWrapper';
 
 export default function SexScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
 
   return (
-    <BackgroundWrapper style={styles.container}>
+    <PageWrapper style={styles.container}>
       <CustomText style={styles.title}>Jakiej jesteś płci?</CustomText>
       <CustomText style={styles.text}>
         Jeszcze 2 pytania. Twoje odpowiedzi pomogą nam rekomendować profilaktykę
@@ -37,7 +37,7 @@ export default function SexScreen() {
           }
         />
       </View>
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

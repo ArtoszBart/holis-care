@@ -7,7 +7,7 @@ import { recommendations } from '../../mocks/recommendations';
 import { tips } from '../../mocks/tips';
 import { MainNavigationProp } from '../../navigation/main';
 import { MAIN_ROUTES } from '../../navigation/routes';
-import BackgroundWrapper from '../common/BackgroundWrapper';
+import PageWrapper from '../common/PageWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import TipListItem from '../common/lists/TipListItem';
@@ -18,10 +18,7 @@ export default function DashboardScreen() {
   const navigation = useNavigation<MainNavigationProp>();
 
   return (
-    <BackgroundWrapper
-      noHeader
-      style={{ paddingHorizontal: 0, paddingBottom: 0 }}
-    >
+    <PageWrapper noHeader style={{ paddingHorizontal: 0, paddingBottom: 0 }}>
       <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
         <DashboardHeader />
 
@@ -56,7 +53,7 @@ export default function DashboardScreen() {
           />
         </View>
       </ScrollView>
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

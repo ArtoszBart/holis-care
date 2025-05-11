@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet } from 'react-native';
 
 import { usePreventRemove } from '@react-navigation/native';
-import BackgroundWrapper from '../common/BackgroundWrapper';
 import CustomText from '../common/CustomText';
+import PageWrapper from '../common/PageWrapper';
 
 export default function GetStartedScreen() {
   usePreventRemove(true, () => {});
@@ -28,11 +28,11 @@ export default function GetStartedScreen() {
   }, []);
 
   return (
-    <BackgroundWrapper style={styles.container}>
+    <PageWrapper style={styles.container}>
       <Animated.Text style={[styles.title, { opacity: textAnimationRef }]}>
         <CustomText style={styles.title}>Zaczynajmy!</CustomText>
       </Animated.Text>
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { Appointment } from '../../models/Appointment';
-import BackgroundWrapper from '../common/BackgroundWrapper';
+import PageWrapper from '../common/PageWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import TabBar from '../common/tabNavigation/TabNavigation';
 import {
@@ -27,7 +27,7 @@ export default function AppointmentsScreen() {
   const [activeTab, setActiveTab] = useState<TabOptions>(TabOptions.UPCOMING);
 
   return (
-    <BackgroundWrapper>
+    <PageWrapper>
       <TabBar<TabOptions>
         options={tabOptions}
         activeTab={activeTab}
@@ -36,7 +36,7 @@ export default function AppointmentsScreen() {
 
       {activeTab === TabOptions.UPCOMING && renderList(upcomingAppointments)}
       {activeTab === TabOptions.PAST && renderList(pastAppointments)}
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

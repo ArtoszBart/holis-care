@@ -5,17 +5,17 @@ import { Linking, StyleSheet, Switch, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
-import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import TextInput from '../common/forms/TextInput';
+import PageWrapper from '../common/PageWrapper';
 
 export default function NameScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
   const [isConsentGiven, setConsentGiven] = useState(false);
 
   return (
-    <BackgroundWrapper style={styles.container}>
+    <PageWrapper style={styles.container}>
       <CustomText style={styles.title}>Przywitajmy się</CustomText>
 
       <TextInput
@@ -57,7 +57,7 @@ export default function NameScreen() {
           navigation.navigate(PERSONALIZATION_ROUTES.GET_STARTED_SCREEN)
         }
       />
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

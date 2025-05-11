@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../constants/colors';
 import { AccountNavigationProp } from '../../navigation/account';
 import { ACCOUNT_ROUTES } from '../../navigation/routes';
-import BackgroundWrapper from '../common/BackgroundWrapper';
+import PageWrapper from '../common/PageWrapper';
 import { Icon, ICONS } from '../common/icon';
 import AccountListItem from './components/AccountListItem';
 import UserContainer from './components/UserContainer';
@@ -14,7 +14,7 @@ export default function AccountScreen() {
   const navigation = useNavigation<AccountNavigationProp>();
 
   return (
-    <BackgroundWrapper>
+    <PageWrapper>
       <UserContainer />
 
       <AccountListItem
@@ -52,7 +52,7 @@ export default function AccountScreen() {
         onPress={() => {}}
         icon={<Icon icon={ICONS.SIGN_OUT} style={styles.signOutIcon} />}
       />
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

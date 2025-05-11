@@ -2,6 +2,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 import useApp from './src/config/useApp';
 import { MainNavigator } from './src/navigation/main';
+import BackgroundWrapper from './src/views/common/BackgroundWrapper';
 
 export default function App() {
   const hook = useApp();
@@ -19,11 +20,13 @@ export default function App() {
   };
 
   return (
-    <NavigationContainer theme={Theme}>
-      {/* <OnboardingNavigator /> */}
-      {/* <AuthNavigator /> */}
-      {/* <PersonalizationNavigator /> */}
-      <MainNavigator />
-    </NavigationContainer>
+    <BackgroundWrapper>
+      <NavigationContainer theme={Theme}>
+        {/* <OnboardingNavigator /> */}
+        {/* <AuthNavigator /> */}
+        {/* <PersonalizationNavigator /> */}
+        <MainNavigator />
+      </NavigationContainer>
+    </BackgroundWrapper>
   );
 }

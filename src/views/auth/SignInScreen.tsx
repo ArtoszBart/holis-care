@@ -4,18 +4,18 @@ import { StyleSheet } from 'react-native';
 
 import { type AuthNavigationProp } from '../../navigation/auth';
 import { AUTH_ROUTES } from '../../navigation/routes';
-import BackgroundWrapper from '../common/BackgroundWrapper';
 import Button from '../common/Button';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import Logo from '../common/Logo';
+import PageWrapper from '../common/PageWrapper';
 
 export default function SignInScreen() {
   const navigation = useNavigation<AuthNavigationProp>();
 
   return (
-    <BackgroundWrapper style={styles.container}>
+    <PageWrapper style={styles.container}>
       <Logo />
 
       <Form>
@@ -52,7 +52,7 @@ export default function SignInScreen() {
         style={styles.bottomLink}
         onPress={() => navigation.navigate(AUTH_ROUTES.SIGN_UP_SCREEN)}
       />
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 

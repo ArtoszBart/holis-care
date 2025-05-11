@@ -3,9 +3,9 @@ import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../constants/colors';
-import BackgroundWrapper from './common/BackgroundWrapper';
 import Button from './common/Button';
 import LinkButton from './common/LinkButton';
+import PageWrapper from './common/PageWrapper';
 import DateTimePicker from './common/forms/DateTimePicker';
 import Form from './common/forms/Form';
 import TextInput from './common/forms/TextInput';
@@ -17,7 +17,7 @@ maxBirthDate.setFullYear(maxBirthDate.getFullYear() - minAge);
 
 export default function AccountSettings() {
   return (
-    <BackgroundWrapper>
+    <PageWrapper>
       <Image
         style={styles.profileImage}
         source={require('../mocks/person.png')}
@@ -82,7 +82,7 @@ export default function AccountSettings() {
           <Button label='Zapisz' onPress={() => {}} />
         </View>
       </Form>
-    </BackgroundWrapper>
+    </PageWrapper>
   );
 }
 
