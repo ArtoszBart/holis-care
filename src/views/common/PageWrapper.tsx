@@ -16,7 +16,7 @@ export default function PageWrapper({
   bottomSafeView,
 }: Props) {
   const insets = useSafeAreaInsets();
-  const marginTop = noHeader ? 0 : 70;
+  const marginTop = noHeader ? insets.top : 0;
   // TODO: apply to screens without tab navigator
   const paddingBottom = bottomSafeView
     ? Platform.OS === 'android'
@@ -25,30 +25,22 @@ export default function PageWrapper({
     : 0;
 
   return (
-    <View style={[styles.container, { paddingBottom }]}>
-      <View style={[styles.wrapper, { marginTop: insets.top }]}>
-        <View
-          style={[
-            styles.wrapper,
-            { paddingHorizontal: 15 },
-            style,
-            { marginTop },
-          ]}
-        >
-          {children}
-        </View>
-      </View>
+    <View
+      style={[
+        styles.wrapper,
+        { paddingHorizontal: 15, paddingBottom },
+        style,
+        { marginTop },
+      ]}
+    >
+      {children}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   wrapper: {
     flex: 1,
     alignItems: 'center',
-    width: '100%',
   },
 });

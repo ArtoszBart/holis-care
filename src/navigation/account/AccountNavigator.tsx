@@ -2,8 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import AccountScreen from '../../views/accountScreen/AccountScreen';
 import AccountSettings from '../../views/AccountSettings';
-import MainHeader from '../../views/common/MainHeader';
-import SubHeader from '../../views/common/SubHeader';
+import Header from '../../views/common/Header';
 import { ACCOUNT_ROUTES } from '../routes';
 
 const Stack = createNativeStackNavigator();
@@ -21,7 +20,7 @@ export default function AccountNavigator() {
         component={AccountScreen}
         options={{
           title: 'Moje konto',
-          header: ({ options }) => <MainHeader title={options.title} />,
+          header: ({ options }) => <Header title={options.title} />,
         }}
       />
       <Stack.Screen
@@ -29,7 +28,7 @@ export default function AccountNavigator() {
         component={AccountSettings}
         options={{
           title: 'Informacje',
-          header: ({ options }) => <SubHeader title={options.title} />,
+          header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />
     </Stack.Navigator>

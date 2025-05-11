@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { COLORS } from '../../constants/colors';
 import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScreen';
-import MainHeader from '../../views/common/MainHeader';
+import Header from '../../views/common/Header';
 import { Icon, ICONS } from '../../views/common/icon';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
 import { AccountNavigator } from '../account';
@@ -19,7 +19,7 @@ export default function MainNavigator() {
         tabBarActiveTintColor: COLORS.primary600,
         tabBarInactiveTintColor: COLORS.typo4,
         animation: 'shift',
-        header: ({ options }) => <MainHeader title={options.title} />,
+        header: ({ options }) => <Header title={options.title} />,
       }}
     >
       <Tab.Screen
