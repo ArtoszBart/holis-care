@@ -9,29 +9,29 @@ interface IHeader {
   title?: string;
 }
 
-export default function Header({ title }: IHeader) {
+export default function MainHeader({ title }: IHeader) {
   const insets = useSafeAreaInsets();
   const paddingTop = insets.top + 20;
 
   return (
-    <View style={[styles.container, { paddingTop }]}>
-      <CustomText style={styles.title}>{title}</CustomText>
+    <View style={[headerStyles.container, { paddingTop }]}>
+      <CustomText style={headerStyles.title}>{title}</CustomText>
     </View>
   );
 }
 
-export const styles = StyleSheet.create({
+export const headerStyles = StyleSheet.create({
   container: {
     position: 'absolute',
     width: '100%',
-    backgroundColor: 'white',
     paddingVertical: 20,
+    paddingHorizontal: 16,
     alignItems: 'center',
-    gap: 20,
+    backgroundColor: 'white',
   },
   title: {
     fontSize: 20,
-    color: COLORS.defaultText,
+    color: COLORS.typo1,
     fontWeight: 700,
   },
 });

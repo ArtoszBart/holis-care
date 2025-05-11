@@ -29,4 +29,5 @@ export const MAIN_ROUTES = Object.freeze({
 
 export const ACCOUNT_ROUTES = Object.freeze({
   ACCOUNT_SCREEN: 'AccountScreen',
+  ACCOUNT_SETTINGS_SCREEN: 'AccountSettingsScreen',
 });

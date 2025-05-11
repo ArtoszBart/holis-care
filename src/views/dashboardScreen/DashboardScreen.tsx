@@ -24,6 +24,7 @@ export default function DashboardScreen() {
     >
       <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
         <DashboardHeader />
+
         <View style={styles.listContainer}>
           <SummaryList
             title='Twoje zalecenia'

@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     borderColor: COLORS.primary600,
     borderWidth: 2,
     borderRadius: 6,
+    flexShrink: 1,
   },
   buttonText: {
     color: 'white',

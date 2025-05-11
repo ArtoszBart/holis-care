@@ -1,20 +1,27 @@
 import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../constants/colors';
+import { AccountNavigationProp } from '../../navigation/account';
+import { ACCOUNT_ROUTES } from '../../navigation/routes';
 import BackgroundWrapper from '../common/BackgroundWrapper';
 import { Icon, ICONS } from '../common/icon';
 import AccountListItem from './components/AccountListItem';
 import UserContainer from './components/UserContainer';
 
 export default function AccountScreen() {
+  const navigation = useNavigation<AccountNavigationProp>();
+
   return (
     <BackgroundWrapper>
       <UserContainer />
 
       <AccountListItem
         label='Ustawienia'
-        onPress={() => {}}
+        onPress={() =>
+          navigation.navigate(ACCOUNT_ROUTES.ACCOUNT_SETTINGS_SCREEN)
+        }
         navigationIcon={
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
         }
