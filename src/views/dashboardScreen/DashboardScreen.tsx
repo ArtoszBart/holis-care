@@ -35,9 +35,9 @@ export default function DashboardScreen() {
         <View style={styles.listContainer}>
           <SummaryList
             title='Wskazówki zdrowotne'
-            items={tips}
-            renderItem={({ item }) => <TipListItem tip={item} />}
-            onSeeAllPress={() => {}}
+            items={tips.filter((tip) => tip.userLiked)}
+            renderItem={({ item }) => <TipListItem tip={item} summary />}
+            onSeeAllPress={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
           />
         </View>
         <View style={styles.listContainer}>

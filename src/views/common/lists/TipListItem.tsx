@@ -6,26 +6,35 @@ import CustomText from '../CustomText';
 import LinkButton from '../LinkButton';
 import { Icon, ICONS } from '../icon';
 
-export default function TipListItem({ tip }: { tip: Tip }) {
+interface Props {
+  tip: Tip;
+  summary?: boolean;
+}
+
+export default function TipListItem({ tip, summary }: Props) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.main}>
         <CustomText style={styles.title}>{tip.text}</CustomText>
         <LinkButton
-          label='Ustaw przypomnienie'
+          label={tip.actionText}
           onPress={() => {}}
           textStyle={{ color: COLORS.primary600 }}
         />
       </View>
       <TouchableOpacity>
-        <Icon icon={ICONS.HEART} style={styles.heartIcon} />
+        {tip.userLiked ? (
+          <Icon icon={ICONS.HEART} style={styles.heartIcon} />
+        ) : (
+          <Icon icon={ICONS.HEART_OUTLINE} style={styles.heartIcon} />
+        )}
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
     flexDirection: 'row',
     backgroundColor: '#fff',
     padding: 16,
@@ -35,6 +44,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
+    flexShrink: 1,
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     gap: 4,
@@ -43,6 +53,7 @@ const styles = StyleSheet.create({
     color: COLORS.typo1,
   },
   heartIcon: {
+    paddingLeft: 10,
     fontSize: 22,
     color: COLORS.typo4,
   },

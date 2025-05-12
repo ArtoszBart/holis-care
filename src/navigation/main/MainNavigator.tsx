@@ -5,6 +5,7 @@ import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScree
 import Header from '../../views/common/Header';
 import { Icon, ICONS } from '../../views/common/icon';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
+import TipsScreen from '../../views/TipsScreen';
 import { AccountNavigator } from '../account';
 import { MAIN_ROUTES } from '../routes';
 
@@ -26,8 +27,7 @@ export default function MainNavigator() {
         name={MAIN_ROUTES.DASHBOARD_SCREEN}
         component={DashboardScreen}
         options={{
-          title: 'Dashboard',
-          tabBarAccessibilityLabel: 'Dashboard',
+          tabBarAccessibilityLabel: 'Panel',
           headerShown: false,
           tabBarIcon: ({ color, size: fontSize }) => (
             <Icon icon={ICONS.DASHBOARD} style={{ fontSize, color }} />
@@ -57,11 +57,11 @@ export default function MainNavigator() {
         }}
       />
       <Tab.Screen
-        name={MAIN_ROUTES.RESULTS_SCREEN}
-        component={DashboardScreen}
+        name={MAIN_ROUTES.TIPS_SCREEN}
+        component={TipsScreen}
         options={{
-          title: 'Wyniki',
-          tabBarAccessibilityLabel: 'Wyniki',
+          title: '💡 Porady Holiego 🌿',
+          tabBarAccessibilityLabel: 'Porady',
           tabBarIcon: ({ color, size: fontSize }) => (
             <Icon icon={ICONS.BULB} style={{ fontSize, color }} />
           ),

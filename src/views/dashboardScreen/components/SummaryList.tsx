@@ -31,7 +31,7 @@ export default function SummaryList<T>({
         data={items}
         keyExtractor={(_, index) => index.toString()}
         horizontal
-        contentContainerStyle={{ flexGrow: 0, paddingHorizontal: 15, gap: 10 }}
+        contentContainerStyle={styles.contentContainer}
         showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
       />
@@ -44,5 +44,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 15,
+  },
+  contentContainer: {
+    flexGrow: 0,
+    paddingHorizontal: 15,
+    gap: 10,
   },
 });

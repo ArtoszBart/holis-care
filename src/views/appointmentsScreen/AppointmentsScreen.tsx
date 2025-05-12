@@ -16,7 +16,7 @@ const renderList = (appointments: Appointment[]) => (
   <FlatList
     data={appointments}
     keyExtractor={(_, index) => index.toString()}
-    contentContainerStyle={{ gap: 10, paddingBottom: 10 }}
+    contentContainerStyle={styles.contentContainer}
     style={styles.listContainer}
     showsVerticalScrollIndicator={false}
     renderItem={({ item }) => <AppointmentListItem appointment={item} />}
@@ -43,5 +43,9 @@ export default function AppointmentsScreen() {
 const styles = StyleSheet.create({
   listContainer: {
     width: '100%',
+  },
+  contentContainer: {
+    gap: 10,
+    paddingBottom: 15,
   },
 });

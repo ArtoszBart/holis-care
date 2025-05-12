@@ -11,13 +11,12 @@ import {
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
-export default function AppointmentListItem({
-  appointment,
-  summary,
-}: {
+interface Props {
   appointment: Appointment;
   summary?: boolean;
-}) {
+}
+
+export default function AppointmentListItem({ appointment, summary }: Props) {
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.dateContainer}>

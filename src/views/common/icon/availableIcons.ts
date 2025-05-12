@@ -55,6 +55,10 @@ export const ICONS = {
     provider: AntDesign,
     name: 'heart',
   },
+  HEART_OUTLINE: {
+    provider: AntDesign,
+    name: 'hearto',
+  },
   PERSON: {
     provider: Octicons,
     name: 'person',

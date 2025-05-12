@@ -23,7 +23,7 @@ export const MAIN_ROUTES = Object.freeze({
   DASHBOARD_SCREEN: 'DashboardScreen',
   APPOINTMENTS_SCREEN: 'AppointmentsScreen',
   RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
-  RESULTS_SCREEN: 'ResultsScreen',
+  TIPS_SCREEN: 'TipsScreen',
   ACCOUNT_NAVIGATOR: 'AccountNavigator',
 });
 
