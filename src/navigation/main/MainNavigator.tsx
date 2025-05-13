@@ -5,6 +5,7 @@ import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScree
 import Header from '../../views/common/Header';
 import { Icon, ICONS } from '../../views/common/icon';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
+import RecommendationsScreen from '../../views/RecommendationsScreen';
 import TipsScreen from '../../views/TipsScreen';
 import { AccountNavigator } from '../account';
 import { MAIN_ROUTES } from '../routes';
@@ -47,10 +48,10 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.RECOMMENDATIONS_SCREEN}
-        component={DashboardScreen}
+        component={RecommendationsScreen}
         options={{
-          title: 'Zalecane wizyty',
-          tabBarAccessibilityLabel: 'Zalecane wizyty',
+          title: 'Twoje zalecenia',
+          tabBarAccessibilityLabel: 'Zalecenia',
           tabBarIcon: ({ color, size: fontSize }) => (
             <Icon icon={ICONS.PLUS} style={{ fontSize, color }} />
           ),

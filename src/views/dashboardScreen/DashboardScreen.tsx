@@ -27,7 +27,7 @@ export default function DashboardScreen() {
             title='Twoje zalecenia'
             items={recommendations}
             renderItem={({ item }) => (
-              <RecommendationListItem recommendation={item} />
+              <RecommendationListItem recommendation={item} summary />
             )}
             onSeeAllPress={() => {}}
           />

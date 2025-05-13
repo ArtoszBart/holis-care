@@ -5,39 +5,61 @@ import { Recommendation } from '../../../models/Recommendation';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
+interface Props {
+  recommendation: Recommendation;
+  summary?: boolean;
+}
+
 export default function RecommendationListItem({
   recommendation,
-}: {
-  recommendation: Recommendation;
-}) {
+  summary,
+}: Props) {
   return (
-    <View style={styles.container}>
-      <View style={styles.badgeContainer}>
-        <Icon
-          icon={ICONS.CIRCLE}
-          style={{ fontSize: 12, color: recommendation.badgeColor }}
-        />
-        <CustomText style={styles.badgeText}>{recommendation.type}</CustomText>
+    <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
+      <View style={styles.mainContainer}>
+        <View style={styles.badgeContainer}>
+          <Icon
+            icon={ICONS.CIRCLE}
+            style={{ fontSize: 12, color: recommendation.badgeColor }}
+          />
+          <CustomText style={styles.badgeText}>
+            {recommendation.type}
+          </CustomText>
+        </View>
+
+        <CustomText style={styles.title}>{recommendation.title}</CustomText>
+        <CustomText style={styles.period}>{recommendation.period}</CustomText>
+        <CustomText style={styles.additionalInfo}>
+          {recommendation.additionalInfo}
+        </CustomText>
       </View>
-      <CustomText style={styles.title}>{recommendation.title}</CustomText>
-      <CustomText style={styles.period}>{recommendation.period}</CustomText>
-      <CustomText style={styles.additionalInfo}>
-        {recommendation.additionalInfo}
-      </CustomText>
-      <TouchableOpacity style={styles.actionButton}>
-        <Icon icon={ICONS.BELL_FILL} style={styles.actionButtonIcon} />
-      </TouchableOpacity>
+
+      {summary ? (
+        <TouchableOpacity style={styles.actionButton}>
+          <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={[styles.actionButton, { justifyContent: 'center' }]}
+        >
+          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
+    flexDirection: 'row',
     backgroundColor: '#fff',
     padding: 16,
     borderRadius: 8,
     gap: 4,
     width: 284,
+  },
+  mainContainer: {
+    flexShrink: 1,
   },
   badgeContainer: {
     flexDirection: 'row',
@@ -62,12 +84,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   actionButton: {
-    position: 'absolute',
-    top: 15,
-    right: 15,
+    marginLeft: 'auto',
+    paddingLeft: 10,
   },
-  actionButtonIcon: {
+  summaryActionButtonIcon: {
     fontSize: 22,
     color: COLORS.typo4,
+  },
+  actionButtonIcon: {
+    fontSize: 25,
+    color: COLORS.primary600,
   },
 });
