@@ -22,9 +22,13 @@ export const PERSONALIZATION_ROUTES = Object.freeze({
 export const MAIN_ROUTES = Object.freeze({
   DASHBOARD_SCREEN: 'DashboardScreen',
   APPOINTMENTS_SCREEN: 'AppointmentsScreen',
-  RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
+  RECOMMENDATIONS_NAVIGATOR: 'RecommendationsNavigator',
   TIPS_SCREEN: 'TipsScreen',
   ACCOUNT_NAVIGATOR: 'AccountNavigator',
+});
+
+export const RECOMMENDATIONS_ROUTES = Object.freeze({
+  RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
 });
 
 export const ACCOUNT_ROUTES = Object.freeze({

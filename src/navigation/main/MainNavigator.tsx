@@ -5,9 +5,9 @@ import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScree
 import Header from '../../views/common/Header';
 import { Icon, ICONS } from '../../views/common/icon';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
-import RecommendationsScreen from '../../views/RecommendationsScreen';
 import TipsScreen from '../../views/TipsScreen';
 import { AccountNavigator } from '../account';
+import { RecommendationNavigator } from '../recommendation';
 import { MAIN_ROUTES } from '../routes';
 
 const Tab = createBottomTabNavigator();
@@ -47,11 +47,12 @@ export default function MainNavigator() {
         }}
       />
       <Tab.Screen
-        name={MAIN_ROUTES.RECOMMENDATIONS_SCREEN}
-        component={RecommendationsScreen}
+        name={MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR}
+        component={RecommendationNavigator}
         options={{
           title: 'Twoje zalecenia',
           tabBarAccessibilityLabel: 'Zalecenia',
+          headerShown: false,
           tabBarIcon: ({ color, size: fontSize }) => (
             <Icon icon={ICONS.PLUS} style={{ fontSize, color }} />
           ),
