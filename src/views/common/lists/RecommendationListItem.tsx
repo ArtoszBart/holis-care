@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
-import { Recommendation } from '../../../models/RecomendationListItem.type';
+import { Recommendation } from '../../../models/Recommendation';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 

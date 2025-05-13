@@ -1,5 +1,5 @@
 import { COLORS } from '../constants/colors';
-import { Recommendation } from '../models/RecomendationListItem.type';
+import { Recommendation } from '../models/Recommendation';
 
 export const recommendations: Recommendation[] = [
   {
