@@ -29,7 +29,9 @@ export default function DashboardScreen() {
             renderItem={({ item }) => (
               <RecommendationListItem recommendation={item} summary />
             )}
-            onSeeAllPress={() => {}}
+            onSeeAllPress={() =>
+              navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
+            }
           />
         </View>
         <View style={styles.listContainer}>
