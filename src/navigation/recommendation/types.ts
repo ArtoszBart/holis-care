@@ -19,7 +19,7 @@ export type RecommendationNavigatorParamList = CreateParamList<
 export type RecommendationNavigationProp =
   NativeStackNavigationProp<RecommendationNavigatorParamList>;
 
-export type RecommendationDetailsScreenProps = NativeStackScreenProps<
+export type RecommendationInfoScreenProps = NativeStackScreenProps<
   RecommendationNavigatorParamList,
   typeof RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN
 >;

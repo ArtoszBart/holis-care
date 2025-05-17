@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
-import type { RecommendationDetailsScreenProps } from '../../navigation/recommendation';
+import type { RecommendationInfoScreenProps } from '../../navigation/recommendation';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
@@ -10,7 +10,7 @@ import PageWrapper from '../common/PageWrapper';
 
 export default function RecommendationInfoScreen({
   route,
-}: RecommendationDetailsScreenProps) {
+}: RecommendationInfoScreenProps) {
   const { recommendation } = route.params;
 
   return (
