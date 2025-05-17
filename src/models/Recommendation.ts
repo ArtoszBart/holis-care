@@ -7,4 +7,6 @@ export type Recommendation = {
   title: string;
   period: string;
   additionalInfo: string;
+  description: string;
+  preparation: string;
 };
