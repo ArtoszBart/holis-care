@@ -10,7 +10,7 @@ import { CreateParamList } from '../types';
 export type RecommendationNavigatorParamList = CreateParamList<
   typeof RECOMMENDATIONS_ROUTES,
   {
-    [RECOMMENDATIONS_ROUTES.RECOMMENDATION_DETAILS_SCREEN]: {
+    [RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN]: {
       recommendation: Recommendation;
     };
   }
@@ -21,5 +21,5 @@ export type RecommendationNavigationProp =
 
 export type RecommendationDetailsScreenProps = NativeStackScreenProps<
   RecommendationNavigatorParamList,
-  typeof RECOMMENDATIONS_ROUTES.RECOMMENDATION_DETAILS_SCREEN
+  typeof RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN
 >;

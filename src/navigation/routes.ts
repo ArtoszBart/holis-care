@@ -29,7 +29,7 @@ export const MAIN_ROUTES = Object.freeze({
 
 export const RECOMMENDATIONS_ROUTES = Object.freeze({
   RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
-  RECOMMENDATION_DETAILS_SCREEN: 'RecommendationDetailsScreen',
+  RECOMMENDATION_INFO_SCREEN: 'RecommendationInfoScreen',
 });
 
 export const ACCOUNT_ROUTES = Object.freeze({

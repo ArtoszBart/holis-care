@@ -42,7 +42,7 @@ export default function RecommendationListItem({
           style={[styles.actionButton, { justifyContent: 'center' }]}
           onPress={() =>
             navigation.navigate(
-              RECOMMENDATIONS_ROUTES.RECOMMENDATION_DETAILS_SCREEN,
+              RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN,
               { recommendation },
             )
           }

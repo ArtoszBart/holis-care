@@ -8,7 +8,7 @@ import Button from './common/Button';
 import CustomText from './common/CustomText';
 import PageWrapper from './common/PageWrapper';
 
-export default function RecommendationDetailsScreen({
+export default function RecommendationInfoScreen({
   route,
 }: RecommendationDetailsScreenProps) {
   const { recommendation } = route.params;
