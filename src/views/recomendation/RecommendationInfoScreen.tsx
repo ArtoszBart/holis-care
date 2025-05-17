@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
 import type { RecommendationInfoScreenProps } from '../../navigation/recommendation';
+import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
@@ -10,6 +11,7 @@ import PageWrapper from '../common/PageWrapper';
 
 export default function RecommendationInfoScreen({
   route,
+  navigation,
 }: RecommendationInfoScreenProps) {
   const { recommendation } = route.params;
 
@@ -41,7 +43,16 @@ export default function RecommendationInfoScreen({
         </View>
       </View>
 
-      <Button style={styles.button} label='Zapisz się' onPress={() => {}} />
+      <Button
+        style={styles.button}
+        label='Dodaj wizytę'
+        onPress={() =>
+          navigation.navigate(
+            RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN,
+            { recommendation },
+          )
+        }
+      />
     </PageWrapper>
   );
 }

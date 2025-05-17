@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
 import { Appointment } from '../../../models/Appointment';
 import {
-  getDisplayDate,
+  getDisplayDateShort,
   getDisplayDayOfWeekShort,
   getDisplayTime,
 } from '../../../utils/dateTime';
@@ -26,7 +26,7 @@ export default function AppointmentListItem({ appointment, summary }: Props) {
             {getDisplayDayOfWeekShort(appointment.date)}
           </CustomText>
           <CustomText style={styles.normalText}>
-            {getDisplayDate(appointment.date)}
+            {getDisplayDateShort(appointment.date)}
           </CustomText>
         </View>
         <CustomText style={styles.mainText}>

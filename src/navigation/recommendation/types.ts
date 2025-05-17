@@ -13,6 +13,9 @@ export type RecommendationNavigatorParamList = CreateParamList<
     [RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN]: {
       recommendation: Recommendation;
     };
+    [RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN]: {
+      recommendation: Recommendation;
+    };
   }
 >;
 
@@ -22,4 +25,9 @@ export type RecommendationNavigationProp =
 export type RecommendationInfoScreenProps = NativeStackScreenProps<
   RecommendationNavigatorParamList,
   typeof RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN
+>;
+
+export type RecommendationFormScreenProps = NativeStackScreenProps<
+  RecommendationNavigatorParamList,
+  typeof RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN
 >;

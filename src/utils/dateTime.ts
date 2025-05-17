@@ -4,11 +4,19 @@ export const getDisplayDayOfWeekShort = (date: Date): string => {
   return date.toLocaleDateString(LOCALE, { weekday: 'short' });
 };
 
-export const getDisplayDate = (date: Date): string => {
+export const getDisplayDateShort = (date: Date): string => {
   return date.toLocaleDateString(LOCALE, {
     day: '2-digit',
     month: '2-digit',
     year: '2-digit',
+  });
+};
+
+export const getDisplayDate = (date: Date): string => {
+  return date.toLocaleDateString(LOCALE, {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
   });
 };
 

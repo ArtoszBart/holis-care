@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Header from '../../views/common/Header';
+import RecommendationFormScreen from '../../views/recomendation/RecommendationFormScreen';
 import RecommendationInfoScreen from '../../views/recomendation/RecommendationInfoScreen';
 import RecommendationsScreen from '../../views/recomendation/RecommendationsScreen';
 import { RECOMMENDATIONS_ROUTES } from '../routes';
@@ -29,6 +30,14 @@ export default function RecommendationNavigator() {
         component={RecommendationInfoScreen}
         options={{
           title: 'Informacje o zaleceniu',
+          header: ({ options }) => <Header title={options.title} withBack />,
+        }}
+      />
+      <Stack.Screen
+        name={RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN}
+        component={RecommendationFormScreen}
+        options={{
+          title: 'Szcegóły wizyty',
           header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />

@@ -1,0 +1,79 @@
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import { COLORS } from '../../constants/colors';
+import { RecommendationFormScreenProps } from '../../navigation/recommendation';
+import Badge from '../common/Badge';
+import Button from '../common/Button';
+import CustomText from '../common/CustomText';
+import PageWrapper from '../common/PageWrapper';
+import DateTimePicker from '../common/forms/DateTimePicker';
+import Form from '../common/forms/Form';
+import TextInput from '../common/forms/TextInput';
+
+export default function RecommendationFormScreen({
+  route,
+}: RecommendationFormScreenProps) {
+  const { recommendation } = route.params;
+
+  return (
+    <PageWrapper style={styles.wrapper}>
+      <View style={styles.mainContainer}>
+        <Badge color={recommendation.badgeColor} label={recommendation.type} />
+
+        <CustomText style={styles.title}>{recommendation.title}</CustomText>
+        <CustomText style={styles.additionalInfo}>
+          {recommendation.additionalInfo}
+        </CustomText>
+      </View>
+
+      <Form>
+        <DateTimePicker mode='date' label='Data:' />
+        <DateTimePicker mode='time' label='Godzina:' />
+        <TextInput
+          placeholder='Adres'
+          autoCapitalize='sentences'
+          autoComplete='address-line1'
+          textContentType='streetAddressLine1'
+          autoCorrect
+          spellCheck
+        />
+        <TextInput
+          placeholder='Dodatkowe informacje (opcjonalnie)'
+          autoCapitalize='sentences'
+          autoCorrect
+          spellCheck
+        />
+      </Form>
+
+      <Button style={styles.button} label='Zapisz się' onPress={() => {}} />
+    </PageWrapper>
+  );
+}
+
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingVertical: 10,
+    paddingBottom: 10,
+  },
+  mainContainer: {
+    gap: 10,
+    padding: 10,
+    backgroundColor: '#fff',
+    width: '100%',
+  },
+  title: {
+    alignSelf: 'center',
+    fontSize: 20,
+    fontWeight: 700,
+    color: COLORS.typo1,
+  },
+  additionalInfo: {
+    alignSelf: 'flex-end',
+    fontSize: 12,
+    color: COLORS.typo3,
+  },
+  button: {
+    marginTop: 'auto',
+  },
+});

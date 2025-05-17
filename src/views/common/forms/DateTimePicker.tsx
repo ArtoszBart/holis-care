@@ -10,67 +10,92 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { COLORS } from '../../../constants/colors';
-import { Icon, ICONS } from '../icon';
+import { getDisplayDate, getDisplayTime } from '../../../utils/dateTime';
+import CustomText from '../CustomText';
 import TextInput from './TextInput';
 
-interface IDateTimePicker {
+interface Props {
   initDate?: Date;
   maxDate?: Date;
   style?: ViewStyle;
+  mode?: 'date' | 'time';
+  spinner?: boolean;
+  label?: string;
 }
 
 export default function DateTimePicker({
   maxDate,
   style,
   initDate = new Date(),
-}: IDateTimePicker) {
+  mode = 'date',
+  spinner,
+  label,
+}: Props) {
   const openAndroidPicker = () => {
     DateTimePickerAndroid.open({
       value: initDate,
-      display: 'spinner',
+      display: spinner ? 'spinner' : 'default',
       maximumDate: maxDate,
+      mode,
     });
   };
 
   return (
     <>
       {Platform.OS === 'android' ? (
-        <View style={[styles.androidButton, style]}>
-          <TouchableOpacity onPress={openAndroidPicker} style={styles.input}>
+        <View
+          style={[
+            styles.container,
+            {
+              justifyContent: label ? 'space-between' : 'center',
+              paddingLeft: label ? 12 : 0,
+            },
+            style,
+          ]}
+        >
+          {label && <CustomText>{label}</CustomText>}
+          <TouchableOpacity onPress={openAndroidPicker}>
             <TextInput
               editable={false}
-              defaultValue={initDate.toLocaleDateString()}
+              defaultValue={
+                mode === 'date'
+                  ? getDisplayDate(initDate)
+                  : getDisplayTime(initDate)
+              }
+              style={{ flexShrink: 1 }}
             />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={openAndroidPicker}>
-            <Icon icon={ICONS.CALENDAR} style={styles.icon} />
           </TouchableOpacity>
         </View>
       ) : (
-        <DefaultDateTimePicker
-          value={initDate}
-          display='spinner'
-          maximumDate={maxDate}
-          style={style}
-        />
+        <View
+          style={[
+            styles.container,
+            {
+              justifyContent: label ? 'space-between' : 'center',
+              paddingLeft: label ? 12 : 0,
+            },
+          ]}
+        >
+          {label && <CustomText>{label}</CustomText>}
+          <DefaultDateTimePicker
+            value={initDate}
+            maximumDate={maxDate}
+            style={style}
+            mode={mode}
+            display={
+              mode === 'time' ? 'compact' : spinner ? 'spinner' : 'default'
+            }
+          />
+        </View>
       )}
     </>
   );
 }
 
 export const styles = StyleSheet.create({
-  androidButton: {
-    width: '100%',
+  container: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
-  },
-  input: {
-    flex: 1,
-  },
-  icon: {
-    color: COLORS.primary600,
-    fontSize: 26,
   },
 });
