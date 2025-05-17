@@ -3,10 +3,10 @@ import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../constants/colors';
 import type { RecommendationDetailsScreenProps } from '../navigation/recommendation';
+import Badge from './common/Badge';
 import Button from './common/Button';
 import CustomText from './common/CustomText';
 import PageWrapper from './common/PageWrapper';
-import { Icon, ICONS } from './common/icon';
 
 export default function RecommendationDetailsScreen({
   route,
@@ -16,15 +16,8 @@ export default function RecommendationDetailsScreen({
   return (
     <PageWrapper style={styles.wrapper}>
       <View style={styles.mainContainer}>
-        <View style={styles.badgeContainer}>
-          <Icon
-            icon={ICONS.CIRCLE}
-            style={{ fontSize: 12, color: recommendation.badgeColor }}
-          />
-          <CustomText style={styles.badgeText}>
-            {recommendation.type}
-          </CustomText>
-        </View>
+        <Badge color={recommendation.badgeColor} label={recommendation.type} />
+
         <CustomText style={styles.title}>{recommendation.title}</CustomText>
         <CustomText style={styles.additionalInfo}>
           {recommendation.additionalInfo}
@@ -64,15 +57,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#fff',
     width: '100%',
-  },
-  badgeContainer: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    gap: 4,
-  },
-  badgeText: {
-    fontSize: 12,
-    color: COLORS.typo4,
   },
   title: {
     alignSelf: 'center',

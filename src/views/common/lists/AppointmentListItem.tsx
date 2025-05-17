@@ -8,6 +8,7 @@ import {
   getDisplayDayOfWeekShort,
   getDisplayTime,
 } from '../../../utils/dateTime';
+import Badge from '../Badge';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
@@ -36,13 +37,7 @@ export default function AppointmentListItem({ appointment, summary }: Props) {
       <View style={styles.separator} />
 
       <View style={styles.mainContainer}>
-        <View style={styles.badgeContainer}>
-          <Icon
-            icon={ICONS.CIRCLE}
-            style={{ fontSize: 12, color: appointment.badgeColor }}
-          />
-          <CustomText style={styles.badgeText}>{appointment.type}</CustomText>
-        </View>
+        <Badge color={appointment.badgeColor} label={appointment.type} />
 
         <CustomText style={styles.mainText}>{appointment.title}</CustomText>
 
@@ -98,15 +93,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexShrink: 1,
     gap: 2,
-  },
-  badgeContainer: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    gap: 4,
-  },
-  badgeText: {
-    color: COLORS.typo4,
-    fontSize: 12,
   },
   mainText: {
     fontWeight: 700,

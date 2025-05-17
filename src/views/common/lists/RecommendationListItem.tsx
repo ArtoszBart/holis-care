@@ -6,6 +6,7 @@ import { COLORS } from '../../../constants/colors';
 import { Recommendation } from '../../../models/Recommendation';
 import { RecommendationNavigationProp } from '../../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
+import Badge from '../Badge';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
@@ -23,15 +24,7 @@ export default function RecommendationListItem({
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.mainContainer}>
-        <View style={styles.badgeContainer}>
-          <Icon
-            icon={ICONS.CIRCLE}
-            style={{ fontSize: 12, color: recommendation.badgeColor }}
-          />
-          <CustomText style={styles.badgeText}>
-            {recommendation.type}
-          </CustomText>
-        </View>
+        <Badge color={recommendation.badgeColor} label={recommendation.type} />
 
         <CustomText style={styles.title}>{recommendation.title}</CustomText>
         <CustomText style={styles.period}>{recommendation.period}</CustomText>
@@ -72,15 +65,6 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flexShrink: 1,
-  },
-  badgeContainer: {
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    gap: 4,
-  },
-  badgeText: {
-    color: COLORS.typo4,
-    fontSize: 12,
   },
   title: {
     fontWeight: 700,
