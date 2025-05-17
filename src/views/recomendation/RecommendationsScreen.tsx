@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { recommendations } from '../mocks/recommendations';
-import RecommendationListItem from './common/lists/RecommendationListItem';
-import PageWrapper from './common/PageWrapper';
+import { recommendations } from '../../mocks/recommendations';
+import RecommendationListItem from '../common/lists/RecommendationListItem';
+import PageWrapper from '../common/PageWrapper';
 
 export default function RecommendationsScreen() {
   return (
