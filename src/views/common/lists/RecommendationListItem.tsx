@@ -1,7 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+
 import { COLORS } from '../../../constants/colors';
 import { Recommendation } from '../../../models/Recommendation';
+import { RecommendationNavigationProp } from '../../../navigation/recommendation';
+import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
@@ -14,6 +18,8 @@ export default function RecommendationListItem({
   recommendation,
   summary,
 }: Props) {
+  const navigation = useNavigation<RecommendationNavigationProp>();
+
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.mainContainer}>
@@ -41,6 +47,12 @@ export default function RecommendationListItem({
       ) : (
         <TouchableOpacity
           style={[styles.actionButton, { justifyContent: 'center' }]}
+          onPress={() =>
+            navigation.navigate(
+              RECOMMENDATIONS_ROUTES.RECOMMENDATION_DETAILS_SCREEN,
+              { recommendation },
+            )
+          }
         >
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
         </TouchableOpacity>

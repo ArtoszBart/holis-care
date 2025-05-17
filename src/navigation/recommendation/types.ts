@@ -1,9 +1,25 @@
-import { type NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {
+  NativeStackScreenProps,
+  type NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
+
+import { Recommendation } from '../../models/Recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../routes';
+import { CreateParamList } from '../types';
 
-type RecommendationRouteName =
-  (typeof RECOMMENDATIONS_ROUTES)[keyof typeof RECOMMENDATIONS_ROUTES];
+export type RecommendationNavigatorParamList = CreateParamList<
+  typeof RECOMMENDATIONS_ROUTES,
+  {
+    [RECOMMENDATIONS_ROUTES.RECOMMENDATION_DETAILS_SCREEN]: {
+      recommendation: Recommendation;
+    };
+  }
+>;
 
-export type RecommendationNavigationProp = NativeStackNavigationProp<{
-  [key in RecommendationRouteName]: undefined;
-}>;
+export type RecommendationNavigationProp =
+  NativeStackNavigationProp<RecommendationNavigatorParamList>;
+
+export type RecommendationDetailsScreenProps = NativeStackScreenProps<
+  RecommendationNavigatorParamList,
+  typeof RECOMMENDATIONS_ROUTES.RECOMMENDATION_DETAILS_SCREEN
+>;
