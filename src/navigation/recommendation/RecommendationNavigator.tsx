@@ -37,7 +37,7 @@ export default function RecommendationNavigator() {
         name={RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN}
         component={RecommendationFormScreen}
         options={{
-          title: 'Szcegóły wizyty',
+          title: 'Nowa wizyta',
           header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />
