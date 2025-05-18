@@ -71,10 +71,11 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   mainContainer: {
-    gap: 10,
-    padding: 10,
-    backgroundColor: '#fff',
     width: '100%',
+    borderRadius: 8,
+    backgroundColor: '#fff',
+    padding: 10,
+    gap: 10,
   },
   title: {
     alignSelf: 'center',
