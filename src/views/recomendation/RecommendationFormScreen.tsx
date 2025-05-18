@@ -6,15 +6,25 @@ import { RecommendationFormScreenProps } from '../../navigation/recommendation';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
-import PageWrapper from '../common/PageWrapper';
 import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
+import useLoadingStore from '../common/loader/loaderStore';
+import PageWrapper from '../common/PageWrapper';
 
 export default function RecommendationFormScreen({
   route,
 }: RecommendationFormScreenProps) {
   const { recommendation } = route.params;
+
+  const { setIsLoading } = useLoadingStore();
+
+  const onButtonPress = async () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  };
 
   return (
     <PageWrapper style={styles.wrapper}>
@@ -46,7 +56,11 @@ export default function RecommendationFormScreen({
         />
       </Form>
 
-      <Button style={styles.button} label='Zapisz się' onPress={() => {}} />
+      <Button
+        style={styles.button}
+        label='Zapisz się'
+        onPress={onButtonPress}
+      />
     </PageWrapper>
   );
 }
