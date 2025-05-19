@@ -43,20 +43,9 @@ export default function RecommendationFormScreen({
       <Form>
         <DateTimePicker mode='date' label='Data:' />
         <DateTimePicker mode='time' label='Godzina:' />
-        <TextInput
-          placeholder='Adres'
-          autoCapitalize='sentences'
-          autoComplete='address-line1'
-          textContentType='streetAddressLine1'
-          autoCorrect
-          spellCheck
-        />
-        <TextInput
-          placeholder='Dodatkowe informacje (opcjonalnie)'
-          autoCapitalize='sentences'
-          autoCorrect
-          spellCheck
-        />
+        <TextInput placeholder='Imię i nazwisko lekarza' />
+        <TextInput placeholder='Adres' />
+        <TextInput placeholder='Dodatkowe informacje (opcjonalnie)' />
       </Form>
 
       <Button
