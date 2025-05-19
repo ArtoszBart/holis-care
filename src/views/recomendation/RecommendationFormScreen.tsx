@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
 import { RecommendationFormScreenProps } from '../../navigation/recommendation';
+import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
@@ -14,6 +15,7 @@ import PageWrapper from '../common/PageWrapper';
 
 export default function RecommendationFormScreen({
   route,
+  navigation,
 }: RecommendationFormScreenProps) {
   const { recommendation } = route.params;
 
@@ -23,6 +25,7 @@ export default function RecommendationFormScreen({
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
+      navigation.navigate(RECOMMENDATIONS_ROUTES.RECOMMENDATION_SUCCESS_SCREEN);
     }, 3000);
   };
 

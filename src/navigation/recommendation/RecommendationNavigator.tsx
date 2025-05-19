@@ -4,6 +4,7 @@ import Header from '../../views/common/Header';
 import RecommendationFormScreen from '../../views/recomendation/RecommendationFormScreen';
 import RecommendationInfoScreen from '../../views/recomendation/RecommendationInfoScreen';
 import RecommendationsScreen from '../../views/recomendation/RecommendationsScreen';
+import RecommendationSuccessScreen from '../../views/recomendation/RecommendationSuccessScreen';
 import { RECOMMENDATIONS_ROUTES } from '../routes';
 import { RecommendationNavigatorParamList } from './types';
 
@@ -38,6 +39,15 @@ export default function RecommendationNavigator() {
         component={RecommendationFormScreen}
         options={{
           title: 'Nowa wizyta',
+          header: ({ options }) => <Header title={options.title} withBack />,
+        }}
+      />
+      <Stack.Screen
+        name={RECOMMENDATIONS_ROUTES.RECOMMENDATION_SUCCESS_SCREEN}
+        component={RecommendationSuccessScreen}
+        options={{
+          title: '',
+          headerShown: false,
           header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />
