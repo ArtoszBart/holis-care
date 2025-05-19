@@ -22,6 +22,8 @@ export default function MainNavigator() {
         tabBarInactiveTintColor: COLORS.typo4,
         animation: 'shift',
         header: ({ options }) => <Header title={options.title} />,
+        tabBarHideOnKeyboard: true,
+        popToTopOnBlur: true,
       }}
     >
       <Tab.Screen
