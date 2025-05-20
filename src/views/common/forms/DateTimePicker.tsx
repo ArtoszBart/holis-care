@@ -71,12 +71,12 @@ export default function DateTimePicker({
           style={[
             styles.container,
             {
-              justifyContent: label ? 'space-between' : 'center',
-              paddingLeft: label ? 12 : 0,
+              justifyContent: label && !spinner ? 'space-between' : 'center',
+              paddingLeft: label && !spinner ? 12 : 0,
             },
           ]}
         >
-          {label && <CustomText>{label}</CustomText>}
+          {label && !spinner && <CustomText>{label}</CustomText>}
           <DefaultDateTimePicker
             value={initDate}
             maximumDate={maxDate}

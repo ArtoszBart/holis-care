@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import React from 'react';
-import { Platform, StyleSheet, View, type ViewStyle } from 'react-native';
+import { StyleSheet, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface Props {
@@ -19,21 +19,18 @@ export default function PageWrapper({
   backgroundImage,
 }: Props) {
   const insets = useSafeAreaInsets();
-  const marginTop = noHeader ? insets.top : 10;
-  // TODO: apply to screens without tab navigator
-  const paddingBottom = bottomSafeView
-    ? Platform.OS === 'android'
-      ? 20
-      : 50
-    : 10;
+  const marginTop = noHeader ? insets.top : 15;
+  const paddingBottom = bottomSafeView ? insets.bottom + 15 : 15;
 
   return (
     <View style={styles.wrapper}>
-      <Image
-        source={backgroundImage as number}
-        contentFit='fill'
-        style={styles.backgroundImage}
-      />
+      {!!backgroundImage && (
+        <Image
+          source={backgroundImage as number}
+          contentFit='fill'
+          style={styles.backgroundImage}
+        />
+      )}
       <View
         style={[
           styles.wrapper,
@@ -53,6 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backgroundImage: {
+    backgroundColor: '#fff',
     position: 'absolute',
     top: 0,
     bottom: 0,

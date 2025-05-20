@@ -15,7 +15,7 @@ export default function NameScreen() {
   const [isConsentGiven, setConsentGiven] = useState(false);
 
   return (
-    <PageWrapper style={styles.container}>
+    <PageWrapper style={styles.container} noHeader bottomSafeView>
       <CustomText style={styles.title}>Przywitajmy się</CustomText>
 
       <TextInput
@@ -63,6 +63,7 @@ export default function NameScreen() {
 
 export const styles = StyleSheet.create({
   container: {
+    paddingTop: '20%',
     alignItems: 'flex-start',
     gap: 60,
   },

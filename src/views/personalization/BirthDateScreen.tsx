@@ -1,7 +1,7 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
@@ -17,10 +17,10 @@ export default function BirthDateScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
 
   return (
-    <PageWrapper style={styles.container}>
+    <PageWrapper style={styles.container} noHeader bottomSafeView>
       <CustomText style={styles.title}>Podaj datę urodzenia</CustomText>
 
-      <DateTimePicker maxDate={maxBirthDate} style={styles.datePicker} />
+      <DateTimePicker label='Data urodzenia:' maxDate={maxBirthDate} spinner />
 
       <Button
         label='Dalej'
@@ -33,15 +33,12 @@ export default function BirthDateScreen() {
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: 'flex-start',
+    paddingTop: '20%',
     gap: 60,
   },
   title: {
     fontSize: 32,
     fontWeight: 700,
-  },
-  datePicker: {
-    alignSelf: 'center',
   },
   button: {
     marginTop: 'auto',

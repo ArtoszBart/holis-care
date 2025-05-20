@@ -17,7 +17,7 @@ maxBirthDate.setFullYear(maxBirthDate.getFullYear() - minAge);
 
 export default function AccountSettings() {
   return (
-    <PageWrapper>
+    <PageWrapper style={styles.wrapper}>
       <Image
         style={styles.profileImage}
         source={require('../mocks/person.png')}
@@ -87,6 +87,9 @@ export default function AccountSettings() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignItems: 'center',
+  },
   profileImage: {
     width: profileImageSize,
     height: profileImageSize,

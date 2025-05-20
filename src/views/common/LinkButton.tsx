@@ -33,7 +33,6 @@ export const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    // TODO: add where needed as props - width: '100%',
   },
   buttonText: {
     color: COLORS.typo1,

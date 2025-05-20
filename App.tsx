@@ -1,7 +1,7 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 import useApp from './src/config/useApp';
-import { MainNavigator } from './src/navigation/main';
+import { AuthNavigator } from './src/navigation/auth';
 import BackgroundWrapper from './src/views/common/BackgroundWrapper';
 import Loader from './src/views/common/loader/Loader';
 
@@ -26,9 +26,9 @@ export default function App() {
 
       <NavigationContainer theme={Theme}>
         {/* <OnboardingNavigator /> */}
-        {/* <AuthNavigator /> */}
+        <AuthNavigator />
         {/* <PersonalizationNavigator /> */}
-        <MainNavigator />
+        {/* <MainNavigator /> */}
       </NavigationContainer>
     </BackgroundWrapper>
   );

@@ -13,7 +13,7 @@ export default function SexScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
 
   return (
-    <PageWrapper style={styles.container}>
+    <PageWrapper style={styles.container} noHeader bottomSafeView>
       <CustomText style={styles.title}>Jakiej jesteś płci?</CustomText>
       <CustomText style={styles.text}>
         Jeszcze 2 pytania. Twoje odpowiedzi pomogą nam rekomendować profilaktykę
@@ -43,6 +43,7 @@ export default function SexScreen() {
 
 export const styles = StyleSheet.create({
   container: {
+    paddingTop: '20%',
     alignItems: 'flex-start',
     gap: 20,
   },

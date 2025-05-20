@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import BookScreen from '../../views/onboarding/BookScreen';
 import CollectScreen from '../../views/onboarding/CollectScreen';
@@ -45,9 +46,9 @@ function OnboardingNavigator() {
 
 export default function OnboardingNavigatorWrapper() {
   return (
-    <>
+    <SafeAreaProvider>
       <OnboardingNavigator />
       <OnboardingNavigation />
-    </>
+    </SafeAreaProvider>
   );
 }

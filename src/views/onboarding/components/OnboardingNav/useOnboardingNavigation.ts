@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { type OnboardingNavigationProp } from '../../../../navigation/onboarding';
 import { ONBOARDING_ROUTES } from '../../../../navigation/routes';
@@ -8,6 +9,7 @@ const routeList = Object.values(ONBOARDING_ROUTES);
 
 const useOnboardingNav = () => {
   const navigation = useNavigation<OnboardingNavigationProp>();
+  const insets = useSafeAreaInsets();
   const { currentNo, setCurrentNo } = useOnboardingNavStore();
 
   const handleNextPress = () => {
@@ -24,7 +26,7 @@ const useOnboardingNav = () => {
     setCurrentNo(previousScreenNo);
   };
 
-  return { currentNo, routeList, handleNextPress, handleSkipPress };
+  return { currentNo, routeList, handleNextPress, handleSkipPress, insets };
 };
 
 export default useOnboardingNav;

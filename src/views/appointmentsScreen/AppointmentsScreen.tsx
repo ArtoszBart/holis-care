@@ -27,7 +27,7 @@ export default function AppointmentsScreen() {
   const [activeTab, setActiveTab] = useState<TabOptions>(TabOptions.UPCOMING);
 
   return (
-    <PageWrapper>
+    <PageWrapper style={styles.wrapper}>
       <TabBar<TabOptions>
         options={tabOptions}
         activeTab={activeTab}
@@ -41,6 +41,10 @@ export default function AppointmentsScreen() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignItems: 'center',
+    paddingBottom: 0,
+  },
   listContainer: {
     width: '100%',
   },

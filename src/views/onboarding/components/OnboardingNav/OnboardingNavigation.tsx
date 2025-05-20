@@ -9,7 +9,7 @@ export default function OnboardingNavigation() {
   const hook = useOnboardingNav();
 
   return (
-    <View style={styles.nav}>
+    <View style={[styles.nav, { marginBottom: hook.insets.bottom }]}>
       <OnboardingNavButton label='Pomiń' onPress={hook.handleSkipPress} />
       <View style={styles.pageIndicator}>
         {hook.routeList.map((_, idx) => (

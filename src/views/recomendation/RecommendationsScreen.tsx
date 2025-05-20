@@ -1,12 +1,13 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
+
 import { recommendations } from '../../mocks/recommendations';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import PageWrapper from '../common/PageWrapper';
 
 export default function RecommendationsScreen() {
   return (
-    <PageWrapper>
+    <PageWrapper style={styles.wrapper}>
       <FlatList
         data={recommendations}
         keyExtractor={(_, index) => index.toString()}
@@ -22,6 +23,9 @@ export default function RecommendationsScreen() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    paddingBottom: 0,
+  },
   listContainer: {
     width: '100%',
   },

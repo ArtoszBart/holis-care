@@ -15,7 +15,7 @@ export default function SignUpScreen() {
   const navigation = useNavigation<AuthNavigationProp>();
 
   return (
-    <PageWrapper style={styles.container}>
+    <PageWrapper style={styles.container} noHeader bottomSafeView>
       <Logo />
 
       <Form>
@@ -66,6 +66,7 @@ export default function SignUpScreen() {
 export const styles = StyleSheet.create({
   container: {
     paddingTop: 20,
+    alignItems: 'center',
   },
   bottomLink: {
     marginTop: 'auto',

@@ -8,7 +8,7 @@ export default function BackgroundWrapper({ children }: PropsWithChildren) {
         source={require('../../assets/images/background.png')}
         resizeMode='cover'
         style={{ flex: 1 }}
-        imageStyle={{ opacity: 0.4 }}
+        imageStyle={{ opacity: 0.5 }}
       >
         {children}
       </ImageBackground>
