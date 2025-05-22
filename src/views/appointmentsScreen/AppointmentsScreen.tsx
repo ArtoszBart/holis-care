@@ -4,7 +4,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import { Appointment } from '../../models/Appointment';
 import PageWrapper from '../common/PageWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
-import TabBar from '../common/tabNavigation/TabNavigation';
+import TopTabsNavigation from '../common/navigation/TopTabsNavigation';
 import {
   pastAppointments,
   TabOptions,
@@ -28,7 +28,7 @@ export default function AppointmentsScreen() {
 
   return (
     <PageWrapper style={styles.wrapper}>
-      <TabBar<TabOptions>
+      <TopTabsNavigation<TabOptions>
         options={tabOptions}
         activeTab={activeTab}
         setActiveTab={setActiveTab}

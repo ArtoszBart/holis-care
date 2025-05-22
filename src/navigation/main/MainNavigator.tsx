@@ -1,9 +1,15 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { COLORS } from '../../constants/colors';
 import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScreen';
 import Header from '../../views/common/Header';
-import { Icon, ICONS } from '../../views/common/icon';
+import { ICONS } from '../../views/common/icon';
+import BottomTabsButton from '../../views/common/navigation/BottomTabsButton';
+import BottomTabsContainer, {
+  BottomTabsContainerStyles,
+} from '../../views/common/navigation/BottomTabsContainer';
+import BottomTabsMainButton from '../../views/common/navigation/BottomTabsMainButton';
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
 import TipsScreen from '../../views/TipsScreen';
 import { AccountNavigator } from '../account';
@@ -13,6 +19,9 @@ import { MAIN_ROUTES } from '../routes';
 const Tab = createBottomTabNavigator();
 
 export default function MainNavigator() {
+  const insets = useSafeAreaInsets();
+  const insetsBottom = insets.bottom;
+
   return (
     <Tab.Navigator
       initialRouteName={MAIN_ROUTES.DASHBOARD_SCREEN}
@@ -24,6 +33,11 @@ export default function MainNavigator() {
         header: ({ options }) => <Header title={options.title} />,
         tabBarHideOnKeyboard: true,
         popToTopOnBlur: true,
+        tabBarStyle: {
+          height: 65 + insetsBottom,
+          ...BottomTabsContainerStyles.tabBarStyle,
+        },
+        tabBarBackground: () => <BottomTabsContainer />,
       }}
     >
       <Tab.Screen
@@ -32,8 +46,8 @@ export default function MainNavigator() {
         options={{
           tabBarAccessibilityLabel: 'Panel',
           headerShown: false,
-          tabBarIcon: ({ color, size: fontSize }) => (
-            <Icon icon={ICONS.DASHBOARD} style={{ fontSize, color }} />
+          tabBarIcon: (props) => (
+            <BottomTabsButton icon={ICONS.DASHBOARD} {...props} />
           ),
         }}
       />
@@ -43,8 +57,8 @@ export default function MainNavigator() {
         options={{
           title: 'Terminy',
           tabBarAccessibilityLabel: 'Terminy',
-          tabBarIcon: ({ color, size: fontSize }) => (
-            <Icon icon={ICONS.CALENDAR} style={{ fontSize, color }} />
+          tabBarIcon: (props) => (
+            <BottomTabsButton icon={ICONS.CALENDAR} {...props} />
           ),
         }}
       />
@@ -55,8 +69,8 @@ export default function MainNavigator() {
           title: 'Twoje zalecenia',
           tabBarAccessibilityLabel: 'Zalecenia',
           headerShown: false,
-          tabBarIcon: ({ color, size: fontSize }) => (
-            <Icon icon={ICONS.PLUS} style={{ fontSize, color }} />
+          tabBarIcon: (props) => (
+            <BottomTabsMainButton icon={ICONS.PLUS} {...props} />
           ),
         }}
       />
@@ -66,8 +80,8 @@ export default function MainNavigator() {
         options={{
           title: '💡 Porady Holiego 🌿',
           tabBarAccessibilityLabel: 'Porady',
-          tabBarIcon: ({ color, size: fontSize }) => (
-            <Icon icon={ICONS.BULB} style={{ fontSize, color }} />
+          tabBarIcon: (props) => (
+            <BottomTabsButton icon={ICONS.BULB} {...props} />
           ),
         }}
       />
@@ -78,8 +92,8 @@ export default function MainNavigator() {
           title: 'Moje konto',
           tabBarAccessibilityLabel: 'Moje konto',
           headerShown: false,
-          tabBarIcon: ({ color, size: fontSize }) => (
-            <Icon icon={ICONS.PERSON} style={{ fontSize, color }} />
+          tabBarIcon: (props) => (
+            <BottomTabsButton icon={ICONS.PERSON} {...props} />
           ),
         }}
       />

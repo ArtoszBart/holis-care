@@ -5,7 +5,7 @@ import { COLORS } from '../../../constants/colors';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
-interface ITabBar<T extends string> {
+interface Props<T extends string> {
   options: readonly {
     key: T;
     label: string;
@@ -14,11 +14,11 @@ interface ITabBar<T extends string> {
   setActiveTab: (key: T) => void;
 }
 
-export default function TabBar<T extends string>({
+export default function TopTabsNavigation<T extends string>({
   options,
   activeTab = options[0].key,
   setActiveTab,
-}: ITabBar<T>) {
+}: Props<T>) {
   return (
     <View style={styles.container}>
       {options.map(({ key, label }) => (

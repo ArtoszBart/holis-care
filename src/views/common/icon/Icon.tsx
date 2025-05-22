@@ -5,7 +5,7 @@ import { IconDefinition } from './iconDefinition.type';
 
 type IconProps = {
   icon: IconDefinition;
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
 };
 
 export default function Icon({ icon, style }: IconProps) {

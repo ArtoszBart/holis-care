@@ -1,7 +1,8 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useApp from './src/config/useApp';
-import { AuthNavigator } from './src/navigation/auth';
+import { MainNavigator } from './src/navigation/main';
 import BackgroundWrapper from './src/views/common/BackgroundWrapper';
 import Loader from './src/views/common/loader/Loader';
 
@@ -23,13 +24,14 @@ export default function App() {
   return (
     <BackgroundWrapper>
       <Loader />
-
-      <NavigationContainer theme={Theme}>
-        {/* <OnboardingNavigator /> */}
-        <AuthNavigator />
-        {/* <PersonalizationNavigator /> */}
-        {/* <MainNavigator /> */}
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer theme={Theme}>
+          {/* <OnboardingNavigator /> */}
+          {/* <AuthNavigator /> */}
+          {/* <PersonalizationNavigator /> */}
+          <MainNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </BackgroundWrapper>
   );
 }
