@@ -30,7 +30,7 @@ export default function RecommendationFormScreen({
   };
 
   return (
-    <PageWrapper style={styles.wrapper}>
+    <PageWrapper>
       <View style={styles.mainContainer}>
         <Badge color={recommendation.badgeColor} label={recommendation.type} />
 
@@ -58,10 +58,6 @@ export default function RecommendationFormScreen({
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    paddingVertical: 10,
-    paddingBottom: 10,
-  },
   mainContainer: {
     width: '100%',
     borderRadius: 8,

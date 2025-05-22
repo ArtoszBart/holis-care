@@ -18,7 +18,7 @@ export default function DashboardScreen() {
   const navigation = useNavigation<MainNavigationProp>();
 
   return (
-    <PageWrapper noHeader style={{ paddingHorizontal: 0, paddingBottom: 0 }}>
+    <PageWrapper style={styles.wrapper} noHeader>
       <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
         <DashboardHeader />
 
@@ -60,6 +60,10 @@ export default function DashboardScreen() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    marginHorizontal: 0,
+    marginBottom: 0,
+  },
   listContainer: {
     width: '100%',
   },

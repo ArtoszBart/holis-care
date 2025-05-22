@@ -43,7 +43,8 @@ export default function AppointmentsScreen() {
 const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
-    paddingBottom: 0,
+    marginTop: 0,
+    marginBottom: 0,
   },
   listContainer: {
     width: '100%',

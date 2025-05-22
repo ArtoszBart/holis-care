@@ -24,7 +24,8 @@ export default function RecommendationsScreen() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingBottom: 0,
+    marginTop: 0,
+    marginBottom: 0,
   },
   listContainer: {
     width: '100%',

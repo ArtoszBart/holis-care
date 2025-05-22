@@ -6,7 +6,7 @@ import PageWrapper from './common/PageWrapper';
 
 export default function TipsScreen() {
   return (
-    <PageWrapper>
+    <PageWrapper style={styles.wrapper}>
       <FlatList
         data={tips}
         keyExtractor={(_, index) => index.toString()}
@@ -20,6 +20,10 @@ export default function TipsScreen() {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    marginTop: 0,
+    marginBottom: 0,
+  },
   listContainer: {
     width: '100%',
   },

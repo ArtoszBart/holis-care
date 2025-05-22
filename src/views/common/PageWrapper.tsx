@@ -19,8 +19,13 @@ export default function PageWrapper({
   backgroundImage,
 }: Props) {
   const insets = useSafeAreaInsets();
-  const marginTop = noHeader ? insets.top : 15;
-  const paddingBottom = bottomSafeView ? insets.bottom + 15 : 15;
+
+  const margin = 15;
+  const margins = {
+    marginHorizontal: margin,
+    marginTop: noHeader ? insets.top : margin,
+    marginBottom: bottomSafeView ? insets.bottom + margin : margin,
+  };
 
   return (
     <View style={styles.wrapper}>
@@ -31,16 +36,7 @@ export default function PageWrapper({
           style={styles.backgroundImage}
         />
       )}
-      <View
-        style={[
-          styles.wrapper,
-          { paddingHorizontal: 15, paddingBottom },
-          style,
-          { marginTop },
-        ]}
-      >
-        {children}
-      </View>
+      <View style={[styles.container, { ...margins }, style]}>{children}</View>
     </View>
   );
 }
@@ -56,5 +52,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+  },
+  container: {
+    flex: 1,
   },
 });
