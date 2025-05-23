@@ -10,6 +10,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 
+import { COLORS } from '../../../constants/colors';
 import { getDisplayDate, getDisplayTime } from '../../../utils/dateTime';
 import CustomText from '../CustomText';
 import TextInput from './TextInput';
@@ -53,7 +54,7 @@ export default function DateTimePicker({
             style,
           ]}
         >
-          {label && <CustomText>{label}</CustomText>}
+          {label && <CustomText style={styles.label}>{label}:</CustomText>}
           <TouchableOpacity onPress={openAndroidPicker}>
             <TextInput
               editable={false}
@@ -76,7 +77,9 @@ export default function DateTimePicker({
             },
           ]}
         >
-          {label && !spinner && <CustomText>{label}</CustomText>}
+          {label && !spinner && (
+            <CustomText style={styles.label}>{label}:</CustomText>
+          )}
           <DefaultDateTimePicker
             value={initDate}
             maximumDate={maxDate}
@@ -85,6 +88,7 @@ export default function DateTimePicker({
             display={
               mode === 'time' ? 'compact' : spinner ? 'spinner' : 'default'
             }
+            accentColor={COLORS.primary600}
           />
         </View>
       )}
@@ -97,5 +101,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
+  },
+  label: {
+    color: COLORS.typo3,
   },
 });

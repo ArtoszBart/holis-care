@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import AccountScreen from '../../views/accountScreen/AccountScreen';
-import AccountSettings from '../../views/AccountSettings';
+import AccountSettings from '../../views/accountSettings/AccountSettings';
 import Header from '../../views/common/Header';
 import { ACCOUNT_ROUTES } from '../routes';
 

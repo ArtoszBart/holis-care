@@ -8,18 +8,26 @@ import {
 } from 'react-native';
 
 import { COLORS } from '../../../constants/colors';
+import { getFont } from '../../../constants/fonts';
+import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
+interface Props extends TextInputProps {
+  label?: string;
+}
+
 export default function TextInput({
+  label,
   secureTextEntry,
   ...otherProps
-}: TextInputProps) {
+}: Props) {
   const [isDotted, setIsDotted] = useState(secureTextEntry);
 
   return (
     <View style={styles.container}>
+      {label && <CustomText style={styles.label}>{label}:</CustomText>}
       <ReactTextInput
-        style={[styles.text]}
+        style={[styles.text, { fontFamily: getFont() }]}
         secureTextEntry={isDotted}
         clearButtonMode={secureTextEntry ? 'never' : 'always'}
         cursorColor={COLORS.primary600}
@@ -50,6 +58,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 12,
+  },
+  label: {
+    marginRight: 5,
+    color: COLORS.typo3,
   },
   text: {
     flex: 1,
