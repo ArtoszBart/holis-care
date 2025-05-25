@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../../../constants/colors';
 import OnboardingNavButton from '../OnboardingNavButton';
@@ -9,7 +9,7 @@ export default function OnboardingNavigation() {
   const hook = useOnboardingNav();
 
   return (
-    <View style={[styles.nav, { marginBottom: hook.insets.bottom }]}>
+    <View style={[styles.nav, { paddingBottom: hook.insets.bottom + 10 }]}>
       <OnboardingNavButton label='Pomiń' onPress={hook.handleSkipPress} />
       <View style={styles.pageIndicator}>
         {hook.routeList.map((_, idx) => (
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 10,
-    paddingBottom: Platform.OS === 'android' ? 10 : 40,
     backgroundColor: '#fff',
   },
   navButton: {
