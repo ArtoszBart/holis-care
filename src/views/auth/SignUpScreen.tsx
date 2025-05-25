@@ -1,9 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-
-import { type AuthNavigationProp } from '../../navigation/auth';
-import { AUTH_ROUTES } from '../../navigation/routes';
+import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
+import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
@@ -12,7 +11,7 @@ import Logo from '../common/Logo';
 import PageWrapper from '../common/PageWrapper';
 
 export default function SignUpScreen() {
-  const navigation = useNavigation<AuthNavigationProp>();
+  const navigation = useNavigation<InitialFlowNavigationProp>();
 
   return (
     <PageWrapper style={styles.container} noHeader bottomSafeView>
@@ -48,16 +47,18 @@ export default function SignUpScreen() {
         />
         <Button
           label='Dalej'
-          onPress={() => {
-            // TODO:
-          }}
+          onPress={() =>
+            navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR)
+          }
         />
       </Form>
 
       <LinkButton
         label='Masz konto? Zaloguj się'
         style={styles.bottomLink}
-        onPress={() => navigation.navigate(AUTH_ROUTES.SIGN_IN_SCREEN)}
+        onPress={() => {
+          navigation.dispatch(StackActions.replace(AUTH_ROUTES.SIGN_IN_SCREEN));
+        }}
       />
     </PageWrapper>
   );

@@ -1,29 +1,33 @@
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
-import { type OnboardingNavigationProp } from '../../../../navigation/onboarding';
-import { ONBOARDING_ROUTES } from '../../../../navigation/routes';
+import { InitialFlowNavigationProp } from '../../../../navigation/initialFlow';
+import {
+  INITIAL_FLOW_ROUTES,
+  ONBOARDING_ROUTES,
+} from '../../../../navigation/routes';
 import useOnboardingNavStore from './store';
 
 const routeList = Object.values(ONBOARDING_ROUTES);
 
 const useOnboardingNav = () => {
-  const navigation = useNavigation<OnboardingNavigationProp>();
+  const navigation = useNavigation<InitialFlowNavigationProp>();
   const insets = useSafeAreaInsets();
   const { currentNo, setCurrentNo } = useOnboardingNavStore();
 
   const handleNextPress = () => {
-    const nextScreenNo = currentNo < routeList.length - 1 ? currentNo + 1 : 0;
+    const nextScreenNo = currentNo + 1;
 
-    navigation.navigate(routeList[nextScreenNo]);
+    if (nextScreenNo >= routeList.length)
+      return navigation.navigate(INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR);
+
+    navigation.navigate(INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR, {
+      screen: routeList[nextScreenNo],
+    });
     setCurrentNo(nextScreenNo);
   };
 
   const handleSkipPress = () => {
-    const previousScreenNo = routeList.length > 0 ? currentNo - 1 : 4;
-
-    navigation.navigate(routeList[previousScreenNo]);
-    setCurrentNo(previousScreenNo);
+    navigation.navigate(INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR);
   };
 
   return { currentNo, routeList, handleNextPress, handleSkipPress, insets };

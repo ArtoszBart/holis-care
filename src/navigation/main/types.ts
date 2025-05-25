@@ -1,9 +1,8 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { MAIN_ROUTES } from '../routes';
+import { CreateParamList } from '../types';
 
-type MainRouteName = (typeof MAIN_ROUTES)[keyof typeof MAIN_ROUTES];
+type MainNavigatorParamList = CreateParamList<typeof MAIN_ROUTES>;
 
-export type MainNavigationProp = BottomTabNavigationProp<{
-  [key in MainRouteName]: undefined;
-}>;
+export type MainNavigationProp =
+  NativeStackNavigationProp<MainNavigatorParamList>;

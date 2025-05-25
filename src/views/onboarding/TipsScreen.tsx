@@ -1,5 +1,5 @@
+import { usePreventRemove } from '@react-navigation/native';
 import { View } from 'react-native';
-
 import CustomText from '../common/CustomText';
 import Logo from '../common/Logo';
 import Omega from '../common/Omega';
@@ -8,6 +8,8 @@ import OnboardingListItem from './components/OnboardingListItem';
 import { onboardingScreenStyles as styles } from './onboardingScreen.styles';
 
 export default function TipsScreen() {
+  usePreventRemove(true, () => {});
+
   return (
     <PageWrapper
       style={styles.container}

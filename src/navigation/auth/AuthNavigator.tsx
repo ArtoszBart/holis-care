@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import MainAuthScreen from '../../views/auth/MainAuthScreen';
 import SignInScreen from '../../views/auth/SignInScreen';
 import SignUpScreen from '../../views/auth/SignUpScreen';
@@ -22,7 +21,7 @@ export default function AuthNavigator() {
       <Stack.Screen
         name={AUTH_ROUTES.MAIN_SCREEN}
         component={MainAuthScreen}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
         name={AUTH_ROUTES.SIGN_UP_SCREEN}

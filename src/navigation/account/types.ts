@@ -1,8 +1,8 @@
 import { type NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ACCOUNT_ROUTES } from '../routes';
+import { CreateParamList } from '../types';
 
-type AccountRouteName = (typeof ACCOUNT_ROUTES)[keyof typeof ACCOUNT_ROUTES];
+type AccountNavigatorParamList = CreateParamList<typeof ACCOUNT_ROUTES>;
 
-export type AccountNavigationProp = NativeStackNavigationProp<{
-  [key in AccountRouteName]: undefined;
-}>;
+export type AccountNavigationProp =
+  NativeStackNavigationProp<AccountNavigatorParamList>;

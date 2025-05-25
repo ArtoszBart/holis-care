@@ -1,2 +1,2 @@
-export { default as OnboardingNavigator } from './OnboardingNavigator';
+export { default as OnboardingNavigatorWrapper } from './OnboardingNavigator';
 export * from './types';

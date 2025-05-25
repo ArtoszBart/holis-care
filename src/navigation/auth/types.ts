@@ -1,9 +1,8 @@
 import { type NativeStackNavigationProp } from '@react-navigation/native-stack';
-
 import { AUTH_ROUTES } from '../routes';
+import { CreateParamList } from '../types';
 
-type AuthRouteName = (typeof AUTH_ROUTES)[keyof typeof AUTH_ROUTES];
+export type AuthNavigatorParamList = CreateParamList<typeof AUTH_ROUTES>;
 
-export type AuthNavigationProp = NativeStackNavigationProp<{
-  [key in AuthRouteName]: undefined;
-}>;
+export type AuthNavigationProp =
+  NativeStackNavigationProp<AuthNavigatorParamList>;

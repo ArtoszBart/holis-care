@@ -1,8 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-import { useFocusEffect } from '@react-navigation/native';
-import { BackHandler } from 'react-native';
 import BookScreen from '../../views/onboarding/BookScreen';
 import CollectScreen from '../../views/onboarding/CollectScreen';
 import HelloScreen from '../../views/onboarding/HelloScreen';
@@ -14,15 +11,6 @@ import { ONBOARDING_ROUTES } from '../routes';
 const Stack = createNativeStackNavigator();
 
 function OnboardingNavigator() {
-  useFocusEffect(() => {
-    const subscription = BackHandler.addEventListener(
-      'hardwareBackPress',
-      () => true,
-    );
-
-    return () => subscription.remove();
-  });
-
   return (
     <Stack.Navigator
       screenOptions={{

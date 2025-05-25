@@ -1,5 +1,5 @@
+import { usePreventRemove } from '@react-navigation/native';
 import { View } from 'react-native';
-
 import CustomText from '../common/CustomText';
 import Logo from '../common/Logo';
 import Omega from '../common/Omega';
@@ -7,6 +7,8 @@ import PageWrapper from '../common/PageWrapper';
 import { onboardingScreenStyles as styles } from './onboardingScreen.styles';
 
 export default function HelloScreen() {
+  usePreventRemove(true, () => {});
+
   return (
     <PageWrapper
       style={styles.container}

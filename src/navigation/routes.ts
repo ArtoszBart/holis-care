@@ -1,3 +1,9 @@
+export const INITIAL_FLOW_ROUTES = Object.freeze({
+  ONBOARDING_NAVIGATOR: 'OnboardingNavigator',
+  AUTH_NAVIGATOR: 'AuthNavigator',
+  PERSONALIZATION_NAVIGATOR: 'PersonalizationNavigator',
+});
+
 export const ONBOARDING_ROUTES = Object.freeze({
   HELLO_SCREEN: 'OnboardingHello',
   BOOK_SCREEN: 'OnboardingBook',

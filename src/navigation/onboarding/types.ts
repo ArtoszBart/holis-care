@@ -1,9 +1,6 @@
-import { type NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ONBOARDING_ROUTES } from '../routes';
+import { CreateParamList } from '../types';
 
-type OnboardingRouteName =
-  (typeof ONBOARDING_ROUTES)[keyof typeof ONBOARDING_ROUTES];
-
-export type OnboardingNavigationProp = NativeStackNavigationProp<{
-  [key in OnboardingRouteName]: undefined;
-}>;
+export type OnboardingNavigatorParamList = CreateParamList<
+  typeof ONBOARDING_ROUTES
+>;

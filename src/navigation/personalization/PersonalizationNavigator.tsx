@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BirthDateScreen from '../../views/personalization/BirthDateScreen';
-import LetsStartScreen from '../../views/personalization/GetStartedScreen';
+import LetsStartScreen from '../../views/personalization/getStartedScreen/GetStartedScreen';
 import NameScreen from '../../views/personalization/NameScreen';
 import SexScreen from '../../views/personalization/SexScreen';
 import { PERSONALIZATION_ROUTES } from '../routes';

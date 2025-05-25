@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { AuthNavigationProp } from '../../navigation/auth';
 import { AUTH_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
@@ -10,6 +9,7 @@ import Omega from '../common/Omega';
 import PageWrapper from '../common/PageWrapper';
 
 export default function MainAuthScreen() {
+  usePreventRemove(true, () => {});
   const navigation = useNavigation<AuthNavigationProp>();
 
   return (
