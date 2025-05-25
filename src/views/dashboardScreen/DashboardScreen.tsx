@@ -1,16 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { appointments } from '../../mocks/appointments';
 import { recommendations } from '../../mocks/recommendations';
 import { tips } from '../../mocks/tips';
 import { MainNavigationProp } from '../../navigation/main';
 import { MAIN_ROUTES } from '../../navigation/routes';
+import BlurContainer from '../common/BlurContainer';
 import PageWrapper from '../common/PageWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import TipListItem from '../common/lists/TipListItem';
+import ScrollView from '../common/scrollView/ScrollView';
 import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
 
@@ -19,42 +21,46 @@ export default function DashboardScreen() {
 
   return (
     <PageWrapper style={styles.wrapper} noHeader>
-      <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
-        <DashboardHeader />
+      <DashboardHeader />
 
-        <View style={styles.listContainer}>
-          <SummaryList
-            title='Twoje zalecenia'
-            items={recommendations}
-            renderItem={({ item }) => (
-              <RecommendationListItem recommendation={item} summary />
-            )}
-            onSeeAllPress={() =>
-              navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
-            }
-          />
-        </View>
-        <View style={styles.listContainer}>
-          <SummaryList
-            title='Wskazówki zdrowotne'
-            items={tips.filter((tip) => tip.userLiked)}
-            renderItem={({ item }) => <TipListItem tip={item} summary />}
-            onSeeAllPress={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
-          />
-        </View>
-        <View style={styles.listContainer}>
-          <SummaryList
-            title='Następna wizyta'
-            items={appointments}
-            renderItem={({ item }) => (
-              <AppointmentListItem appointment={item} summary />
-            )}
-            onSeeAllPress={() =>
-              navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
-            }
-          />
-        </View>
-      </ScrollView>
+      <BlurContainer intensity={30} backgroundColor='#fff5'>
+        <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
+          <View style={styles.listContainer}>
+            <SummaryList
+              title='Twoje zalecenia'
+              items={recommendations}
+              renderItem={({ item }) => (
+                <RecommendationListItem recommendation={item} summary />
+              )}
+              onSeeAllPress={() =>
+                navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
+              }
+            />
+          </View>
+
+          <View style={styles.listContainer}>
+            <SummaryList
+              title='Wskazówki zdrowotne'
+              items={tips.filter((tip) => tip.userLiked)}
+              renderItem={({ item }) => <TipListItem tip={item} summary />}
+              onSeeAllPress={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
+            />
+          </View>
+
+          <View style={styles.listContainer}>
+            <SummaryList
+              title='Następna wizyta'
+              items={appointments}
+              renderItem={({ item }) => (
+                <AppointmentListItem appointment={item} summary />
+              )}
+              onSeeAllPress={() =>
+                navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
+              }
+            />
+          </View>
+        </ScrollView>
+      </BlurContainer>
     </PageWrapper>
   );
 }
