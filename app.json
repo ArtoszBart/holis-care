@@ -13,13 +13,18 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.artoszbart.holismobile",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.artoszbart.holismobile"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
@@ -31,6 +36,12 @@
           "fonts": ["./src/assets/fonts/LexendDeca-Bold.ttf"]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "648efad0-9827-4775-8b24-9d8c3eaa196b"
+      }
+    },
+    "owner": "artoszbart"
   }
 }
