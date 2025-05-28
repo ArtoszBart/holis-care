@@ -17,14 +17,20 @@
       "bundleIdentifier": "com.artoszbart.holismobile",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
+      },
+      "icon": {
+        "dark": "./src/assets/icons/ios-dark.png",
+        "light": "./src/assets/icons/ios-light.png",
+        "tinted": "./src/assets/icons/ios-tinted.png"
       }
     },
     "android": {
+      "package": "com.artoszbart.holismobile",
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/adaptive-icon.png",
+        "foregroundImage": "./src/assets/icons/adaptive-icon.png",
+        "monochromeImage": "./src/assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.artoszbart.holismobile"
+      }
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
@@ -34,6 +40,18 @@
         "expo-font",
         {
           "fonts": ["./src/assets/fonts/LexendDeca-Bold.ttf"]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ff0000",
+          "image": "./src/assets/icons/splash-icon-dark.png",
+          "dark": {
+            "image": "./src/assets/icons/splash-icon-light.png",
+            "backgroundColor": "#000000"
+          },
+          "imageWidth": 200
         }
       ]
     ],
