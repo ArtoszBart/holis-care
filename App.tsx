@@ -4,6 +4,7 @@ import {
   setStatusBarStyle,
   setStatusBarTranslucent,
 } from 'expo-status-bar';
+import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useIsAuthStore } from './src/config/isAuthStore';
 import useApp from './src/config/useApp';
@@ -28,9 +29,11 @@ export default function App() {
     },
   };
 
-  setStatusBarStyle('dark');
-  setStatusBarBackgroundColor('transparent');
-  setStatusBarTranslucent(true);
+  if (Platform.OS === 'android') {
+    setStatusBarStyle('dark');
+    setStatusBarBackgroundColor('transparent');
+    setStatusBarTranslucent(true);
+  }
 
   return (
     <BackgroundWrapper>
