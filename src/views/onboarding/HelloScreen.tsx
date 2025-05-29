@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import CustomText from '../common/CustomText';
 import Logo from '../common/Logo';
 import Omega from '../common/Omega';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 import { onboardingScreenStyles as styles } from './onboardingScreen.styles';
 
 export default function HelloScreen() {
@@ -13,7 +13,8 @@ export default function HelloScreen() {
     <PageWrapper
       style={styles.container}
       backgroundImage={require('../../assets/images/background-onboarding.png')}
-      noHeader
+      opacity={1}
+      noSafeBottom
     >
       <Logo />
       <Omega />

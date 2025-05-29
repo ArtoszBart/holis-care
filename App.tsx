@@ -10,7 +10,6 @@ import { useIsAuthStore } from './src/config/isAuthStore';
 import useApp from './src/config/useApp';
 import InitialFlowNavigator from './src/navigation/initialFlow/InitialFlowNavigator';
 import { MainNavigator } from './src/navigation/main';
-import BackgroundWrapper from './src/views/common/BackgroundWrapper';
 import Loader from './src/views/common/loader/Loader';
 
 export default function App() {
@@ -36,13 +35,13 @@ export default function App() {
   }
 
   return (
-    <BackgroundWrapper>
+    <>
       <Loader />
       <SafeAreaProvider>
         <NavigationContainer theme={Theme}>
           {isAuth ? <MainNavigator /> : <InitialFlowNavigator />}
         </NavigationContainer>
       </SafeAreaProvider>
-    </BackgroundWrapper>
+    </>
   );
 }

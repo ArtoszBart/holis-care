@@ -29,7 +29,7 @@ export default function UserContainer() {
 
 const styles = StyleSheet.create({
   header: {
-    marginVertical: 10,
+    marginBottom: 10,
     width: '100%',
     borderRadius: 8,
     paddingHorizontal: 5,

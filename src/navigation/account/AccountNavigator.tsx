@@ -12,6 +12,7 @@ export default function AccountNavigator() {
     <Stack.Navigator
       screenOptions={{
         animation: 'slide_from_right',
+        headerTransparent: true,
       }}
       initialRouteName={ACCOUNT_ROUTES.ACCOUNT_SCREEN}
     >

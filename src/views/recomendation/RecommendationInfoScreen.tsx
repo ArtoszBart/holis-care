@@ -1,13 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { COLORS } from '../../constants/colors';
 import type { RecommendationInfoScreenProps } from '../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
 import Badge from '../common/Badge';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function RecommendationInfoScreen({
   route,
@@ -59,8 +58,6 @@ export default function RecommendationInfoScreen({
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingVertical: 10,
-    paddingBottom: 10,
     gap: 20,
   },
   mainContainer: {

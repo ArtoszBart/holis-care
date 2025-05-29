@@ -1,19 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { COLORS } from '../../constants/colors';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function SexScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
 
   return (
-    <PageWrapper style={styles.container} noHeader bottomSafeView>
+    <PageWrapper style={styles.container} noHeader>
       <CustomText style={styles.title}>Jakiej jesteś płci?</CustomText>
       <CustomText style={styles.text}>
         Jeszcze 2 pytania. Twoje odpowiedzi pomogą nam rekomendować profilaktykę

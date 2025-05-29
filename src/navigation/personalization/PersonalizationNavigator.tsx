@@ -13,7 +13,6 @@ export default function PersonalizationNavigator() {
     <Stack.Navigator
       screenOptions={{
         animation: 'slide_from_right',
-        headerTransparent: true,
         headerShown: false,
       }}
       initialRouteName={PERSONALIZATION_ROUTES.SEX_SCREEN}

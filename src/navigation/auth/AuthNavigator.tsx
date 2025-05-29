@@ -15,6 +15,7 @@ export default function AuthNavigator() {
         header: ({ options }) => (
           <Header title={options.title} transparent withBack />
         ),
+        headerTransparent: true,
       }}
       initialRouteName={AUTH_ROUTES.MAIN_SCREEN}
     >

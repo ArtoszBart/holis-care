@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../constants/colors';
 import { AccountNavigationProp } from '../../navigation/account';
 import { ACCOUNT_ROUTES } from '../../navigation/routes';
-import PageWrapper from '../common/PageWrapper';
 import { Icon, ICONS } from '../common/icon';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 import AccountListItem from './components/AccountListItem';
 import UserContainer from './components/UserContainer';
 

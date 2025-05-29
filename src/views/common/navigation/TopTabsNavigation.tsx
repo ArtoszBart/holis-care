@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { COLORS } from '../../../constants/colors';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
 interface Props<T extends string> {
+  style?: ViewStyle;
   options: readonly {
     key: T;
     label: string;
@@ -15,12 +15,13 @@ interface Props<T extends string> {
 }
 
 export default function TopTabsNavigation<T extends string>({
+  style,
   options,
   activeTab = options[0].key,
   setActiveTab,
 }: Props<T>) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {options.map(({ key, label }) => (
         <TouchableOpacity
           key={key}
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     width: '80%',
-    marginVertical: 20,
     borderWidth: 1,
     borderRadius: 100,
     borderColor: COLORS.primary600,

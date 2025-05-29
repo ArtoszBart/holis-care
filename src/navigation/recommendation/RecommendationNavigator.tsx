@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import Header from '../../views/common/Header';
 import RecommendationFormScreen from '../../views/recomendation/RecommendationFormScreen';
 import RecommendationInfoScreen from '../../views/recomendation/RecommendationInfoScreen';
@@ -15,6 +14,7 @@ export default function RecommendationNavigator() {
     <Stack.Navigator
       screenOptions={{
         animation: 'slide_from_right',
+        headerTransparent: true,
       }}
       initialRouteName={RECOMMENDATIONS_ROUTES.RECOMMENDATIONS_SCREEN}
     >

@@ -11,7 +11,7 @@ import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import useLoadingStore from '../common/loader/loaderStore';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function RecommendationFormScreen({
   route,

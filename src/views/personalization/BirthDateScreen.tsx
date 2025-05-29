@@ -1,20 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-
 import { MAX_BIRTH_DATE } from '../../constants/age';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import DateTimePicker from '../common/forms/DateTimePicker';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function BirthDateScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
 
   return (
-    <PageWrapper style={styles.container} noHeader bottomSafeView>
+    <PageWrapper style={styles.container} noHeader>
       <CustomText style={styles.title}>Podaj datę urodzenia</CustomText>
 
       <DateTimePicker

@@ -1,21 +1,20 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Linking, StyleSheet, Switch, View } from 'react-native';
-
 import { COLORS } from '../../constants/colors';
 import { PersonalizationNavigationProp } from '../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import TextInput from '../common/forms/TextInput';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function NameScreen() {
   const navigation = useNavigation<PersonalizationNavigationProp>();
   const [isConsentGiven, setConsentGiven] = useState(false);
 
   return (
-    <PageWrapper style={styles.container} noHeader bottomSafeView>
+    <PageWrapper style={styles.container} noHeader>
       <CustomText style={styles.title}>Przywitajmy się</CustomText>
 
       <TextInput

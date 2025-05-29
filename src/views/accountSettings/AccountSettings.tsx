@@ -1,7 +1,6 @@
 import { Image } from 'expo-image';
 import React from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-
 import { MAX_BIRTH_DATE } from '../../constants/age';
 import { COLORS } from '../../constants/colors';
 import { personMock } from '../../mocks/person';
@@ -10,7 +9,7 @@ import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';
 import useAccountSettings from './useAccountSettings';
 
@@ -95,8 +94,7 @@ export default function AccountSettings() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 0,
-    marginBottom: 0,
+    marginVertical: 0,
   },
   scrollContainer: {
     flexGrow: 1,

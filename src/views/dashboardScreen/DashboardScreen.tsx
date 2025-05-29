@@ -1,17 +1,16 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { appointments } from '../../mocks/appointments';
 import { recommendations } from '../../mocks/recommendations';
 import { tips } from '../../mocks/tips';
 import { MainNavigationProp } from '../../navigation/main';
 import { MAIN_ROUTES } from '../../navigation/routes';
 import BlurContainer from '../common/BlurContainer';
-import PageWrapper from '../common/PageWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import TipListItem from '../common/lists/TipListItem';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';
 import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
@@ -24,7 +23,7 @@ export default function DashboardScreen() {
       <DashboardHeader />
 
       <BlurContainer intensity={30} backgroundColor='#fff5'>
-        <ScrollView contentContainerStyle={{ paddingBottom: 10 }}>
+        <ScrollView contentContainerStyle={{ paddingBottom: 15 }}>
           <View style={styles.listContainer}>
             <SummaryList
               title='Twoje zalecenia'

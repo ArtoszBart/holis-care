@@ -4,7 +4,6 @@ import {
 } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { COLORS } from '../../constants/colors';
 import { MainNavigationProp } from '../../navigation/main';
 import { RecommendationNavigationProp } from '../../navigation/recommendation';
@@ -13,7 +12,7 @@ import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import Logo from '../common/Logo';
 import Omega from '../common/Omega';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 type ThisNavigationProp = CompositeNavigationProp<
   RecommendationNavigationProp,
@@ -27,6 +26,7 @@ export default function RecommendationSuccessScreen() {
     <PageWrapper
       style={styles.container}
       backgroundImage={require('../../assets/images/background-onboarding.png')}
+      opacity={1}
       noHeader
     >
       <Logo />

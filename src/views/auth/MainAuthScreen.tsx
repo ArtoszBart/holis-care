@@ -6,7 +6,7 @@ import { AUTH_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import Logo from '../common/Logo';
 import Omega from '../common/Omega';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function MainAuthScreen() {
   usePreventRemove(true, () => {});
@@ -16,8 +16,7 @@ export default function MainAuthScreen() {
     <PageWrapper
       style={styles.container}
       backgroundImage={require('../../assets/images/background-onboarding.png')}
-      noHeader
-      bottomSafeView
+      opacity={1}
     >
       <Logo />
       <Omega />

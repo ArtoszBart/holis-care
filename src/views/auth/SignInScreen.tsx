@@ -8,13 +8,13 @@ import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import Logo from '../common/Logo';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function SignInScreen() {
   const navigation = useNavigation<InitialFlowNavigationProp>();
 
   return (
-    <PageWrapper style={styles.container} noHeader bottomSafeView>
+    <PageWrapper style={styles.container}>
       <Logo />
 
       <Form>

@@ -1,9 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-
 import { recommendations } from '../../mocks/recommendations';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
-import PageWrapper from '../common/PageWrapper';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function RecommendationsScreen() {
   return (
@@ -24,7 +23,6 @@ export default function RecommendationsScreen() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 0,
     marginBottom: 0,
   },
   listContainer: {
@@ -32,7 +30,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     gap: 10,
-    paddingTop: 15,
     paddingBottom: 15,
   },
 });

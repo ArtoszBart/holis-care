@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { Appointment } from '../../models/Appointment';
-import PageWrapper from '../common/PageWrapper';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import TopTabsNavigation from '../common/navigation/TopTabsNavigation';
+import PageWrapper from '../common/pageWrapper/PageWrapper';
 import {
   pastAppointments,
   TabOptions,
@@ -32,6 +32,7 @@ export default function AppointmentsScreen() {
         options={tabOptions}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        style={styles.tabs}
       />
 
       {activeTab === TabOptions.UPCOMING && renderList(upcomingAppointments)}
@@ -43,8 +44,10 @@ export default function AppointmentsScreen() {
 const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
-    marginTop: 0,
     marginBottom: 0,
+  },
+  tabs: {
+    marginBottom: 20,
   },
   listContainer: {
     width: '100%',

@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { tips } from '../mocks/tips';
 import TipListItem from './common/lists/TipListItem';
-import PageWrapper from './common/PageWrapper';
+import PageWrapper from './common/pageWrapper/PageWrapper';
 
 export default function TipsScreen() {
   return (
@@ -21,15 +21,13 @@ export default function TipsScreen() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 0,
-    marginBottom: 0,
+    marginVertical: 0,
   },
   listContainer: {
     width: '100%',
   },
   contentContainer: {
     gap: 10,
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingVertical: 15,
   },
 });
