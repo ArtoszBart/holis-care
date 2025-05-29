@@ -1,4 +1,9 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import {
+  setStatusBarBackgroundColor,
+  setStatusBarStyle,
+  setStatusBarTranslucent,
+} from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useIsAuthStore } from './src/config/isAuthStore';
 import useApp from './src/config/useApp';
@@ -22,6 +27,10 @@ export default function App() {
       background: 'transparent',
     },
   };
+
+  setStatusBarStyle('dark');
+  setStatusBarBackgroundColor('transparent');
+  setStatusBarTranslucent(true);
 
   return (
     <BackgroundWrapper>
