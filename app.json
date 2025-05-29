@@ -18,6 +18,7 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
+      "userInterfaceStyle": "light",
       "icon": {
         "dark": "./src/assets/icons/ios-dark.png",
         "light": "./src/assets/icons/ios-light.png",
@@ -26,6 +27,7 @@
     },
     "android": {
       "package": "com.artoszbart.holismobile",
+      "userInterfaceStyle": "light",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/adaptive-icon.png",
         "monochromeImage": "./src/assets/icons/adaptive-icon.png",
@@ -36,6 +38,7 @@
       "favicon": "./src/assets/images/favicon.png"
     },
     "plugins": [
+      ["./plugins/withDisableForcedDarkModeAndroid.js", {}],
       [
         "expo-font",
         {
@@ -45,13 +48,12 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#ff0000",
           "image": "./src/assets/icons/splash-icon-dark.png",
           "dark": {
             "image": "./src/assets/icons/splash-icon-light.png",
             "backgroundColor": "#000000"
           },
-          "imageWidth": 200
+          "imageWidth": 180
         }
       ]
     ],
