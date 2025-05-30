@@ -1,7 +1,7 @@
-import { BlurView } from 'expo-blur';
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef } from 'react';
 import { BackHandler, Dimensions, StyleSheet } from 'react-native';
+import BlurContainer from '../BlurContainer';
 import useLoadingStore from './loaderStore';
 
 const loaderSize = Dimensions.get('window').width * 0.4;
@@ -25,7 +25,7 @@ export default function Loader() {
   if (!isLoading) return null;
 
   return (
-    <BlurView intensity={10} style={styles.blurContainer}>
+    <BlurContainer intensity={10} style={styles.blurContainer}>
       <LottieView
         autoPlay
         ref={animation}
@@ -33,7 +33,7 @@ export default function Loader() {
         source={require('../../../assets/animations/loader.json')}
         speed={0.8}
       />
-    </BlurView>
+    </BlurContainer>
   );
 }
 
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex: 1,
+    zIndex: 9999,
     justifyContent: 'center',
     alignItems: 'center',
   },

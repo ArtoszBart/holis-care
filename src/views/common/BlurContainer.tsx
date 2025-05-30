@@ -1,21 +1,23 @@
 import { BlurView } from 'expo-blur';
 import React, { PropsWithChildren } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import WebView from 'react-native-webview';
 
 interface Props extends PropsWithChildren {
   backgroundColor?: string;
   intensity: number;
+  style?: ViewStyle;
 }
 
 export default function BlurContainer({
   backgroundColor,
   intensity,
+  style,
   children,
 }: Props) {
   return Platform.select({
     android: (
-      <View style={styles.wrapper}>
+      <View style={[styles.wrapper, style]}>
         <View style={StyleSheet.absoluteFill}>
           <WebView
             style={styles.webView}
@@ -41,7 +43,7 @@ export default function BlurContainer({
     default: (
       <BlurView
         intensity={intensity}
-        style={[styles.wrapper, { backgroundColor }]}
+        style={[styles.wrapper, { backgroundColor }, style]}
       >
         {children}
       </BlurView>
