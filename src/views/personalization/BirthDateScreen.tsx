@@ -16,11 +16,7 @@ export default function BirthDateScreen() {
     <PageWrapper style={styles.container} noHeader>
       <CustomText style={styles.title}>Podaj datę urodzenia</CustomText>
 
-      <DateTimePicker
-        label='Data urodzenia:'
-        maxDate={MAX_BIRTH_DATE}
-        spinner
-      />
+      <DateTimePicker label='Data urodzenia' maxDate={MAX_BIRTH_DATE} spinner />
 
       <Button
         label='Dalej'

@@ -41,8 +41,8 @@ export default function RecommendationFormScreen({
       </View>
 
       <Form>
-        <DateTimePicker mode='date' label='Data:' />
-        <DateTimePicker mode='time' label='Godzina:' />
+        <DateTimePicker mode='date' label='Data' />
+        <DateTimePicker mode='time' label='Godzina' />
         <TextInput placeholder='Imię i nazwisko lekarza' />
         <TextInput placeholder='Adres' />
         <TextInput placeholder='Dodatkowe informacje (opcjonalnie)' />
