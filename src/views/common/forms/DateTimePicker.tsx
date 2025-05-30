@@ -82,7 +82,6 @@ export default function DateTimePicker({
           )}
           <DefaultDateTimePicker
             value={initDate}
-            maximumDate={maxDate}
             style={style}
             mode={mode}
             display={
