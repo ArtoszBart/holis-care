@@ -1,3 +1,8 @@
+export const ROOT_ROUTES = Object.freeze({
+  INITIAL_FLOW_NAVIGATOR: 'InitialFlowNavigator',
+  MAIN_NAVIGATOR: 'MainNavigator',
+});
+
 export const INITIAL_FLOW_ROUTES = Object.freeze({
   ONBOARDING_NAVIGATOR: 'OnboardingNavigator',
   AUTH_NAVIGATOR: 'AuthNavigator',
