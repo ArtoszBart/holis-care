@@ -33,6 +33,7 @@ export default function TextInput({
         cursorColor={COLORS.primary600}
         selectionColor={COLORS.primary600}
         clearTextOnFocus={secureTextEntry}
+        placeholderTextColor={COLORS.stroke}
         {...otherProps}
       />
       {secureTextEntry && (
