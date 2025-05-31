@@ -43,7 +43,8 @@ export default function BlurContainer({
     default: (
       <BlurView
         intensity={intensity}
-        style={[styles.wrapper, { backgroundColor }, style]}
+        tint='light'
+        style={[styles.wrapper, style]}
       >
         {children}
       </BlurView>

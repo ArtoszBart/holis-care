@@ -84,6 +84,7 @@ export default function DateTimePicker({
             value={initDate}
             style={style}
             mode={mode}
+            themeVariant='light'
             display={
               mode === 'time' ? 'compact' : spinner ? 'spinner' : 'default'
             }
