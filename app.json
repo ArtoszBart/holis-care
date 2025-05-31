@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "holis-mobile",
+    "name": "Holis Care",
     "slug": "holis-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,7 +13,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.artoszbart.holismobile",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -39,12 +39,6 @@
     },
     "plugins": [
       ["./expo-plugins/withDisableForcedDarkModeAndroid.js", {}],
-      [
-        "expo-font",
-        {
-          "fonts": ["./src/assets/fonts/LexendDeca-Bold.ttf"]
-        }
-      ],
       [
         "expo-splash-screen",
         {
