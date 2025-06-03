@@ -3,8 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
-import Button from '../common/Button';
-import Form from '../common/forms/Form';
+import Form from '../common/forms/form/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import Logo from '../common/Logo';
@@ -17,8 +16,15 @@ export default function SignUpScreen() {
     <PageWrapper style={styles.container}>
       <Logo />
 
-      <Form>
+      <Form
+        schema={null}
+        submitLabel='Dalej'
+        onSubmit={() =>
+          navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR)
+        }
+      >
         <TextInput
+          fieldName='email'
           placeholder='E-mail'
           keyboardType='email-address'
           autoCapitalize='none'
@@ -29,6 +35,7 @@ export default function SignUpScreen() {
           textContentType='emailAddress'
         />
         <TextInput
+          fieldName='password'
           placeholder='Hasło'
           autoCapitalize='none'
           autoCorrect={false}
@@ -38,18 +45,13 @@ export default function SignUpScreen() {
           textContentType='newPassword'
         />
         <TextInput
+          fieldName='confirmPassword'
           placeholder='Potwierdź hasło'
           autoCapitalize='none'
           autoCorrect={false}
           contextMenuHidden
           secureTextEntry
           spellCheck={false}
-        />
-        <Button
-          label='Dalej'
-          onPress={() =>
-            navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR)
-          }
         />
       </Form>
 

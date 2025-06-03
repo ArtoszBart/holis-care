@@ -12,39 +12,60 @@ import { getFont } from '../../../constants/fonts';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
-interface Props extends TextInputProps {
+export interface ITextInput extends TextInputProps {
+  fieldName: string;
   label?: string;
+  defaultValue?: string;
+  errorMessage?: string;
 }
 
 export default function TextInput({
   label,
+  defaultValue,
   secureTextEntry,
+  errorMessage,
   ...otherProps
-}: Props) {
+}: ITextInput) {
   const [isDotted, setIsDotted] = useState(secureTextEntry);
 
   return (
-    <View style={styles.container}>
-      {label && <CustomText style={styles.label}>{label}:</CustomText>}
-      <ReactTextInput
-        style={[styles.text, { fontFamily: getFont() }]}
-        secureTextEntry={isDotted}
-        clearButtonMode={secureTextEntry ? 'never' : 'always'}
-        cursorColor={COLORS.primary600}
-        selectionColor={COLORS.primary600}
-        clearTextOnFocus={secureTextEntry}
-        placeholderTextColor={COLORS.stroke}
-        {...otherProps}
-      />
-      {secureTextEntry && (
-        <TouchableOpacity
-          onPressIn={() => setIsDotted(false)}
-          onPressOut={() => {
-            setIsDotted(true);
-          }}
-        >
-          <Icon icon={ICONS.EYE} style={styles.icon} />
-        </TouchableOpacity>
+    <View>
+      <View
+        style={[
+          styles.container,
+          {
+            borderColor: !errorMessage ? COLORS.stroke : COLORS.red,
+          },
+        ]}
+      >
+        {label && <CustomText style={styles.label}>{label}:</CustomText>}
+        <View style={styles.textContainer}>
+          <ReactTextInput
+            style={[styles.text, { fontFamily: getFont() }]}
+            secureTextEntry={isDotted}
+            clearButtonMode={secureTextEntry ? 'never' : 'always'}
+            cursorColor={COLORS.primary600}
+            selectionColor={COLORS.primary600}
+            clearTextOnFocus={secureTextEntry}
+            placeholderTextColor={COLORS.stroke}
+            defaultValue={defaultValue}
+            {...otherProps}
+          />
+        </View>
+        {secureTextEntry && (
+          <TouchableOpacity
+            onPressIn={() => setIsDotted(false)}
+            onPressOut={() => {
+              setIsDotted(true);
+            }}
+            style={{ marginLeft: 'auto' }}
+          >
+            <Icon icon={ICONS.EYE} style={styles.icon} />
+          </TouchableOpacity>
+        )}
+      </View>
+      {errorMessage && (
+        <CustomText style={styles.errorText}>{errorMessage}</CustomText>
       )}
     </View>
   );
@@ -53,7 +74,6 @@ export default function TextInput({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    borderColor: COLORS.stroke,
     borderWidth: 1,
     borderRadius: 6,
     flexDirection: 'row',
@@ -64,14 +84,21 @@ const styles = StyleSheet.create({
     marginRight: 5,
     color: COLORS.typo3,
   },
+  textContainer: {
+    flexGrow: 1,
+  },
   text: {
-    flex: 1,
     color: COLORS.typo1,
-    paddingVertical: 14,
+    paddingVertical: 12,
   },
   icon: {
     marginRight: 4,
     color: COLORS.typo4,
     fontSize: 16,
+  },
+  errorText: {
+    color: COLORS.red,
+    marginTop: 2,
+    paddingHorizontal: 13,
   },
 });

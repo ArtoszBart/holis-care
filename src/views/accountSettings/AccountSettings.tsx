@@ -6,7 +6,7 @@ import { COLORS } from '../../constants/colors';
 import { personMock } from '../../mocks/person';
 import Button from '../common/Button';
 import DateTimePicker from '../common/forms/DateTimePicker';
-import Form from '../common/forms/Form';
+import Form from '../common/forms/form/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
@@ -28,8 +28,9 @@ export default function AccountSettings() {
           onPress={() => {}}
           textStyle={styles.linkButton}
         />
-        <Form>
+        <Form schema={null} submitLabel='Zapisz' onSubmit={() => {}}>
           <TextInput
+            fieldName='firstName'
             label='Imię'
             autoCapitalize='words'
             autoComplete='name'
@@ -39,6 +40,7 @@ export default function AccountSettings() {
             defaultValue={personMock.firstName}
           />
           <TextInput
+            fieldName='lastName'
             label='Nazwisko'
             autoCapitalize='words'
             autoComplete='family-name'
@@ -48,11 +50,12 @@ export default function AccountSettings() {
             defaultValue={personMock.lastName}
           />
           <DateTimePicker
+            fieldName='birthDate'
             maxDate={MAX_BIRTH_DATE}
             label='Data urodzenia'
-            initDate={personMock.birthDate}
           />
           <TextInput
+            fieldName='email'
             label='E-mail'
             keyboardType='email-address'
             autoCapitalize='none'
@@ -64,6 +67,7 @@ export default function AccountSettings() {
             defaultValue={personMock.email}
           />
           <TextInput
+            fieldName='phoneNumber'
             label='Nr telefonu'
             keyboardType='phone-pad'
             inputMode='numeric'
@@ -71,6 +75,7 @@ export default function AccountSettings() {
             defaultValue={personMock.phoneNumber}
           />
           <TextInput
+            fieldName='city'
             label='Miejscowość'
             autoCapitalize='words'
             textContentType='addressCity'

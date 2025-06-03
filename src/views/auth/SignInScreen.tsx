@@ -1,10 +1,10 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import { loginSchema, type LoginDTO } from '../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
-import Button from '../common/Button';
-import Form from '../common/forms/Form';
+import Form from '../common/forms/form/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import Logo from '../common/Logo';
@@ -13,13 +13,22 @@ import PageWrapper from '../common/pageWrapper/PageWrapper';
 export default function SignInScreen() {
   const navigation = useNavigation<InitialFlowNavigationProp>();
 
+  const onSubmit = (data: LoginDTO) => {
+    navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
+  };
+
   return (
     <PageWrapper style={styles.container}>
       <Logo />
 
-      <Form>
+      <Form<LoginDTO>
+        schema={loginSchema}
+        submitLabel='Zaloguj się'
+        onSubmit={onSubmit}
+      >
         <TextInput
-          placeholder='E-mail'
+          fieldName='email'
+          label='E-mail'
           keyboardType='email-address'
           autoCapitalize='none'
           autoComplete='email'
@@ -28,8 +37,10 @@ export default function SignInScreen() {
           spellCheck={false}
           textContentType='emailAddress'
         />
+
         <TextInput
-          placeholder='Hasło'
+          fieldName='password'
+          label='Hasło'
           autoCapitalize='none'
           autoCorrect={false}
           contextMenuHidden
@@ -37,15 +48,10 @@ export default function SignInScreen() {
           spellCheck={false}
           textContentType='password'
         />
-        <Button
-          label='Zaloguj się'
-          onPress={() => {
-            navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
-          }}
-        />
       </Form>
 
       <LinkButton label='Nie pamiętasz hasła?' onPress={() => {}} />
+
       <LinkButton
         label='Nie masz konta? Zarejestruj się'
         style={styles.bottomLink}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { COLORS } from '../../constants/colors';
 import { RecommendationFormScreenProps } from '../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
@@ -8,7 +7,7 @@ import Badge from '../common/Badge';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import DateTimePicker from '../common/forms/DateTimePicker';
-import Form from '../common/forms/Form';
+import Form from '../common/forms/form/Form';
 import TextInput from '../common/forms/TextInput';
 import useLoadingStore from '../common/loader/loaderStore';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
@@ -40,12 +39,15 @@ export default function RecommendationFormScreen({
         </CustomText>
       </View>
 
-      <Form>
-        <DateTimePicker mode='date' label='Data' />
-        <DateTimePicker mode='time' label='Godzina' />
-        <TextInput placeholder='Imię i nazwisko lekarza' />
-        <TextInput placeholder='Adres' />
-        <TextInput placeholder='Dodatkowe informacje (opcjonalnie)' />
+      <Form schema={null} submitLabel='Zapisz się' onSubmit={onButtonPress}>
+        <DateTimePicker fieldName='date' mode='date' label='Data' />
+        <DateTimePicker fieldName='time' mode='time' label='Godzina' />
+        <TextInput fieldName='doctor' placeholder='Imię i nazwisko lekarza' />
+        <TextInput fieldName='address' placeholder='Adres' />
+        <TextInput
+          fieldName='aditionalInfo'
+          placeholder='Dodatkowe informacje (opcjonalnie)'
+        />
       </Form>
 
       <Button
