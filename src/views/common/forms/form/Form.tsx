@@ -14,7 +14,6 @@ export interface IForm<T extends FieldValues> extends PropsWithChildren {
 
 export default function Form<T extends FieldValues>({
   submitLabel,
-  onSubmit,
   ...otherProps
 }: IForm<T>) {
   const { updatedChildren, handleSubmit } = useForm(otherProps);
@@ -22,7 +21,7 @@ export default function Form<T extends FieldValues>({
   return (
     <View style={styles.form}>
       {updatedChildren}
-      <Button label={submitLabel} onPress={handleSubmit(onSubmit)} />
+      <Button label={submitLabel} onPress={handleSubmit} />
     </View>
   );
 }

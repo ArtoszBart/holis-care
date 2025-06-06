@@ -34,7 +34,7 @@ export default function TextInput({
         style={[
           styles.container,
           {
-            borderColor: !errorMessage ? COLORS.stroke : COLORS.red,
+            borderColor: !errorMessage ? COLORS.stroke : COLORS.errorRed,
           },
         ]}
       >
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   errorText: {
-    color: COLORS.red,
+    color: COLORS.errorRed,
     marginTop: 2,
     paddingHorizontal: 13,
   },

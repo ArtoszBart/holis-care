@@ -53,7 +53,7 @@ export default function DateTimePicker({
             {
               justifyContent: label ? 'space-between' : 'center',
               paddingLeft: label ? 12 : 0,
-              borderColor: !errorMessage ? 'transparent' : COLORS.red,
+              borderColor: !errorMessage ? 'transparent' : COLORS.errorRed,
             },
           ]}
         >
@@ -76,7 +76,7 @@ export default function DateTimePicker({
             {
               justifyContent: label && !spinner ? 'space-between' : 'center',
               paddingLeft: label && !spinner ? 12 : 0,
-              borderColor: !errorMessage ? 'transparent' : COLORS.red,
+              borderColor: !errorMessage ? 'transparent' : COLORS.errorRed,
             },
           ]}
         >
@@ -118,7 +118,7 @@ export const styles = StyleSheet.create({
     color: COLORS.typo3,
   },
   errorText: {
-    color: COLORS.red,
+    color: COLORS.errorRed,
     marginTop: 2,
     paddingHorizontal: 12,
   },

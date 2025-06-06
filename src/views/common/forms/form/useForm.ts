@@ -12,6 +12,7 @@ import {
   useForm as useDefaultForm,
 } from 'react-hook-form';
 import { type ZodType } from 'zod';
+import { showToast } from '../../toast/toastHelper';
 import DateTimePicker, { type IDateTimePicker } from '../DateTimePicker';
 import TextInput, { type ITextInput } from '../TextInput';
 import { type IForm } from './Form';
@@ -19,13 +20,14 @@ import { type IForm } from './Form';
 const useForm = <T extends FieldValues>({
   schema,
   defaultValues,
+  onSubmit,
   children,
-}: Omit<IForm<T>, 'onSubmit' | 'submitLabel'>) => {
+}: Omit<IForm<T>, 'submitLabel'>) => {
   const {
-    watch,
-    handleSubmit,
-    setValue,
+    handleSubmit: defaultHandleSubmit,
     formState: { errors },
+    setValue,
+    watch,
   } = useDefaultForm<T>({
     resolver: zodResolver(schema as ZodType<T>),
     defaultValues,
@@ -59,6 +61,12 @@ const useForm = <T extends FieldValues>({
         return child;
     }
   });
+
+  const onInvalid = () => {
+    showToast('Formularz zawiera błędy');
+  };
+
+  const handleSubmit = defaultHandleSubmit(onSubmit, onInvalid);
 
   return { handleSubmit, updatedChildren };
 };
