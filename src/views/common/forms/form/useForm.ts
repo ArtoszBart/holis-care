@@ -42,9 +42,10 @@ const useForm = <T extends FieldValues>({
     switch (type) {
       case TextInput:
         return cloneElement(child as ReactElement<ITextInput>, {
-          onChangeText: (text: string) => {
-            setValue(fieldName as Path<T>, text as PathValue<T, Path<T>>);
-          },
+          onChangeText: (text: string) =>
+            setValue(fieldName as Path<T>, text as PathValue<T, Path<T>>, {
+              shouldValidate: true,
+            }),
           defaultValue: defaultValues?.[fieldName],
           errorMessage: errors[fieldName]?.message as string,
         });
@@ -52,7 +53,9 @@ const useForm = <T extends FieldValues>({
       case DateTimePicker:
         return cloneElement(child as ReactElement<IDateTimePicker>, {
           onChange: (date: Date) =>
-            setValue(fieldName as Path<T>, date as PathValue<T, Path<T>>),
+            setValue(fieldName as Path<T>, date as PathValue<T, Path<T>>, {
+              shouldValidate: true,
+            }),
           value: watch(fieldName as Path<T>),
           errorMessage: errors[fieldName]?.message as string,
         });
