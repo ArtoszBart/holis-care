@@ -6,6 +6,7 @@ const useApp = () => {
   SplashScreen.preventAutoHideAsync();
 
   const [loaded, error] = useFonts({
+    'LexendDeca-Light': require('../assets/fonts/LexendDeca-Light.ttf'),
     'LexendDeca-Regular': require('../assets/fonts/LexendDeca-Regular.ttf'),
     'LexendDeca-SemiBold': require('../assets/fonts/LexendDeca-SemiBold.ttf'),
     'LexendDeca-Bold': require('../assets/fonts/LexendDeca-Bold.ttf'),

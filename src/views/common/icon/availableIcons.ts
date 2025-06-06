@@ -43,6 +43,10 @@ export const ICONS = {
     provider: MaterialCommunityIcons,
     name: 'view-dashboard-outline',
   },
+  ERROR: {
+    provider: MaterialIcons,
+    name: 'error-outline',
+  },
   EXTERNAL_LINK: {
     provider: Feather,
     name: 'external-link',
