@@ -6,20 +6,21 @@ import {
   type ReactElement,
 } from 'react';
 import {
+  DefaultValues,
+  useForm as useDefaultForm,
   type FieldValues,
   type Path,
   type PathValue,
-  useForm as useDefaultForm,
 } from 'react-hook-form';
-import { type ZodType } from 'zod';
 import { showToast } from '../../toast/toastHelper';
 import DateTimePicker, { type IDateTimePicker } from '../DateTimePicker';
 import TextInput, { type ITextInput } from '../TextInput';
 import { type IForm } from './Form';
+import { withZodDefaultDates } from './utils/withZodDefaultDates';
 
 const useForm = <T extends FieldValues>({
   schema,
-  defaultValues,
+  defaultValues = {} as DefaultValues<T>,
   onSubmit,
   children,
 }: Omit<IForm<T>, 'submitLabel'>) => {
@@ -29,8 +30,8 @@ const useForm = <T extends FieldValues>({
     setValue,
     watch,
   } = useDefaultForm<T>({
-    resolver: zodResolver(schema as ZodType<T>),
-    defaultValues,
+    resolver: zodResolver(schema),
+    defaultValues: withZodDefaultDates(schema, { ...defaultValues }),
   });
 
   const updatedChildren = Children.map(children, (child) => {

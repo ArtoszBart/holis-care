@@ -48,3 +48,16 @@ export const getAge = (birthDate: Date): number => {
 
   return age;
 };
+
+export const toPayloadDate = (date: Date, time?: Date): string => {
+  if (!time) return date.toISOString();
+
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    time.getHours(),
+    time.getMinutes(),
+    time.getSeconds(),
+  ).toISOString();
+};

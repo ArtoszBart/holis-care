@@ -1,10 +1,15 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
+import {
+  NewAppointmentDTO,
+  NewAppointmentFormValues,
+  newAppointmentSchema,
+} from '../../models/Appointment';
 import { RecommendationFormScreenProps } from '../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
+import { toPayloadDate } from '../../utils/dateTime';
 import Badge from '../common/Badge';
-import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/form/Form';
@@ -20,7 +25,16 @@ export default function RecommendationFormScreen({
 
   const { setIsLoading } = useLoadingStore();
 
-  const onButtonPress = async () => {
+  const onSubmit = async (data: NewAppointmentFormValues) => {
+    const { date, time, ...rest } = data;
+
+    const payload: NewAppointmentDTO = {
+      ...rest,
+      date: toPayloadDate(date, time),
+    };
+
+    console.log('OK', payload);
+
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -39,7 +53,16 @@ export default function RecommendationFormScreen({
         </CustomText>
       </View>
 
-      <Form schema={null} submitLabel='Zapisz się' onSubmit={onButtonPress}>
+      <Form<NewAppointmentFormValues>
+        schema={newAppointmentSchema}
+        submitLabel='Zapisz się'
+        onSubmit={onSubmit}
+        defaultValues={{
+          type: recommendation.type,
+          title: recommendation.title,
+        }}
+        fullScreen
+      >
         <DateTimePicker fieldName='date' mode='date' label='Data' />
         <DateTimePicker fieldName='time' mode='time' label='Godzina' />
         <TextInput fieldName='doctor' placeholder='Imię i nazwisko lekarza' />
@@ -49,12 +72,6 @@ export default function RecommendationFormScreen({
           placeholder='Dodatkowe informacje (opcjonalnie)'
         />
       </Form>
-
-      <Button
-        style={styles.button}
-        label='Zapisz się'
-        onPress={onButtonPress}
-      />
     </PageWrapper>
   );
 }
@@ -77,8 +94,5 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     fontSize: 12,
     color: COLORS.typo3,
-  },
-  button: {
-    marginTop: 'auto',
   },
 });
