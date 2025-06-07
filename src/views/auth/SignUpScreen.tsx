@@ -1,6 +1,7 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import { RegisterDTO, registerSchema } from '../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
 import Form from '../common/forms/form/Form';
@@ -16,8 +17,8 @@ export default function SignUpScreen() {
     <PageWrapper style={styles.container}>
       <Logo />
 
-      <Form
-        schema={null}
+      <Form<RegisterDTO>
+        schema={registerSchema}
         submitLabel='Dalej'
         onSubmit={() =>
           navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR)
