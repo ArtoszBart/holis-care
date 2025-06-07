@@ -10,7 +10,7 @@ export interface IForm<T extends FieldValues> extends PropsWithChildren {
   defaultValues?: DefaultValues<T>;
   submitLabel: string;
   onSubmit: (data: T) => void;
-  onCancel: VoidFunction;
+  onCancel?: VoidFunction;
   fullScreen?: boolean;
 }
 

@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import {
-  NewAppointmentDTO,
-  NewAppointmentFormValues,
+  type NewAppointmentDTO,
+  type NewAppointmentFormValues,
   newAppointmentSchema,
 } from '../../models/Appointment';
-import { RecommendationFormScreenProps } from '../../navigation/recommendation';
+import { type RecommendationFormScreenProps } from '../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
-import { toPayloadDate } from '../../utils/dateTime';
+import { toPayloadISODate } from '../../utils/dateTime';
 import Badge from '../common/Badge';
 import CustomText from '../common/CustomText';
 import DateTimePicker from '../common/forms/DateTimePicker';
@@ -30,7 +30,7 @@ export default function RecommendationFormScreen({
 
     const payload: NewAppointmentDTO = {
       ...rest,
-      date: toPayloadDate(date, time),
+      date: toPayloadISODate(date, time),
     };
 
     console.log('OK', payload);

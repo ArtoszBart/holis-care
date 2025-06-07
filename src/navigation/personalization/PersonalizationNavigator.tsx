@@ -1,9 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import BirthDateScreen from '../../views/personalization/BirthDateScreen';
+import BirthDateScreen from '../../views/personalization/birthDateScreen/BirthDateScreen';
 import LetsStartScreen from '../../views/personalization/getStartedScreen/GetStartedScreen';
-import NameScreen from '../../views/personalization/NameScreen';
-import SexScreen from '../../views/personalization/SexScreen';
+import NameScreen from '../../views/personalization/nameScreen/NameScreen';
+import SexScreen from '../../views/personalization/sexScreen/SexScreen';
 import { PERSONALIZATION_ROUTES } from '../routes';
 
 const Stack = createNativeStackNavigator();

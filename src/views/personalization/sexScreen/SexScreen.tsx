@@ -1,15 +1,13 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { COLORS } from '../../constants/colors';
-import { PersonalizationNavigationProp } from '../../navigation/personalization';
-import { PERSONALIZATION_ROUTES } from '../../navigation/routes';
-import Button from '../common/Button';
-import CustomText from '../common/CustomText';
-import PageWrapper from '../common/pageWrapper/PageWrapper';
+import { COLORS } from '../../../constants/colors';
+import Button from '../../common/Button';
+import CustomText from '../../common/CustomText';
+import PageWrapper from '../../common/pageWrapper/PageWrapper';
+import useSexScreen from './useSexScreen';
 
 export default function SexScreen() {
-  const navigation = useNavigation<PersonalizationNavigationProp>();
+  const { handleSelectSex } = useSexScreen();
 
   return (
     <PageWrapper style={styles.container} noHeader>
@@ -22,19 +20,10 @@ export default function SexScreen() {
         Ze względu na regulacje medyczne prosimy o wybór płci, nie tożsamości
         płciowej.
       </CustomText>
+
       <View style={styles.buttonContainer}>
-        <Button
-          label='Kobieta'
-          onPress={() =>
-            navigation.navigate(PERSONALIZATION_ROUTES.BIRTH_DATE_SCREEN)
-          }
-        />
-        <Button
-          label='Mężczyzna'
-          onPress={() =>
-            navigation.navigate(PERSONALIZATION_ROUTES.BIRTH_DATE_SCREEN)
-          }
-        />
+        <Button label='Kobieta' onPress={() => handleSelectSex('female')} />
+        <Button label='Mężczyzna' onPress={() => handleSelectSex('male')} />
       </View>
     </PageWrapper>
   );

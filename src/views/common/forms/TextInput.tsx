@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 import { COLORS } from '../../../constants/colors';
 import { getFont } from '../../../constants/fonts';
 import CustomText from '../CustomText';
@@ -29,7 +28,7 @@ export default function TextInput({
   const [isDotted, setIsDotted] = useState(secureTextEntry);
 
   return (
-    <View>
+    <View style={styles.wrapper}>
       <View
         style={[
           styles.container,
@@ -72,6 +71,9 @@ export default function TextInput({
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    alignSelf: 'stretch',
+  },
   container: {
     backgroundColor: '#fff',
     borderWidth: 1,

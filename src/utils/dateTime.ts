@@ -49,7 +49,15 @@ export const getAge = (birthDate: Date): number => {
   return age;
 };
 
-export const toPayloadDate = (date: Date, time?: Date): string => {
+export const toPayloadDateString = (date: Date): string => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+};
+
+export const toPayloadISODate = (date: Date, time?: Date): string => {
   if (!time) return date.toISOString();
 
   return new Date(
