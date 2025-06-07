@@ -74,21 +74,23 @@ export default function DateTimePicker({
             styles.container,
             styles.iosContainer,
             {
-              justifyContent: label && !spinner ? 'space-between' : 'center',
-              paddingLeft: label && !spinner ? 12 : 0,
+              justifyContent: label ? 'space-between' : 'center',
+              paddingLeft: label ? 12 : 0,
               borderColor: !errorMessage ? 'transparent' : COLORS.errorRed,
             },
           ]}
         >
-          {label && !spinner && (
-            <CustomText style={styles.label}>{label}:</CustomText>
-          )}
+          {label && <CustomText style={styles.label}>{label}:</CustomText>}
           <DefaultDateTimePicker
             value={value}
             mode={mode}
             themeVariant='light'
             display={
-              mode === 'time' ? 'compact' : spinner ? 'spinner' : 'default'
+              mode === 'time'
+                ? 'compact'
+                : spinner && !label
+                  ? 'spinner'
+                  : 'default'
             }
             accentColor={COLORS.primary600}
             onChange={handleDateChange}

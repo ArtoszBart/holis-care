@@ -23,7 +23,7 @@ const useForm = <T extends FieldValues>({
   defaultValues = {} as DefaultValues<T>,
   onSubmit,
   children,
-}: Omit<IForm<T>, 'submitLabel'>) => {
+}: Omit<IForm<T>, 'submitLabel' | 'fullScreen' | 'onCancel'>) => {
   const {
     handleSubmit: defaultHandleSubmit,
     formState: { errors },

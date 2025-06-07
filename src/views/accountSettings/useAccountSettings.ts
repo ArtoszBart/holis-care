@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { UserDTO } from '../../models/User';
 import { AccountNavigationProp } from '../../navigation/account';
 import AsyncAlert from '../common/AsyncAlert';
 import useLoadingStore from '../common/loader/loaderStore';
@@ -17,7 +18,7 @@ const useAccountSettings = () => {
     navigation.pop();
   };
 
-  const onSaveButtonPress = (): void => {
+  const onSaveButtonPress = (user: UserDTO): void => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);

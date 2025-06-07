@@ -1,10 +1,10 @@
 import { Image } from 'expo-image';
 import React from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { MAX_BIRTH_DATE } from '../../constants/age';
 import { COLORS } from '../../constants/colors';
 import { personMock } from '../../mocks/person';
-import Button from '../common/Button';
+import { UserDTO, userSchema } from '../../models/User';
 import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/form/Form';
 import TextInput from '../common/forms/TextInput';
@@ -28,7 +28,15 @@ export default function AccountSettings() {
           onPress={() => {}}
           textStyle={styles.linkButton}
         />
-        <Form schema={null} submitLabel='Zapisz' onSubmit={() => {}}>
+
+        <Form<UserDTO>
+          schema={userSchema}
+          submitLabel='Zapisz'
+          onSubmit={hook.onSaveButtonPress}
+          onCancel={hook.onCancelButtonPress}
+          defaultValues={personMock}
+          fullScreen
+        >
           <TextInput
             fieldName='firstName'
             label='Imię'
@@ -37,7 +45,6 @@ export default function AccountSettings() {
             textContentType='name'
             autoCorrect
             spellCheck
-            defaultValue={personMock.firstName}
           />
           <TextInput
             fieldName='lastName'
@@ -47,12 +54,12 @@ export default function AccountSettings() {
             textContentType='familyName'
             autoCorrect
             spellCheck
-            defaultValue={personMock.lastName}
           />
           <DateTimePicker
             fieldName='birthDate'
             maxDate={MAX_BIRTH_DATE}
             label='Data urodzenia'
+            spinner
           />
           <TextInput
             fieldName='email'
@@ -64,7 +71,6 @@ export default function AccountSettings() {
             inputMode='email'
             spellCheck={false}
             textContentType='emailAddress'
-            defaultValue={personMock.email}
           />
           <TextInput
             fieldName='phoneNumber'
@@ -72,7 +78,6 @@ export default function AccountSettings() {
             keyboardType='phone-pad'
             inputMode='numeric'
             textContentType='telephoneNumber'
-            defaultValue={personMock.phoneNumber}
           />
           <TextInput
             fieldName='city'
@@ -81,17 +86,8 @@ export default function AccountSettings() {
             textContentType='addressCity'
             autoCorrect
             spellCheck
-            defaultValue={personMock.city}
           />
         </Form>
-        <View style={styles.buttonsContainer}>
-          <Button
-            label='Anuluj'
-            onPress={hook.onCancelButtonPress}
-            invertedStyle
-          />
-          <Button label='Zapisz' onPress={hook.onSaveButtonPress} />
-        </View>
       </ScrollView>
     </PageWrapper>
   );
@@ -116,11 +112,5 @@ const styles = StyleSheet.create({
     color: COLORS.primary600,
     fontSize: 16,
     fontWeight: 600,
-  },
-  buttonsContainer: {
-    marginTop: 'auto',
-    width: '100%',
-    flexDirection: 'row',
-    gap: 10,
   },
 });

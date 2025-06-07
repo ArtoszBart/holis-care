@@ -10,12 +10,14 @@ export interface IForm<T extends FieldValues> extends PropsWithChildren {
   defaultValues?: DefaultValues<T>;
   submitLabel: string;
   onSubmit: (data: T) => void;
+  onCancel: VoidFunction;
   fullScreen?: boolean;
 }
 
 export default function Form<T extends FieldValues>({
   submitLabel,
   fullScreen,
+  onCancel,
   ...otherProps
 }: IForm<T>) {
   const { updatedChildren, handleSubmit } = useForm(otherProps);
@@ -30,11 +32,15 @@ export default function Form<T extends FieldValues>({
       ]}
     >
       {updatedChildren}
-      <Button
-        label={submitLabel}
-        onPress={handleSubmit}
-        style={{ marginTop: fullScreen ? 'auto' : null }}
-      />
+      <View
+        style={[
+          styles.buttonsContainer,
+          { marginTop: fullScreen ? 'auto' : null },
+        ]}
+      >
+        {onCancel && <Button label='Anuluj' onPress={onCancel} invertedStyle />}
+        <Button label={submitLabel} onPress={handleSubmit} />
+      </View>
     </View>
   );
 }
@@ -43,6 +49,11 @@ const styles = StyleSheet.create({
   form: {
     marginTop: 24,
     width: '100%',
+    gap: 10,
+  },
+  buttonsContainer: {
+    width: '100%',
+    flexDirection: 'row',
     gap: 10,
   },
 });
