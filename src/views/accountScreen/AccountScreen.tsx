@@ -26,13 +26,13 @@ export default function AccountScreen() {
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
         }
       />
-      <AccountListItem
+      {/* <AccountListItem
         label='Ustawienia powiadomień'
         onPress={() => {}}
         navigationIcon={
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
         }
-      />
+      /> */}
       <AccountListItem
         label='Regulamin'
         onPress={() => Linking.openURL('https://google.pl/')}
