@@ -3,6 +3,7 @@ import {
   Children,
   cloneElement,
   isValidElement,
+  useState,
   type ReactElement,
 } from 'react';
 import {
@@ -24,6 +25,8 @@ const useForm = <T extends FieldValues>({
   onSubmit,
   children,
 }: Omit<IForm<T>, 'submitLabel' | 'fullScreen' | 'onCancel'>) => {
+  const [shouldValidate, setShouldValidate] = useState<boolean>(false);
+
   const {
     handleSubmit: defaultHandleSubmit,
     formState: { errors },
@@ -45,7 +48,7 @@ const useForm = <T extends FieldValues>({
         return cloneElement(child as ReactElement<ITextInput>, {
           onChangeText: (text: string) =>
             setValue(fieldName as Path<T>, text as PathValue<T, Path<T>>, {
-              shouldValidate: true,
+              shouldValidate,
             }),
           defaultValue: defaultValues?.[fieldName],
           errorMessage: errors[fieldName]?.message as string,
@@ -55,7 +58,7 @@ const useForm = <T extends FieldValues>({
         return cloneElement(child as ReactElement<IDateTimePicker>, {
           onChange: (date: Date) =>
             setValue(fieldName as Path<T>, date as PathValue<T, Path<T>>, {
-              shouldValidate: true,
+              shouldValidate,
             }),
           value: watch(fieldName as Path<T>),
           errorMessage: errors[fieldName]?.message as string,
@@ -68,6 +71,7 @@ const useForm = <T extends FieldValues>({
 
   const onInvalid = () => {
     showToast('Formularz zawiera błędy');
+    setShouldValidate(true);
   };
 
   const handleSubmit = defaultHandleSubmit(onSubmit, onInvalid);
