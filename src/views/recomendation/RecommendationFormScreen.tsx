@@ -12,7 +12,7 @@ import { toPayloadISODate } from '../../utils/dateTime';
 import Badge from '../common/Badge';
 import CustomText from '../common/CustomText';
 import DateTimePicker from '../common/forms/DateTimePicker';
-import Form from '../common/forms/form/Form';
+import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import useLoadingStore from '../common/loader/loaderStore';
 import PageWrapper from '../common/pageWrapper/PageWrapper';

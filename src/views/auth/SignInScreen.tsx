@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { loginSchema, type LoginDTO } from '../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
-import Form from '../common/forms/form/Form';
+import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import Logo from '../common/Logo';
