@@ -48,6 +48,7 @@ export default function RecommendationNavigator() {
         options={{
           title: '',
           headerShown: false,
+          gestureEnabled: false,
           header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />

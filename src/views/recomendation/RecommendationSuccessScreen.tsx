@@ -1,6 +1,7 @@
 import {
   CompositeNavigationProp,
   useNavigation,
+  usePreventRemove,
 } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -20,6 +21,7 @@ type ThisNavigationProp = CompositeNavigationProp<
 >;
 
 export default function RecommendationSuccessScreen() {
+  usePreventRemove(true, () => {});
   const navigation = useNavigation<ThisNavigationProp>();
 
   return (

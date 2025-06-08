@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { appointments } from '../../mocks/appointments';
@@ -16,6 +16,7 @@ import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
 
 export default function DashboardScreen() {
+  usePreventRemove(true, () => {});
   const navigation = useNavigation<MainNavigationProp>();
 
   return (
