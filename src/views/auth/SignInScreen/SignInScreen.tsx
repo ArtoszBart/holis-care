@@ -1,21 +1,15 @@
-import { StackActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { loginSchema, type LoginDTO } from '../../models/Auth';
-import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
-import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
-import Form from '../common/forms/Form';
-import TextInput from '../common/forms/TextInput';
-import LinkButton from '../common/LinkButton';
-import Logo from '../common/Logo';
-import PageWrapper from '../common/pageWrapper/PageWrapper';
+import { loginSchema, type LoginDTO } from '../../../models/Auth';
+import Form from '../../common/forms/Form';
+import TextInput from '../../common/forms/TextInput';
+import LinkButton from '../../common/LinkButton';
+import Logo from '../../common/Logo';
+import PageWrapper from '../../common/pageWrapper/PageWrapper';
+import useSignInScreen from './useSignInScreen';
 
 export default function SignInScreen() {
-  const navigation = useNavigation<InitialFlowNavigationProp>();
-
-  const onSubmit = (data: LoginDTO) => {
-    navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
-  };
+  const { onSubmit, onRegisterButtonPress } = useSignInScreen();
 
   return (
     <PageWrapper style={styles.container}>
@@ -50,14 +44,12 @@ export default function SignInScreen() {
         />
       </Form>
 
-      <LinkButton label='Nie pamiętasz hasła?' onPress={() => {}} />
+      {/* <LinkButton label='Nie pamiętasz hasła?' onPress={() => {}} /> */}
 
       <LinkButton
         label='Nie masz konta? Zarejestruj się'
         style={styles.bottomLink}
-        onPress={() => {
-          navigation.dispatch(StackActions.replace(AUTH_ROUTES.SIGN_UP_SCREEN));
-        }}
+        onPress={onRegisterButtonPress}
       />
     </PageWrapper>
   );
