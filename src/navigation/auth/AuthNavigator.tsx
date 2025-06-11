@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MainAuthScreen from '../../views/auth/MainAuthScreen';
 import SignInScreen from '../../views/auth/SignInScreen';
-import SignUpScreen from '../../views/auth/SignUpScreen';
+import SignUpScreen from '../../views/auth/SignUpScreen/SignUpScreen';
 import Header from '../../views/common/Header';
 import { AUTH_ROUTES } from '../routes';
 

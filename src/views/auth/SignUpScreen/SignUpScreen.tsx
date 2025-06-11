@@ -1,17 +1,15 @@
-import { StackActions, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { RegisterDTO, registerSchema } from '../../models/Auth';
-import { type InitialFlowNavigationProp } from '../../navigation/initialFlow';
-import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../navigation/routes';
-import Form from '../common/forms/Form';
-import TextInput from '../common/forms/TextInput';
-import LinkButton from '../common/LinkButton';
-import Logo from '../common/Logo';
-import PageWrapper from '../common/pageWrapper/PageWrapper';
+import { RegisterDTO, registerSchema } from '../../../models/Auth';
+import Form from '../../common/forms/Form';
+import TextInput from '../../common/forms/TextInput';
+import LinkButton from '../../common/LinkButton';
+import Logo from '../../common/Logo';
+import PageWrapper from '../../common/pageWrapper/PageWrapper';
+import useSignUpScreen from './useSignUpScreen';
 
 export default function SignUpScreen() {
-  const navigation = useNavigation<InitialFlowNavigationProp>();
+  const { onSubmit, onLoginButtonPress } = useSignUpScreen();
 
   return (
     <PageWrapper style={styles.container}>
@@ -20,9 +18,7 @@ export default function SignUpScreen() {
       <Form<RegisterDTO>
         schema={registerSchema}
         submitLabel='Dalej'
-        onSubmit={() =>
-          navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR)
-        }
+        onSubmit={onSubmit}
       >
         <TextInput
           fieldName='email'
@@ -59,9 +55,7 @@ export default function SignUpScreen() {
       <LinkButton
         label='Masz konto? Zaloguj się'
         style={styles.bottomLink}
-        onPress={() => {
-          navigation.dispatch(StackActions.replace(AUTH_ROUTES.SIGN_IN_SCREEN));
-        }}
+        onPress={onLoginButtonPress}
       />
     </PageWrapper>
   );
