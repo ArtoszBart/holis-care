@@ -21,6 +21,7 @@ export const AUTH_ROUTES = Object.freeze({
   MAIN_SCREEN: 'MainAuthScreen',
   SIGN_UP_SCREEN: 'SignUpScreen',
   SIGN_IN_SCREEN: 'SignInScreen',
+  CONFIRMATION_SCREEN: 'ConfirmationScreen',
 });
 
 export const PERSONALIZATION_ROUTES = Object.freeze({

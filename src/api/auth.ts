@@ -44,3 +44,22 @@ export const signUpRequest = async (
     axiosCognitoClient.post('/', payload, { headers }),
   );
 };
+
+export const emailConfirmationRequest = async (
+  email: string,
+  confirmationCode: string,
+): Promise<AxiosError | AxiosSuccess> => {
+  const headers = {
+    'x-amz-target': 'AWSCognitoIdentityProviderService.ConfirmSignUp',
+  };
+
+  const payload = {
+    ClientId: process.env.EXPO_PUBLIC_COGNITO_CLIENT_ID,
+    Username: email,
+    ConfirmationCode: confirmationCode,
+  };
+
+  return await handleRequest(
+    axiosCognitoClient.post('/', payload, { headers }),
+  );
+};

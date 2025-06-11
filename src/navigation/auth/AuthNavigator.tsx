@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ConfirmationScreen from '../../views/auth/ConfirmationScreen/ConfirmationScreen';
 import MainAuthScreen from '../../views/auth/MainAuthScreen';
 import SignInScreen from '../../views/auth/SignInScreen';
 import SignUpScreen from '../../views/auth/SignUpScreen/SignUpScreen';
 import Header from '../../views/common/Header';
 import { AUTH_ROUTES } from '../routes';
+import { AuthNavigatorParamList } from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthNavigatorParamList>();
 
 export default function AuthNavigator() {
   return (
@@ -29,6 +31,13 @@ export default function AuthNavigator() {
         component={SignUpScreen}
         options={{
           title: 'Załóż konto',
+        }}
+      />
+      <Stack.Screen
+        name={AUTH_ROUTES.CONFIRMATION_SCREEN}
+        component={ConfirmationScreen}
+        options={{
+          title: 'Potwierdź swój e-mail',
         }}
       />
       <Stack.Screen
