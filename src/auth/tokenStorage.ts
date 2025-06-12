@@ -11,11 +11,21 @@ export const saveTokens = async (access: string, refresh: string) => {
 };
 
 export const getAccessToken = async () => {
-  return await SecureStore.getItemAsync(TOKEN_KEYS.ACCESS_TOKEN);
+  const accessToken = await SecureStore.getItemAsync(TOKEN_KEYS.ACCESS_TOKEN);
+  if (!accessToken) {
+    // TODO: unauth
+  }
+
+  return accessToken;
 };
 
 export const getRefreshToken = async () => {
-  return await SecureStore.getItemAsync(TOKEN_KEYS.REFRESH_TOKEN);
+  const refreshToken = await SecureStore.getItemAsync(TOKEN_KEYS.REFRESH_TOKEN);
+  if (!refreshToken) {
+    // TODO: unauth
+  }
+
+  return refreshToken;
 };
 
 export const clearTokens = async () => {

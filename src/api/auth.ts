@@ -67,3 +67,15 @@ export const emailConfirmationRequest = async (
     axiosCognitoClient.post('/', payload, { headers }),
   );
 };
+
+export const signOutRequest = async (
+  accessToken: string,
+): Promise<AxiosError | AxiosSuccess<LoginResponseDTO>> => {
+  const headers = {
+    'x-amz-target': 'AWSCognitoIdentityProviderService.GlobalSignOut',
+  };
+
+  return await handleRequest(
+    axiosCognitoClient.post('/', { AccessToken: accessToken }, { headers }),
+  );
+};

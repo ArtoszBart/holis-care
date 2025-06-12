@@ -1,7 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../constants/colors';
 import { AccountNavigationProp } from '../../navigation/account';
 import { ACCOUNT_ROUTES } from '../../navigation/routes';
@@ -9,9 +8,11 @@ import { Icon, ICONS } from '../common/icon';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 import AccountListItem from './components/AccountListItem';
 import UserContainer from './components/UserContainer';
+import useAccountScreen from './useAccountScreen';
 
 export default function AccountScreen() {
   const navigation = useNavigation<AccountNavigationProp>();
+  const { onSignOut } = useAccountScreen();
 
   return (
     <PageWrapper>
@@ -49,7 +50,7 @@ export default function AccountScreen() {
       />
       <AccountListItem
         label='Wyloguj'
-        onPress={() => {}}
+        onPress={onSignOut}
         icon={<Icon icon={ICONS.SIGN_OUT} style={styles.signOutIcon} />}
       />
     </PageWrapper>

@@ -1,6 +1,6 @@
-import { signInRequest } from '../api/auth';
+import { signInRequest, signOutRequest } from '../api/auth';
 import { type LoginDTO } from '../models/Auth';
-import { clearTokens, saveTokens } from './tokenStorage';
+import { clearTokens, getAccessToken, saveTokens } from './tokenStorage';
 
 export const login = async (loginData: LoginDTO) => {
   const response = await signInRequest(loginData);
@@ -16,5 +16,13 @@ export const login = async (loginData: LoginDTO) => {
 };
 
 export const logout = async () => {
-  await clearTokens();
+  const accessToken = await getAccessToken();
+  const response = await signOutRequest(accessToken!);
+
+  if (response.ok) {
+    await clearTokens();
+    return true;
+  }
+
+  return false;
 };
