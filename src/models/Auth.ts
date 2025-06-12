@@ -31,3 +31,13 @@ export const registerSchema = z
 
 export type LoginDTO = z.infer<typeof loginSchema>;
 export type RegisterDTO = z.infer<typeof registerSchema>;
+
+export type LoginResponseDTO = {
+  AuthenticationResult: {
+    AccessToken: string;
+    ExpiresIn: 3600;
+    TokenType: string;
+    RefreshToken: string;
+    IdToken: string;
+  };
+};

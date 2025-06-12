@@ -1,5 +1,9 @@
 import { axiosCognitoClient } from '../lib/axiosClient';
-import { RegisterDTO, type LoginDTO } from '../models/Auth';
+import {
+  type LoginDTO,
+  type LoginResponseDTO,
+  type RegisterDTO,
+} from '../models/Auth';
 import {
   handleRequest,
   type AxiosError,
@@ -8,7 +12,7 @@ import {
 
 export const signInRequest = async (
   loginData: LoginDTO,
-): Promise<AxiosError | AxiosSuccess> => {
+): Promise<AxiosError | AxiosSuccess<LoginResponseDTO>> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.InitiateAuth',
   };
