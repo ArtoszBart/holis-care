@@ -3,10 +3,15 @@ import { AuthNavigator } from '../auth';
 import { OnboardingNavigatorWrapper } from '../onboarding';
 import { PersonalizationNavigator } from '../personalization';
 import { INITIAL_FLOW_ROUTES } from '../routes';
+import useInitialFlowNavigator from './useInitialFlowNavigator';
 
 const Stack = createNativeStackNavigator();
 
 export default function InitialFlowNavigator() {
+  const { isFirstLaunch, isLoading } = useInitialFlowNavigator();
+
+  if (isLoading) return null;
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -14,12 +19,13 @@ export default function InitialFlowNavigator() {
         animation: 'slide_from_right',
         gestureEnabled: false,
       }}
-      initialRouteName={INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR}
     >
-      <Stack.Screen
-        name={INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR}
-        component={OnboardingNavigatorWrapper}
-      />
+      {isFirstLaunch && (
+        <Stack.Screen
+          name={INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR}
+          component={OnboardingNavigatorWrapper}
+        />
+      )}
       <Stack.Screen
         name={INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR}
         component={AuthNavigator}
