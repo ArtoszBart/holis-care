@@ -1,8 +1,16 @@
-import Toast from 'react-native-toast-message';
+import Toast, { type ToastConfigParams } from 'react-native-toast-message';
 
-export const showToast = (message: string) => {
+export type ToastType = 'success' | 'error' | 'info';
+interface ToastProps {
+  message: string;
+}
+export interface IToastProps extends ToastConfigParams<ToastProps> {
+  type: ToastType;
+}
+
+export const showToast = (message: string, type: ToastType = 'error') => {
   Toast.show({
-    type: 'error',
+    type,
     props: { message },
     topOffset: 0,
   });

@@ -13,6 +13,7 @@ export const COLORS = Object.freeze({
   red: '#e03616',
   babyBlue: '#e5eefb',
   errorRed: '#ff5a5f',
+  successGreen: '#4bb543',
 });
 
 type ColorKey = keyof typeof COLORS;

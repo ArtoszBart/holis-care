@@ -1,8 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { emailConfirmationRequest } from '../../../api/auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
-import { INITIAL_FLOW_ROUTES } from '../../../navigation/routes';
+import { AUTH_ROUTES } from '../../../navigation/routes';
 import useLoadingStore from '../../common/loader/loaderStore';
 import { showToast } from '../../common/toast/toastHelper';
 
@@ -23,7 +23,8 @@ const useConfirmationScreen = ({ userEmail }: { userEmail: string }) => {
     setIsLoading(false);
 
     if (response.ok) {
-      navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
+      showToast('Konto utworzono pomyślnie', 'success');
+      navigation.dispatch(StackActions.replace(AUTH_ROUTES.SIGN_IN_SCREEN));
     } else if (response.error) {
       showToast('Podany kod jest nieprawidłowy');
     }
