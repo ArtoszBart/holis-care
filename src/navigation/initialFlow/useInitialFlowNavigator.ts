@@ -4,7 +4,7 @@ import useLoadingStore from '../../views/common/loader/loaderStore';
 
 const useInitialFlowNavigator = () => {
   const [isFirstLaunch, setIsFirstLaunch] = useState(false);
-  const { setIsLoading, isLoading } = useLoadingStore();
+  const { setIsLoading } = useLoadingStore();
 
   useEffect(() => {
     const checkOnboarding = async () => {
@@ -28,7 +28,7 @@ const useInitialFlowNavigator = () => {
     checkOnboarding();
   }, []);
 
-  return { isFirstLaunch, isLoading };
+  return { isFirstLaunch };
 };
 
 export default useInitialFlowNavigator;

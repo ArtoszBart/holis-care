@@ -19,7 +19,9 @@ const useSignUpScreen = () => {
       navigation.navigate(AUTH_ROUTES.CONFIRMATION_SCREEN, {
         userEmail: registerData.email,
       });
-    } else {
+    } else if (response.error?.__type === 'UsernameExistsException') {
+      showToast('Użytkownik o takim adresie e-mail już istnieje');
+    } else if (response.error) {
       showToast('Formularz zawiera błędy');
     }
   };
