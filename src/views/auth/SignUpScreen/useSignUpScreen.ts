@@ -27,7 +27,7 @@ const useSignUpScreen = () => {
   };
 
   const onLoginButtonPress = (): void => {
-    navigation.dispatch(StackActions.replace(AUTH_ROUTES.SIGN_UP_SCREEN));
+    navigation.dispatch(StackActions.replace(AUTH_ROUTES.SIGN_IN_SCREEN));
   };
 
   return { onSubmit, onLoginButtonPress };
