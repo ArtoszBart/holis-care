@@ -22,7 +22,7 @@ export default function SignInScreen() {
       >
         <TextInput
           fieldName='email'
-          label='E-mail'
+          placeholder='E-mail'
           keyboardType='email-address'
           autoCapitalize='none'
           autoComplete='email'
@@ -34,7 +34,7 @@ export default function SignInScreen() {
 
         <TextInput
           fieldName='password'
-          label='Hasło'
+          placeholder='Hasło'
           autoCapitalize='none'
           autoCorrect={false}
           contextMenuHidden
