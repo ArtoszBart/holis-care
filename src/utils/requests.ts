@@ -1,26 +1,41 @@
+import { type AxiosResponse } from 'axios';
 import {
-  type AxiosResponse,
-  type AxiosError as DefaultAxiosError,
-} from 'axios';
+  type AxiosCognitoError,
+  type AxiosSuccess,
+  type DefaultAxiosCognitoError,
+} from '../lib/axiosTypes';
+import { showToast } from '../views/common/toast/toastHelper';
 
-export type AxiosSuccess<T = unknown> = { ok: true; status: number; data: T };
-export type AxiosError = { ok: false; status: number; error: unknown };
+const handleError = (message: string): { ok: false } => {
+  showToast(message);
+  return { ok: false };
+};
 
-export const handleRequest = async <T = unknown>(
+export const handleResponse = async <T = unknown>(
   axiosPromise: Promise<AxiosResponse<T>>,
-): Promise<AxiosError | AxiosSuccess<T>> => {
+): Promise<AxiosCognitoError | AxiosSuccess<T>> => {
   try {
     const response = await axiosPromise;
     return { ok: true, status: response.status, data: response.data };
   } catch (error: unknown) {
-    const axiosError = error as DefaultAxiosError;
+    const axiosError = error as DefaultAxiosCognitoError;
 
-    const { status, data } = axiosError.response!;
-
-    return {
-      ok: false,
-      status,
-      error: data,
-    };
+    if (axiosError.code === 'ERR_NETWORK') {
+      return handleError('Błąd połączenia z internetem');
+    } else if (axiosError.code === 'ECONNABORTED') {
+      return handleError('Błąd podczas połączenia z serwerem');
+    } else if (!axiosError.response) {
+      return handleError('Wystąpił błąd serwera');
+    } else if (axiosError.response.status === 400) {
+      return {
+        ok: false,
+        error: axiosError.response.data,
+      };
+    } else if (axiosError.response.status === 429) {
+      return handleError('Zbyt wiele prób. Spróbuj ponownie później.');
+    } else {
+      console.log(axiosError.response.data);
+      return handleError('Wystąpił nieoczekiwany błąd');
+    }
   }
 };

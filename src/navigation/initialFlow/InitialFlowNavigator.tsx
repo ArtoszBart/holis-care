@@ -8,9 +8,7 @@ import useInitialFlowNavigator from './useInitialFlowNavigator';
 const Stack = createNativeStackNavigator();
 
 export default function InitialFlowNavigator() {
-  const { isFirstLaunch, isLoading } = useInitialFlowNavigator();
-
-  if (isLoading) return null;
+  const { isFirstLaunch } = useInitialFlowNavigator();
 
   return (
     <Stack.Navigator

@@ -1,18 +1,14 @@
 import { axiosCognitoClient } from '../lib/axiosClient';
+import { type AxiosCognitoError, type AxiosSuccess } from '../lib/axiosTypes';
 import {
   type LoginDTO,
   type LoginResponseDTO,
   type RegisterDTO,
 } from '../models/Auth';
-import {
-  handleRequest,
-  type AxiosError,
-  type AxiosSuccess,
-} from '../utils/requests';
 
 export const signInRequest = async (
   loginData: LoginDTO,
-): Promise<AxiosError | AxiosSuccess<LoginResponseDTO>> => {
+): Promise<AxiosCognitoError | AxiosSuccess<LoginResponseDTO>> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.InitiateAuth',
   };
@@ -26,14 +22,12 @@ export const signInRequest = async (
     ClientId: process.env.EXPO_PUBLIC_COGNITO_CLIENT_ID,
   };
 
-  return await handleRequest(
-    axiosCognitoClient.post('/', payload, { headers }),
-  );
+  return await axiosCognitoClient.post('/', payload, { headers });
 };
 
 export const signUpRequest = async (
   registerData: RegisterDTO,
-): Promise<AxiosError | AxiosSuccess> => {
+): Promise<AxiosCognitoError | AxiosSuccess> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.SignUp',
   };
@@ -44,15 +38,13 @@ export const signUpRequest = async (
     Password: registerData.password,
   };
 
-  return await handleRequest(
-    axiosCognitoClient.post('/', payload, { headers }),
-  );
+  return await axiosCognitoClient.post('/', payload, { headers });
 };
 
 export const emailConfirmationRequest = async (
   email: string,
   confirmationCode: string,
-): Promise<AxiosError | AxiosSuccess> => {
+): Promise<AxiosCognitoError | AxiosSuccess> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.ConfirmSignUp',
   };
@@ -63,19 +55,19 @@ export const emailConfirmationRequest = async (
     ConfirmationCode: confirmationCode,
   };
 
-  return await handleRequest(
-    axiosCognitoClient.post('/', payload, { headers }),
-  );
+  return await axiosCognitoClient.post('/', payload, { headers });
 };
 
 export const signOutRequest = async (
   accessToken: string,
-): Promise<AxiosError | AxiosSuccess<LoginResponseDTO>> => {
+): Promise<AxiosCognitoError | AxiosSuccess<LoginResponseDTO>> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.GlobalSignOut',
   };
 
-  return await handleRequest(
-    axiosCognitoClient.post('/', { AccessToken: accessToken }, { headers }),
+  return await axiosCognitoClient.post(
+    '/',
+    { AccessToken: accessToken },
+    { headers },
   );
 };

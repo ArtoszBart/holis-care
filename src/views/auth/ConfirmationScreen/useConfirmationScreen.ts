@@ -24,7 +24,7 @@ const useConfirmationScreen = ({ userEmail }: { userEmail: string }) => {
 
     if (response.ok) {
       navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
-    } else {
+    } else if (response.error) {
       showToast('Podany kod jest nieprawidłowy');
     }
   };
