@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createProxiedAxios } from '../utils/requests';
+import { createProxiedAxios } from './requests';
 
 const rawAxiosCognitoClient = axios.create({
   baseURL: 'https://cognito-idp.eu-central-1.amazonaws.com',

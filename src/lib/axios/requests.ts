@@ -1,21 +1,21 @@
-import { type AxiosInstance, type AxiosResponse } from 'axios';
+import { showToast } from '../../views/common/toast/toastHelper';
 import {
-  type AxiosCognitoError,
   type AxiosMethod,
-  type AxiosSuccess,
   type DefaultAxiosCognitoError,
+  type DefaultAxiosInstance,
+  type DefaultAxiosResponse,
   type ProxiedAxios,
-} from '../lib/axiosTypes';
-import { showToast } from '../views/common/toast/toastHelper';
+  type RequestResponse,
+} from './types';
 
 const handleError = (message: string): { ok: false } => {
   showToast(message);
   return { ok: false };
 };
 
-export const handleResponse = async <T = unknown>(
-  axiosPromise: Promise<AxiosResponse<T>>,
-): Promise<AxiosCognitoError | AxiosSuccess<T>> => {
+const handleResponse = async <T = unknown>(
+  axiosPromise: Promise<DefaultAxiosResponse<T>>,
+): RequestResponse<T> => {
   try {
     const response = await axiosPromise;
     return { ok: true, status: response.status, data: response.data };
@@ -43,13 +43,15 @@ export const handleResponse = async <T = unknown>(
   }
 };
 
-export const createProxiedAxios = (axios: AxiosInstance): ProxiedAxios => {
+export const createProxiedAxios = (
+  axios: DefaultAxiosInstance,
+): ProxiedAxios => {
   const proxiedAxios = new Proxy(axios, {
     get(target, prop) {
-      const value = target[prop as keyof AxiosInstance];
+      const value = target[prop as keyof DefaultAxiosInstance];
 
       const handlerFunction = async <T = unknown>(
-        ...args: Parameters<AxiosInstance[typeof prop & AxiosMethod]>
+        ...args: Parameters<DefaultAxiosInstance[typeof prop & AxiosMethod]>
       ) => await handleResponse<T>((value as Function).apply(target, args));
 
       return handlerFunction;

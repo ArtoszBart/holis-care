@@ -1,5 +1,4 @@
-import { axiosCognitoClient } from '../lib/axiosCognitoClient';
-import { type AxiosCognitoError, type AxiosSuccess } from '../lib/axiosTypes';
+import { axiosCognitoClient, type RequestResponse } from '../lib/axios';
 import {
   type LoginDTO,
   type LoginResponseDTO,
@@ -8,7 +7,7 @@ import {
 
 export const signInRequest = async (
   loginData: LoginDTO,
-): Promise<AxiosCognitoError | AxiosSuccess<LoginResponseDTO>> => {
+): RequestResponse<LoginResponseDTO> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.InitiateAuth',
   };
@@ -27,7 +26,7 @@ export const signInRequest = async (
 
 export const signUpRequest = async (
   registerData: RegisterDTO,
-): Promise<AxiosCognitoError | AxiosSuccess> => {
+): RequestResponse => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.SignUp',
   };
@@ -44,7 +43,7 @@ export const signUpRequest = async (
 export const emailConfirmationRequest = async (
   email: string,
   confirmationCode: string,
-): Promise<AxiosCognitoError | AxiosSuccess> => {
+): RequestResponse => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.ConfirmSignUp',
   };
@@ -60,7 +59,7 @@ export const emailConfirmationRequest = async (
 
 export const signOutRequest = async (
   accessToken: string,
-): Promise<AxiosCognitoError | AxiosSuccess<LoginResponseDTO>> => {
+): RequestResponse<LoginResponseDTO> => {
   const headers = {
     'x-amz-target': 'AWSCognitoIdentityProviderService.GlobalSignOut',
   };

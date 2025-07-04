@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getAccessToken } from '../auth/tokenStorage';
-import { createProxiedAxios } from '../utils/requests';
+import { getAccessToken } from '../../auth/tokenStorage';
+import { createProxiedAxios } from './requests';
 
 const rawAxiosApiClient = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,

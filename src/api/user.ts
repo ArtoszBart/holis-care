@@ -1,4 +1,4 @@
-import { axiosApiClient } from '../lib/axiosApiClient';
+import { axiosApiClient } from '../lib/axios';
 import { type User } from '../models/User';
 
 export const getSelfRequest = async () => {
