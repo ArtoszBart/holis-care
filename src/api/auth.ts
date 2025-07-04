@@ -1,4 +1,4 @@
-import { axiosCognitoClient } from '../lib/axiosClient';
+import { axiosCognitoClient } from '../lib/axiosCognitoClient';
 import { type AxiosCognitoError, type AxiosSuccess } from '../lib/axiosTypes';
 import {
   type LoginDTO,

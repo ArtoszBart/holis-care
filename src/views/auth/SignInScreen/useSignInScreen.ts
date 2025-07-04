@@ -1,5 +1,6 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
-import { login } from '../../../auth/authService';
+import { login, NEEDS_PERSONALIZATION } from '../../../auth/authService';
+import { useIsAuthStore } from '../../../config/isAuthStore';
 import { type LoginDTO } from '../../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../../navigation/routes';
@@ -9,17 +10,19 @@ import { showToast } from '../../common/toast/toastHelper';
 const useSignInScreen = () => {
   const navigation = useNavigation<InitialFlowNavigationProp>();
   const { setIsLoading } = useLoadingStore();
+  const { setIsAuth } = useIsAuthStore();
 
   const onSubmit = async (loginData: LoginDTO): Promise<void> => {
     setIsLoading(true);
-    const result = await login(loginData);
+    const isUserAuth = await login(loginData);
     setIsLoading(false);
 
-    if (!result) {
-      showToast('Błędny e-mail lub hasło');
-    } else {
-      navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
-    }
+    if (!isUserAuth) return showToast('Błędny e-mail lub hasło');
+
+    if (isUserAuth === NEEDS_PERSONALIZATION)
+      return navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
+
+    setIsAuth(true);
   };
 
   const onRegisterButtonPress = (): void => {

@@ -1,18 +1,30 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { signInRequest, signOutRequest } from '../api/auth';
+import { getSelfRequest } from '../api/user';
 import { type LoginDTO } from '../models/Auth';
 import { clearTokens, getAccessToken, saveTokens } from './tokenStorage';
 
-export const login = async (loginData: LoginDTO) => {
-  const response = await signInRequest(loginData);
+export const NEEDS_PERSONALIZATION = Symbol('NEEDS_PERSONALIZATION');
 
-  if (response.ok) {
-    const { AccessToken, RefreshToken } = response.data.AuthenticationResult;
-    await saveTokens(AccessToken, RefreshToken);
+export const login = async (
+  loginData: LoginDTO,
+): Promise<boolean | typeof NEEDS_PERSONALIZATION> => {
+  const cognitoRes = await signInRequest(loginData);
+  if (!cognitoRes.ok) return false;
 
-    return true;
+  const { AccessToken, RefreshToken } = cognitoRes.data.AuthenticationResult;
+  await saveTokens(AccessToken, RefreshToken);
+
+  const apiRes = await getSelfRequest();
+
+  if (!apiRes.ok) return false;
+
+  if (apiRes.status === 204) {
+    return NEEDS_PERSONALIZATION;
   }
 
-  return false;
+  await AsyncStorage.setItem('user', JSON.stringify(apiRes.data));
+  return true;
 };
 
 export const logout = async () => {
