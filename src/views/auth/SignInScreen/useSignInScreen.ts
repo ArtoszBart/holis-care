@@ -1,6 +1,6 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
 import { login, NEEDS_PERSONALIZATION } from '../../../auth/authService';
-import { useIsAuthStore } from '../../../config/isAuthStore';
+import { useAuthStore } from '../../../config/authStore';
 import { type LoginDTO } from '../../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../../navigation/routes';
@@ -10,7 +10,7 @@ import { showToast } from '../../common/toast/toastHelper';
 const useSignInScreen = () => {
   const navigation = useNavigation<InitialFlowNavigationProp>();
   const { setIsLoading } = useLoadingStore();
-  const { setIsAuth } = useIsAuthStore();
+  const { setIsAuth } = useAuthStore();
 
   const onSubmit = async (loginData: LoginDTO): Promise<void> => {
     setIsLoading(true);

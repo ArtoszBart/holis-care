@@ -1,12 +1,11 @@
 import { create } from 'zustand';
 
-// TMP solution
-interface IsAuthStore {
+interface IAuthStore {
   isAuth: boolean;
   setIsAuth: (isAuth: boolean) => void;
 }
 
-export const useIsAuthStore = create<IsAuthStore>((set) => ({
+export const useAuthStore = create<IAuthStore>((set) => ({
   isAuth: false,
   setIsAuth: (isAuth: boolean) => set(() => ({ isAuth })),
 }));

@@ -2,11 +2,11 @@ import { usePreventRemove } from '@react-navigation/native';
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 
-import { useIsAuthStore } from '../../../config/isAuthStore';
+import { useAuthStore } from '../../../config/authStore';
 
 const useGetStartedScreen = () => {
   usePreventRemove(true, () => {});
-  const { setIsAuth } = useIsAuthStore();
+  const { setIsAuth } = useAuthStore();
 
   const textAnimationRef = useRef(new Animated.Value(0)).current;
 
