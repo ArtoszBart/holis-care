@@ -12,19 +12,19 @@ const useBirthDateScreen = () => {
   const navigation = useNavigation<PersonalizationNavigationProp>();
   const { setData } = usePersonalizationStore();
 
-  const [birthDate, setBirthDate] = useState<Date>(MAX_BIRTH_DATE);
+  const [dateOfBirth, setDateOfBirth] = useState<Date>(MAX_BIRTH_DATE);
 
   const handleNext = () => {
-    const birthDateSchema = personalizationSchema.pick({ birthDate: true });
-    const { error } = birthDateSchema.safeParse({ birthDate });
+    const birthDateSchema = personalizationSchema.pick({ dateOfBirth: true });
+    const { error } = birthDateSchema.safeParse({ dateOfBirth });
 
-    if (error) return showToast(error.flatten().fieldErrors.birthDate![0]);
+    if (error) return showToast(error.flatten().fieldErrors.dateOfBirth![0]);
 
-    setData({ birthDate: toPayloadDateString(birthDate) });
+    setData({ dateOfBirth: toPayloadDateString(dateOfBirth) });
     navigation.navigate(PERSONALIZATION_ROUTES.NAME_SCREEN);
   };
 
-  return { birthDate, setBirthDate, handleNext };
+  return { dateOfBirth, setDateOfBirth, handleNext };
 };
 
 export default useBirthDateScreen;

@@ -36,16 +36,17 @@ export const userSchema = z.object({
 export type UserDTO = z.infer<typeof userSchema>;
 
 export type PersonalizationDTO = {
+  email: string;
   sex: string;
-  birthDate: string;
-  name: string;
+  dateOfBirth: string;
+  firstName: string;
 };
 
 export const personalizationSchema = z.object({
-  birthDate: z
+  dateOfBirth: z
     .date({ required_error: 'Data urodzenia jest wymagana' })
     .max(MAX_BIRTH_DATE, { message: `Musisz mieć co najmniej ${MIN_AGE} lat` }),
-  name: z
+  firstName: z
     .string({ required_error: 'Imię jest wymagane' })
     .min(1, { message: 'Imię musi mieć conajmniej 2 znaki' }),
   isConsentGiven: z.boolean().refine((val) => val === true, {

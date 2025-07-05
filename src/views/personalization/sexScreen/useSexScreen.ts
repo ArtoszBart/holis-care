@@ -3,11 +3,16 @@ import { type PersonalizationNavigationProp } from '../../../navigation/personal
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
 import { usePersonalizationStore } from '../onboardingStore';
 
+export enum SEX {
+  FEMALE = 'FEMALE',
+  MALE = 'MALE',
+}
+
 const useSexScreen = () => {
   const navigation = useNavigation<PersonalizationNavigationProp>();
   const { setData } = usePersonalizationStore();
 
-  const handleSelectSex = (sex: string) => {
+  const handleSelectSex = (sex: SEX) => {
     setData({ sex });
     navigation.navigate(PERSONALIZATION_ROUTES.BIRTH_DATE_SCREEN);
   };

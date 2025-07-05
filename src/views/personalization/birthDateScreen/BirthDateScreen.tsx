@@ -8,7 +8,7 @@ import PageWrapper from '../../common/pageWrapper/PageWrapper';
 import useBirthDateScreen from './useBirthDateScreen';
 
 export default function BirthDateScreen() {
-  const { birthDate, setBirthDate, handleNext } = useBirthDateScreen();
+  const { dateOfBirth, setDateOfBirth, handleNext } = useBirthDateScreen();
 
   return (
     <PageWrapper style={styles.container} noHeader>
@@ -18,8 +18,8 @@ export default function BirthDateScreen() {
         fieldName=''
         maxDate={MAX_BIRTH_DATE}
         spinner
-        value={birthDate}
-        onChange={setBirthDate}
+        value={dateOfBirth}
+        onChange={setDateOfBirth}
       />
 
       <Button label='Dalej' onPress={handleNext} style={styles.button} />

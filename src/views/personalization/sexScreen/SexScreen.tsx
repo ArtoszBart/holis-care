@@ -5,7 +5,7 @@ import { COLORS } from '../../../constants/colors';
 import Button from '../../common/Button';
 import CustomText from '../../common/CustomText';
 import PageWrapper from '../../common/pageWrapper/PageWrapper';
-import useSexScreen from './useSexScreen';
+import useSexScreen, { SEX } from './useSexScreen';
 
 export default function SexScreen() {
   usePreventRemove(true, () => {});
@@ -24,8 +24,8 @@ export default function SexScreen() {
       </CustomText>
 
       <View style={styles.buttonContainer}>
-        <Button label='Kobieta' onPress={() => handleSelectSex('female')} />
-        <Button label='Mężczyzna' onPress={() => handleSelectSex('male')} />
+        <Button label='Kobieta' onPress={() => handleSelectSex(SEX.FEMALE)} />
+        <Button label='Mężczyzna' onPress={() => handleSelectSex(SEX.MALE)} />
       </View>
     </PageWrapper>
   );

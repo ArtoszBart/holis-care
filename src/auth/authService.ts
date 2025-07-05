@@ -21,6 +21,10 @@ export const login = async (loginData: LoginDTO): Promise<LOGIN_STATE> => {
   const apiRes = await getSelfRequest();
   if (!apiRes.ok) return LOGIN_STATE.OTHER_ERROR;
   if (apiRes.status === 204) {
+    await AsyncStorage.setItem(
+      'user',
+      JSON.stringify({ email: loginData.email }),
+    );
     return LOGIN_STATE.NEEDS_PERSONALIZATION;
   }
 

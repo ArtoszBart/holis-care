@@ -1,6 +1,11 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { personalizationSchema } from '../../../models/User';
+import { createSelfRequest } from '../../../api/user';
+import {
+  PersonalizationDTO,
+  personalizationSchema,
+} from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
 import { showToast } from '../../common/toast/toastHelper';
@@ -13,21 +18,31 @@ const useNameScreen = () => {
   const [isConsentGiven, setConsentGiven] = useState(false);
   const [name, setName] = useState<string>('');
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    const firstName = name.trim();
     const lastStepSchema = personalizationSchema.pick({
-      name: true,
+      firstName: true,
       isConsentGiven: true,
     });
-    const { error } = lastStepSchema.safeParse({ name, isConsentGiven });
+    const { error } = lastStepSchema.safeParse({ firstName, isConsentGiven });
 
     if (error) {
       const errorMessage = Object.values(error.flatten().fieldErrors)[0]?.[0];
       return showToast(errorMessage);
     }
 
-    setData({ name });
+    setData({ firstName });
 
-    console.log(usePersonalizationStore.getState().data);
+    const user = JSON.parse((await AsyncStorage.getItem('user'))!);
+    const userData = {
+      ...usePersonalizationStore.getState().data,
+      email: user.email,
+    } as PersonalizationDTO;
+
+    const response = await createSelfRequest(userData);
+    if (!response.ok) return showToast('Wystąpił nieoczekiwany błąd');
+
+    await AsyncStorage.setItem('user', JSON.stringify(response.data));
     navigation.navigate(PERSONALIZATION_ROUTES.GET_STARTED_SCREEN);
   };
 
