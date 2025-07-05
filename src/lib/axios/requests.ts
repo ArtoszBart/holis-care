@@ -22,10 +22,8 @@ const handleResponse = async <T = unknown>(
   } catch (error: unknown) {
     const axiosError = error as DefaultAxiosCognitoError;
 
-    if (axiosError.code === 'ERR_NETWORK')
-      return handleError('Błąd połączenia z internetem');
-    if (axiosError.code === 'ECONNABORTED')
-      return handleError('Błąd podczas połączenia z serwerem');
+    if (axiosError.code === 'ECONNABORTED' || axiosError.code === 'ERR_NETWORK')
+      return handleError('Błąd podczas łączenia z serwerem');
     if (!axiosError.response) return handleError('Wystąpił błąd serwera');
 
     switch (axiosError.response.status) {

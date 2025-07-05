@@ -1,5 +1,5 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
-import { login, NEEDS_PERSONALIZATION } from '../../../auth/authService';
+import { login, LOGIN_STATE } from '../../../auth/authService';
 import { useAuthStore } from '../../../config/authStore';
 import { type LoginDTO } from '../../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
@@ -17,12 +17,16 @@ const useSignInScreen = () => {
     const isUserAuth = await login(loginData);
     setIsLoading(false);
 
-    if (!isUserAuth) return showToast('Błędny e-mail lub hasło');
-
-    if (isUserAuth === NEEDS_PERSONALIZATION)
-      return navigation.navigate(INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR);
-
-    setIsAuth(true);
+    switch (isUserAuth) {
+      case LOGIN_STATE.AUTHENTICATED:
+        return setIsAuth(true);
+      case LOGIN_STATE.UNAUTHENTICATED:
+        return showToast('Błędny e-mail lub hasło');
+      case LOGIN_STATE.NEEDS_PERSONALIZATION:
+        return navigation.navigate(
+          INITIAL_FLOW_ROUTES.PERSONALIZATION_NAVIGATOR,
+        );
+    }
   };
 
   const onRegisterButtonPress = (): void => {

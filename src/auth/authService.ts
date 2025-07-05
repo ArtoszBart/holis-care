@@ -4,27 +4,28 @@ import { getSelfRequest } from '../api/user';
 import { type LoginDTO } from '../models/Auth';
 import { clearTokens, getAccessToken, saveTokens } from './tokenStorage';
 
-export const NEEDS_PERSONALIZATION = Symbol('NEEDS_PERSONALIZATION');
+export enum LOGIN_STATE {
+  NEEDS_PERSONALIZATION,
+  UNAUTHENTICATED,
+  AUTHENTICATED,
+  OTHER_ERROR,
+}
 
-export const login = async (
-  loginData: LoginDTO,
-): Promise<boolean | typeof NEEDS_PERSONALIZATION> => {
+export const login = async (loginData: LoginDTO): Promise<LOGIN_STATE> => {
   const cognitoRes = await signInRequest(loginData);
-  if (!cognitoRes.ok) return false;
+  if (!cognitoRes.ok) return LOGIN_STATE.UNAUTHENTICATED;
 
   const { AccessToken, RefreshToken } = cognitoRes.data.AuthenticationResult;
   await saveTokens(AccessToken, RefreshToken);
 
   const apiRes = await getSelfRequest();
-
-  if (!apiRes.ok) return false;
-
+  if (!apiRes.ok) return LOGIN_STATE.OTHER_ERROR;
   if (apiRes.status === 204) {
-    return NEEDS_PERSONALIZATION;
+    return LOGIN_STATE.NEEDS_PERSONALIZATION;
   }
 
   await AsyncStorage.setItem('user', JSON.stringify(apiRes.data));
-  return true;
+  return LOGIN_STATE.AUTHENTICATED;
 };
 
 export const logout = async () => {
