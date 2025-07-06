@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
-import { showToast } from '../../views/common/toast/toastHelper';
+import { showToast } from '../../views/common/toast';
 import { SECURE_KEYS, STORAGE_KEYS } from './keys';
 
 const AppStorage = {

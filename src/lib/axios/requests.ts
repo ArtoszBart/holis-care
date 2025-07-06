@@ -1,4 +1,4 @@
-import { showToast } from '../../views/common/toast/toastHelper';
+import { showToast } from '../../views/common/toast';
 import {
   type AxiosMethod,
   type DefaultAxiosCognitoError,

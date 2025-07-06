@@ -6,11 +6,10 @@ import {
 } from 'expo-status-bar';
 import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Toast from 'react-native-toast-message';
 import useApp from './src/config/useApp';
 import RootNavigator from './src/navigation/RootNavigator';
 import Loader from './src/views/common/loader/Loader';
-import { toastConfig } from './src/views/common/toast/toastConfig';
+import Toast from './src/views/common/toast';
 
 export default function App() {
   const hook = useApp();
@@ -41,7 +40,7 @@ export default function App() {
           <RootNavigator />
         </NavigationContainer>
 
-        <Toast config={toastConfig} />
+        <Toast />
       </SafeAreaProvider>
     </>
   );

@@ -1,6 +1,6 @@
 import { logout } from '../../auth/authService';
 import useLoadingStore from '../common/loader/loaderStore';
-import { showToast } from '../common/toast/toastHelper';
+import { showToast } from '../common/toast';
 
 const useAccountScreen = () => {
   const { setIsLoading } = useLoadingStore();

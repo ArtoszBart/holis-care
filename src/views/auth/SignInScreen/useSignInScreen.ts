@@ -5,7 +5,7 @@ import { type LoginDTO } from '../../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../../navigation/routes';
 import useLoadingStore from '../../common/loader/loaderStore';
-import { showToast } from '../../common/toast/toastHelper';
+import { showToast } from '../../common/toast';
 
 const useSignInScreen = () => {
   const navigation = useNavigation<InitialFlowNavigationProp>();

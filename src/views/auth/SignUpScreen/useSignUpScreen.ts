@@ -4,7 +4,7 @@ import { type RegisterDTO } from '../../../models/Auth';
 import { type AuthNavigationProp } from '../../../navigation/auth';
 import { AUTH_ROUTES } from '../../../navigation/routes';
 import useLoadingStore from '../../common/loader/loaderStore';
-import { showToast } from '../../common/toast/toastHelper';
+import { showToast } from '../../common/toast';
 
 const useSignUpScreen = () => {
   const navigation = useNavigation<AuthNavigationProp>();

@@ -5,7 +5,7 @@ import { personalizationSchema } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
 import { toPayloadDateString } from '../../../utils/dateTime';
-import { showToast } from '../../common/toast/toastHelper';
+import { showToast } from '../../common/toast';
 import { usePersonalizationStore } from '../onboardingStore';
 
 const useBirthDateScreen = () => {

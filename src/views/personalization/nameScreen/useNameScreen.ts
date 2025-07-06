@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { createSelfRequest } from '../../../api/user';
 import AppStorage, { STORAGE_KEYS } from '../../../lib/storage';
 import {
-  PersonalizationDTO,
+  type PersonalizationDTO,
   personalizationSchema,
 } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
-import { showToast } from '../../common/toast/toastHelper';
+import { showToast } from '../../common/toast';
 import { usePersonalizationStore } from '../onboardingStore';
 
 const useNameScreen = () => {
