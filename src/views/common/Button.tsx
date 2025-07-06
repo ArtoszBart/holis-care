@@ -1,17 +1,11 @@
-import React from 'react';
-import {
-  StyleSheet,
-  TextStyle,
-  TouchableOpacity,
-  type ViewStyle,
-} from 'react-native';
-
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, type ViewStyle } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import CustomText from './CustomText';
 
 interface IButton {
   label: string;
-  onPress: VoidFunction;
+  onPress: () => void | Promise<void>;
   invertedStyle?: boolean;
   style?: ViewStyle;
 }
@@ -22,19 +16,34 @@ export default function Button({
   invertedStyle,
   style,
 }: IButton) {
-  const buttonStyle: ViewStyle = {
-    backgroundColor: !invertedStyle ? COLORS.primary600 : 'white',
-  };
-  const textStyle: TextStyle = {
-    color: !invertedStyle ? 'white' : COLORS.primary600,
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handlePress = async () => {
+    if (isProcessing) return;
+
+    setIsProcessing(true);
+    await onPress();
+    setIsProcessing(false);
   };
 
   return (
     <TouchableOpacity
-      style={[styles.button, buttonStyle, style]}
-      onPress={onPress}
+      style={[
+        styles.button,
+        { backgroundColor: !invertedStyle ? COLORS.primary600 : 'white' },
+        style,
+      ]}
+      onPress={handlePress}
+      disabled={isProcessing}
     >
-      <CustomText style={[styles.buttonText, textStyle]}>{label}</CustomText>
+      <CustomText
+        style={[
+          styles.buttonText,
+          { color: !invertedStyle ? 'white' : COLORS.primary600 },
+        ]}
+      >
+        {label}
+      </CustomText>
     </TouchableOpacity>
   );
 }
