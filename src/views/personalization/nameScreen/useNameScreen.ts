@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { createSelfRequest } from '../../../api/user';
+import AppStorage, { STORAGE_KEYS } from '../../../lib/storage';
 import {
   PersonalizationDTO,
   personalizationSchema,
@@ -33,7 +33,9 @@ const useNameScreen = () => {
 
     setData({ firstName });
 
-    const user = JSON.parse((await AsyncStorage.getItem('user'))!);
+    const user = await AppStorage.get<{ email: string }>(STORAGE_KEYS.USER);
+    if (!user) return;
+
     const userData = {
       ...usePersonalizationStore.getState().data,
       email: user.email,
@@ -42,7 +44,7 @@ const useNameScreen = () => {
     const response = await createSelfRequest(userData);
     if (!response.ok) return showToast('Wystąpił nieoczekiwany błąd');
 
-    await AsyncStorage.setItem('user', JSON.stringify(response.data));
+    await AppStorage.set(STORAGE_KEYS.USER, response.data);
     navigation.navigate(PERSONALIZATION_ROUTES.GET_STARTED_SCREEN);
   };
 

@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
+import AppStorage, { STORAGE_KEYS } from '../../lib/storage';
 import useLoadingStore from '../../views/common/loader/loaderStore';
 
 const useInitialFlowNavigator = () => {
@@ -10,19 +10,15 @@ const useInitialFlowNavigator = () => {
     const checkOnboarding = async () => {
       setIsLoading(true);
 
-      try {
-        const hasCompletedOnboarding = await AsyncStorage.getItem(
-          'hasCompletedOnboarding',
-        );
+      const hasCompletedOnboarding = await AppStorage.get(
+        STORAGE_KEYS.ONBOARDING_COMPLETED,
+      );
 
-        if (hasCompletedOnboarding === null) {
-          setIsFirstLaunch(true);
-        }
-      } catch (err) {
-        console.error('Error checking onboarding status', err);
-      } finally {
-        setIsLoading(false);
+      if (hasCompletedOnboarding === null) {
+        setIsFirstLaunch(true);
       }
+
+      setIsLoading(false);
     };
 
     checkOnboarding();

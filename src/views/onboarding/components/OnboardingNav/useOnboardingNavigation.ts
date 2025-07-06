@@ -1,6 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import AppStorage, { STORAGE_KEYS } from '../../../../lib/storage';
 import { InitialFlowNavigationProp } from '../../../../navigation/initialFlow';
 import {
   INITIAL_FLOW_ROUTES,
@@ -21,7 +21,7 @@ const useOnboardingNav = () => {
     if (nextScreenNo >= routeList.length)
       return navigation.navigate(INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR);
 
-    await AsyncStorage.setItem('hasCompletedOnboarding', 'true');
+    await AppStorage.set(STORAGE_KEYS.ONBOARDING_COMPLETED, true);
     navigation.navigate(INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR, {
       screen: routeList[nextScreenNo],
     });
@@ -29,7 +29,7 @@ const useOnboardingNav = () => {
   };
 
   const handleSkipPress = async () => {
-    await AsyncStorage.setItem('hasCompletedOnboarding', 'true');
+    await AppStorage.set(STORAGE_KEYS.ONBOARDING_COMPLETED, true);
     navigation.navigate(INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR);
   };
 
