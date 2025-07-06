@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import AppStorage, { STORAGE_KEYS } from '../../lib/storage';
-import useLoadingStore from '../../views/common/loader/loaderStore';
 
 const useInitialFlowNavigator = () => {
   const [isFirstLaunch, setIsFirstLaunch] = useState(false);
-  const { setIsLoading } = useLoadingStore();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const checkOnboarding = async () => {
@@ -24,7 +23,7 @@ const useInitialFlowNavigator = () => {
     checkOnboarding();
   }, []);
 
-  return { isFirstLaunch };
+  return { isFirstLaunch, isLoading };
 };
 
 export default useInitialFlowNavigator;

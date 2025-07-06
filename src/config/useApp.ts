@@ -1,11 +1,10 @@
 import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { hideSplash, prepareSplash } from '../lib/SplashManager';
 
 const useApp = () => {
-  SplashScreen.preventAutoHideAsync();
-
-  const [loaded, error] = useFonts({
+  const [appIsReady, setAppIsReady] = useState(false);
+  const [fontsLoaded, fontsError] = useFonts({
     'LexendDeca-Light': require('../assets/fonts/LexendDeca-Light.ttf'),
     'LexendDeca-Regular': require('../assets/fonts/LexendDeca-Regular.ttf'),
     'LexendDeca-SemiBold': require('../assets/fonts/LexendDeca-SemiBold.ttf'),
@@ -13,14 +12,24 @@ const useApp = () => {
   });
 
   useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
+    const prepare = async () => {
+      await prepareSplash();
+
+      if (!fontsLoaded && !fontsError) return;
+
+      setAppIsReady(true);
+    };
+
+    prepare();
+  }, [fontsLoaded, fontsError]);
+
+  const onLayoutRootView = async () => {
+    if (appIsReady) {
+      await hideSplash();
     }
-  }, [loaded, error]);
+  };
 
-  const isBroken = !loaded && !error;
-
-  return { isBroken };
+  return { appIsReady, onLayoutRootView };
 };
 
 export default useApp;
