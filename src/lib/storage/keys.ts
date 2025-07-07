@@ -1,6 +1,7 @@
 export enum STORAGE_KEYS {
   USER = 'user',
   ONBOARDING_COMPLETED = 'onboarding_completed',
+  IS_AUTH = 'is_auth',
   ACCESS_TOKEN = 'access_token',
   REFRESH_TOKEN = 'refresh_token',
 }
