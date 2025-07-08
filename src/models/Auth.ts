@@ -41,3 +41,12 @@ export type LoginResponseDTO = {
     IdToken: string;
   };
 };
+
+export type RefreshTokensResponseDTO = {
+  AuthenticationResult: {
+    AccessToken: string;
+    ExpiresIn: 3600;
+    TokenType: string;
+    IdToken: string;
+  };
+};

@@ -2,6 +2,7 @@ import { axiosCognitoClient, type RequestResponse } from '../lib/axios';
 import {
   type LoginDTO,
   type LoginResponseDTO,
+  type RefreshTokensResponseDTO,
   type RegisterDTO,
 } from '../models/Auth';
 
@@ -18,6 +19,24 @@ export const signInRequest = async (
       PASSWORD: loginData.password,
     },
     AuthFlow: 'USER_PASSWORD_AUTH',
+    ClientId: process.env.EXPO_PUBLIC_COGNITO_CLIENT_ID,
+  };
+
+  return await axiosCognitoClient.post('/', payload, { headers });
+};
+
+export const refreshTokensRequest = async (
+  refreshToken: string,
+): RequestResponse<RefreshTokensResponseDTO> => {
+  const headers = {
+    'x-amz-target': 'AWSCognitoIdentityProviderService.InitiateAuth',
+  };
+
+  const payload = {
+    AuthParameters: {
+      REFRESH_TOKEN: refreshToken,
+    },
+    AuthFlow: 'REFRESH_TOKEN_AUTH',
     ClientId: process.env.EXPO_PUBLIC_COGNITO_CLIENT_ID,
   };
 
