@@ -1,7 +1,7 @@
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
+import { refreshTokens } from '../auth/authService';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
-import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { useAuthStore } from './authStore';
 
 const useApp = () => {
@@ -19,8 +19,8 @@ const useApp = () => {
     const prepare = async () => {
       await prepareSplash();
 
-      const storedIsAuth = await AppStorage.get<boolean>(STORAGE_KEYS.IS_AUTH);
-      setIsAuth(!!storedIsAuth);
+      const isAuth = await refreshTokens();
+      setIsAuth(!!isAuth);
 
       if (!fontsLoaded && !fontsError) return;
 
