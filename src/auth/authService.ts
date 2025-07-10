@@ -7,6 +7,7 @@ import { getSelfRequest } from '../api/user';
 import { AuthStore } from '../config/authStore';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type LoginDTO } from '../models/Auth';
+import { UserStore } from '../stores/userStore';
 import { getAccessToken, getRefreshToken, saveTokens } from './tokenStorage';
 
 export enum LOGIN_STATE {
@@ -30,6 +31,7 @@ export const login = async (loginData: LoginDTO): Promise<LOGIN_STATE> => {
     return LOGIN_STATE.NEEDS_PERSONALIZATION;
   }
 
+  UserStore.setUser(apiRes.data);
   await AppStorage.set(STORAGE_KEYS.USER, apiRes.data);
   return LOGIN_STATE.AUTHENTICATED;
 };

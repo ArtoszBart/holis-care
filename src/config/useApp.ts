@@ -2,10 +2,14 @@ import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
 import { refreshTokens } from '../auth/authService';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
+import AppStorage, { STORAGE_KEYS } from '../lib/storage';
+import { type User } from '../models/User';
+import { useUserStore } from '../stores/userStore';
 import { useAuthStore } from './authStore';
 
 const useApp = () => {
   const { setIsAuth } = useAuthStore();
+  const { setUser } = useUserStore();
 
   const [appIsReady, setAppIsReady] = useState(false);
   const [fontsLoaded, fontsError] = useFonts({
@@ -21,6 +25,11 @@ const useApp = () => {
 
       const isAuth = await refreshTokens();
       setIsAuth(!!isAuth);
+
+      if (isAuth) {
+        const user = await AppStorage.get<User>(STORAGE_KEYS.USER);
+        if (user) setUser(user);
+      }
 
       if (!fontsLoaded && !fontsError) return;
 
