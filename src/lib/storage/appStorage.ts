@@ -55,8 +55,12 @@ const AppStorage = {
       }
     }
 
+    const keysToRemove = Object.values(STORAGE_KEYS).filter(
+      (key) =>
+        !SECURE_KEYS.has(key) && key !== STORAGE_KEYS.ONBOARDING_COMPLETED,
+    );
     try {
-      await AsyncStorage.clear();
+      await AsyncStorage.multiRemove(keysToRemove);
     } catch (e) {
       console.error('Storage.removeAll AsyncStorage error:', e);
     }
