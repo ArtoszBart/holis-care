@@ -45,6 +45,22 @@ const AppStorage = {
       console.error(`Storage.removeItem error for key "${key}":`, e);
     }
   },
+
+  async removeAll(): Promise<void> {
+    for (const key of SECURE_KEYS) {
+      try {
+        await SecureStore.deleteItemAsync(key);
+      } catch (e) {
+        console.error('Storage.removeAll SecureStore error:', e);
+      }
+    }
+
+    try {
+      await AsyncStorage.clear();
+    } catch (e) {
+      console.error('Storage.removeAll AsyncStorage error:', e);
+    }
+  },
 };
 
 const isSecureKey = (key: STORAGE_KEYS): boolean => {

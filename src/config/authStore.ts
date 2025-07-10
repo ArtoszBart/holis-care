@@ -13,3 +13,7 @@ export const useAuthStore = create<IAuthStore>((set) => ({
     await AppStorage.set(STORAGE_KEYS.IS_AUTH, isAuth);
   },
 }));
+
+export const AuthStore = {
+  unauth: () => useAuthStore.getState().setIsAuth(false),
+};

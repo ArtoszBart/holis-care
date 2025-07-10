@@ -6,21 +6,11 @@ export const saveTokens = async (access: string, refresh: string) => {
 };
 
 export const getAccessToken = async () => {
-  const accessToken = await AppStorage.get<string>(STORAGE_KEYS.ACCESS_TOKEN);
-  if (!accessToken) {
-    // TODO: unauth
-  }
-
-  return accessToken;
+  return await AppStorage.get<string>(STORAGE_KEYS.ACCESS_TOKEN);
 };
 
 export const getRefreshToken = async () => {
-  const refreshToken = await AppStorage.get<string>(STORAGE_KEYS.REFRESH_TOKEN);
-  if (!refreshToken) {
-    // TODO: unauth
-  }
-
-  return refreshToken;
+  return await AppStorage.get<string>(STORAGE_KEYS.REFRESH_TOKEN);
 };
 
 export const clearTokens = async () => {

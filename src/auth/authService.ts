@@ -4,14 +4,10 @@ import {
   signOutRequest,
 } from '../api/auth';
 import { getSelfRequest } from '../api/user';
+import { AuthStore } from '../config/authStore';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type LoginDTO } from '../models/Auth';
-import {
-  clearTokens,
-  getAccessToken,
-  getRefreshToken,
-  saveTokens,
-} from './tokenStorage';
+import { getAccessToken, getRefreshToken, saveTokens } from './tokenStorage';
 
 export enum LOGIN_STATE {
   NEEDS_PERSONALIZATION = 'Needs personalization',
@@ -43,7 +39,7 @@ export const refreshTokens = async (): Promise<string | undefined> => {
 
   const cognitoRes = await refreshTokensRequest(refreshToken!);
   if (!cognitoRes.ok) {
-    // TODO: unauth
+    await unauth();
     return;
   }
 
@@ -59,9 +55,15 @@ export const logout = async () => {
   const response = await signOutRequest(accessToken!);
 
   if (response.ok) {
-    await clearTokens();
+    await unauth();
     return true;
   }
 
+  console.error('Error while logging out:', response);
   return false;
+};
+
+const unauth = async () => {
+  AuthStore.unauth();
+  await AppStorage.removeAll();
 };
