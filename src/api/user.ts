@@ -3,7 +3,6 @@ import { type PersonalizationDTO, type User } from '../models/User';
 
 export const getSelfRequest = async () => {
   const response = await axiosApiClient.get<User>('/users/self');
-
   if (response.ok) {
     response.data = {
       ...response.data,
@@ -16,4 +15,16 @@ export const getSelfRequest = async () => {
 
 export const createSelfRequest = async (userData: PersonalizationDTO) => {
   return await axiosApiClient.post<User>('/users/self', userData);
+};
+
+export const updateSelfRequest = async (userData: User) => {
+  const response = await axiosApiClient.put<User>('/users/self', userData);
+  if (response.ok) {
+    response.data = {
+      ...response.data,
+      dateOfBirth: new Date(response.data.dateOfBirth),
+    };
+  }
+
+  return response;
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import { MAX_BIRTH_DATE } from '../../constants/age';
 import { COLORS } from '../../constants/colors';
-import { type UserDTO, userSchema } from '../../models/User';
+import { UserForm, userSchema } from '../../models/User';
 import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
@@ -28,7 +28,7 @@ export default function AccountSettings() {
           textStyle={styles.linkButton}
         />
 
-        <Form<UserDTO>
+        <Form<UserForm>
           schema={userSchema}
           submitLabel='Zapisz'
           onSubmit={hook.onSaveButtonPress}

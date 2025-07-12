@@ -18,28 +18,37 @@ export type User = {
 
 export const userSchema = z.object({
   firstName: z
-    .string({ required_error: 'Imię jest wymagane' })
+    .string({ required_error: 'Imię nie może być puste' })
     .min(1, { message: 'Imię nie może być puste' }),
   lastName: z
-    .string({ required_error: 'Nazwisko jest wymagane' })
+    .string({
+      required_error: 'Nazwisko nie może być puste',
+      invalid_type_error: 'Nazwisko nie może być puste',
+    })
     .min(1, { message: 'Nazwisko nie może być puste' }),
   dateOfBirth: z
-    .date({ required_error: 'Data urodzenia jest wymagana' })
+    .date({ required_error: 'Data urodzenia nie może być pusta' })
     .max(MAX_BIRTH_DATE, { message: `Musisz mieć co najmniej ${MIN_AGE} lat` }),
   email: z
-    .string({ required_error: 'Adres e-mail jest wymagany' })
+    .string({ required_error: 'Adres e-mail nie może być pusty' })
     .email('Adres e-mail jest niepoprawny'),
   phoneNumber: z
-    .string({ required_error: 'Numer telefonu jest wymagany' })
+    .string({
+      required_error: 'Numer telefonu nie może być pusty',
+      invalid_type_error: 'Numer telefonu nie może być pusty',
+    })
     .regex(/^(?:\+48|0048)?[-\s]?\d{3}[-\s]?\d{3}[-\s]?\d{3}$/, {
       message: 'Numer telefonu niepoprawny',
     }),
   city: z
-    .string({ required_error: 'Miejscowość jest wymagana' })
+    .string({
+      required_error: 'Miejscowość nie może być pusta',
+      invalid_type_error: 'Miejscowość nie może być pusta',
+    })
     .min(1, { message: 'Miejscowość nie może być pusta' }),
 });
 
-export type UserDTO = z.infer<typeof userSchema>;
+export type UserForm = z.infer<typeof userSchema>;
 
 export type PersonalizationDTO = {
   email: string;
