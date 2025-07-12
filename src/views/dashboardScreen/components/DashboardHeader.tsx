@@ -24,9 +24,9 @@ export default function DashboardHeader() {
         />
 
         <CustomText style={styles.greetings}>
-          Cześć{' '}
+          Cześć
           <CustomText style={{ fontWeight: 700, color: COLORS.primary600 }}>
-            {user?.firstName}!
+            {user?.firstName ? ` ${user.firstName}` : ''}!
           </CustomText>{' '}
           👋
         </CustomText>
