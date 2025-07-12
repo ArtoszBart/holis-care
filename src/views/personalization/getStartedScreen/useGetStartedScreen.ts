@@ -2,7 +2,7 @@ import { usePreventRemove } from '@react-navigation/native';
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 
-import { useAuthStore } from '../../../config/authStore';
+import { useAuthStore } from '../../../stores/authStore';
 
 const useGetStartedScreen = () => {
   usePreventRemove(true, () => {});

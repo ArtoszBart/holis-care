@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { emailConfirmationRequest } from '../../../api/auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
 import { AUTH_ROUTES } from '../../../navigation/routes';
-import useLoadingStore from '../../common/loader/loaderStore';
+import useLoadingStore from '../../../stores/loaderStore';
 import { showToast, TOAST_TYPE } from '../../common/toast';
 
 const useConfirmationScreen = ({ userEmail }: { userEmail: string }) => {

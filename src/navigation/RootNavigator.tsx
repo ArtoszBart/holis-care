@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAuthStore } from '../config/authStore';
+import { useAuthStore } from '../stores/authStore';
 import { InitialFlowNavigator } from './initialFlow';
 import { MainNavigator } from './main';
 import { ROOT_ROUTES } from './routes';

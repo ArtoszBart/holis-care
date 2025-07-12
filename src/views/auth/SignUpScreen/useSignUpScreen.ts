@@ -3,7 +3,7 @@ import { signUpRequest } from '../../../api/auth';
 import { type RegisterDTO } from '../../../models/Auth';
 import { type AuthNavigationProp } from '../../../navigation/auth';
 import { AUTH_ROUTES } from '../../../navigation/routes';
-import useLoadingStore from '../../common/loader/loaderStore';
+import useLoadingStore from '../../../stores/loaderStore';
 import { showToast } from '../../common/toast';
 
 const useSignUpScreen = () => {

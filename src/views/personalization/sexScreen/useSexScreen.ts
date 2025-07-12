@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
-import { usePersonalizationStore } from '../onboardingStore';
+import { usePersonalizationStore } from '../../../stores/onboardingStore';
 
 export enum SEX {
   FEMALE = 'FEMALE',

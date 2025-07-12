@@ -1,10 +1,10 @@
 import { StackActions, useNavigation } from '@react-navigation/native';
 import { login, LOGIN_STATE } from '../../../auth/authService';
-import { useAuthStore } from '../../../config/authStore';
 import { type LoginDTO } from '../../../models/Auth';
 import { type InitialFlowNavigationProp } from '../../../navigation/initialFlow';
 import { AUTH_ROUTES, INITIAL_FLOW_ROUTES } from '../../../navigation/routes';
-import useLoadingStore from '../../common/loader/loaderStore';
+import { useAuthStore } from '../../../stores/authStore';
+import useLoadingStore from '../../../stores/loaderStore';
 import { showToast } from '../../common/toast';
 
 const useSignInScreen = () => {

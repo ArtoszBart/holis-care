@@ -8,13 +8,13 @@ import {
 } from '../../models/Appointment';
 import { type RecommendationFormScreenProps } from '../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../navigation/routes';
+import useLoadingStore from '../../stores/loaderStore';
 import { toPayloadISODate } from '../../utils/dateTime';
 import Badge from '../common/Badge';
 import CustomText from '../common/CustomText';
 import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
-import useLoadingStore from '../common/loader/loaderStore';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 export default function RecommendationFormScreen({

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { type PersonalizationDTO } from '../../models/User';
+import { type PersonalizationDTO } from '../models/User';
 
 interface PersonalizationStore {
   data: Partial<PersonalizationDTO>;

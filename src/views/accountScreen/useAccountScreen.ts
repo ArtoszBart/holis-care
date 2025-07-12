@@ -1,5 +1,5 @@
 import { logout } from '../../auth/authService';
-import useLoadingStore from '../common/loader/loaderStore';
+import useLoadingStore from '../../stores/loaderStore';
 import { showToast } from '../common/toast';
 
 const useAccountScreen = () => {

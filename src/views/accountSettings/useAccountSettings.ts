@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { type UserDTO } from '../../models/User';
 import { type AccountNavigationProp } from '../../navigation/account';
+import useLoadingStore from '../../stores/loaderStore';
 import { useUserStore } from '../../stores/userStore';
 import AsyncAlert from '../common/AsyncAlert';
-import useLoadingStore from '../common/loader/loaderStore';
 
 const useAccountSettings = () => {
   const navigation = useNavigation<AccountNavigationProp>();

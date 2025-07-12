@@ -1,8 +1,8 @@
 import LottieView from 'lottie-react-native';
 import React, { useEffect, useRef } from 'react';
 import { BackHandler, Dimensions, StyleSheet } from 'react-native';
+import useLoadingStore from '../../../stores/loaderStore';
 import BlurContainer from '../BlurContainer';
-import useLoadingStore from './loaderStore';
 
 const loaderSize = Dimensions.get('window').width * 0.4;
 

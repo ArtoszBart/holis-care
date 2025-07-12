@@ -8,8 +8,8 @@ import {
 } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
+import { usePersonalizationStore } from '../../../stores/onboardingStore';
 import { showToast } from '../../common/toast';
-import { usePersonalizationStore } from '../onboardingStore';
 
 const useNameScreen = () => {
   const navigation = useNavigation<PersonalizationNavigationProp>();

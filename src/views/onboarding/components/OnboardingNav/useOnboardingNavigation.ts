@@ -6,7 +6,7 @@ import {
   INITIAL_FLOW_ROUTES,
   ONBOARDING_ROUTES,
 } from '../../../../navigation/routes';
-import useOnboardingNavStore from './store';
+import useOnboardingNavStore from '../../../../stores/onboardingNavStore';
 
 const routeList = Object.values(ONBOARDING_ROUTES);
 

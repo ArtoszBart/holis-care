@@ -4,9 +4,9 @@ import {
   signOutRequest,
 } from '../api/auth';
 import { getSelfRequest } from '../api/user';
-import { AuthStore } from '../config/authStore';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type LoginDTO } from '../models/Auth';
+import { AuthStore } from '../stores/authStore';
 import { UserStore } from '../stores/userStore';
 import { getAccessToken, getRefreshToken, saveTokens } from './tokenStorage';
 

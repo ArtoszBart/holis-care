@@ -4,8 +4,8 @@ import { refreshTokens } from '../auth/authService';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type User } from '../models/User';
+import { useAuthStore } from '../stores/authStore';
 import { useUserStore } from '../stores/userStore';
-import { useAuthStore } from './authStore';
 
 const useApp = () => {
   const { setIsAuth } = useAuthStore();
