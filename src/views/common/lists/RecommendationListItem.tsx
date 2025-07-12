@@ -57,7 +57,7 @@ export default function RecommendationListItem({
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
     padding: 16,
     borderRadius: 8,
     gap: 4,
@@ -68,15 +68,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 700,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
   period: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     fontSize: 12,
   },
   additionalInfo: {
     marginTop: 5,
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
     fontSize: 12,
   },
   actionButton: {
@@ -85,10 +85,10 @@ const styles = StyleSheet.create({
   },
   summaryActionButtonIcon: {
     fontSize: 22,
-    color: COLORS.typo4,
+    color: COLORS.TYPO_4,
   },
   actionButtonIcon: {
     fontSize: 25,
-    color: COLORS.primary600,
+    color: COLORS.ACCENT,
   },
 });

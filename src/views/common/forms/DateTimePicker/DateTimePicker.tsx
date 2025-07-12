@@ -73,10 +73,10 @@ export const styles = StyleSheet.create({
     paddingRight: 4,
   },
   label: {
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
   },
   errorText: {
-    color: COLORS.errorRed,
+    color: COLORS.ERROR_RED,
     marginTop: 2,
     paddingHorizontal: 12,
   },

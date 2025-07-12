@@ -47,7 +47,7 @@ export default function AndroidPicker({
         {
           justifyContent: label ? 'space-between' : 'center',
           paddingLeft: label ? 12 : 0,
-          borderColor: !hasError ? 'transparent' : COLORS.errorRed,
+          borderColor: !hasError ? 'transparent' : COLORS.ERROR_RED,
         },
       ]}
     >
@@ -74,6 +74,6 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
   },
   label: {
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
   },
 });

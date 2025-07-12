@@ -59,16 +59,16 @@ export default function AccountScreen() {
 
 const styles = StyleSheet.create({
   nextIcon: {
-    color: COLORS.typo2,
+    color: COLORS.TYPO_2,
     fontSize: 24,
   },
   linkIcon: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     fontSize: 16,
     margin: 4,
   },
   signOutIcon: {
-    color: COLORS.typo4,
+    color: COLORS.TYPO_4,
     fontSize: 24,
   },
 });

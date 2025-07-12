@@ -1,11 +1,11 @@
 import { z } from 'zod';
-import { ColorValue } from '../constants/colors';
+import { COLORS } from '../constants/colors';
 import { Facility } from './Facility';
 
 export type Appointment = {
   id: string;
   date: Date;
-  badgeColor: ColorValue;
+  badgeColor: COLORS;
   type: string;
   title: string;
   doctorName?: string;

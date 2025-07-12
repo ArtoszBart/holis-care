@@ -19,7 +19,7 @@ export default function OnboardingNavigation() {
               styles.circle,
               {
                 backgroundColor:
-                  hook.currentNo === idx ? COLORS.primary600 : COLORS.orange400,
+                  hook.currentNo === idx ? COLORS.ACCENT : COLORS.ACCENT_LIGHT,
               },
             ]}
           />
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 10,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
   },
   navButton: {
     display: 'flex',
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 25,
-    backgroundColor: COLORS.orange400,
+    backgroundColor: COLORS.ACCENT_LIGHT,
   },
 });

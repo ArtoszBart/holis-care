@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 700,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     marginBottom: 10,
   },
   buttonContainer: {

@@ -1,8 +1,8 @@
-import { ColorValue } from '../constants/colors';
+import { COLORS } from '../constants/colors';
 
 export type Recommendation = {
   id: string;
-  badgeColor: ColorValue;
+  badgeColor: COLORS;
   type: string;
   title: string;
   period: string;

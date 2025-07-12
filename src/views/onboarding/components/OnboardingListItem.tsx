@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 14,
-    color: COLORS.typo2,
+    color: COLORS.TYPO_2,
     marginLeft: 4,
   },
 });

@@ -18,7 +18,7 @@ export default function TipListItemSkeleton({ summary }: Props) {
           <TextSkeleton width='75%' />
         </View>
 
-        <TextSkeleton width='50%' color={COLORS.skeletonPrimary} />
+        <TextSkeleton width='50%' color={COLORS.SKELETON_ACCENT} />
       </View>
 
       <Icon icon={ICONS.HEART_OUTLINE} style={styles.heartIcon} />
@@ -29,7 +29,7 @@ export default function TipListItemSkeleton({ summary }: Props) {
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: COLORS.skeletonBackground,
+    backgroundColor: COLORS.SKELETON_BACKGROUND,
     padding: 16,
     borderRadius: 8,
     gap: 14,
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
   },
   heartIcon: {
     fontSize: 22,
-    color: COLORS.skeletonText,
+    color: COLORS.SKELETON_TEXT,
   },
 });

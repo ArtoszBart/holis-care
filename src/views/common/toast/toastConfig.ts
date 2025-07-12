@@ -6,11 +6,11 @@ import { TOAST_TYPE, type ToastConfigProps } from './types';
 
 const toastTypeConfig: Record<TOAST_TYPE, ToastConfigProps> = {
   success: {
-    accentColor: COLORS.successGreen,
+    accentColor: COLORS.SUCCESS_GREEN,
     icon: ICONS.CHECK,
   },
   error: {
-    accentColor: COLORS.errorRed,
+    accentColor: COLORS.ERROR_RED,
     icon: ICONS.ERROR,
   },
 };

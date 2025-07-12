@@ -21,7 +21,7 @@ export default function BottomTabsMainButton({ icon, size, focused }: Props) {
         {
           height: bgSize,
           width: bgSize,
-          borderColor: focused ? COLORS.orange400 : '#fff',
+          borderColor: focused ? COLORS.ACCENT_LIGHT : COLORS.MAIN,
         },
       ]}
     >
@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 5,
     borderRadius: 50,
-    backgroundColor: COLORS.primary600,
+    backgroundColor: COLORS.ACCENT,
     justifyContent: 'center',
     alignItems: 'center',
   },
   icon: {
-    color: '#fff',
+    color: COLORS.MAIN,
   },
 });

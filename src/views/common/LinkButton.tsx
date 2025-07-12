@@ -35,7 +35,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     fontSize: 14,
     textDecorationLine: 'underline',
   },

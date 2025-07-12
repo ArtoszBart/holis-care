@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
+import { COLORS } from '../../../constants/colors';
 import CustomText from '../../common/CustomText';
 
 interface IOnboardingNavButton {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   buttonText: {
-    color: '#000',
+    color: COLORS.DEFAULT_TEXT,
     fontSize: 16,
     fontWeight: 'bold',
   },

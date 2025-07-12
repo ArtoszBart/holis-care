@@ -77,7 +77,7 @@ export default function AppointmentListItem({ appointment, summary }: Props) {
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
     padding: 16,
     borderRadius: 8,
     gap: 2,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     width: 2,
-    backgroundColor: COLORS.babyBlue,
+    backgroundColor: COLORS.ACCENT_2,
     marginHorizontal: 10,
   },
   mainContainer: {
@@ -96,10 +96,10 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontWeight: 700,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
   normalText: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     fontSize: 12,
   },
   additionalInfoContainer: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   additionalInfo: {
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
     fontSize: 12,
   },
   actionButton: {
@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
   },
   summaryActionButtonIcon: {
     fontSize: 22,
-    color: COLORS.typo4,
+    color: COLORS.TYPO_4,
   },
   actionButtonIcon: {
     fontSize: 25,
-    color: COLORS.primary600,
+    color: COLORS.ACCENT,
   },
 });

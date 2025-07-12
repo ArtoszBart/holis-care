@@ -62,10 +62,10 @@ export const headerStyles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
   title: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     fontWeight: 700,
   },
 });

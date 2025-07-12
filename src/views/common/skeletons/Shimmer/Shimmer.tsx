@@ -24,9 +24,9 @@ export default function Shimmer({ height, width }: IProps) {
       >
         <LinearGradient
           colors={[
-            COLORS.skeletonShimmer1,
-            COLORS.skeletonShimmer2,
-            COLORS.skeletonShimmer1,
+            COLORS.TRANSPARENT,
+            COLORS.MAIN_OPACITY_2,
+            COLORS.TRANSPARENT,
           ]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}

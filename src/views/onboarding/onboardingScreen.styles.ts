@@ -14,11 +14,11 @@ export const onboardingScreenStyles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: 700,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     marginBottom: 10,
   },
   paragraph: {
     fontSize: 14,
-    color: COLORS.typo2,
+    color: COLORS.TYPO_2,
   },
 });

@@ -21,6 +21,6 @@ export default function CustomText({ style, ...props }: TextProps) {
 
 const styles = StyleSheet.create({
   text: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
 });

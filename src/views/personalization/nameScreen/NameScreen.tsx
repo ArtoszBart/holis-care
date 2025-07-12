@@ -45,7 +45,7 @@ export default function NameScreen() {
         <Switch
           value={isConsentGiven}
           onValueChange={setConsentGiven}
-          trackColor={{ true: COLORS.primary600 }}
+          trackColor={{ true: COLORS.ACCENT }}
           thumbColor='white'
         />
       </View>

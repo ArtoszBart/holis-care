@@ -29,8 +29,8 @@ export default function MainNavigator() {
         header: ({ options }) => <Header title={options.title} />,
         headerTransparent: true,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: COLORS.primary600,
-        tabBarInactiveTintColor: COLORS.typo4,
+        tabBarActiveTintColor: COLORS.ACCENT,
+        tabBarInactiveTintColor: COLORS.TYPO_4,
         tabBarStyle: { ...styles.tabBar, height: 65 + insetsBottom },
       }}
     >
@@ -101,10 +101,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     borderWidth: 0,
-    borderColor: '#f3f3f3',
+    borderColor: COLORS.TAB_NAVIGATOR,
 
     paddingTop: 12,
-    backgroundColor: '#f3f3f3',
+    backgroundColor: COLORS.TAB_NAVIGATOR,
     justifyContent: 'center',
   },
 });

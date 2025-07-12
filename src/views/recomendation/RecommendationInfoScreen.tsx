@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     width: '100%',
     borderRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
     padding: 10,
     gap: 10,
   },
@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20,
     fontWeight: 700,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
   additionalInfo: {
     alignSelf: 'flex-end',
     fontSize: 12,
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
   },
   contentWrapper: {
     gap: 10,
@@ -84,17 +84,17 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     borderRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
     padding: 10,
     gap: 10,
   },
   containerTitle: {
     fontSize: 16,
     fontWeight: 600,
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
   text: {
-    color: COLORS.typo2,
+    color: COLORS.TYPO_2,
   },
   button: {
     marginTop: 'auto',

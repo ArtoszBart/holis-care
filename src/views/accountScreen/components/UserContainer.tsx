@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   userSubtitle: {
     fontSize: 12,
-    color: COLORS.typo2,
+    color: COLORS.TYPO_2,
   },
   profileImage: {
     width: 50,

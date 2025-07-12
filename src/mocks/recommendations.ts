@@ -4,7 +4,7 @@ import { Recommendation } from '../models/Recommendation';
 export const recommendations: Recommendation[] = [
   {
     id: '1',
-    badgeColor: COLORS.purple,
+    badgeColor: COLORS.PURPLE,
     type: 'Badanie',
     title: 'Ginekolog',
     period: 'co 12 miesięcy',
@@ -16,7 +16,7 @@ export const recommendations: Recommendation[] = [
   },
   {
     id: '2',
-    badgeColor: COLORS.purple,
+    badgeColor: COLORS.PURPLE,
     type: 'Badanie',
     title: 'Morfologia',
     period: 'co 6 miesięcy',
@@ -28,7 +28,7 @@ export const recommendations: Recommendation[] = [
   },
   {
     id: '3',
-    badgeColor: COLORS.yellow,
+    badgeColor: COLORS.YELLOW,
     type: 'Szczepienie',
     title: 'Szczepienie przeciw grypie',
     period: 'co roku (jesień)',
@@ -40,7 +40,7 @@ export const recommendations: Recommendation[] = [
   },
   {
     id: '4',
-    badgeColor: COLORS.red,
+    badgeColor: COLORS.RED,
     type: 'Konsultacja online',
     title: 'Internista',
     period: 'jednorazowo',

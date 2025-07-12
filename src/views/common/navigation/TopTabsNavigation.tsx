@@ -30,7 +30,7 @@ export default function TopTabsNavigation<T extends string>({
             styles.tab,
             {
               backgroundColor:
-                key === activeTab ? COLORS.primary600 : 'transparent',
+                key === activeTab ? COLORS.ACCENT : 'transparent',
             },
           ]}
         >
@@ -40,7 +40,7 @@ export default function TopTabsNavigation<T extends string>({
           <CustomText
             style={[
               styles.text,
-              { color: key === activeTab ? 'white' : COLORS.primary600 },
+              { color: key === activeTab ? 'white' : COLORS.ACCENT },
             ]}
           >
             {label}
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: '80%',
     borderWidth: 1,
     borderRadius: 100,
-    borderColor: COLORS.primary600,
+    borderColor: COLORS.ACCENT,
     overflow: 'hidden',
   },
   tab: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { COLORS } from '../../../constants/colors';
 import CustomText from '../CustomText';
 import { Icon } from '../icon';
 import { type IToastProps } from './types';
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderRadius: 999,
-    backgroundColor: '#f5f5f5f5',
+    backgroundColor: COLORS.TOAST_BACKGROUND,
     paddingVertical: 12,
     paddingHorizontal: 16,
     flexDirection: 'row',

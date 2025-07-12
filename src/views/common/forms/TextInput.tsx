@@ -33,7 +33,7 @@ export default function TextInput({
         style={[
           styles.container,
           {
-            borderColor: !errorMessage ? COLORS.stroke : COLORS.errorRed,
+            borderColor: !errorMessage ? COLORS.BORDER : COLORS.ERROR_RED,
           },
         ]}
       >
@@ -43,10 +43,10 @@ export default function TextInput({
             style={[styles.text, { fontFamily: getFont() }]}
             secureTextEntry={isDotted}
             clearButtonMode={secureTextEntry ? 'never' : 'always'}
-            cursorColor={COLORS.primary600}
-            selectionColor={COLORS.primary600}
+            cursorColor={COLORS.ACCENT}
+            selectionColor={COLORS.ACCENT}
             clearTextOnFocus={secureTextEntry}
-            placeholderTextColor={COLORS.stroke}
+            placeholderTextColor={COLORS.BORDER}
             defaultValue={defaultValue}
             {...otherProps}
           />
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
     borderWidth: 1,
     borderRadius: 6,
     flexDirection: 'row',
@@ -84,22 +84,22 @@ const styles = StyleSheet.create({
   },
   label: {
     marginRight: 5,
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
   },
   textContainer: {
     flexGrow: 1,
   },
   text: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
     paddingVertical: 12,
   },
   icon: {
     marginRight: 4,
-    color: COLORS.typo4,
+    color: COLORS.TYPO_4,
     fontSize: 16,
   },
   errorText: {
-    color: COLORS.errorRed,
+    color: COLORS.ERROR_RED,
     marginTop: 2,
     paddingHorizontal: 13,
   },

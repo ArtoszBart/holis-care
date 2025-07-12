@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   linkButton: {
-    color: COLORS.primary600,
+    color: COLORS.ACCENT,
     fontSize: 16,
     fontWeight: 600,
   },

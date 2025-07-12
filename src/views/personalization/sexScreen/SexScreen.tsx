@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: COLORS.typo2,
+    color: COLORS.TYPO_2,
   },
   buttonContainer: {
     marginTop: 'auto',

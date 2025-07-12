@@ -1,6 +1,7 @@
 import { ImageBackground } from 'expo-image';
 import React from 'react';
 import { StyleSheet, View, type ViewStyle } from 'react-native';
+import { COLORS } from '../../../constants/colors';
 import usePageWrapper from './usePageWrapper';
 
 interface Props {
@@ -40,7 +41,7 @@ export default function PageWrapper({
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
   },
   container: {
     flex: 1,

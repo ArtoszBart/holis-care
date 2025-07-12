@@ -24,7 +24,7 @@ export default function SummaryList<T>({
         <LinkButton
           label='Zobacz wszystkie'
           onPress={onSeeAllPress}
-          textStyle={{ color: COLORS.primary600 }}
+          textStyle={{ color: COLORS.ACCENT }}
         />
       </View>
       <FlatList

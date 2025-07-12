@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
-import { COLORS, ColorValue } from '../../constants/colors';
+import { COLORS } from '../../constants/colors';
 import CustomText from './CustomText';
 import { Icon, ICONS } from './icon';
 
 interface Props {
-  color: ColorValue;
+  color: COLORS;
   label: string;
 }
 
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   badgeText: {
-    color: COLORS.typo4,
+    color: COLORS.TYPO_4,
     fontSize: 12,
   },
 });

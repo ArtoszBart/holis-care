@@ -1,6 +1,7 @@
 import { useNavigation, usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { COLORS } from '../../constants/colors';
 import { appointments } from '../../mocks/appointments';
 import { recommendations } from '../../mocks/recommendations';
 import { tips } from '../../mocks/tips';
@@ -23,7 +24,7 @@ export default function DashboardScreen() {
     <PageWrapper style={styles.wrapper} noHeader>
       <DashboardHeader />
 
-      <BlurContainer intensity={30} backgroundColor='#fff5'>
+      <BlurContainer intensity={30} backgroundColor={COLORS.MAIN_OPACITY_3}>
         <ScrollView contentContainerStyle={{ paddingBottom: 15 }}>
           <View style={styles.listContainer}>
             <SummaryList

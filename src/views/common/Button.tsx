@@ -30,7 +30,7 @@ export default function Button({
     <TouchableOpacity
       style={[
         styles.button,
-        { backgroundColor: !invertedStyle ? COLORS.primary600 : 'white' },
+        { backgroundColor: !invertedStyle ? COLORS.ACCENT : 'white' },
         style,
       ]}
       onPress={handlePress}
@@ -39,7 +39,7 @@ export default function Button({
       <CustomText
         style={[
           styles.buttonText,
-          { color: !invertedStyle ? 'white' : COLORS.primary600 },
+          { color: !invertedStyle ? 'white' : COLORS.ACCENT },
         ]}
       >
         {label}
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     padding: 10,
-    borderColor: COLORS.primary600,
+    borderColor: COLORS.ACCENT,
     borderWidth: 2,
     borderRadius: 6,
     flexShrink: 1,

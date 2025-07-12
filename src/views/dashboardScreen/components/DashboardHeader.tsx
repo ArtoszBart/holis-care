@@ -25,7 +25,7 @@ export default function DashboardHeader() {
 
         <CustomText style={styles.greetings}>
           Cześć
-          <CustomText style={{ fontWeight: 700, color: COLORS.primary600 }}>
+          <CustomText style={{ fontWeight: 700, color: COLORS.ACCENT }}>
             {user?.firstName ? ` ${user.firstName}` : ''}!
           </CustomText>{' '}
           👋
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   bellIcon: {
-    backgroundColor: '#fffa',
+    backgroundColor: COLORS.MAIN_OPACITY_1,
     padding: 10,
     borderRadius: 999,
     fontSize: 24,

@@ -19,7 +19,7 @@ export default function TipListItem({ tip, summary }: Props) {
         <LinkButton
           label={tip.actionText}
           onPress={() => {}}
-          textStyle={{ color: COLORS.primary600 }}
+          textStyle={{ color: COLORS.ACCENT }}
         />
       </View>
       <TouchableOpacity>
@@ -36,7 +36,7 @@ export default function TipListItem({ tip, summary }: Props) {
 const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.MAIN,
     padding: 16,
     borderRadius: 8,
     gap: 14,
@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   title: {
-    color: COLORS.typo1,
+    color: COLORS.TYPO_1,
   },
   heartIcon: {
     fontSize: 22,
-    color: COLORS.typo4,
+    color: COLORS.TYPO_4,
   },
 });

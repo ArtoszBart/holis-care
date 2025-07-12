@@ -30,7 +30,7 @@ export default function IosPicker({
         {
           justifyContent: label ? 'space-between' : 'center',
           paddingLeft: label ? 12 : 0,
-          borderColor: !hasError ? 'transparent' : COLORS.errorRed,
+          borderColor: !hasError ? 'transparent' : COLORS.ERROR_RED,
         },
       ]}
     >
@@ -46,7 +46,7 @@ export default function IosPicker({
               ? 'spinner'
               : 'default'
         }
-        accentColor={COLORS.primary600}
+        accentColor={COLORS.ACCENT}
         onChange={onChange}
       />
     </View>
@@ -64,6 +64,6 @@ export const styles = StyleSheet.create({
     paddingRight: 4,
   },
   label: {
-    color: COLORS.typo3,
+    color: COLORS.TYPO_3,
   },
 });

@@ -5,7 +5,7 @@ export const appointments: Appointment[] = [
   {
     id: '1',
     date: new Date(2030, 2, 26, 9, 30),
-    badgeColor: COLORS.blue,
+    badgeColor: COLORS.BLUE,
     type: 'Wizyta w placówce',
     title: 'Internista',
     doctorName: 'Anna Nowak',
@@ -18,7 +18,7 @@ export const appointments: Appointment[] = [
   {
     id: '2',
     date: new Date(2030, 3, 19, 17, 10),
-    badgeColor: COLORS.purple,
+    badgeColor: COLORS.PURPLE,
     type: 'Badanie',
     title: 'Morfologia krwi',
     facility: {
@@ -30,7 +30,7 @@ export const appointments: Appointment[] = [
   {
     id: '3',
     date: new Date(2025, 3, 19, 17, 10),
-    badgeColor: COLORS.purple,
+    badgeColor: COLORS.PURPLE,
     type: 'Badanie',
     title: 'Morfologia krwi',
     facility: {
@@ -42,7 +42,7 @@ export const appointments: Appointment[] = [
   {
     id: '4',
     date: new Date(2030, 2, 26, 9, 30),
-    badgeColor: COLORS.yellow,
+    badgeColor: COLORS.YELLOW,
     type: 'Szczepienie',
     title: 'Kleszczowe zapalenie mózgu',
     doctorName: 'Jan Kowalski',
@@ -55,7 +55,7 @@ export const appointments: Appointment[] = [
   {
     id: '5',
     date: new Date(2030, 3, 19, 17, 10),
-    badgeColor: COLORS.red,
+    badgeColor: COLORS.RED,
     type: 'Konsultacja Online',
     title: 'Internista',
     doctorName: 'Anna Nowak',
@@ -63,7 +63,7 @@ export const appointments: Appointment[] = [
   {
     id: '6',
     date: new Date(2025, 3, 19, 17, 10),
-    badgeColor: COLORS.red,
+    badgeColor: COLORS.RED,
     type: 'Konsultacja Online',
     title: 'Internista',
     doctorName: 'Anna Nowak',

@@ -1,18 +1,18 @@
 import React from 'react';
 import { type DimensionValue, StyleSheet, View } from 'react-native';
-import { COLORS, ColorValue } from '../../../constants/colors';
+import { COLORS } from '../../../constants/colors';
 import Shimmer from './Shimmer';
 
 interface IProps {
   height?: DimensionValue;
   width?: DimensionValue;
-  color?: ColorValue;
+  color?: COLORS;
 }
 
 export default function TextSkeleton({
   height = 14,
   width = '100%',
-  color = COLORS.skeletonText,
+  color = COLORS.SKELETON_TEXT,
 }: IProps) {
   return (
     <View style={styles.wrapper}>
