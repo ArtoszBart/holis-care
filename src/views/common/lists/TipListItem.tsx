@@ -39,13 +39,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 16,
     borderRadius: 8,
-    width: 284,
-    gap: 4,
+    gap: 14,
   },
   main: {
     flex: 1,
     flexShrink: 1,
-    justifyContent: 'space-between',
     alignItems: 'flex-start',
     gap: 4,
   },
@@ -53,7 +51,6 @@ const styles = StyleSheet.create({
     color: COLORS.typo1,
   },
   heartIcon: {
-    paddingLeft: 10,
     fontSize: 22,
     color: COLORS.typo4,
   },
