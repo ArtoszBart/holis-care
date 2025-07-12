@@ -14,6 +14,11 @@ export const COLORS = Object.freeze({
   babyBlue: '#e5eefb',
   errorRed: '#ff5a5f',
   successGreen: '#4bb543',
+  skeletonBackground: '#e5e5e5',
+  skeletonText: '#cccccc',
+  skeletonPrimary: '#f5cdbd',
+  skeletonShimmer1: '#ffffff00',
+  skeletonShimmer2: '#ffffff7f',
 });
 
 type ColorKey = keyof typeof COLORS;
