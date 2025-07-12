@@ -6,7 +6,7 @@ import LinkButton from '../../common/LinkButton';
 
 interface ISummaryList<T> {
   title: string;
-  items: T[];
+  items: T[] | undefined;
   renderItem: ({ item }: { item: T }) => React.ReactElement;
   onSeeAllPress: VoidFunction;
 }

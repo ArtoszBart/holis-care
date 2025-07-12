@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Animated, LayoutChangeEvent } from 'react-native';
 
 const useShimmer = ({ gradientWidth }: { gradientWidth: number }) => {
-  const animationRef = useRef(new Animated.Value(-gradientWidth)).current;
+  const animationRef = useRef(new Animated.Value(-gradientWidth - 100)).current;
   const [componentWidth, setComponentWidth] = useState(0);
 
   const setWidth = (event: LayoutChangeEvent) => {

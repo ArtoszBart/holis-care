@@ -1,24 +1,25 @@
-import { useNavigation, usePreventRemove } from '@react-navigation/native';
+import { usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { appointments } from '../../mocks/appointments';
 import { recommendations } from '../../mocks/recommendations';
-import { tips } from '../../mocks/tips';
-import { MainNavigationProp } from '../../navigation/main';
+import { type Tip } from '../../models/Tip';
 import { MAIN_ROUTES } from '../../navigation/routes';
 import BlurContainer from '../common/BlurContainer';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import TipListItem from '../common/lists/TipListItem';
+import TipListItemSkeleton from '../common/lists/TipListItemSkeleton';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';
 import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
+import useDashboardScreen from './useDashboardScreen';
 
 export default function DashboardScreen() {
   usePreventRemove(true, () => {});
-  const navigation = useNavigation<MainNavigationProp>();
+  const { isFetching, tips, navigation } = useDashboardScreen();
 
   return (
     <PageWrapper style={styles.wrapper} noHeader>
@@ -42,8 +43,14 @@ export default function DashboardScreen() {
           <View style={styles.listContainer}>
             <SummaryList
               title='Wskazówki zdrowotne'
-              items={tips.filter((tip) => tip.userLiked)}
-              renderItem={({ item }) => <TipListItem tip={item} summary />}
+              items={isFetching ? Array.from({ length: 2 }) : tips}
+              renderItem={({ item }) =>
+                isFetching ? (
+                  <TipListItemSkeleton summary />
+                ) : (
+                  <TipListItem tip={item as Tip} summary />
+                )
+              }
               onSeeAllPress={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
             />
           </View>
