@@ -3,11 +3,11 @@ import { MAX_BIRTH_DATE, MIN_AGE } from '../constants/age';
 
 export type User = {
   firstName: string;
-  lastName: string;
-  birthDate: Date;
+  lastName?: string;
+  dateOfBirth: Date;
   email: string;
-  phoneNumber: string;
-  city: string;
+  phoneNumber?: string;
+  city?: string;
 };
 
 export const userSchema = z.object({
@@ -17,7 +17,7 @@ export const userSchema = z.object({
   lastName: z
     .string({ required_error: 'Nazwisko jest wymagane' })
     .min(1, { message: 'Nazwisko nie może być puste' }),
-  birthDate: z
+  dateOfBirth: z
     .date({ required_error: 'Data urodzenia jest wymagana' })
     .max(MAX_BIRTH_DATE, { message: `Musisz mieć co najmniej ${MIN_AGE} lat` }),
   email: z

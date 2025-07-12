@@ -1,12 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
-import { UserDTO } from '../../models/User';
-import { AccountNavigationProp } from '../../navigation/account';
+import { type UserDTO } from '../../models/User';
+import { type AccountNavigationProp } from '../../navigation/account';
+import { useUserStore } from '../../stores/userStore';
 import AsyncAlert from '../common/AsyncAlert';
 import useLoadingStore from '../common/loader/loaderStore';
 
 const useAccountSettings = () => {
   const navigation = useNavigation<AccountNavigationProp>();
   const { setIsLoading } = useLoadingStore();
+  const { user } = useUserStore();
 
   const onCancelButtonPress = async (): Promise<void> => {
     const confirmed = await AsyncAlert(
@@ -26,7 +28,7 @@ const useAccountSettings = () => {
     }, 3000);
   };
 
-  return { onCancelButtonPress, onSaveButtonPress };
+  return { onCancelButtonPress, onSaveButtonPress, user };
 };
 
 export default useAccountSettings;

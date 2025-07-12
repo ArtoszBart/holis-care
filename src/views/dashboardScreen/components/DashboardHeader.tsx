@@ -1,13 +1,14 @@
 import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-
 import { COLORS } from '../../../constants/colors';
-import { personMock } from '../../../mocks/person';
+import { useUserStore } from '../../../stores/userStore';
 import CustomText from '../../common/CustomText';
 import { Icon, ICONS } from '../../common/icon';
 
 export default function DashboardHeader() {
+  const { user } = useUserStore();
+
   return (
     <View style={styles.header}>
       <Image
@@ -19,13 +20,13 @@ export default function DashboardHeader() {
       <View style={styles.greetingsBox}>
         <Image
           style={styles.profileImage}
-          source={require('../../../mocks/person.png')}
+          source={require('../../../assets/images/profile-default.png')}
         />
 
         <CustomText style={styles.greetings}>
           Cześć{' '}
           <CustomText style={{ fontWeight: 700, color: COLORS.primary600 }}>
-            {personMock.firstName}!
+            {user?.firstName}!
           </CustomText>{' '}
           👋
         </CustomText>

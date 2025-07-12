@@ -1,27 +1,30 @@
 import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import { COLORS } from '../../../constants/colors';
-import { personMock } from '../../../mocks/person';
+import { useUserStore } from '../../../stores/userStore';
 import { getAge, getDisplayDateLong } from '../../../utils/dateTime';
 import CustomText from '../../common/CustomText';
 
 export default function UserContainer() {
+  const { user } = useUserStore();
+
   return (
     <View style={styles.header}>
       <Image
         style={styles.profileImage}
-        source={require('../../../mocks/person.png')}
+        source={require('../../../assets/images/profile-default.png')}
       />
       <View style={styles.userDataContainer}>
         <CustomText style={styles.userTitle}>
-          {personMock.firstName} {personMock.lastName}
+          {user?.firstName ?? '---'} {user?.lastName}
         </CustomText>
-        <CustomText style={styles.userSubtitle}>
-          wiek: {getAge(personMock.birthDate)} (
-          {getDisplayDateLong(personMock.birthDate)})
-        </CustomText>
+        {user?.dateOfBirth && (
+          <CustomText style={styles.userSubtitle}>
+            wiek: {getAge(user.dateOfBirth)} (
+            {getDisplayDateLong(user.dateOfBirth)})
+          </CustomText>
+        )}
       </View>
     </View>
   );

@@ -3,8 +3,7 @@ import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import { MAX_BIRTH_DATE } from '../../constants/age';
 import { COLORS } from '../../constants/colors';
-import { personMock } from '../../mocks/person';
-import { UserDTO, userSchema } from '../../models/User';
+import { type UserDTO, userSchema } from '../../models/User';
 import DateTimePicker from '../common/forms/DateTimePicker';
 import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
@@ -21,7 +20,7 @@ export default function AccountSettings() {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Image
           style={styles.profileImage}
-          source={require('../../mocks/person.png')}
+          source={require('../../assets/images/profile-default.png')}
         />
         <LinkButton
           label='Zmień zdjęcie'
@@ -34,7 +33,7 @@ export default function AccountSettings() {
           submitLabel='Zapisz'
           onSubmit={hook.onSaveButtonPress}
           onCancel={hook.onCancelButtonPress}
-          defaultValues={personMock}
+          defaultValues={hook.user ?? undefined}
           fullScreen
         >
           <TextInput
@@ -56,7 +55,7 @@ export default function AccountSettings() {
             spellCheck
           />
           <DateTimePicker
-            fieldName='birthDate'
+            fieldName='dateOfBirth'
             maxDate={MAX_BIRTH_DATE}
             label='Data urodzenia'
             spinner

@@ -1,8 +1,17 @@
 import { axiosApiClient } from '../lib/axios';
-import { PersonalizationDTO, type User } from '../models/User';
+import { type PersonalizationDTO, type User } from '../models/User';
 
 export const getSelfRequest = async () => {
-  return await axiosApiClient.get<User>('/users/self');
+  const response = await axiosApiClient.get<User>('/users/self');
+
+  if (response.ok) {
+    response.data = {
+      ...response.data,
+      dateOfBirth: new Date(response.data.dateOfBirth),
+    };
+  }
+
+  return response;
 };
 
 export const createSelfRequest = async (userData: PersonalizationDTO) => {

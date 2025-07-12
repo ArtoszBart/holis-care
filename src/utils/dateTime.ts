@@ -35,7 +35,9 @@ export const getDisplayTime = (date: Date): string => {
   });
 };
 
-export const getAge = (birthDate: Date): number => {
+export const getAge = (birthDate: Date): number | null => {
+  if (!birthDate) return null;
+
   const today = new Date();
 
   let age = today.getFullYear() - birthDate.getFullYear();

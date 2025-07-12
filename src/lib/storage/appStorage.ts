@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
+import { reviveDates } from '../../utils/parser';
 import { showToast } from '../../views/common/toast';
 import { SECURE_KEYS, STORAGE_KEYS } from './keys';
 
@@ -26,7 +27,7 @@ const AppStorage = {
         json = await AsyncStorage.getItem(key);
       }
 
-      return json ? (JSON.parse(json) as T) : null;
+      return json ? (JSON.parse(json, reviveDates) as T) : null;
     } catch (e) {
       showToast('Wystąpił nieoczekiwany błąd');
       console.error(`Storage.getItem error for key "${key}":`, e);
