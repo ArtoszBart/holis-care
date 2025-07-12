@@ -1,6 +1,11 @@
 import { z } from 'zod';
 import { MAX_BIRTH_DATE, MIN_AGE } from '../constants/age';
 
+export enum SEX {
+  FEMALE = 'FEMALE',
+  MALE = 'MALE',
+}
+
 export type User = {
   firstName: string;
   lastName?: string;
@@ -8,6 +13,7 @@ export type User = {
   email: string;
   phoneNumber?: string;
   city?: string;
+  sex: SEX;
 };
 
 export const userSchema = z.object({
@@ -37,7 +43,7 @@ export type UserDTO = z.infer<typeof userSchema>;
 
 export type PersonalizationDTO = {
   email: string;
-  sex: string;
+  sex: SEX;
   dateOfBirth: string;
   firstName: string;
 };

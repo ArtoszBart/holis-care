@@ -2,10 +2,11 @@ import { usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
+import { SEX } from '../../../models/User';
 import Button from '../../common/Button';
 import CustomText from '../../common/CustomText';
 import PageWrapper from '../../common/pageWrapper/PageWrapper';
-import useSexScreen, { SEX } from './useSexScreen';
+import useSexScreen from './useSexScreen';
 
 export default function SexScreen() {
   usePreventRemove(true, () => {});
