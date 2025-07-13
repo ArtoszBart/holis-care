@@ -15,6 +15,7 @@ import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';
 import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
+import SummaryListItemPlaceholder from './components/SummaryListItemPlaceholder';
 import useDashboardScreen from './useDashboardScreen';
 
 export default function DashboardScreen() {
@@ -52,6 +53,12 @@ export default function DashboardScreen() {
                 )
               }
               onSeeAllPress={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
+              placeholder={() => (
+                <SummaryListItemPlaceholder
+                  text='Dodaj wskazówki do ulubionych, żeby je tutaj zobaczyć'
+                  onClick={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
+                />
+              )}
             />
           </View>
 

@@ -8,6 +8,7 @@ interface ISummaryList<T> {
   title: string;
   items: T[] | undefined;
   renderItem: ({ item }: { item: T }) => React.ReactElement;
+  placeholder?: () => React.ReactElement;
   onSeeAllPress: VoidFunction;
 }
 
@@ -15,6 +16,7 @@ export default function SummaryList<T>({
   items,
   title,
   renderItem,
+  placeholder,
   onSeeAllPress,
 }: ISummaryList<T>) {
   return (
@@ -34,6 +36,7 @@ export default function SummaryList<T>({
         contentContainerStyle={styles.contentContainer}
         showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
+        ListEmptyComponent={placeholder}
       />
     </View>
   );
