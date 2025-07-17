@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { getBadgeConfig } from '../../constants/badges';
 import { COLORS } from '../../constants/colors';
 import {
   type NewAppointmentDTO,
@@ -22,6 +23,7 @@ export default function RecommendationFormScreen({
   navigation,
 }: RecommendationFormScreenProps) {
   const { recommendation } = route.params;
+  const { color, title } = getBadgeConfig(recommendation.exam.type);
 
   const { setIsLoading } = useLoadingStore();
 
@@ -30,7 +32,7 @@ export default function RecommendationFormScreen({
 
     const payload: NewAppointmentDTO = {
       ...rest,
-      date: toPayloadISODate(date, time),
+      appointmentDate: toPayloadISODate(date, time),
     };
 
     console.log('OK', payload);
@@ -45,32 +47,24 @@ export default function RecommendationFormScreen({
   return (
     <PageWrapper>
       <View style={styles.mainContainer}>
-        <Badge color={recommendation.badgeColor} label={recommendation.type} />
-
-        <CustomText style={styles.title}>{recommendation.title}</CustomText>
-        <CustomText style={styles.additionalInfo}>
-          {recommendation.additionalInfo}
-        </CustomText>
+        <Badge color={color} label={title} style={styles.badge} />
+        <CustomText style={styles.title}>{recommendation.exam.name}</CustomText>
       </View>
 
       <Form<NewAppointmentFormValues>
         schema={newAppointmentSchema}
         submitLabel='Zapisz się'
         onSubmit={onSubmit}
-        defaultValues={{
-          type: recommendation.type,
-          title: recommendation.title,
-        }}
         fullScreen
       >
         <DateTimePicker fieldName='date' mode='date' label='Data' />
         <DateTimePicker fieldName='time' mode='time' label='Godzina' />
-        <TextInput fieldName='doctor' placeholder='Imię i nazwisko lekarza' />
-        <TextInput fieldName='address' placeholder='Adres' />
         <TextInput
-          fieldName='aditionalInfo'
-          placeholder='Dodatkowe informacje (opcjonalnie)'
+          fieldName='doctorName'
+          placeholder='Imię i nazwisko lekarza'
         />
+        <TextInput fieldName='locationString' placeholder='Adres' />
+        <TextInput fieldName='text' placeholder='Dodatkowe informacje' />
       </Form>
     </PageWrapper>
   );
@@ -81,8 +75,14 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 8,
     backgroundColor: COLORS.MAIN,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 35,
     gap: 10,
+  },
+  badge: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
   },
   title: {
     alignSelf: 'center',

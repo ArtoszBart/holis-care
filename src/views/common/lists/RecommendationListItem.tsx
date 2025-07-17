@@ -2,7 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
+import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
+import { getMonthString } from '../../../constants/lang/polish';
 import { Recommendation } from '../../../models/Recommendation';
 import { RecommendationNavigationProp } from '../../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
@@ -20,22 +22,24 @@ export default function RecommendationListItem({
   summary,
 }: Props) {
   const navigation = useNavigation<RecommendationNavigationProp>();
+  const { color, title } = getBadgeConfig(recommendation.exam.type);
 
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.mainContainer}>
-        <Badge color={recommendation.badgeColor} label={recommendation.type} />
+        <Badge color={color} label={title} />
 
-        <CustomText style={styles.title}>{recommendation.title}</CustomText>
-        <CustomText style={styles.period}>{recommendation.period}</CustomText>
-        <CustomText style={styles.additionalInfo}>
-          {recommendation.additionalInfo}
+        <CustomText style={styles.title}>{recommendation.exam.name}</CustomText>
+
+        <CustomText style={styles.period}>
+          co {recommendation.periodMonths}{' '}
+          {getMonthString(recommendation.periodMonths)}
         </CustomText>
       </View>
 
       {summary ? (
         <TouchableOpacity style={styles.actionButton}>
-          <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} />
+          {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
@@ -65,6 +69,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flexShrink: 1,
+    gap: 4,
   },
   title: {
     fontWeight: 700,
@@ -73,11 +78,7 @@ const styles = StyleSheet.create({
   period: {
     color: COLORS.TYPO_1,
     fontSize: 12,
-  },
-  additionalInfo: {
-    marginTop: 5,
-    color: COLORS.TYPO_3,
-    fontSize: 12,
+    marginTop: 4,
   },
   actionButton: {
     marginLeft: 'auto',

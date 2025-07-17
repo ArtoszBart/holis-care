@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import CustomText from './CustomText';
 import { Icon, ICONS } from './icon';
@@ -7,11 +7,12 @@ import { Icon, ICONS } from './icon';
 interface Props {
   color: COLORS;
   label: string;
+  style?: ViewStyle;
 }
 
-export default function Badge({ color, label }: Props) {
+export default function Badge({ color, label, style }: Props) {
   return (
-    <View style={styles.badgeContainer}>
+    <View style={[styles.badgeContainer, style]}>
       <Icon icon={ICONS.CIRCLE} style={{ fontSize: 12, color }} />
       <CustomText style={styles.badgeText}>{label}</CustomText>
     </View>
