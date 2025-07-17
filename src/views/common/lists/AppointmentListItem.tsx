@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-
+import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
-import { Appointment } from '../../../models/Appointment';
+import { type Appointment } from '../../../models/Appointment';
 import {
   getDisplayDateShort,
   getDisplayDayOfWeekShort,
@@ -18,28 +18,30 @@ interface Props {
 }
 
 export default function AppointmentListItem({ appointment, summary }: Props) {
+  const { color, title } = getBadgeConfig(appointment.exam.type);
+
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.dateContainer}>
         <View>
           <CustomText style={styles.normalText}>
-            {getDisplayDayOfWeekShort(appointment.date)}
+            {getDisplayDayOfWeekShort(appointment.appointmentDate!)}
           </CustomText>
           <CustomText style={styles.normalText}>
-            {getDisplayDateShort(appointment.date)}
+            {getDisplayDateShort(appointment.appointmentDate!)}
           </CustomText>
         </View>
         <CustomText style={styles.mainText}>
-          {getDisplayTime(appointment.date)}
+          {getDisplayTime(appointment.appointmentDate!)}
         </CustomText>
       </View>
 
       <View style={styles.separator} />
 
       <View style={styles.mainContainer}>
-        <Badge color={appointment.badgeColor} label={appointment.type} />
+        <Badge color={color} label={title} />
 
-        <CustomText style={styles.mainText}>{appointment.title}</CustomText>
+        <CustomText style={styles.mainText}>{appointment.exam.name}</CustomText>
 
         {appointment.doctorName && (
           <CustomText style={styles.normalText}>
@@ -47,22 +49,24 @@ export default function AppointmentListItem({ appointment, summary }: Props) {
           </CustomText>
         )}
 
-        {appointment.facility && (
+        {appointment.locationString && (
           <View style={styles.additionalInfoContainer}>
             <CustomText style={styles.additionalInfo}>
-              {appointment.facility.name},
-            </CustomText>
-            <CustomText style={styles.additionalInfo}>
-              {appointment.facility.street}, {appointment.facility.city}
+              {appointment.locationString},
             </CustomText>
           </View>
         )}
       </View>
 
       {summary ? (
-        <TouchableOpacity style={styles.actionButton}>
-          <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} />
-        </TouchableOpacity>
+        <>
+          {/* <TouchableOpacity style={styles.actionButton}>
+            <Icon
+              icon={ICONS.BELL_FILL}
+              style={styles.summaryActionButtonIcon}
+            />
+          </TouchableOpacity> */}
+        </>
       ) : (
         <TouchableOpacity
           style={[styles.actionButton, { justifyContent: 'center' }]}

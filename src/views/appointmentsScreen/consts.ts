@@ -1,10 +1,10 @@
 import { appointments } from '../../mocks/appointments';
-import { Appointment } from '../../models/Appointment';
+import { type Appointment } from '../../models/Appointment';
 
 const now = new Date();
 export const { upcomingAppointments, pastAppointments } = appointments.reduce(
   (acc, appointment) => {
-    if (appointment.date > now) {
+    if (appointment.appointmentDate! > now) {
       acc.upcomingAppointments.push(appointment);
     } else {
       acc.pastAppointments.push(appointment);
