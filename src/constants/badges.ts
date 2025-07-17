@@ -1,4 +1,4 @@
-import { APPOINTMENT_CATEGORY } from '../models/Recommendation';
+import { APPOINTMENT_CATEGORY } from '../models/Appointment';
 import { COLORS } from './colors';
 
 type BadgeConfig = {

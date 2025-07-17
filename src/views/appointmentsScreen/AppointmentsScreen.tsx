@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-
-import { Appointment } from '../../models/Appointment';
+import { type Appointment } from '../../models/Appointment';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import TopTabsNavigation from '../common/navigation/TopTabsNavigation';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
-import {
-  pastAppointments,
-  TabOptions,
-  tabOptions,
-  upcomingAppointments,
-} from './consts';
+import { TabOptions, tabOptions } from './consts';
+import useAppointmentsScreen from './useAppointmentsScreen';
 
 const renderList = (appointments: Appointment[]) => (
   <FlatList
@@ -24,19 +19,20 @@ const renderList = (appointments: Appointment[]) => (
 );
 
 export default function AppointmentsScreen() {
-  const [activeTab, setActiveTab] = useState<TabOptions>(TabOptions.UPCOMING);
+  const hook = useAppointmentsScreen();
 
   return (
     <PageWrapper style={styles.wrapper}>
       <TopTabsNavigation<TabOptions>
         options={tabOptions}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        activeTab={hook.activeTab}
+        setActiveTab={hook.setActiveTab}
         style={styles.tabs}
       />
 
-      {activeTab === TabOptions.UPCOMING && renderList(upcomingAppointments)}
-      {activeTab === TabOptions.PAST && renderList(pastAppointments)}
+      {hook.activeTab === TabOptions.UPCOMING &&
+        renderList(hook.upcomingAppointments)}
+      {hook.activeTab === TabOptions.PAST && renderList(hook.pastAppointments)}
     </PageWrapper>
   );
 }

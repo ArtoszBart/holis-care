@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { recommendations } from '../../mocks/recommendations';
+import { appointments } from '../../mocks/appointments';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 
@@ -8,7 +8,7 @@ export default function RecommendationsScreen() {
   return (
     <PageWrapper style={styles.wrapper}>
       <FlatList
-        data={recommendations}
+        data={appointments}
         keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={styles.contentContainer}
         style={styles.listContainer}

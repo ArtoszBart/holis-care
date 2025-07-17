@@ -1,22 +1,3 @@
-import { appointments } from '../../mocks/appointments';
-import { type Appointment } from '../../models/Appointment';
-
-const now = new Date();
-export const { upcomingAppointments, pastAppointments } = appointments.reduce(
-  (acc, appointment) => {
-    if (appointment.appointmentDate! > now) {
-      acc.upcomingAppointments.push(appointment);
-    } else {
-      acc.pastAppointments.push(appointment);
-    }
-    return acc;
-  },
-  {
-    upcomingAppointments: [] as Appointment[],
-    pastAppointments: [] as Appointment[],
-  },
-);
-
 export enum TabOptions {
   UPCOMING = 'upcoming',
   PAST = 'past',

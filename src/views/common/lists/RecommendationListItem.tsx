@@ -1,19 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-
 import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
 import { getMonthString } from '../../../constants/lang/polish';
-import { Recommendation } from '../../../models/Recommendation';
-import { RecommendationNavigationProp } from '../../../navigation/recommendation';
+import { type Appointment } from '../../../models/Appointment';
+import { type RecommendationNavigationProp } from '../../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
 import Badge from '../Badge';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
 interface Props {
-  recommendation: Recommendation;
+  recommendation: Appointment;
   summary?: boolean;
 }
 

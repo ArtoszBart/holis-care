@@ -1,20 +1,19 @@
-import {
+import type {
+  NativeStackNavigationProp,
   NativeStackScreenProps,
-  type NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
-
-import { Recommendation } from '../../models/Recommendation';
+import { type Appointment } from '../../models/Appointment';
 import { RECOMMENDATIONS_ROUTES } from '../routes';
-import { CreateParamList } from '../types';
+import { type CreateParamList } from '../types';
 
 export type RecommendationNavigatorParamList = CreateParamList<
   typeof RECOMMENDATIONS_ROUTES,
   {
     [RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN]: {
-      recommendation: Recommendation;
+      recommendation: Appointment;
     };
     [RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN]: {
-      recommendation: Recommendation;
+      recommendation: Appointment;
     };
   }
 >;

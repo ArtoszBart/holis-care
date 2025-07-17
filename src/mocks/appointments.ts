@@ -18,7 +18,7 @@ export const appointments: Appointment[] = [
         'Na czczo: Nie jedz przez co najmniej 8-12 godzin przed badaniem. Możesz pić tylko wodę.\nBez kawy i herbaty: Unikaj napojów innych niż woda przed badaniem.\nNie pal papierosów: Powstrzymaj się od palenia rano przed badaniem, ponieważ może to wpłynąć na wynik.\nZachowaj spokój: Stres może wpływać na poziom glukozy, więc postaraj się być wypoczęty.',
       type: APPOINTMENT_CATEGORY.VISIT,
     },
-    appointmentDate: new Date(2030, 2, 26, 9, 30),
+    appointmentDate: null,
     validityDate: null,
     text: null,
     doctorName: null,
@@ -28,7 +28,7 @@ export const appointments: Appointment[] = [
   },
   {
     id: '71ac7235-c127-4932-b328-d856d3d39605',
-    status: APPOINTMENT_STATUS.TO_PLAN,
+    status: APPOINTMENT_STATUS.SCHEDULED,
     exam: {
       id: 7,
       code: 'BREAST_USG',
@@ -49,7 +49,7 @@ export const appointments: Appointment[] = [
   },
   {
     id: 'a6b4db80-4ced-42a8-bbf9-a413eb3bf7e5',
-    status: APPOINTMENT_STATUS.TO_PLAN,
+    status: APPOINTMENT_STATUS.SCHEDULED,
     exam: {
       id: 5,
       code: 'BRCA',
@@ -81,7 +81,7 @@ export const appointments: Appointment[] = [
         'Przed badaniem audiometrycznym zadbaj o dobre zdrowie - nie przychodź przeziębiony ani z zapaleniem ucha. Koniecznie odwiedź wcześniej laryngologa, który sprawdzi stan uszu i usunie ewentualną woskowinę. Weź ze sobą dokumentację medyczną dotyczącą słuchu. Przyjdź nieco wcześniej, by przeprowadzić próby przed właściwym testem i dobrze zrozumieć jego przebieg.',
       type: APPOINTMENT_CATEGORY.SELF_EXAM,
     },
-    appointmentDate: new Date(2030, 2, 26, 9, 30),
+    appointmentDate: null,
     validityDate: null,
     text: null,
     doctorName: null,
@@ -91,7 +91,7 @@ export const appointments: Appointment[] = [
   },
   {
     id: '9213afe9-2346-484d-8c00-112afa1e943c',
-    status: APPOINTMENT_STATUS.TO_PLAN,
+    status: APPOINTMENT_STATUS.COMPLETED,
     exam: {
       id: 17,
       code: 'FIBER',
@@ -102,7 +102,7 @@ export const appointments: Appointment[] = [
         'Zaleca się wykonanie badania po kilku godzinach bycia na czczo. ',
       type: APPOINTMENT_CATEGORY.VISIT,
     },
-    appointmentDate: new Date(2030, 3, 19, 17, 10),
+    appointmentDate: new Date(2025, 1, 19, 17, 10),
     validityDate: null,
     text: null,
     doctorName: null,

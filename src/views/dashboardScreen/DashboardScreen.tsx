@@ -2,8 +2,6 @@ import { usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
-import { appointments } from '../../mocks/appointments';
-import { recommendations } from '../../mocks/recommendations';
 import { type Tip } from '../../models/Tip';
 import { MAIN_ROUTES } from '../../navigation/routes';
 import BlurContainer from '../common/BlurContainer';
@@ -20,7 +18,7 @@ import useDashboardScreen from './useDashboardScreen';
 
 export default function DashboardScreen() {
   usePreventRemove(true, () => {});
-  const { isFetching, tips, navigation } = useDashboardScreen();
+  const hook = useDashboardScreen();
 
   return (
     <PageWrapper style={styles.wrapper} noHeader>
@@ -31,12 +29,12 @@ export default function DashboardScreen() {
           <View style={styles.listContainer}>
             <SummaryList
               title='Twoje zalecenia'
-              items={recommendations}
+              items={hook.recommendations}
               renderItem={({ item }) => (
                 <RecommendationListItem recommendation={item} summary />
               )}
               onSeeAllPress={() =>
-                navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
+                hook.navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
               }
             />
           </View>
@@ -44,19 +42,23 @@ export default function DashboardScreen() {
           <View style={styles.listContainer}>
             <SummaryList
               title='Wskazówki zdrowotne'
-              items={isFetching ? Array.from({ length: 2 }) : tips}
+              items={hook.isFetching ? Array.from({ length: 2 }) : hook.tips}
               renderItem={({ item }) =>
-                isFetching ? (
+                hook.isFetching ? (
                   <TipListItemSkeleton summary />
                 ) : (
                   <TipListItem tip={item as Tip} summary />
                 )
               }
-              onSeeAllPress={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
+              onSeeAllPress={() =>
+                hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+              }
               placeholder={() => (
                 <SummaryListItemPlaceholder
                   text='Dodaj wskazówki do ulubionych, żeby je tutaj zobaczyć'
-                  onClick={() => navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)}
+                  onClick={() =>
+                    hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+                  }
                 />
               )}
             />
@@ -65,12 +67,12 @@ export default function DashboardScreen() {
           <View style={styles.listContainer}>
             <SummaryList
               title='Następna wizyta'
-              items={appointments}
+              items={hook.appointments}
               renderItem={({ item }) => (
                 <AppointmentListItem appointment={item} summary />
               )}
               onSeeAllPress={() =>
-                navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
+                hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
               }
             />
           </View>
