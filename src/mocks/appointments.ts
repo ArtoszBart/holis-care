@@ -1,8 +1,5 @@
-import {
-  type Appointment,
-  APPOINTMENT_CATEGORY,
-  APPOINTMENT_STATUS,
-} from '../models/Appointment';
+import { type Appointment, APPOINTMENT_STATUS } from '../models/Appointment';
+import { EXAM_CATEGORY } from '../models/Exam';
 
 export const appointments: Appointment[] = [
   {
@@ -16,7 +13,7 @@ export const appointments: Appointment[] = [
         'Badanie cukru na czczo, czyli pomiar poziomu glukozy we krwi po okresie niejedzenia, to podstawowe badanie diagnostyczne w kierunku cukrzycy i stanów przedcukrzycowych. Polega na pobraniu próbki krwi po co najmniej 8 godzinach od ostatniego posiłku, aby ocenić, jak organizm reguluje poziom cukru bez wpływu spożytego jedzenia.',
       preparation:
         'Na czczo: Nie jedz przez co najmniej 8-12 godzin przed badaniem. Możesz pić tylko wodę.\nBez kawy i herbaty: Unikaj napojów innych niż woda przed badaniem.\nNie pal papierosów: Powstrzymaj się od palenia rano przed badaniem, ponieważ może to wpłynąć na wynik.\nZachowaj spokój: Stres może wpływać na poziom glukozy, więc postaraj się być wypoczęty.',
-      type: APPOINTMENT_CATEGORY.VISIT,
+      type: EXAM_CATEGORY.VISIT,
     },
     appointmentDate: null,
     validityDate: null,
@@ -37,7 +34,7 @@ export const appointments: Appointment[] = [
         'USG piersi jest bezpiecznym, bezbolesnym badaniem wykorzystującym ultradźwięki do zobrazowania piersi. Jest badaniem pierwszego wyboru u młodych kobiet. Jest też bezpieczne dla pacjentek ciężarnych i karmiących piersią. Odbywa się zazwyczaj w pozycji leżącej, z ułożeniem rąk za głową. Elementem badania jest również ocena węzłów chłonnych pachowych.',
       preparation:
         'Najlepiej wykonać badanie w 1. fazie cyklu miesięcznego (po miesiączce). Nie wymaga specjalnego przygotowania. ',
-      type: APPOINTMENT_CATEGORY.SPEC,
+      type: EXAM_CATEGORY.SPEC,
     },
     appointmentDate: new Date(2030, 3, 19, 17, 10),
     validityDate: null,
@@ -58,7 +55,7 @@ export const appointments: Appointment[] = [
         'Badanie genetyczne, które ma na celu wykrycie predyspozycji do dziedzicznej postaci raka piersi i jajnika. Zalecane osobom, u których wśród najbliższych krewnych występowały zachorowania na raka piersi/jajnika, zwłaszcza jeśli dotyczyły młodszych osób <40rż , a także jeśli wykryto mutację genu BRCA1/2 u innego członka rodziny. W sytuacji pozytywnego wyniku pacjentki zostają objęte specjalnym programem badań przesiewowych oraz będą poinformowane o możliwościach profilaktyki chirurgicznej.',
       preparation:
         'Badanie nie wymaga specjalnego przygotowania. Polega na pobraniu krwi/wymazu z policzka. Wynik badania warto skonsultować z Genetykiem klinicznym.',
-      type: APPOINTMENT_CATEGORY.VISIT,
+      type: EXAM_CATEGORY.VISIT,
     },
     appointmentDate: new Date(2025, 3, 19, 17, 10),
     validityDate: null,
@@ -79,7 +76,7 @@ export const appointments: Appointment[] = [
         'Badanie audiometryczne tonalne przeprowadza się w wyciszonej kabinie z użyciem audiometru, który emituje tony różnych częstotliwości przez specjalistyczne słuchawki. Po usłyszeniu dźwięku pacjent naciska przycisk, a każde ucho testuje się oddzielnie.',
       preparation:
         'Przed badaniem audiometrycznym zadbaj o dobre zdrowie - nie przychodź przeziębiony ani z zapaleniem ucha. Koniecznie odwiedź wcześniej laryngologa, który sprawdzi stan uszu i usunie ewentualną woskowinę. Weź ze sobą dokumentację medyczną dotyczącą słuchu. Przyjdź nieco wcześniej, by przeprowadzić próby przed właściwym testem i dobrze zrozumieć jego przebieg.',
-      type: APPOINTMENT_CATEGORY.SELF_EXAM,
+      type: EXAM_CATEGORY.SELF_EXAM,
     },
     appointmentDate: null,
     validityDate: null,
@@ -100,7 +97,7 @@ export const appointments: Appointment[] = [
         'Fiberoskopia laryngologiczna wraz z badaniem laryngologicznym stanowią podstawowe badania w zakresie profilaktyki wtórnej nowotworów głowy i szyi (chodzi o nowotwory m.in. jamy ustnej, gardła, krtani, zatok obocznych nosa). Badanie fiberoskopii pomaga za pomocą kamery obejrzeć na ekranie trudno dostępne w standardowym badaniu laryngologicznym miejsca. Polega na wprowadzeniu cienkiego, giętkiego aparatu do nosogardła. Badanie odbywa się w pozycji siedzącej, trwa od kilku do kilkunastu minut. Nie wymaga znieczulenia, ale może się zdarzyć, że zostanie zaproponowane znieczulenie miejscowe.',
       preparation:
         'Zaleca się wykonanie badania po kilku godzinach bycia na czczo. ',
-      type: APPOINTMENT_CATEGORY.VISIT,
+      type: EXAM_CATEGORY.VISIT,
     },
     appointmentDate: new Date(2025, 1, 19, 17, 10),
     validityDate: null,
