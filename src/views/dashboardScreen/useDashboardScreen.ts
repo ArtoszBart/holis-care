@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { getAppointmentsRequest } from '../../api/appointment';
 import { getTipsRequest } from '../../api/tips';
-import { appointments as appointmentsMock } from '../../mocks/appointments';
 import { type Appointment, APPOINTMENT_STATUS } from '../../models/Appointment';
 import { type Tip } from '../../models/Tip';
 import { type MainNavigationProp } from '../../navigation/main';
@@ -13,11 +12,8 @@ const useDashboardScreen = () => {
 
   const [isFetching, setIsFetching] = useState(true);
   const [tips, setTips] = useState<Tip[]>();
-  const [recommendations, setRecommendations] = useState<Appointment[]>();
-
-  const appointments = appointmentsMock.filter(
-    (appointment) => appointment.status !== APPOINTMENT_STATUS.TO_PLAN,
-  );
+  const [recommendations, _setRecommendations] = useState<Appointment[]>();
+  const [appointments, _setAppointments] = useState<Appointment[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,15 +26,35 @@ const useDashboardScreen = () => {
       }
 
       setTips(tipsResponse.data.filter((tip) => tip.userLiked));
-      setRecommendations(
-        appointmentsResponse.data.filter(
-          (appointment) => appointment.status === APPOINTMENT_STATUS.TO_PLAN,
-        ),
-      );
+      setAppointments(appointmentsResponse.data);
     };
 
     fetchData();
   }, []);
+
+  const setAppointments = (appointmentsData: Appointment[]): void => {
+    const { recommendations, appointments } = appointmentsData.reduce(
+      (acc, appointment) => {
+        if (appointment.status === APPOINTMENT_STATUS.TO_PLAN) {
+          acc.recommendations.push(appointment);
+        } else {
+          acc.appointments.push(appointment);
+        }
+        return acc;
+      },
+      {
+        recommendations: [] as Appointment[],
+        appointments: [] as Appointment[],
+      },
+    );
+
+    appointments.sort(
+      (a, b) => a.appointmentDate!.getTime() - b.appointmentDate!.getTime(),
+    );
+
+    _setRecommendations(recommendations);
+    _setAppointments(appointments);
+  };
 
   return { isFetching, tips, navigation, recommendations, appointments };
 };

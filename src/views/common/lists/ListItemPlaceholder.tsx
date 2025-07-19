@@ -1,23 +1,31 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { COLORS } from '../../../constants/colors';
-import CustomText from '../../common/CustomText';
-import { Icon, ICONS } from '../../common/icon';
+import CustomText from '../CustomText';
+import { Icon, ICONS } from '../icon';
 
 interface IProps {
   title?: string;
   text: string;
   onClick?: () => void;
+  showIcon?: boolean;
+  summary?: boolean;
 }
 
-export default function SummaryListItemPlaceholder({
+export default function ListItemPlaceholder({
   title,
   text,
   onClick,
+  showIcon,
+  summary,
 }: IProps) {
   return (
-    <TouchableOpacity style={styles.card} onPress={onClick}>
-      {onClick && <Icon icon={ICONS.PLUS} style={styles.icon} />}
+    <TouchableOpacity
+      style={[styles.card, { width: summary ? 284 : '100%' }]}
+      onPress={onClick}
+      disabled={!onClick}
+    >
+      {onClick && showIcon && <Icon icon={ICONS.PLUS} style={styles.icon} />}
       {title && <CustomText style={styles.title}>{title}</CustomText>}
       <CustomText style={styles.text}>{text}</CustomText>
     </TouchableOpacity>
@@ -27,7 +35,6 @@ export default function SummaryListItemPlaceholder({
 const styles = StyleSheet.create({
   card: {
     height: 108,
-    width: 284,
     backgroundColor: COLORS.MAIN_OPACITY_2,
     borderRadius: 8,
     padding: 16,

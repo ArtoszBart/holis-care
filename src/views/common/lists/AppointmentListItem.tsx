@@ -52,21 +52,16 @@ export default function AppointmentListItem({ appointment, summary }: Props) {
         {appointment.locationString && (
           <View style={styles.additionalInfoContainer}>
             <CustomText style={styles.additionalInfo}>
-              {appointment.locationString},
+              {appointment.locationString}
             </CustomText>
           </View>
         )}
       </View>
 
       {summary ? (
-        <>
-          {/* <TouchableOpacity style={styles.actionButton}>
-            <Icon
-              icon={ICONS.BELL_FILL}
-              style={styles.summaryActionButtonIcon}
-            />
-          </TouchableOpacity> */}
-        </>
+        <TouchableOpacity style={styles.actionButton}>
+          {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
+        </TouchableOpacity>
       ) : (
         <TouchableOpacity
           style={[styles.actionButton, { justifyContent: 'center' }]}

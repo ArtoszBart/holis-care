@@ -2,10 +2,13 @@ import { usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
+import { type Appointment } from '../../models/Appointment';
 import { type Tip } from '../../models/Tip';
 import { MAIN_ROUTES } from '../../navigation/routes';
 import BlurContainer from '../common/BlurContainer';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
+import AppointmentListItemSkeleton from '../common/lists/AppointmentListItemSkeleton';
+import ListItemPlaceholder from '../common/lists/ListItemPlaceholder';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import RecommendationListItemSkeleton from '../common/lists/RecommendationListItemSkeleton';
 import TipListItem from '../common/lists/TipListItem';
@@ -14,8 +17,9 @@ import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';
 import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
-import SummaryListItemPlaceholder from './components/SummaryListItemPlaceholder';
 import useDashboardScreen from './useDashboardScreen';
+
+const skeletons = Array.from({ length: 2 });
 
 export default function DashboardScreen() {
   usePreventRemove(true, () => {});
@@ -30,21 +34,25 @@ export default function DashboardScreen() {
           <View style={styles.listContainer}>
             <SummaryList
               title='Twoje zalecenia'
-              items={hook.recommendations}
+              items={hook.isFetching ? skeletons : hook.recommendations}
               renderItem={({ item }) =>
                 hook.isFetching ? (
                   <RecommendationListItemSkeleton summary />
                 ) : (
-                  <RecommendationListItem recommendation={item} summary />
+                  <RecommendationListItem
+                    recommendation={item as Appointment}
+                    summary
+                  />
                 )
               }
               onSeeAllPress={() =>
                 hook.navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
               }
               placeholder={() => (
-                <SummaryListItemPlaceholder
+                <ListItemPlaceholder
                   title='Brak nowych zaleceń. Świetna robota!'
-                  text='Sprawdź wskazówki Holiego, które pomogą Ci poczuć się jeszcze lepiej'
+                  text='Nie musisz nic planować, ale zawsze możesz zrobić coś dla siebie — sprawdź wskazówki Holiego'
+                  summary
                 />
               )}
             />
@@ -53,7 +61,7 @@ export default function DashboardScreen() {
           <View style={styles.listContainer}>
             <SummaryList
               title='Wskazówki zdrowotne'
-              items={hook.isFetching ? Array.from({ length: 2 }) : hook.tips}
+              items={hook.isFetching ? skeletons : hook.tips}
               renderItem={({ item }) =>
                 hook.isFetching ? (
                   <TipListItemSkeleton summary />
@@ -65,11 +73,13 @@ export default function DashboardScreen() {
                 hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
               }
               placeholder={() => (
-                <SummaryListItemPlaceholder
+                <ListItemPlaceholder
                   text='Dodaj wskazówki do ulubionych, żeby je tutaj zobaczyć'
                   onClick={() =>
                     hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
                   }
+                  showIcon
+                  summary
                 />
               )}
             />
@@ -77,13 +87,40 @@ export default function DashboardScreen() {
 
           <View style={styles.listContainer}>
             <SummaryList
-              title='Następna wizyta'
-              items={hook.appointments}
-              renderItem={({ item }) => (
-                <AppointmentListItem appointment={item} summary />
-              )}
+              title='Nadchodzące wizyty'
+              items={hook.isFetching ? skeletons : hook.appointments}
+              renderItem={({ item }) =>
+                hook.isFetching ? (
+                  <AppointmentListItemSkeleton summary />
+                ) : (
+                  <AppointmentListItem
+                    appointment={item as Appointment}
+                    summary
+                  />
+                )
+              }
               onSeeAllPress={() =>
                 hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
+              }
+              placeholder={() =>
+                hook.recommendations!.length > 0 ? (
+                  <ListItemPlaceholder
+                    text='Brak zaplanowanych wizyt — sprawdź, które warto umówić'
+                    onClick={() =>
+                      hook.navigation.navigate(
+                        MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR,
+                      )
+                    }
+                    showIcon
+                    summary
+                  />
+                ) : (
+                  <ListItemPlaceholder
+                    title='Wszystko ogarnięte!'
+                    text='Sprawdź wskazówki Holiego, które pomogą Ci dbać o siebie na co dzień'
+                    summary
+                  />
+                )
               }
             />
           </View>
