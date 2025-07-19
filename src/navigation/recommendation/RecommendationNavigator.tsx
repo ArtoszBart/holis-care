@@ -49,7 +49,6 @@ export default function RecommendationNavigator() {
           title: '',
           headerShown: false,
           gestureEnabled: false,
-          header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />
     </Stack.Navigator>

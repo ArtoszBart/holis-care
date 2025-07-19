@@ -1,13 +1,14 @@
 import {
-  CompositeNavigationProp,
+  type CompositeNavigationProp,
+  StackActions,
   useNavigation,
   usePreventRemove,
 } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
-import { MainNavigationProp } from '../../navigation/main';
-import { RecommendationNavigationProp } from '../../navigation/recommendation';
+import { type MainNavigationProp } from '../../navigation/main';
+import { type RecommendationNavigationProp } from '../../navigation/recommendation';
 import { MAIN_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
@@ -21,7 +22,11 @@ type ThisNavigationProp = CompositeNavigationProp<
 >;
 
 export default function RecommendationSuccessScreen() {
-  usePreventRemove(true, () => {});
+  usePreventRemove(true, ({ data }) => {
+    if (data.action.type === StackActions.popToTop().type)
+      navigation.dispatch(data.action);
+  });
+
   const navigation = useNavigation<ThisNavigationProp>();
 
   return (
