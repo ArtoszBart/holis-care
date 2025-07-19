@@ -9,15 +9,15 @@ type BadgeConfig = {
 const EXAM_CATEGORY_CONFIG: Record<EXAM_CATEGORY, BadgeConfig> = {
   [EXAM_CATEGORY.VISIT]: {
     title: 'Wizyta',
-    color: COLORS.BLUE,
+    color: COLORS.BADGE_BLUE,
   },
   [EXAM_CATEGORY.SPEC]: {
     title: 'Badanie specjalistyczne',
-    color: COLORS.PURPLE,
+    color: COLORS.BADGE_PURPLE,
   },
   [EXAM_CATEGORY.SELF_EXAM]: {
     title: 'Samobadanie',
-    color: COLORS.YELLOW,
+    color: COLORS.BADGE_GREEN,
   },
 };
 
