@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Header from '../../views/common/Header';
 import RecommendationFormScreen from '../../views/recomendation/RecommendationFormScreen';
 import RecommendationInfoScreen from '../../views/recomendation/RecommendationInfoScreen';
-import RecommendationsScreen from '../../views/recomendation/RecommendationsScreen';
+import RecommendationsScreen from '../../views/recomendation/RecommendationsScreen/RecommendationsScreen';
 import RecommendationSuccessScreen from '../../views/recomendation/RecommendationSuccessScreen';
 import { RECOMMENDATIONS_ROUTES } from '../routes';
 import { RecommendationNavigatorParamList } from './types';

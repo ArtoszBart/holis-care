@@ -7,6 +7,7 @@ import { MAIN_ROUTES } from '../../navigation/routes';
 import BlurContainer from '../common/BlurContainer';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
+import RecommendationListItemSkeleton from '../common/lists/RecommendationListItemSkeleton';
 import TipListItem from '../common/lists/TipListItem';
 import TipListItemSkeleton from '../common/lists/TipListItemSkeleton';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
@@ -30,12 +31,22 @@ export default function DashboardScreen() {
             <SummaryList
               title='Twoje zalecenia'
               items={hook.recommendations}
-              renderItem={({ item }) => (
-                <RecommendationListItem recommendation={item} summary />
-              )}
+              renderItem={({ item }) =>
+                hook.isFetching ? (
+                  <RecommendationListItemSkeleton summary />
+                ) : (
+                  <RecommendationListItem recommendation={item} summary />
+                )
+              }
               onSeeAllPress={() =>
                 hook.navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
               }
+              placeholder={() => (
+                <SummaryListItemPlaceholder
+                  title='Brak nowych zaleceń. Świetna robota!'
+                  text='Sprawdź wskazówki Holiego, które pomogą Ci poczuć się jeszcze lepiej'
+                />
+              )}
             />
           </View>
 
