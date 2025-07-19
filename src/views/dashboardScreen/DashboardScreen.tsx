@@ -1,6 +1,6 @@
 import { usePreventRemove } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { type Appointment } from '../../models/Appointment';
 import { type Tip } from '../../models/Tip';
@@ -19,8 +19,6 @@ import DashboardHeader from './components/DashboardHeader';
 import SummaryList from './components/SummaryList';
 import useDashboardScreen from './useDashboardScreen';
 
-const skeletons = Array.from({ length: 2 });
-
 export default function DashboardScreen() {
   usePreventRemove(true, () => {});
   const hook = useDashboardScreen();
@@ -31,99 +29,75 @@ export default function DashboardScreen() {
 
       <BlurContainer intensity={30} backgroundColor={COLORS.MAIN_OPACITY_3}>
         <ScrollView contentContainerStyle={{ paddingBottom: 15 }}>
-          <View style={styles.listContainer}>
-            <SummaryList
-              title='Twoje zalecenia'
-              items={hook.isFetching ? skeletons : hook.recommendations}
-              renderItem={({ item }) =>
-                hook.isFetching ? (
-                  <RecommendationListItemSkeleton summary />
-                ) : (
-                  <RecommendationListItem
-                    recommendation={item as Appointment}
-                    summary
-                  />
-                )
-              }
-              onSeeAllPress={() =>
-                hook.navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
-              }
-              placeholder={() => (
-                <ListItemPlaceholder
-                  title='Brak nowych zaleceń. Świetna robota!'
-                  text='Nie musisz nic planować, ale zawsze możesz zrobić coś dla siebie — sprawdź wskazówki Holiego'
-                  summary
-                />
-              )}
-            />
-          </View>
+          <SummaryList<Appointment>
+            title='Twoje zalecenia'
+            isLoading={hook.isFetching}
+            Skeleton={RecommendationListItemSkeleton}
+            items={hook.recommendations}
+            ItemComponent={RecommendationListItem}
+            onSeeAllPress={() =>
+              hook.navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR)
+            }
+            placeholder={() => (
+              <ListItemPlaceholder
+                title='Brak nowych zaleceń. Świetna robota!'
+                text='Nie musisz nic planować, ale zawsze możesz zrobić coś dla siebie — sprawdź wskazówki Holiego'
+                summary
+              />
+            )}
+          />
 
-          <View style={styles.listContainer}>
-            <SummaryList
-              title='Wskazówki zdrowotne'
-              items={hook.isFetching ? skeletons : hook.tips}
-              renderItem={({ item }) =>
-                hook.isFetching ? (
-                  <TipListItemSkeleton summary />
-                ) : (
-                  <TipListItem tip={item as Tip} summary />
-                )
-              }
-              onSeeAllPress={() =>
-                hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
-              }
-              placeholder={() => (
+          <SummaryList<Tip>
+            title='Wskazówki zdrowotne'
+            isLoading={hook.isFetching}
+            Skeleton={TipListItemSkeleton}
+            items={hook.tips}
+            ItemComponent={TipListItem}
+            onSeeAllPress={() =>
+              hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+            }
+            placeholder={() => (
+              <ListItemPlaceholder
+                text='Dodaj wskazówki do ulubionych, żeby je tutaj zobaczyć'
+                onClick={() =>
+                  hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+                }
+                showIcon
+                summary
+              />
+            )}
+          />
+
+          <SummaryList<Appointment>
+            title='Nadchodzące wizyty'
+            isLoading={hook.isFetching}
+            Skeleton={AppointmentListItemSkeleton}
+            items={hook.appointments}
+            ItemComponent={AppointmentListItem}
+            onSeeAllPress={() =>
+              hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
+            }
+            placeholder={() =>
+              hook.recommendations!.length > 0 ? (
                 <ListItemPlaceholder
-                  text='Dodaj wskazówki do ulubionych, żeby je tutaj zobaczyć'
+                  text='Brak zaplanowanych wizyt — sprawdź, które warto umówić'
                   onClick={() =>
-                    hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+                    hook.navigation.navigate(
+                      MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR,
+                    )
                   }
                   showIcon
                   summary
                 />
-              )}
-            />
-          </View>
-
-          <View style={styles.listContainer}>
-            <SummaryList
-              title='Nadchodzące wizyty'
-              items={hook.isFetching ? skeletons : hook.appointments}
-              renderItem={({ item }) =>
-                hook.isFetching ? (
-                  <AppointmentListItemSkeleton summary />
-                ) : (
-                  <AppointmentListItem
-                    appointment={item as Appointment}
-                    summary
-                  />
-                )
-              }
-              onSeeAllPress={() =>
-                hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
-              }
-              placeholder={() =>
-                hook.recommendations!.length > 0 ? (
-                  <ListItemPlaceholder
-                    text='Brak zaplanowanych wizyt — sprawdź, które warto umówić'
-                    onClick={() =>
-                      hook.navigation.navigate(
-                        MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR,
-                      )
-                    }
-                    showIcon
-                    summary
-                  />
-                ) : (
-                  <ListItemPlaceholder
-                    title='Wszystko ogarnięte!'
-                    text='Sprawdź wskazówki Holiego, które pomogą Ci dbać o siebie na co dzień'
-                    summary
-                  />
-                )
-              }
-            />
-          </View>
+              ) : (
+                <ListItemPlaceholder
+                  title='Wszystko ogarnięte!'
+                  text='Sprawdź wskazówki Holiego, które pomogą Ci dbać o siebie na co dzień'
+                  summary
+                />
+              )
+            }
+          />
         </ScrollView>
       </BlurContainer>
     </PageWrapper>
@@ -134,8 +108,5 @@ const styles = StyleSheet.create({
   wrapper: {
     marginHorizontal: 0,
     marginBottom: 0,
-  },
-  listContainer: {
-    width: '100%',
   },
 });

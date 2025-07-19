@@ -22,7 +22,7 @@ export default function RecommendationsScreen() {
           isFetching ? (
             <RecommendationListItemSkeleton />
           ) : (
-            <RecommendationListItem recommendation={item as Appointment} />
+            <RecommendationListItem item={item as Appointment} />
           )
         }
         refreshing={isRefreshing}

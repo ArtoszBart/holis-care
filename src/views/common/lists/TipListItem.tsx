@@ -7,11 +7,11 @@ import LinkButton from '../LinkButton';
 import { Icon, ICONS } from '../icon';
 
 interface Props {
-  tip: Tip;
+  item: Tip;
   summary?: boolean;
 }
 
-export default function TipListItem({ tip, summary }: Props) {
+export default function TipListItem({ item: tip, summary }: Props) {
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.main}>

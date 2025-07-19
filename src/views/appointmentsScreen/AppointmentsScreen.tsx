@@ -35,7 +35,7 @@ export default function AppointmentsScreen() {
             hook.isFetching ? (
               <AppointmentListItemSkeleton />
             ) : (
-              <AppointmentListItem appointment={item as Appointment} />
+              <AppointmentListItem item={item as Appointment} />
             )
           }
           refreshing={hook.isRefreshing}
@@ -74,7 +74,7 @@ export default function AppointmentsScreen() {
             hook.isFetching ? (
               <AppointmentListItemSkeleton />
             ) : (
-              <AppointmentListItem appointment={item as Appointment} />
+              <AppointmentListItem item={item as Appointment} />
             )
           }
           refreshing={hook.isRefreshing}

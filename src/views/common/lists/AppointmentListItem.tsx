@@ -13,11 +13,14 @@ import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
 interface Props {
-  appointment: Appointment;
+  item: Appointment;
   summary?: boolean;
 }
 
-export default function AppointmentListItem({ appointment, summary }: Props) {
+export default function AppointmentListItem({
+  item: appointment,
+  summary,
+}: Props) {
   const { color, title } = getBadgeConfig(appointment.exam.type);
 
   return (

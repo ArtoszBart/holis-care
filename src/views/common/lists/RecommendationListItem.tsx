@@ -12,12 +12,12 @@ import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
 
 interface Props {
-  recommendation: Appointment;
+  item: Appointment;
   summary?: boolean;
 }
 
 export default function RecommendationListItem({
-  recommendation,
+  item: recommendation,
   summary,
 }: Props) {
   const navigation = useNavigation<RecommendationNavigationProp>();

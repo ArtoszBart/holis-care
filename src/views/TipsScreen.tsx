@@ -21,7 +21,7 @@ export default function TipsScreen() {
           isFetching ? (
             <TipListItemSkeleton />
           ) : (
-            <TipListItem tip={item as Tip} />
+            <TipListItem item={item as Tip} />
           )
         }
         refreshing={isRefreshing}
