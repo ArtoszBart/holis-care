@@ -5,7 +5,7 @@ import { MAX_BIRTH_DATE } from '../../constants/age';
 import { COLORS } from '../../constants/colors';
 import { UserForm, userSchema } from '../../models/User';
 import DateTimePicker from '../common/forms/DateTimePicker';
-import Form from '../common/forms/RenameIssue';
+import Form from '../common/forms/Form';
 import TextInput from '../common/forms/TextInput';
 import LinkButton from '../common/LinkButton';
 import PageWrapper from '../common/pageWrapper/PageWrapper';

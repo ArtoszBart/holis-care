@@ -10,7 +10,7 @@ import { type RecommendationFormScreenProps } from '../../../navigation/recommen
 import Badge from '../../common/Badge';
 import CustomText from '../../common/CustomText';
 import DateTimePicker from '../../common/forms/DateTimePicker';
-import Form from '../../common/forms/RenameIssue';
+import Form from '../../common/forms/Form';
 import TextInput from '../../common/forms/TextInput';
 import PageWrapper from '../../common/pageWrapper/PageWrapper';
 import useRecommendationFormScreen from './useRecommendationFormScreen';
