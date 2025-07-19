@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { Exam } from './Exam';
-import { Location } from './Location';
+import { type Exam } from './Exam';
+import { type Location } from './Location';
 
 export enum APPOINTMENT_STATUS {
   TO_PLAN = 'TO_PLAN',
@@ -22,11 +22,11 @@ export type Appointment = {
   exam: Exam;
 };
 
-export const newAppointmentSchema = z.object({
+export const signUpAppointmentSchema = z.object({
   date: z.date({ required_error: 'Data jest wymagana' }),
   time: z.date({ required_error: 'Godzina jest wymagana' }),
   doctorName: z
-    .string({ required_error: 'Imię i nazwisko lekarza jest wymagane' })
+    .string()
     .min(6, 'Imię i nazwisko lekarza jest za krótkie')
     .regex(
       /^[a-ząćęłńóśźż]+(?:[-'\s][a-ząćęłńóśźż]+)+$/i,
@@ -37,11 +37,14 @@ export const newAppointmentSchema = z.object({
   text: z.string().optional(),
 });
 
-export type NewAppointmentFormValues = z.infer<typeof newAppointmentSchema>;
+export type SignUpAppointmentFormValues = z.infer<
+  typeof signUpAppointmentSchema
+>;
 
-export type NewAppointmentDTO = Omit<
-  NewAppointmentFormValues,
+export type SignUpAppointmentDTO = Omit<
+  SignUpAppointmentFormValues,
   'date' | 'time'
 > & {
   appointmentDate: string;
+  status: APPOINTMENT_STATUS.SCHEDULED;
 };
