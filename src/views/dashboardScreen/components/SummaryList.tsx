@@ -12,7 +12,7 @@ interface ISummaryList<T> {
   Skeleton: React.ComponentType<{ summary?: boolean }>;
   ItemComponent: React.ComponentType<{ item: T; summary?: boolean }>;
   items: T[] | undefined;
-  placeholder?: () => React.ReactElement;
+  placeholder: () => React.ReactElement;
   onSeeAllPress: VoidFunction;
 }
 

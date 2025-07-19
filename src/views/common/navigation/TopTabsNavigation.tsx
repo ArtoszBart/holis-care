@@ -53,8 +53,9 @@ export default function TopTabsNavigation<T extends string>({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    marginHorizontal: 'auto',
     width: '80%',
+    flexDirection: 'row',
     borderWidth: 1,
     borderRadius: 100,
     borderColor: COLORS.ACCENT,

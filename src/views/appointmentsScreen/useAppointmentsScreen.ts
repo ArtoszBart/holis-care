@@ -6,6 +6,18 @@ import { type MainNavigationProp } from '../../navigation/main';
 import { showToast } from '../common/toast';
 import { TabOptions } from './consts';
 
+export interface IAppointmentScreenHook {
+  navigation: MainNavigationProp;
+  activeTab: TabOptions;
+  setActiveTab: (tabOption: TabOptions) => void;
+  upcomingAppointments: Appointment[] | undefined;
+  pastAppointments: Appointment[] | undefined;
+  hasRecommendations: boolean | undefined;
+  fetchAppointments: () => Promise<void>;
+  isFetching: boolean;
+  isRefreshing: boolean;
+}
+
 const useAppointmentsScreen = () => {
   const navigation = useNavigation<MainNavigationProp>();
 
@@ -60,7 +72,7 @@ const useAppointmentsScreen = () => {
     setHasRecommendations(recommendations.length > 0);
   };
 
-  return {
+  const hookOptions: IAppointmentScreenHook = {
     navigation,
     activeTab,
     setActiveTab,
@@ -71,6 +83,8 @@ const useAppointmentsScreen = () => {
     isFetching,
     isRefreshing,
   };
+
+  return hookOptions;
 };
 
 export default useAppointmentsScreen;

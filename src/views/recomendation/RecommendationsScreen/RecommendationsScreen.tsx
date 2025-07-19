@@ -1,6 +1,7 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { type Appointment } from '../../../models/Appointment';
+import List from '../../common/lists/List';
 import RecommendationListItem from '../../common/lists/RecommendationListItem';
 import RecommendationListItemSkeleton from '../../common/lists/RecommendationListItemSkeleton';
 import PageWrapper from '../../common/pageWrapper/PageWrapper';
@@ -12,21 +13,14 @@ export default function RecommendationsScreen() {
 
   return (
     <PageWrapper style={styles.wrapper}>
-      <FlatList
-        data={isFetching ? Array.from({ length: 3 }) : recommendations}
-        keyExtractor={(_, index) => index.toString()}
-        contentContainerStyle={styles.contentContainer}
-        style={styles.listContainer}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) =>
-          isFetching ? (
-            <RecommendationListItemSkeleton />
-          ) : (
-            <RecommendationListItem item={item as Appointment} />
-          )
-        }
-        refreshing={isRefreshing}
+      <List<Appointment>
+        items={recommendations}
+        isLoading={isFetching}
+        Skeleton={RecommendationListItemSkeleton}
+        ItemComponent={RecommendationListItem}
+        isRefreshing={isRefreshing}
         onRefresh={fetchRecommendations}
+        placeholder={() => <></>}
       />
     </PageWrapper>
   );
@@ -34,13 +28,6 @@ export default function RecommendationsScreen() {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 0,
-  },
-  listContainer: {
-    width: '100%',
-  },
-  contentContainer: {
-    gap: 10,
-    paddingBottom: 15,
+    marginVertical: 0,
   },
 });
