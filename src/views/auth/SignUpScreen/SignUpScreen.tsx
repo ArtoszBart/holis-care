@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { RegisterDTO, registerSchema } from '../../../models/Auth';
-import Form from '../../common/forms/Form';
+import Form from '../../common/forms/RenameIssue';
 import TextInput from '../../common/forms/TextInput';
 import LinkButton from '../../common/LinkButton';
 import Logo from '../../common/Logo';
