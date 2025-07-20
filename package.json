@@ -38,6 +38,7 @@
     "react-native-screens": "~4.10.0",
     "react-native-toast-message": "^2.3.0",
     "react-native-webview": "13.13.5",
+    "zod": "^3.25.76",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
