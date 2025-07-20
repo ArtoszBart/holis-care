@@ -8,7 +8,8 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "SENTRY_ENABLE": "false"
+        "SENTRY_ENABLE": "false",
+        "EXPO_PUBLIC_API_URL": "http://192.168.0.95:8080/api/v1"
       }
     },
     "production": {
@@ -17,7 +18,8 @@
         "buildType": "apk"
       },
       "env": {
-        "SENTRY_ENABLE": "true"
+        "SENTRY_ENABLE": "true",
+        "EXPO_PUBLIC_API_URL": "https://api.holis.care/api/v1"
       }
     }
   },
