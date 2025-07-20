@@ -11,7 +11,7 @@ import AppointmentListItemSkeleton from '../common/lists/AppointmentListItemSkel
 import ListItemPlaceholder from '../common/lists/ListItemPlaceholder';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
 import RecommendationListItemSkeleton from '../common/lists/RecommendationListItemSkeleton';
-import TipListItem from '../common/lists/TipListItem';
+import TipListItem from '../common/lists/TipListItem/TipListItem';
 import TipListItemSkeleton from '../common/lists/TipListItemSkeleton';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';

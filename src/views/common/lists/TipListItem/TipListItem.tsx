@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { COLORS } from '../../../constants/colors';
-import { Tip } from '../../../models/Tip';
-import CustomText from '../CustomText';
-import LinkButton from '../LinkButton';
-import { Icon, ICONS } from '../icon';
+import { COLORS } from '../../../../constants/colors';
+import { Tip } from '../../../../models/Tip';
+import CustomText from '../../CustomText';
+import LinkButton from '../../LinkButton';
+import { Icon, ICONS } from '../../icon';
+import useTipListItem from './useTipListItem';
 
 interface Props {
   item: Tip;
@@ -12,6 +13,9 @@ interface Props {
 }
 
 export default function TipListItem({ item: tip, summary }: Props) {
+  const { isLiked, isLikeButtonDisabled, onLikeButtonPress } =
+    useTipListItem(tip);
+
   return (
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.main}>
@@ -22,8 +26,11 @@ export default function TipListItem({ item: tip, summary }: Props) {
           textStyle={{ color: COLORS.ACCENT }}
         />
       </View>
-      <TouchableOpacity>
-        {tip.userLiked ? (
+      <TouchableOpacity
+        onPress={onLikeButtonPress}
+        disabled={isLikeButtonDisabled}
+      >
+        {isLiked ? (
           <Icon icon={ICONS.HEART} style={styles.heartIcon} />
         ) : (
           <Icon icon={ICONS.HEART_OUTLINE} style={styles.heartIcon} />

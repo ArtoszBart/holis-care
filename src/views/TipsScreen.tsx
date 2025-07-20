@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { type Tip } from '../models/Tip';
 import List from './common/lists/List';
-import TipListItem from './common/lists/TipListItem';
+import TipListItem from './common/lists/TipListItem/TipListItem';
 import TipListItemSkeleton from './common/lists/TipListItemSkeleton';
 import PageWrapper from './common/pageWrapper/PageWrapper';
 import useTipsScreen from './useTipsScreen';
