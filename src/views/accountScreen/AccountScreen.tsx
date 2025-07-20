@@ -3,6 +3,7 @@ import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { EXTERNAL_LINKS } from '../../constants/externalLinks';
+import { logError } from '../../lib/logger';
 import { AccountNavigationProp } from '../../navigation/account';
 import { ACCOUNT_ROUTES } from '../../navigation/routes';
 import { Icon, ICONS } from '../common/icon';
@@ -48,6 +49,10 @@ export default function AccountScreen() {
         navigationIcon={
           <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
+      />
+      <AccountListItem
+        label='Test błędu'
+        onPress={() => logError('Test error')}
       />
       <AccountListItem
         label='Wyloguj'

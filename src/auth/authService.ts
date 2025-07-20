@@ -1,5 +1,6 @@
 import { signInRequest, signOutRequest } from '../api/auth';
 import { getSelfRequest } from '../api/user';
+import { logError } from '../lib/logger';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type LoginDTO } from '../models/Auth';
 import { UserStore } from '../stores/userStore';
@@ -41,6 +42,7 @@ export const logout = async () => {
     return true;
   }
 
+  logError(response);
   console.error('Error while logging out:', response);
   return false;
 };

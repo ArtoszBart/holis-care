@@ -1,5 +1,6 @@
 import { unauth } from '../../auth/unauth';
 import { showToast, TOAST_TYPE } from '../../views/common/toast';
+import { logError } from '../logger';
 import {
   type AxiosMethod,
   type DefaultAxiosCognitoError,
@@ -40,6 +41,7 @@ const handleResponse = async <T = unknown>(
       case 429:
         return handleError('Zbyt wiele prób. Spróbuj ponownie później.');
       default:
+        logError(error);
         console.error(axiosError.response.data);
         return handleError('Wystąpił nieoczekiwany błąd');
     }

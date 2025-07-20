@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
 import { reviveDates } from '../../utils/parser';
 import { showToast } from '../../views/common/toast';
+import { logError } from '../logger';
 import { SECURE_KEYS, STORAGE_KEYS } from './keys';
 
 const AppStorage = {
@@ -14,6 +15,7 @@ const AppStorage = {
         await AsyncStorage.setItem(key, json);
       }
     } catch (e) {
+      logError(e);
       console.error(`Storage.setItem error for key "${key}":`, e);
     }
   },
@@ -30,6 +32,7 @@ const AppStorage = {
       return json ? (JSON.parse(json, reviveDates) as T) : null;
     } catch (e) {
       showToast('Wystąpił nieoczekiwany błąd');
+      logError(e);
       console.error(`Storage.getItem error for key "${key}":`, e);
       return null;
     }
@@ -43,6 +46,7 @@ const AppStorage = {
         await AsyncStorage.removeItem(key);
       }
     } catch (e) {
+      logError(e);
       console.error(`Storage.removeItem error for key "${key}":`, e);
     }
   },
@@ -52,6 +56,7 @@ const AppStorage = {
       try {
         await SecureStore.deleteItemAsync(key);
       } catch (e) {
+        logError(e);
         console.error('Storage.removeAll SecureStore error:', e);
       }
     }
@@ -63,6 +68,7 @@ const AppStorage = {
     try {
       await AsyncStorage.multiRemove(keysToRemove);
     } catch (e) {
+      logError(e);
       console.error('Storage.removeAll AsyncStorage error:', e);
     }
   },
