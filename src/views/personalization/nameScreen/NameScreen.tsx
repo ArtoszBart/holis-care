@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linking, StyleSheet, Switch, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
+import { EXTERNAL_LINKS } from '../../../constants/externalLinks';
 import Button from '../../common/Button';
 import CustomText from '../../common/CustomText';
 import TextInput from '../../common/forms/TextInput';
@@ -29,14 +30,14 @@ export default function NameScreen() {
           informacji w{' '}
           <CustomText
             style={{ textDecorationLine: 'underline' }}
-            onPress={() => Linking.openURL('https://google.pl/')}
+            onPress={() => Linking.openURL(EXTERNAL_LINKS.TERMS_OF_SERVICE_URL)}
           >
             Regulaminie
           </CustomText>{' '}
           i{' '}
           <CustomText
             style={{ textDecorationLine: 'underline' }}
-            onPress={() => Linking.openURL('https://google.pl/')}
+            onPress={() => Linking.openURL(EXTERNAL_LINKS.PRIVACY_POLICY_URL)}
           >
             Polityce Prywatości
           </CustomText>

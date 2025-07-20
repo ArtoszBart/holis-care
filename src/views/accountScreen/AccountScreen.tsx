@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
 import { COLORS } from '../../constants/colors';
+import { EXTERNAL_LINKS } from '../../constants/externalLinks';
 import { AccountNavigationProp } from '../../navigation/account';
 import { ACCOUNT_ROUTES } from '../../navigation/routes';
 import { Icon, ICONS } from '../common/icon';
@@ -36,14 +37,14 @@ export default function AccountScreen() {
       /> */}
       <AccountListItem
         label='Regulamin'
-        onPress={() => Linking.openURL('https://google.pl/')}
+        onPress={() => Linking.openURL(EXTERNAL_LINKS.TERMS_OF_SERVICE_URL)}
         navigationIcon={
           <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
       />
       <AccountListItem
         label='Polityka prywatności'
-        onPress={() => Linking.openURL('https://google.pl/')}
+        onPress={() => Linking.openURL(EXTERNAL_LINKS.PRIVACY_POLICY_URL)}
         navigationIcon={
           <Icon icon={ICONS.EXTERNAL_LINK} style={styles.linkIcon} />
         }
