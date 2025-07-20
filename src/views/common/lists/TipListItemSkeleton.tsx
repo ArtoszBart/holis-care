@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
-import { Icon, ICONS } from '../icon';
 import TextSkeleton from '../skeletons/TextSkeleton';
 
 interface Props {
@@ -13,15 +12,15 @@ export default function TipListItemSkeleton({ summary }: Props) {
     <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
       <View style={styles.main}>
         <View style={styles.subMain}>
-          <TextSkeleton />
-          <TextSkeleton />
-          <TextSkeleton width='75%' />
+          <TextSkeleton height={12} />
+          <TextSkeleton height={12} />
+          <TextSkeleton height={12} width='75%' />
         </View>
 
-        <TextSkeleton width='50%' color={COLORS.SKELETON_ACCENT} />
+        <TextSkeleton height={12} width='50%' color={COLORS.SKELETON_ACCENT} />
       </View>
 
-      <Icon icon={ICONS.HEART_OUTLINE} style={styles.heartIcon} />
+      <TextSkeleton height={22} width={22} />
     </View>
   );
 }
@@ -36,13 +35,9 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
-    gap: 8,
+    gap: 12,
   },
   subMain: {
     gap: 4,
-  },
-  heartIcon: {
-    fontSize: 22,
-    color: COLORS.SKELETON_TEXT,
   },
 });
