@@ -13,9 +13,14 @@ const toastTypeConfig: Record<TOAST_TYPE, ToastConfigProps> = {
     accentColor: COLORS.ERROR_RED,
     icon: ICONS.ERROR,
   },
+  warning: {
+    accentColor: COLORS.WARNING_YELLOW,
+    icon: ICONS.WARN,
+  },
 };
 
 export const toastConfig: ToastConfig = {
   success: (props) => createToast(props, toastTypeConfig.success),
   error: (props) => createToast(props, toastTypeConfig.error),
+  warning: (props) => createToast(props, toastTypeConfig.warning),
 };

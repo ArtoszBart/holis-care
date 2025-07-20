@@ -75,4 +75,8 @@ export const ICONS = {
     provider: Feather,
     name: 'log-out',
   },
+  WARN: {
+    provider: AntDesign,
+    name: 'warning',
+  },
 } as const;

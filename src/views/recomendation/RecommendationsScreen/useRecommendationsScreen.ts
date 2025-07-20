@@ -4,7 +4,6 @@ import {
   type Appointment,
   APPOINTMENT_STATUS,
 } from '../../../models/Appointment';
-import { showToast } from '../../common/toast';
 
 const useRecommendationsScreen = () => {
   const [recommendations, setRecommendations] = useState<Appointment[]>();
@@ -22,7 +21,7 @@ const useRecommendationsScreen = () => {
     else setIsFetching(false);
 
     if (!response.ok) {
-      return showToast('Wystąpił nieoczekiwany błąd');
+      return;
     }
 
     setRecommendations(

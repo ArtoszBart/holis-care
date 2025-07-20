@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTipsRequest } from '../api/tips';
 import { type Tip } from '../models/Tip';
-import { showToast } from './common/toast';
 
 const useTipsScreen = () => {
   const [tips, setTips] = useState<Tip[]>();
@@ -18,11 +17,9 @@ const useTipsScreen = () => {
     if (!isFetching) setIsRefreshing(false);
     else setIsFetching(false);
 
-    if (!response.ok) {
-      return showToast('Wystąpił nieoczekiwany błąd');
+    if (response.ok) {
+      setTips(response.data);
     }
-
-    setTips(response.data);
   };
 
   return { tips, fetchTips, isFetching, isRefreshing };

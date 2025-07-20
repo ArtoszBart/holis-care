@@ -1,4 +1,5 @@
-import { axiosCognitoClient, type RequestResponse } from '../lib/axios';
+import { type RequestResponse } from '../lib/axios';
+import { axiosCognitoClient } from '../lib/axios/cognitoClient';
 import {
   type LoginDTO,
   type LoginResponseDTO,

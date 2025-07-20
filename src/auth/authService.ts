@@ -1,14 +1,10 @@
-import {
-  refreshTokensRequest,
-  signInRequest,
-  signOutRequest,
-} from '../api/auth';
+import { signInRequest, signOutRequest } from '../api/auth';
 import { getSelfRequest } from '../api/user';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type LoginDTO } from '../models/Auth';
-import { AuthStore } from '../stores/authStore';
 import { UserStore } from '../stores/userStore';
-import { getAccessToken, getRefreshToken, saveTokens } from './tokenStorage';
+import { getAccessToken, saveTokens } from './tokenStorage';
+import { unauth } from './unauth';
 
 export enum LOGIN_STATE {
   NEEDS_PERSONALIZATION = 'Needs personalization',
@@ -36,22 +32,6 @@ export const login = async (loginData: LoginDTO): Promise<LOGIN_STATE> => {
   return LOGIN_STATE.AUTHENTICATED;
 };
 
-export const refreshTokens = async (): Promise<string | undefined> => {
-  const refreshToken = await getRefreshToken();
-
-  const cognitoRes = await refreshTokensRequest(refreshToken!);
-  if (!cognitoRes.ok) {
-    await unauth();
-    return;
-  }
-
-  // TODO: add RefreshToken rotation
-  const newAccessToken = cognitoRes.data.AuthenticationResult.AccessToken;
-  await saveTokens(newAccessToken, refreshToken!);
-
-  return newAccessToken;
-};
-
 export const logout = async () => {
   const accessToken = await getAccessToken();
   const response = await signOutRequest(accessToken!);
@@ -63,9 +43,4 @@ export const logout = async () => {
 
   console.error('Error while logging out:', response);
   return false;
-};
-
-const unauth = async () => {
-  AuthStore.unauth();
-  await AppStorage.removeAll();
 };

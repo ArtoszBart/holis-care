@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { getAppointmentsRequest } from '../../api/appointment';
 import { type Appointment, APPOINTMENT_STATUS } from '../../models/Appointment';
 import { type MainNavigationProp } from '../../navigation/main';
-import { showToast } from '../common/toast';
 import { TabOptions } from './consts';
 
 export interface IAppointmentScreenHook {
@@ -39,11 +38,9 @@ const useAppointmentsScreen = () => {
     if (!isFetching) setIsRefreshing(false);
     else setIsFetching(false);
 
-    if (!response.ok) {
-      return showToast('Wystąpił nieoczekiwany błąd');
+    if (response.ok) {
+      setAppointments(response.data);
     }
-
-    setAppointments(response.data);
   };
 
   const setAppointments = (appointmentsData: Appointment[]): void => {

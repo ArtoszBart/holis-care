@@ -1,4 +1,5 @@
-import { showToast } from '../../views/common/toast';
+import { unauth } from '../../auth/unauth';
+import { showToast, TOAST_TYPE } from '../../views/common/toast';
 import {
   type AxiosMethod,
   type DefaultAxiosCognitoError,
@@ -32,6 +33,10 @@ const handleResponse = async <T = unknown>(
           ok: false,
           error: axiosError.response.data,
         };
+      case 401:
+        showToast('Sesja wygasła. Zaloguj się ponownie.', TOAST_TYPE.WARN);
+        await unauth();
+        return { ok: false };
       case 429:
         return handleError('Zbyt wiele prób. Spróbuj ponownie później.');
       default:

@@ -4,6 +4,7 @@ import { type IconDefinition } from '../icon/iconDefinition.type';
 export enum TOAST_TYPE {
   SUCCESS = 'success',
   ERROR = 'error',
+  WARN = 'warning',
 }
 
 export interface ToastConfigProps {

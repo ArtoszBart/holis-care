@@ -31,8 +31,6 @@ const useAccountSettings = () => {
       return showToast('Nie udało się zapisać danych');
     }
 
-    console.log(response.data);
-
     await AppStorage.set(STORAGE_KEYS.USER, response.data);
     setUser(response.data);
 

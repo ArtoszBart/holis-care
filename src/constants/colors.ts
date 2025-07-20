@@ -17,6 +17,7 @@ export enum COLORS {
   BADGE_PURPLE = '#9000ff',
   BADGE_GREEN = '#86eb2d',
   ERROR_RED = '#ff5a5f',
+  WARNING_YELLOW = '#facc15',
   SUCCESS_GREEN = '#4bb543',
   SKELETON_BACKGROUND = '#e5e5e5',
   SKELETON_TEXT = '#cccccc',

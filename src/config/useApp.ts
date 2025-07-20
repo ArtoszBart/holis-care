@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
-import { refreshTokens } from '../auth/authService';
+import { refreshTokens } from '../auth/tokenService';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type User } from '../models/User';
