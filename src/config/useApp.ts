@@ -1,9 +1,8 @@
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
-import { refreshTokens } from '../auth/tokenService';
+import { getSelfRequest } from '../api/user';
+import { unauth } from '../auth/unauth';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
-import AppStorage, { STORAGE_KEYS } from '../lib/storage';
-import { type User } from '../models/User';
 import { useAuthStore } from '../stores/authStore';
 import { useUserStore } from '../stores/userStore';
 
@@ -23,13 +22,11 @@ const useApp = () => {
     const prepare = async () => {
       await prepareSplash();
 
-      const isAuth = await refreshTokens();
-      setIsAuth(!!isAuth);
-
-      if (isAuth) {
-        const user = await AppStorage.get<User>(STORAGE_KEYS.USER);
-        if (user) setUser(user);
-      }
+      const response = await getSelfRequest();
+      if (response.ok && response.status !== 204) {
+        setIsAuth(true);
+        setUser(response.data);
+      } else await unauth();
 
       if (!fontsLoaded && !fontsError) return;
 
