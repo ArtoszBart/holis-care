@@ -1,6 +1,7 @@
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
 import { getAppointmentsRequest } from '../api/appointment';
+import { getTipsRequest } from '../api/tips';
 import { getSelfRequest } from '../api/user';
 import { unauth } from '../auth/unauth';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
@@ -12,7 +13,7 @@ import { useUserStore } from '../stores/userStore';
 const useApp = () => {
   const { setIsAuth } = useAuthStore();
   const { setUser } = useUserStore();
-  const { fetchTips } = useTipStore();
+  const { setTips } = useTipStore();
   const { setAppointments } = useAppointmentStore();
 
   const [appIsReady, setAppIsReady] = useState(false);
@@ -33,7 +34,8 @@ const useApp = () => {
         setUser(response.data);
       } else await unauth();
 
-      await fetchTips();
+      const tipsResponse = await getTipsRequest();
+      if (tipsResponse.ok) setTips(tipsResponse.data);
       const appointmentsResponse = await getAppointmentsRequest();
       if (appointmentsResponse.ok) setAppointments(appointmentsResponse.data);
 
