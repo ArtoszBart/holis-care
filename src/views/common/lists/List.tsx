@@ -1,21 +1,15 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-const skeletons = Array.from({ length: 3 });
-
 interface IProps<T> {
   items: T[] | undefined;
   ItemComponent: React.ComponentType<{ item: T }>;
-  Skeleton: React.ComponentType;
   placeholder: () => React.ReactElement;
-  isLoading: boolean;
   isRefreshing: boolean;
   onRefresh: VoidFunction;
 }
 
 export default function List<T>({
-  isLoading,
-  Skeleton,
   ItemComponent,
   items,
   placeholder,
@@ -24,14 +18,12 @@ export default function List<T>({
 }: IProps<T>) {
   return (
     <FlatList
-      data={isLoading ? skeletons : items}
+      data={items}
       keyExtractor={(_, index) => index.toString()}
       contentContainerStyle={styles.contentContainer}
       style={styles.container}
       showsVerticalScrollIndicator={false}
-      renderItem={({ item }) =>
-        isLoading ? <Skeleton /> : <ItemComponent item={item as T} />
-      }
+      renderItem={({ item }) => <ItemComponent item={item} />}
       refreshing={isRefreshing}
       onRefresh={onRefresh}
       ListEmptyComponent={placeholder}

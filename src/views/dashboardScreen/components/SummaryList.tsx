@@ -4,12 +4,8 @@ import { COLORS } from '../../../constants/colors';
 import CustomText from '../../common/CustomText';
 import LinkButton from '../../common/LinkButton';
 
-const skeletons = Array.from({ length: 2 });
-
 interface ISummaryList<T> {
   title: string;
-  isLoading: boolean;
-  Skeleton: React.ComponentType<{ summary?: boolean }>;
   ItemComponent: React.ComponentType<{ item: T; summary?: boolean }>;
   items: T[] | undefined;
   placeholder: () => React.ReactElement;
@@ -18,8 +14,6 @@ interface ISummaryList<T> {
 
 export default function SummaryList<T>({
   title,
-  isLoading,
-  Skeleton,
   ItemComponent,
   items,
   placeholder,
@@ -37,19 +31,13 @@ export default function SummaryList<T>({
       </View>
 
       <FlatList
-        data={isLoading ? skeletons : items}
+        data={items}
         keyExtractor={(_, index) => index.toString()}
         horizontal
         contentContainerStyle={styles.contentContainer}
         showsHorizontalScrollIndicator={false}
         ListEmptyComponent={placeholder}
-        renderItem={({ item }) =>
-          isLoading ? (
-            <Skeleton summary />
-          ) : (
-            <ItemComponent item={item as T} summary />
-          )
-        }
+        renderItem={({ item }) => <ItemComponent item={item} summary />}
       />
     </View>
   );

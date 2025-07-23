@@ -1,37 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getAppointmentsRequest } from '../../../api/appointment';
-import {
-  type Appointment,
-  APPOINTMENT_STATUS,
-} from '../../../models/Appointment';
+import { APPOINTMENT_STATUS } from '../../../models/Appointment';
+import { useAppointmentStore } from '../../../stores/appointmentStore';
 
 const useRecommendationsScreen = () => {
-  const [recommendations, setRecommendations] = useState<Appointment[]>();
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isFetching, setIsFetching] = useState(true);
+  const { storedAppointments, setAppointments } = useAppointmentStore();
 
-  useEffect(() => {
-    fetchRecommendations();
-  }, []);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const recommendations = storedAppointments.filter(
+    (appointment) => appointment.status === APPOINTMENT_STATUS.TO_PLAN,
+  );
 
   const fetchRecommendations = async () => {
-    if (!isFetching) setIsRefreshing(true);
+    setIsRefreshing(true);
     const response = await getAppointmentsRequest();
-    if (!isFetching) setIsRefreshing(false);
-    else setIsFetching(false);
+    setIsRefreshing(false);
 
     if (!response.ok) {
       return;
     }
 
-    setRecommendations(
-      response.data.filter(
-        (appointment) => appointment.status === APPOINTMENT_STATUS.TO_PLAN,
-      ),
-    );
+    setAppointments(response.data);
   };
 
-  return { recommendations, fetchRecommendations, isFetching, isRefreshing };
+  return { recommendations, fetchRecommendations, isRefreshing };
 };
 
 export default useRecommendationsScreen;

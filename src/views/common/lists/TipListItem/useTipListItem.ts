@@ -1,25 +1,26 @@
-import { useState } from 'react';
-import { likeTipRequest, unlikeTipRequest } from '../../../../api/tips';
+import { useEffect, useState } from 'react';
 import { type Tip } from '../../../../models/Tip';
+import { useTipStore } from '../../../../stores/tipStore';
 
 const useTipListItem = (tip: Tip) => {
+  const { toggleLikeTip } = useTipStore();
+
+  const [isLiked, setIsLiked] = useState<boolean>(tip.userLiked);
   const [isLikeButtonDisabled, setIsLikeButtonDisabled] =
     useState<boolean>(false);
-  const [isLiked, setIsLiked] = useState<boolean>(tip.userLiked);
+
+  useEffect(() => {
+    setIsLiked(tip.userLiked);
+  }, [tip]);
 
   const onLikeButtonPress = async () => {
+    if (!tip) return;
+
     setIsLikeButtonDisabled(true);
 
-    const newLikedState = !isLiked;
-    setIsLiked(newLikedState);
-
-    const response = newLikedState
-      ? await likeTipRequest(tip.id)
-      : await unlikeTipRequest(tip.id);
-
-    if (!response.ok) {
-      setIsLiked(!newLikedState);
-    }
+    setIsLiked(!isLiked);
+    const result = await toggleLikeTip(tip.id, !isLiked);
+    if (!result) setIsLiked(isLiked);
 
     setIsLikeButtonDisabled(false);
   };

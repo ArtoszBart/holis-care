@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getAppointmentsRequest } from '../../api/appointment';
-import { type Appointment, APPOINTMENT_STATUS } from '../../models/Appointment';
+import { APPOINTMENT_STATUS, type Appointment } from '../../models/Appointment';
 import { type MainNavigationProp } from '../../navigation/main';
+import { useAppointmentStore } from '../../stores/appointmentStore';
 import { TabOptions } from './consts';
 
 export interface IAppointmentScreenHook {
@@ -13,60 +14,44 @@ export interface IAppointmentScreenHook {
   pastAppointments: Appointment[] | undefined;
   hasRecommendations: boolean | undefined;
   fetchAppointments: () => Promise<void>;
-  isFetching: boolean;
   isRefreshing: boolean;
 }
 
 const useAppointmentsScreen = () => {
   const navigation = useNavigation<MainNavigationProp>();
+  const { storedAppointments, setAppointments } = useAppointmentStore();
 
   const [activeTab, setActiveTab] = useState<TabOptions>(TabOptions.UPCOMING);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isFetching, setIsFetching] = useState(true);
-  const [hasRecommendations, setHasRecommendations] = useState<boolean>();
-  const [pastAppointments, _setPastAppointments] = useState<Appointment[]>();
-  const [upcomingAppointments, _setUpcomingAppointments] =
-    useState<Appointment[]>();
 
-  useEffect(() => {
-    fetchAppointments();
-  }, []);
+  const { pastAppointments, upcomingAppointments, hasRecommendations } =
+    storedAppointments.reduce(
+      (acc, appointment) => {
+        if (appointment.status === APPOINTMENT_STATUS.COMPLETED) {
+          acc.pastAppointments.push(appointment);
+        } else if (appointment.status === APPOINTMENT_STATUS.SCHEDULED) {
+          acc.upcomingAppointments.push(appointment);
+        }
+
+        return acc;
+      },
+      {
+        pastAppointments: [] as Appointment[],
+        upcomingAppointments: [] as Appointment[],
+        hasRecommendations: false,
+      },
+    );
 
   const fetchAppointments = async () => {
-    if (!isFetching) setIsRefreshing(true);
+    setIsRefreshing(true);
     const response = await getAppointmentsRequest();
-    if (!isFetching) setIsRefreshing(false);
-    else setIsFetching(false);
+    setIsRefreshing(false);
 
-    if (response.ok) {
-      setAppointments(response.data);
+    if (!response.ok) {
+      return;
     }
-  };
 
-  const setAppointments = (appointmentsData: Appointment[]): void => {
-    const { pastAppointments, upcomingAppointments, recommendations } =
-      appointmentsData.reduce(
-        (acc, appointment) => {
-          if (appointment.status === APPOINTMENT_STATUS.SCHEDULED) {
-            acc.pastAppointments.push(appointment);
-          } else if (appointment.status === APPOINTMENT_STATUS.COMPLETED) {
-            acc.upcomingAppointments.push(appointment);
-          } else if (appointment.status === APPOINTMENT_STATUS.TO_PLAN) {
-            acc.recommendations.push(appointment);
-          }
-
-          return acc;
-        },
-        {
-          pastAppointments: [] as Appointment[],
-          upcomingAppointments: [] as Appointment[],
-          recommendations: [] as Appointment[],
-        },
-      );
-
-    _setPastAppointments(pastAppointments);
-    _setUpcomingAppointments(upcomingAppointments);
-    setHasRecommendations(recommendations.length > 0);
+    setAppointments(response.data);
   };
 
   const hookOptions: IAppointmentScreenHook = {
@@ -77,7 +62,6 @@ const useAppointmentsScreen = () => {
     pastAppointments,
     hasRecommendations,
     fetchAppointments,
-    isFetching,
     isRefreshing,
   };
 

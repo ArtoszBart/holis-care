@@ -6,9 +6,9 @@ export const getTipsRequest = async () => {
 };
 
 export const likeTipRequest = async (tipId: string) => {
-  return await axiosApiClient.post(`/tips/${tipId}/like`);
+  return await axiosApiClient.post<Tip>(`/tips/${tipId}/like`);
 };
 
 export const unlikeTipRequest = async (tipId: string) => {
-  return await axiosApiClient.delete(`/tips/${tipId}/like`);
+  return await axiosApiClient.delete<Tip>(`/tips/${tipId}/like`);
 };

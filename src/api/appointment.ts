@@ -7,32 +7,41 @@ import {
 export const getAppointmentsRequest = async () => {
   const response = await axiosApiClient.get<Appointment[]>('/appointments');
 
-  if (response.ok) {
-    const appointments = response.data.map((appointment) => ({
-      ...appointment,
-      appointmentDate: appointment.appointmentDate
-        ? new Date(appointment.appointmentDate)
-        : null,
-      validityDate: appointment.validityDate
-        ? new Date(appointment.validityDate)
-        : null,
-    }));
+  if (!response.ok) return response;
 
-    return {
-      ...response,
-      data: appointments,
-    };
-  }
+  const appointments = response.data.map(
+    ({ appointmentDate, validityDate, ...rest }) => ({
+      ...rest,
+      appointmentDate: appointmentDate ? new Date(appointmentDate) : null,
+      validityDate: validityDate ? new Date(validityDate) : null,
+    }),
+  );
 
-  return response;
+  return {
+    ...response,
+    data: appointments,
+  };
 };
 
 export const signUpAppointmentRequest = async (
   appointmentId: string,
   appointmentData: SignUpAppointmentDTO,
 ) => {
-  return await axiosApiClient.patch<Appointment>(
+  const response = await axiosApiClient.patch<Appointment>(
     `/appointments/${appointmentId}`,
     appointmentData,
   );
+
+  if (!response.ok) return response;
+
+  const { appointmentDate, validityDate, ...rest } = response.data;
+
+  return {
+    ...response,
+    data: {
+      ...rest,
+      appointmentDate: appointmentDate ? new Date(appointmentDate) : null,
+      validityDate: validityDate ? new Date(validityDate) : null,
+    },
+  };
 };

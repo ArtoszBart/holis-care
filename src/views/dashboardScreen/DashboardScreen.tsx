@@ -2,17 +2,12 @@ import { usePreventRemove } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { COLORS } from '../../constants/colors';
-import { type Appointment } from '../../models/Appointment';
-import { type Tip } from '../../models/Tip';
 import { MAIN_ROUTES } from '../../navigation/routes';
 import BlurContainer from '../common/BlurContainer';
 import AppointmentListItem from '../common/lists/AppointmentListItem';
-import AppointmentListItemSkeleton from '../common/lists/AppointmentListItemSkeleton';
 import ListItemPlaceholder from '../common/lists/ListItemPlaceholder';
 import RecommendationListItem from '../common/lists/RecommendationListItem';
-import RecommendationListItemSkeleton from '../common/lists/RecommendationListItemSkeleton';
 import TipListItem from '../common/lists/TipListItem/TipListItem';
-import TipListItemSkeleton from '../common/lists/TipListItemSkeleton';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 import ScrollView from '../common/scrollView/ScrollView';
 import DashboardHeader from './components/DashboardHeader';
@@ -29,10 +24,8 @@ export default function DashboardScreen() {
 
       <BlurContainer intensity={30} backgroundColor={COLORS.MAIN_OPACITY_3}>
         <ScrollView contentContainerStyle={{ paddingBottom: 15 }}>
-          <SummaryList<Appointment>
+          <SummaryList
             title='Twoje zalecenia'
-            isLoading={hook.isFetching}
-            Skeleton={RecommendationListItemSkeleton}
             items={hook.recommendations}
             ItemComponent={RecommendationListItem}
             onSeeAllPress={() =>
@@ -47,11 +40,9 @@ export default function DashboardScreen() {
             )}
           />
 
-          <SummaryList<Tip>
+          <SummaryList
             title='Wskazówki zdrowotne'
-            isLoading={hook.isFetching}
-            Skeleton={TipListItemSkeleton}
-            items={hook.tips}
+            items={hook.likedTips}
             ItemComponent={TipListItem}
             onSeeAllPress={() =>
               hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
@@ -68,17 +59,15 @@ export default function DashboardScreen() {
             )}
           />
 
-          <SummaryList<Appointment>
+          <SummaryList
             title='Nadchodzące wizyty'
-            isLoading={hook.isFetching}
-            Skeleton={AppointmentListItemSkeleton}
             items={hook.appointments}
             ItemComponent={AppointmentListItem}
             onSeeAllPress={() =>
               hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
             }
             placeholder={() =>
-              hook.recommendations!.length > 0 ? (
+              hook.recommendations.length > 0 ? (
                 <ListItemPlaceholder
                   text='Brak zaplanowanych wizyt — sprawdź, które warto umówić'
                   onClick={() =>
