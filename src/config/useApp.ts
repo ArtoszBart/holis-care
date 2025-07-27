@@ -5,6 +5,7 @@ import { getTipsRequest } from '../api/tips';
 import { getSelfRequest } from '../api/user';
 import { unauth } from '../auth/unauth';
 import { hideSplash, prepareSplash } from '../lib/SplashManager';
+import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { useAppointmentStore } from '../stores/appointmentStore';
 import { useAuthStore } from '../stores/authStore';
 import { useTipStore } from '../stores/tipStore';
@@ -28,16 +29,8 @@ const useApp = () => {
     const prepare = async () => {
       await prepareSplash();
 
-      const response = await getSelfRequest();
-      if (response.ok && response.status !== 204) {
-        setIsAuth(true);
-        setUser(response.data);
-      } else await unauth();
-
-      const tipsResponse = await getTipsRequest();
-      if (tipsResponse.ok) setTips(tipsResponse.data);
-      const appointmentsResponse = await getAppointmentsRequest();
-      if (appointmentsResponse.ok) setAppointments(appointmentsResponse.data);
+      const isAuth = await tryAuth();
+      if (isAuth) await fetchData();
 
       if (!fontsLoaded && !fontsError) return;
 
@@ -51,6 +44,30 @@ const useApp = () => {
     if (appIsReady) {
       await hideSplash();
     }
+  };
+
+  const tryAuth = async () => {
+    const token = await AppStorage.get(STORAGE_KEYS.ACCESS_TOKEN);
+    if (!token) return false;
+
+    const response = await getSelfRequest();
+    const isAuth = response.ok && response.status !== 204;
+
+    if (isAuth) {
+      setIsAuth(true);
+      setUser(response.data);
+    } else {
+      await unauth();
+    }
+
+    return isAuth;
+  };
+
+  const fetchData = async () => {
+    const tipsResponse = await getTipsRequest();
+    if (tipsResponse.ok) setTips(tipsResponse.data);
+    const appointmentsResponse = await getAppointmentsRequest();
+    if (appointmentsResponse.ok) setAppointments(appointmentsResponse.data);
   };
 
   return { appIsReady, onLayoutRootView };
