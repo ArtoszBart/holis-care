@@ -13,7 +13,6 @@ import { MAIN_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import CustomText from '../common/CustomText';
 import Logo from '../common/Logo';
-import Omega from '../common/Omega';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 
 type ThisNavigationProp = CompositeNavigationProp<
@@ -32,7 +31,7 @@ export default function RecommendationSuccessScreen() {
   return (
     <PageWrapper
       style={styles.container}
-      backgroundImage={require('../../assets/images/background-onboarding.png')}
+      backgroundImage={require('../../assets/images/background-onboarding.webp')}
       opacity={1}
       noHeader
     >
@@ -42,8 +41,6 @@ export default function RecommendationSuccessScreen() {
         <CustomText style={styles.header}>Udało się!</CustomText>
         <CustomText>Twoja wizyta została zarezerwowana.</CustomText>
       </View>
-
-      <Omega />
 
       <View style={styles.buttonContainer}>
         <Button

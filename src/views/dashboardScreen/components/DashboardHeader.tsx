@@ -11,16 +11,10 @@ export default function DashboardHeader() {
 
   return (
     <View style={styles.header}>
-      <Image
-        style={styles.backgroundImage}
-        source={require('../../../assets/images/omega-sm.png')}
-        contentFit='contain'
-      />
-
       <View style={styles.greetingsBox}>
         <Image
           style={styles.profileImage}
-          source={require('../../../assets/images/profile-default.png')}
+          source={require('../../../assets/images/profile-default.webp')}
         />
 
         <CustomText style={styles.greetings}>
@@ -47,13 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 25,
     paddingHorizontal: 15,
-  },
-  backgroundImage: {
-    width: 130,
-    height: 130,
-    position: 'absolute',
-    top: -10,
-    right: 5,
   },
   greetingsBox: {
     flexDirection: 'row',

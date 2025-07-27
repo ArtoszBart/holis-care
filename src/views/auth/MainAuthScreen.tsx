@@ -5,8 +5,15 @@ import { AuthNavigationProp } from '../../navigation/auth';
 import { AUTH_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
 import Logo from '../common/Logo';
-import Omega from '../common/Omega';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
+
+const bgId = Math.floor(Math.random() * 3);
+const backgroundImages = [
+  require(`../../assets/images/backgrounds/background-auth-1.webp`),
+  require(`../../assets/images/backgrounds/background-auth-2.webp`),
+  require(`../../assets/images/backgrounds/background-auth-3.webp`),
+  require(`../../assets/images/backgrounds/background-auth-4.webp`),
+];
 
 export default function MainAuthScreen() {
   usePreventRemove(true, () => {});
@@ -15,11 +22,11 @@ export default function MainAuthScreen() {
   return (
     <PageWrapper
       style={styles.container}
-      backgroundImage={require('../../assets/images/background-onboarding.png')}
+      backgroundImage={backgroundImages[bgId]}
       opacity={1}
     >
       <Logo />
-      <Omega />
+
       <View style={styles.buttonContainer}>
         <Button
           label='Zaloguj się'

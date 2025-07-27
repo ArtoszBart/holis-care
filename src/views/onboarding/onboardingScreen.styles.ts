@@ -3,12 +3,14 @@ import { COLORS } from '../../constants/colors';
 
 export const onboardingScreenStyles = StyleSheet.create({
   container: {
-    justifyContent: 'space-around',
     alignItems: 'center',
+    gap: 50,
   },
-  mainView: {},
   textContainer: {
-    maxWidth: 400,
+    width: '100%',
+    backgroundColor: COLORS.MAIN_OPACITY_3,
+    padding: 15,
+    borderRadius: 10,
   },
   header: {
     textAlign: 'center',

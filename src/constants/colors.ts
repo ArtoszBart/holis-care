@@ -5,6 +5,7 @@ export enum COLORS {
   MAIN_OPACITY_3 = '#ffffff55',
   TRANSPARENT = '#ffffff00',
   DEFAULT_TEXT = '#1e1e1e',
+  DARK_OPACITY = '#20222955',
   TYPO_1 = '#202229',
   TYPO_2 = '#4c4f59',
   TYPO_3 = '#797b80',

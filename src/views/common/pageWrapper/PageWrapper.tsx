@@ -18,7 +18,7 @@ export default function PageWrapper({
   style,
   noHeader,
   noSafeBottom,
-  backgroundImage = require('../../../assets/images/background.png'),
+  backgroundImage = require('../../../assets/images/background.webp'),
   opacity = 0.5,
 }: Props) {
   const { headerHeight, insets, tabBarHeight } = usePageWrapper();

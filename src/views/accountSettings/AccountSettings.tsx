@@ -20,7 +20,7 @@ export default function AccountSettings() {
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Image
           style={styles.profileImage}
-          source={require('../../assets/images/profile-default.png')}
+          source={require('../../assets/images/profile-default.webp')}
         />
         <LinkButton
           label='Zmień zdjęcie'

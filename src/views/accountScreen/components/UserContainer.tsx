@@ -13,7 +13,7 @@ export default function UserContainer() {
     <View style={styles.header}>
       <Image
         style={styles.profileImage}
-        source={require('../../../assets/images/profile-default.png')}
+        source={require('../../../assets/images/profile-default.webp')}
       />
       <View style={styles.userDataContainer}>
         <CustomText style={styles.userTitle}>

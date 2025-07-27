@@ -10,7 +10,7 @@ export default function GetStartedScreen() {
   return (
     <PageWrapper
       style={styles.container}
-      backgroundImage={require('../../../assets/images/background-onboarding.png')}
+      backgroundImage={require('../../../assets/images/background-onboarding.webp')}
       opacity={1}
     >
       <Animated.Text style={[styles.title, { opacity: textAnimationRef }]}>
