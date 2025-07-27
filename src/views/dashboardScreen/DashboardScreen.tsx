@@ -35,6 +35,9 @@ export default function DashboardScreen() {
               <ListItemPlaceholder
                 title='Brak nowych zaleceń. Świetna robota!'
                 text='Nie musisz nic planować, ale zawsze możesz zrobić coś dla siebie — sprawdź wskazówki Holiego'
+                onClick={() =>
+                  hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+                }
                 summary
               />
             )}
@@ -82,6 +85,9 @@ export default function DashboardScreen() {
                 <ListItemPlaceholder
                   title='Wszystko ogarnięte!'
                   text='Sprawdź wskazówki Holiego, które pomogą Ci dbać o siebie na co dzień'
+                  onClick={() =>
+                    hook.navigation.navigate(MAIN_ROUTES.TIPS_SCREEN)
+                  }
                   summary
                 />
               )

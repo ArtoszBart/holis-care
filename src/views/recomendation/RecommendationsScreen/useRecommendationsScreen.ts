@@ -1,9 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { getAppointmentsRequest } from '../../../api/appointment';
 import { APPOINTMENT_STATUS } from '../../../models/Appointment';
+import { type MainNavigationProp } from '../../../navigation/main';
 import { useAppointmentStore } from '../../../stores/appointmentStore';
 
 const useRecommendationsScreen = () => {
+  const navigation = useNavigation<MainNavigationProp>();
   const { storedAppointments, setAppointments } = useAppointmentStore();
 
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -24,7 +27,7 @@ const useRecommendationsScreen = () => {
     setAppointments(response.data);
   };
 
-  return { recommendations, fetchRecommendations, isRefreshing };
+  return { recommendations, fetchRecommendations, isRefreshing, navigation };
 };
 
 export default useRecommendationsScreen;
