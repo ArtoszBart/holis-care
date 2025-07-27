@@ -1,52 +1,52 @@
-export const ROOT_ROUTES = Object.freeze({
-  INITIAL_FLOW_NAVIGATOR: 'InitialFlowNavigator',
-  MAIN_NAVIGATOR: 'MainNavigator',
-});
+export enum ROOT_ROUTES {
+  INITIAL_FLOW_NAVIGATOR = 'InitialFlowNavigator',
+  MAIN_NAVIGATOR = 'MainNavigator',
+}
 
-export const INITIAL_FLOW_ROUTES = Object.freeze({
-  ONBOARDING_NAVIGATOR: 'OnboardingNavigator',
-  AUTH_NAVIGATOR: 'AuthNavigator',
-  PERSONALIZATION_NAVIGATOR: 'PersonalizationNavigator',
-});
+export enum INITIAL_FLOW_ROUTES {
+  ONBOARDING_NAVIGATOR = 'OnboardingNavigator',
+  AUTH_NAVIGATOR = 'AuthNavigator',
+  PERSONALIZATION_NAVIGATOR = 'PersonalizationNavigator',
+}
 
-export const ONBOARDING_ROUTES = Object.freeze({
-  HELLO_SCREEN: 'OnboardingHello',
-  BOOK_SCREEN: 'OnboardingBook',
-  MANAGE_SCREEN: 'OnboardingManage',
-  COLLECT_SCREEN: 'OnboardingCollect',
-  TIPS_SCREEN: 'OnboardingTips',
-});
+export enum ONBOARDING_ROUTES {
+  HELLO_SCREEN = 'OnboardingHello',
+  BOOK_SCREEN = 'OnboardingBook',
+  MANAGE_SCREEN = 'OnboardingManage',
+  COLLECT_SCREEN = 'OnboardingCollect',
+  TIPS_SCREEN = 'OnboardingTips',
+}
 
-export const AUTH_ROUTES = Object.freeze({
-  MAIN_SCREEN: 'MainAuthScreen',
-  SIGN_UP_SCREEN: 'SignUpScreen',
-  SIGN_IN_SCREEN: 'SignInScreen',
-  CONFIRMATION_SCREEN: 'ConfirmationScreen',
-});
+export enum AUTH_ROUTES {
+  MAIN_SCREEN = 'MainAuthScreen',
+  SIGN_UP_SCREEN = 'SignUpScreen',
+  SIGN_IN_SCREEN = 'SignInScreen',
+  CONFIRMATION_SCREEN = 'ConfirmationScreen',
+}
 
-export const PERSONALIZATION_ROUTES = Object.freeze({
-  SEX_SCREEN: 'PersonalizationSexScreen',
-  BIRTH_DATE_SCREEN: 'PersonalizationBirthDateScreen',
-  NAME_SCREEN: 'PersonalizationNameScreen',
-  GET_STARTED_SCREEN: 'GetStartedScreen',
-});
+export enum PERSONALIZATION_ROUTES {
+  SEX_SCREEN = 'PersonalizationSexScreen',
+  BIRTH_DATE_SCREEN = 'PersonalizationBirthDateScreen',
+  NAME_SCREEN = 'PersonalizationNameScreen',
+  GET_STARTED_SCREEN = 'GetStartedScreen',
+}
 
-export const MAIN_ROUTES = Object.freeze({
-  DASHBOARD_SCREEN: 'DashboardScreen',
-  APPOINTMENTS_SCREEN: 'AppointmentsScreen',
-  RECOMMENDATIONS_NAVIGATOR: 'RecommendationsNavigator',
-  TIPS_SCREEN: 'TipsScreen',
-  ACCOUNT_NAVIGATOR: 'AccountNavigator',
-});
+export enum MAIN_ROUTES {
+  DASHBOARD_SCREEN = 'DashboardScreen',
+  APPOINTMENTS_SCREEN = 'AppointmentsScreen',
+  RECOMMENDATIONS_NAVIGATOR = 'RecommendationsNavigator',
+  TIPS_SCREEN = 'TipsScreen',
+  ACCOUNT_NAVIGATOR = 'AccountNavigator',
+}
 
-export const RECOMMENDATIONS_ROUTES = Object.freeze({
-  RECOMMENDATIONS_SCREEN: 'RecommendationsScreen',
-  RECOMMENDATION_INFO_SCREEN: 'RecommendationInfoScreen',
-  RECOMMENDATION_FORM_SCREEN: 'RecommendationFormScreen',
-  RECOMMENDATION_SUCCESS_SCREEN: 'RecommendationSuccessScreen',
-});
+export enum RECOMMENDATIONS_ROUTES {
+  RECOMMENDATIONS_SCREEN = 'RecommendationsScreen',
+  RECOMMENDATION_INFO_SCREEN = 'RecommendationInfoScreen',
+  RECOMMENDATION_FORM_SCREEN = 'RecommendationFormScreen',
+  RECOMMENDATION_SUCCESS_SCREEN = 'RecommendationSuccessScreen',
+}
 
-export const ACCOUNT_ROUTES = Object.freeze({
-  ACCOUNT_SCREEN: 'AccountScreen',
-  ACCOUNT_SETTINGS_SCREEN: 'AccountSettingsScreen',
-});
+export enum ACCOUNT_ROUTES {
+  ACCOUNT_SCREEN = 'AccountScreen',
+  ACCOUNT_SETTINGS_SCREEN = 'AccountSettingsScreen',
+}
