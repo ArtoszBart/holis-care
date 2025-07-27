@@ -22,7 +22,7 @@ export const useTipStore = create<TipStore>((set, get) => ({
       : await unlikeTipRequest(id);
 
     if (!response.ok) {
-      showToast('Wystąpił nieoczekiwany błąd');
+      showToast();
       return false;
     }
 

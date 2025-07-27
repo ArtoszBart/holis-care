@@ -10,7 +10,7 @@ const useAccountScreen = () => {
     const result = await logout();
     setIsLoading(false);
 
-    if (!result) showToast('Wystąpił nieoczekiwany błąd');
+    if (!result) showToast();
   };
 
   return { onSignOut };

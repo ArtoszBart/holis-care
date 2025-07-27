@@ -25,10 +25,10 @@ const useNameScreen = () => {
     if (errorMessage) return showToast(errorMessage);
 
     const userData = await prepareData();
-    if (!userData) return showToast('Wystąpił nieoczekiwany błąd');
+    if (!userData) return showToast();
 
     const response = await createSelfRequest(userData);
-    if (!response.ok) return showToast('Wystąpił nieoczekiwany błąd');
+    if (!response.ok) return showToast();
 
     await AppStorage.set(STORAGE_KEYS.USER, response.data);
     setUser(response.data);

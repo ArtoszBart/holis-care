@@ -31,7 +31,7 @@ const AppStorage = {
 
       return json ? (JSON.parse(json, reviveDates) as T) : null;
     } catch (e) {
-      showToast('Wystąpił nieoczekiwany błąd');
+      showToast();
       logError(e);
       console.error(`Storage.getItem error for key "${key}":`, e);
       return null;

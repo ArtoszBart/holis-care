@@ -26,7 +26,7 @@ const handleResponse = async <T = unknown>(
 
     if (axiosError.code === 'ECONNABORTED' || axiosError.code === 'ERR_NETWORK')
       return handleError('Błąd podczas łączenia z serwerem');
-    if (!axiosError.response) return handleError('Wystąpił błąd serwera');
+    if (!axiosError.response) return handleError('Błąd serwera');
 
     switch (axiosError.response.status) {
       case 400:

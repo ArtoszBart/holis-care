@@ -30,7 +30,7 @@ const useRecommendationFormScreen = (recommendationId: string) => {
     const response = await signUpAppointmentRequest(recommendationId, payload);
     setIsLoading(false);
 
-    if (!response.ok) return showToast('Wystąpił nieoczekiwany błąd');
+    if (!response.ok) return showToast();
 
     signUpAppointment(response.data);
     navigation.navigate(RECOMMENDATIONS_ROUTES.RECOMMENDATION_SUCCESS_SCREEN);

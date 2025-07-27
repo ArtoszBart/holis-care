@@ -15,7 +15,7 @@ export const createToast = (
 };
 
 export const showToast = (
-  message: string,
+  message: string = 'Wystąpił nieoczekiwany błąd',
   type: TOAST_TYPE = TOAST_TYPE.ERROR,
 ) => {
   DefaultToast.show({
