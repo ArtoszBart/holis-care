@@ -14,7 +14,15 @@ export const getSelfRequest = async () => {
 };
 
 export const createSelfRequest = async (userData: PersonalizationDTO) => {
-  return await axiosApiClient.post<User>('/users/self', userData);
+  const response = await axiosApiClient.post<User>('/users/self', userData);
+  if (response.ok) {
+    response.data = {
+      ...response.data,
+      dateOfBirth: new Date(response.data.dateOfBirth),
+    };
+  }
+
+  return response;
 };
 
 export const updateSelfRequest = async (userData: User) => {
