@@ -36,7 +36,8 @@ rawAxiosApiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response?.status !== 401 || originalRequest._retry) {
+    const isUnath = [401, 403].includes(error.response?.status);
+    if (!isUnath || originalRequest._retry) {
       return await Promise.reject(error);
     }
 

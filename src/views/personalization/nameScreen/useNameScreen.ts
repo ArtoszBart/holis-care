@@ -28,7 +28,7 @@ const useNameScreen = () => {
     if (!userData) return showToast();
 
     const response = await createSelfRequest(userData);
-    if (!response.ok) return showToast();
+    if (!response.ok) return;
 
     await AppStorage.set(STORAGE_KEYS.USER, response.data);
     setUser(response.data);

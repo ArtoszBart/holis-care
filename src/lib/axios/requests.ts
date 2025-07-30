@@ -30,19 +30,21 @@ const handleResponse = async <T = unknown>(
 
     switch (axiosError.response.status) {
       case 400:
+        showToast('Formularz zawiera błędy');
         return {
           ok: false,
           error: axiosError.response.data,
         };
       case 401:
+      case 403:
         showToast('Sesja wygasła. Zaloguj się ponownie.', TOAST_TYPE.WARN);
         await unauth();
         return { ok: false };
       case 429:
-        return handleError('Zbyt wiele prób. Spróbuj ponownie później.');
+        return handleError('Zbyt wiele prób. Spróbuj ponownie później');
       default:
         logError(error);
-        console.error(axiosError.response.data);
+        console.error('Default request error:', axiosError.response);
         return handleError('Wystąpił nieoczekiwany błąd');
     }
   }

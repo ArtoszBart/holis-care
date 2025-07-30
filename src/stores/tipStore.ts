@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { likeTipRequest, unlikeTipRequest } from '../api/tips';
 import { type Tip } from '../models/Tip';
-import { showToast } from '../views/common/toast';
 
 type TipStore = {
   tips: Tip[] | undefined;
@@ -22,7 +21,6 @@ export const useTipStore = create<TipStore>((set, get) => ({
       : await unlikeTipRequest(id);
 
     if (!response.ok) {
-      showToast();
       return false;
     }
 

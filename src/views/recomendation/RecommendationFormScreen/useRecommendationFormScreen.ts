@@ -10,7 +10,6 @@ import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
 import { useAppointmentStore } from '../../../stores/appointmentStore';
 import useLoadingStore from '../../../stores/loaderStore';
 import { toPayloadISODate } from '../../../utils/dateTime';
-import { showToast } from '../../common/toast';
 
 const useRecommendationFormScreen = (recommendationId: string) => {
   const navigation = useNavigation<RecommendationNavigationProp>();
@@ -30,7 +29,7 @@ const useRecommendationFormScreen = (recommendationId: string) => {
     const response = await signUpAppointmentRequest(recommendationId, payload);
     setIsLoading(false);
 
-    if (!response.ok) return showToast();
+    if (!response.ok) return;
 
     signUpAppointment(response.data);
     navigation.navigate(RECOMMENDATIONS_ROUTES.RECOMMENDATION_SUCCESS_SCREEN);

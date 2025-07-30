@@ -27,8 +27,7 @@ const useAccountSettings = () => {
     };
     const response = await updateSelfRequest(user);
     if (!response.ok) {
-      setIsLoading(false);
-      return showToast('Nie udało się zapisać danych');
+      return setIsLoading(false);
     }
 
     await AppStorage.set(STORAGE_KEYS.USER, response.data);
