@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react-native';
 
 export const SENTRY_CONFIG =
-  process.env.SENTRY_ENABLE === 'true'
+  process.env.EXPO_PUBLIC_SENTRY_ENABLE === 'true'
     ? {
         dsn: process.env.EXPO_PUBLIC_SENTRY_AUTH_TOKEN,
         sendDefaultPii: true,
