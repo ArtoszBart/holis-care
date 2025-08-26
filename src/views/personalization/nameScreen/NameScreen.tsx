@@ -39,7 +39,7 @@ export default function NameScreen() {
             style={{ textDecorationLine: 'underline' }}
             onPress={() => Linking.openURL(EXTERNAL_LINKS.PRIVACY_POLICY_URL)}
           >
-            Polityce Prywatości
+            Polityce Prywatności
           </CustomText>
           .
         </CustomText>

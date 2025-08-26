@@ -72,7 +72,7 @@ export default function MainNavigator() {
         name={MAIN_ROUTES.TIPS_SCREEN}
         component={TipsScreen}
         options={{
-          title: '💡 Porady Holiego 🌿',
+          title: '💡 Porady Holi 🌿',
           tabBarAccessibilityLabel: 'Porady',
           tabBarIcon: (props) => (
             <BottomTabsButton icon={ICONS.BULB} {...props} />

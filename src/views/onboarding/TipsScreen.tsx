@@ -20,7 +20,7 @@ export default function TipsScreen() {
 
       <View style={styles.textContainer}>
         <CustomText style={styles.header}>
-          Korzystaj ze wskazówek Holiego
+          Korzystaj ze wskazówek Holi
         </CustomText>
         <OnboardingListItem
           bullet='💡'
