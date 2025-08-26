@@ -40,7 +40,7 @@ const useAccountSettings = () => {
 
   const onCancelButtonPress = async (): Promise<void> => {
     const confirmed = await AsyncAlert(
-      'Czy napewno chcesz opuścić ekran edycji?',
+      'Czy na pewno chcesz opuścić ekran edycji?',
       'Niezapisane dane zostaną utracone',
     );
     if (!confirmed) return;
