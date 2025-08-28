@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { updateSelfRequest } from '../../api/user';
 import AppStorage, { STORAGE_KEYS } from '../../lib/storage';
-import { type User, type UserForm } from '../../models/User';
+import { type UserForm } from '../../models/User';
 import { type AccountNavigationProp } from '../../navigation/account';
 import useLoadingStore from '../../stores/loaderStore';
 import { useUserStore } from '../../stores/userStore';
@@ -14,18 +14,12 @@ const useAccountSettings = () => {
   const { user, setUser } = useUserStore();
 
   const onSaveButtonPress = async (userFormData: UserForm): Promise<void> => {
-    setIsLoading(true);
-    const storageUser = await AppStorage.get<User>(STORAGE_KEYS.USER);
-    if (!storageUser?.sex) {
-      setIsLoading(false);
-      return showToast('Nie można odczytać danych użytkownika');
-    }
-
-    const user = {
+    const userData = {
       ...userFormData,
-      sex: storageUser.sex,
+      sex: user!.sex,
     };
-    const response = await updateSelfRequest(user);
+
+    const response = await updateSelfRequest(userData);
     if (!response.ok) {
       return setIsLoading(false);
     }
