@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import BookScreen from '../../views/onboarding/BookScreen';
 import CollectScreen from '../../views/onboarding/CollectScreen';
+import DisclaimerScreen from '../../views/onboarding/DisclaimerScreen';
 import HelloScreen from '../../views/onboarding/HelloScreen';
 import ManageScreen from '../../views/onboarding/ManageScreen';
 import TipsScreen from '../../views/onboarding/TipsScreen';
@@ -39,6 +40,10 @@ function OnboardingNavigator() {
       <Stack.Screen
         name={ONBOARDING_ROUTES.TIPS_SCREEN}
         component={TipsScreen}
+      />
+      <Stack.Screen
+        name={ONBOARDING_ROUTES.DISCLAIMER_SCREEN}
+        component={DisclaimerScreen}
       />
     </Stack.Navigator>
   );

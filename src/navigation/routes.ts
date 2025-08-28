@@ -15,6 +15,7 @@ export enum ONBOARDING_ROUTES {
   MANAGE_SCREEN = 'OnboardingManage',
   COLLECT_SCREEN = 'OnboardingCollect',
   TIPS_SCREEN = 'OnboardingTips',
+  DISCLAIMER_SCREEN = 'OnboardingDisclaimer',
 }
 
 export enum AUTH_ROUTES {
