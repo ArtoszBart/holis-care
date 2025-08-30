@@ -1,21 +1,29 @@
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../../constants/colors';
+import { type MainNavigationProp } from '../../../navigation/main';
+import { MAIN_ROUTES } from '../../../navigation/routes';
 import { useUserStore } from '../../../stores/userStore';
 import CustomText from '../../common/CustomText';
 import { Icon, ICONS } from '../../common/icon';
 
 export default function DashboardHeader() {
+  const navigation = useNavigation<MainNavigationProp>();
   const { user } = useUserStore();
 
   return (
     <View style={styles.header}>
       <View style={styles.greetingsBox}>
-        <Image
-          style={styles.profileImage}
-          source={require('../../../assets/images/profile-default.webp')}
-        />
+        <TouchableOpacity
+          onPress={() => navigation.navigate(MAIN_ROUTES.ACCOUNT_NAVIGATOR)}
+        >
+          <Image
+            style={styles.profileImage}
+            source={require('../../../assets/images/profile-default.webp')}
+          />
+        </TouchableOpacity>
 
         <CustomText style={styles.greetings}>
           Cześć
