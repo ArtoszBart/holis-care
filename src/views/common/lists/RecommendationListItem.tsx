@@ -24,7 +24,15 @@ export default function RecommendationListItem({
   const { color, title } = getBadgeConfig(recommendation.exam.type);
 
   return (
-    <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
+    <TouchableOpacity
+      style={[styles.card, { width: summary ? 284 : '100%' }]}
+      disabled={summary}
+      onPress={() => {
+        navigation.navigate(RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN, {
+          recommendation,
+        });
+      }}
+    >
       <View style={styles.mainContainer}>
         <Badge color={color} label={title} />
 
@@ -37,23 +45,15 @@ export default function RecommendationListItem({
       </View>
 
       {summary ? (
-        <TouchableOpacity style={styles.actionButton}>
+        <View style={styles.actionButton}>
           {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
-        </TouchableOpacity>
+        </View>
       ) : (
-        <TouchableOpacity
-          style={[styles.actionButton, { justifyContent: 'center' }]}
-          onPress={() =>
-            navigation.navigate(
-              RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN,
-              { recommendation },
-            )
-          }
-        >
+        <View style={[styles.actionButton, { justifyContent: 'center' }]}>
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
-        </TouchableOpacity>
+        </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 }
 

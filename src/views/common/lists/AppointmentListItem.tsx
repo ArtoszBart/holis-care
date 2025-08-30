@@ -24,7 +24,10 @@ export default function AppointmentListItem({
   const { color, title } = getBadgeConfig(appointment.exam.type);
 
   return (
-    <View style={[styles.card, { width: summary ? 284 : '100%' }]}>
+    <TouchableOpacity
+      style={[styles.card, { width: summary ? 284 : '100%' }]}
+      disabled={summary}
+    >
       <View style={styles.dateContainer}>
         <View>
           <CustomText style={styles.normalText}>
@@ -62,17 +65,15 @@ export default function AppointmentListItem({
       </View>
 
       {summary ? (
-        <TouchableOpacity style={styles.actionButton}>
+        <View style={styles.actionButton}>
           {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
-        </TouchableOpacity>
+        </View>
       ) : (
-        <TouchableOpacity
-          style={[styles.actionButton, { justifyContent: 'center' }]}
-        >
+        <View style={[styles.actionButton, { justifyContent: 'center' }]}>
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
-        </TouchableOpacity>
+        </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 }
 
