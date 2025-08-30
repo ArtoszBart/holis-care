@@ -2,6 +2,7 @@ import React from 'react';
 import { type Appointment } from '../../../models/Appointment';
 import { MAIN_ROUTES } from '../../../navigation/routes';
 import AppointmentListItem from '../../common/lists/AppointmentListItem';
+import AppointmentListItemSkeleton from '../../common/lists/AppointmentListItemSkeleton';
 import List from '../../common/lists/List';
 import ListItemPlaceholder from '../../common/lists/ListItemPlaceholder';
 import { type IAppointmentScreenHook } from '../useAppointmentsScreen';
@@ -25,6 +26,8 @@ export default function AppointmentsList({
     <List<Appointment>
       items={items}
       ItemComponent={AppointmentListItem}
+      Skeleton={AppointmentListItemSkeleton}
+      isInitFetching={!hook.isInitLoaded}
       isRefreshing={hook.isRefreshing}
       onRefresh={hook.fetchAppointments}
       placeholder={() =>
