@@ -20,7 +20,7 @@ export default function AppointmentsScreen() {
 
       {hook.activeTab === TabOptions.UPCOMING && (
         <AppointmentsList
-          items={hook.upcomingAppointments}
+          items={hook.upcAppointments}
           recommendationAvailableText='Brak zaplanowanych wizyt — sprawdź, które warto umówić'
           noRecommendationTitle='Wszystko ogarnięte!'
           noRecommendationText='Sprawdź wskazówki Holiego, które pomogą Ci dbać o siebie na co dzień'
