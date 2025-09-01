@@ -4,18 +4,9 @@ export enum ROOT_ROUTES {
 }
 
 export enum INITIAL_FLOW_ROUTES {
-  ONBOARDING_NAVIGATOR = 'OnboardingNavigator',
+  ONBOARDING_SCREEN = 'OnboardingScreen',
   AUTH_NAVIGATOR = 'AuthNavigator',
   PERSONALIZATION_NAVIGATOR = 'PersonalizationNavigator',
-}
-
-export enum ONBOARDING_ROUTES {
-  HELLO_SCREEN = 'OnboardingHello',
-  BOOK_SCREEN = 'OnboardingBook',
-  MANAGE_SCREEN = 'OnboardingManage',
-  COLLECT_SCREEN = 'OnboardingCollect',
-  TIPS_SCREEN = 'OnboardingTips',
-  DISCLAIMER_SCREEN = 'OnboardingDisclaimer',
 }
 
 export enum AUTH_ROUTES {

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import OnboardingScreen from '../../views/onboarding/OnboardingScreen';
 import { AuthNavigator } from '../auth';
-import { OnboardingNavigatorWrapper } from '../onboarding';
 import { PersonalizationNavigator } from '../personalization';
 import { INITIAL_FLOW_ROUTES } from '../routes';
 import useInitialFlowNavigator from './useInitialFlowNavigator';
@@ -18,7 +18,7 @@ export default function InitialFlowNavigator() {
     <Stack.Navigator
       initialRouteName={
         isFirstLaunch
-          ? INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR
+          ? INITIAL_FLOW_ROUTES.ONBOARDING_SCREEN
           : INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR
       }
       screenOptions={{
@@ -28,8 +28,8 @@ export default function InitialFlowNavigator() {
       }}
     >
       <Stack.Screen
-        name={INITIAL_FLOW_ROUTES.ONBOARDING_NAVIGATOR}
-        component={OnboardingNavigatorWrapper}
+        name={INITIAL_FLOW_ROUTES.ONBOARDING_SCREEN}
+        component={OnboardingScreen}
       />
       <Stack.Screen
         name={INITIAL_FLOW_ROUTES.AUTH_NAVIGATOR}

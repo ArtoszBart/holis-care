@@ -28,8 +28,9 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginBottom: 4,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     maxWidth: 300,
+    gap: 4,
   },
   paragraph: {
     fontSize: 14,

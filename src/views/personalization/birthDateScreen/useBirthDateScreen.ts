@@ -4,7 +4,7 @@ import { MAX_BIRTH_DATE } from '../../../constants/age';
 import { personalizationSchema } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
-import { usePersonalizationStore } from '../../../stores/onboardingStore';
+import { usePersonalizationStore } from '../../../stores/personalizationStore';
 import { toPayloadDateString } from '../../../utils/dateTime';
 import { showToast } from '../../common/toast';
 
