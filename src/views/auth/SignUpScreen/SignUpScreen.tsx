@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { RegisterDTO, registerSchema } from '../../../models/Auth';
+import CustomText from '../../common/CustomText';
 import Form from '../../common/forms/Form';
 import TextInput from '../../common/forms/TextInput';
 import LinkButton from '../../common/LinkButton';
@@ -41,6 +42,16 @@ export default function SignUpScreen() {
           spellCheck={false}
           textContentType='newPassword'
         />
+        <View style={styles.requirementsContainer}>
+          <CustomText style={styles.requirementsTitle}>
+            Hasło musi zawierać:
+          </CustomText>
+          <CustomText>• minumum 8 znaków</CustomText>
+          <CustomText>• przynajmniej 1 cyfrę</CustomText>
+          <CustomText>• przynajmniej 1 znak specjalny</CustomText>
+          <CustomText>• przynajmniej 1 wielką literę</CustomText>
+          <CustomText>• przynajmniej 1 małą literę</CustomText>
+        </View>
         <TextInput
           fieldName='confirmPassword'
           placeholder='Potwierdź hasło'
@@ -68,5 +79,11 @@ export const styles = StyleSheet.create({
   },
   bottomLink: {
     marginTop: 'auto',
+  },
+  requirementsContainer: {
+    paddingHorizontal: 13,
+  },
+  requirementsTitle: {
+    fontWeight: 600,
   },
 });
