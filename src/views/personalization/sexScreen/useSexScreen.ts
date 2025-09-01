@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SEX } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
-import { usePersonalizationStore } from '../../../stores/onboardingStore';
+import { usePersonalizationStore } from '../../../stores/personalizationStore';
 
 const useSexScreen = () => {
   const navigation = useNavigation<PersonalizationNavigationProp>();

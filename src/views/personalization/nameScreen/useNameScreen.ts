@@ -8,7 +8,7 @@ import {
 } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
-import { usePersonalizationStore } from '../../../stores/onboardingStore';
+import { usePersonalizationStore } from '../../../stores/personalizationStore';
 import { useUserStore } from '../../../stores/userStore';
 import { showToast } from '../../common/toast';
 
