@@ -14,7 +14,7 @@ const useApp = () => {
   const { setIsAuth } = useAuthStore();
   const { setUser } = useUserStore();
   const { setTips } = useTipStore();
-  const { getRefreshedAppointments } = useAppointmentStore();
+  const { fetchAppointments } = useAppointmentStore();
 
   const [appIsReady, setAppIsReady] = useState(false);
   const [fontsLoaded, fontsError] = useFonts({
@@ -65,7 +65,7 @@ const useApp = () => {
   const fetchData = async () => {
     const tipsResponse = await getTipsRequest();
     if (tipsResponse.ok) setTips(tipsResponse.data);
-    await getRefreshedAppointments();
+    await fetchAppointments();
   };
 
   return { appIsReady, onLayoutRootView };
