@@ -32,8 +32,13 @@ export const signUpAppointmentSchema = z.object({
       /^[a-ząćęłńóśźż]+(?:[-'\s][a-ząćęłńóśźż]+)+$/i,
       'To nie jest poprawne imię i nazwisko',
     )
-    .optional(),
-  locationString: z.string().min(4, 'Adres jest za krótki').optional(),
+    .optional()
+    .or(z.literal('')),
+  locationString: z
+    .string()
+    .min(4, 'Adres jest za krótki')
+    .optional()
+    .or(z.literal('')),
   text: z.string().optional(),
 });
 
