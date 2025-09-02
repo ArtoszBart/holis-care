@@ -48,7 +48,14 @@ export default function RecommendationInfoScreen({
           onPress={() =>
             navigation.navigate(
               RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN,
-              { recommendation },
+              {
+                appointment: {
+                  ...recommendation,
+                  appointmentDate: recommendation.appointmentDate
+                    ? recommendation.appointmentDate.toISOString()
+                    : null,
+                },
+              },
             )
           }
         />

@@ -3,9 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
 import {
+  APPOINTMENT_STATUS,
   signUpAppointmentSchema,
   type SignUpAppointmentFormValues,
 } from '../../../models/Appointment';
+import { type AppointmentFormScreenProps } from '../../../navigation/appointment';
 import { type RecommendationFormScreenProps } from '../../../navigation/recommendation';
 import Badge from '../../common/Badge';
 import CustomText from '../../common/CustomText';
@@ -13,27 +15,46 @@ import DateTimePicker from '../../common/forms/DateTimePicker';
 import Form from '../../common/forms/Form';
 import TextInput from '../../common/forms/TextInput';
 import PageWrapper from '../../common/pageWrapper/PageWrapper';
-import useRecommendationFormScreen from './useRecommendationFormScreen';
+import useAppointmentFormScreen from './useAppointmentFormScreen';
 
-export default function RecommendationFormScreen({
+type IProps = AppointmentFormScreenProps | RecommendationFormScreenProps;
+
+export default function AppointmentFormScreen({
   route: {
-    params: { recommendation },
+    params: { appointment },
   },
-}: RecommendationFormScreenProps) {
-  const { color, title } = getBadgeConfig(recommendation.exam.type);
+}: IProps) {
+  const { color, title } = getBadgeConfig(appointment.exam.type);
 
-  const { onSubmit } = useRecommendationFormScreen(recommendation.id);
+  const { onSubmit } = useAppointmentFormScreen(appointment);
+
+  const defaultValues = {
+    date: appointment.appointmentDate
+      ? new Date(appointment.appointmentDate)
+      : undefined,
+    time: appointment.appointmentDate
+      ? new Date(appointment.appointmentDate)
+      : undefined,
+    doctorName: appointment.doctorName ?? undefined,
+    locationString: appointment.locationString ?? undefined,
+    text: appointment.text ?? undefined,
+  };
 
   return (
     <PageWrapper>
       <View style={styles.mainContainer}>
         <Badge color={color} label={title} style={styles.badge} />
-        <CustomText style={styles.title}>{recommendation.exam.name}</CustomText>
+        <CustomText style={styles.title}>{appointment.exam.name}</CustomText>
       </View>
 
       <Form<SignUpAppointmentFormValues>
         schema={signUpAppointmentSchema}
-        submitLabel='Zapisz się'
+        defaultValues={defaultValues}
+        submitLabel={
+          appointment.status === APPOINTMENT_STATUS.SCHEDULED
+            ? 'Zapisz zmiany'
+            : 'Zapisz się'
+        }
         onSubmit={onSubmit}
         fullScreen
       >

@@ -5,7 +5,7 @@ import { showToast, TOAST_TYPE } from '../views/common/toast';
 
 type AppointmentStore = {
   storedAppointments: Appointment[];
-  signUpAppointment: (newAppointment: Appointment) => Promise<void>;
+  updateAppointment: (newAppointment: Appointment) => Promise<void>;
   setAppointments: (newAppointments: Appointment[]) => void;
   getRefreshedAppointments: () => Promise<Appointment[]>;
 };
@@ -17,7 +17,7 @@ export const useAppointmentStore = create<AppointmentStore>((set, get) => ({
     set({ storedAppointments: newAppointments });
   },
 
-  signUpAppointment: async (newAppointment: Appointment) => {
+  updateAppointment: async (newAppointment: Appointment) => {
     const { storedAppointments: appointments } = get();
     const newAppointments = [...(appointments ?? [])];
     const index = newAppointments.findIndex(

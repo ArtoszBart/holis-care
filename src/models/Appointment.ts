@@ -22,6 +22,13 @@ export type Appointment = {
   exam: Exam;
 };
 
+export type AppointmentNavigationParam = Omit<
+  Appointment,
+  'appointmentDate'
+> & {
+  appointmentDate: string | null;
+};
+
 export const signUpAppointmentSchema = z.object({
   date: z.date({ required_error: 'Data jest wymagana' }),
   time: z.date({ required_error: 'Godzina jest wymagana' }),

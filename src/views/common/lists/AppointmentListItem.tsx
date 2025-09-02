@@ -1,8 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
-import { type Appointment } from '../../../models/Appointment';
+import {
+  APPOINTMENT_STATUS,
+  type Appointment,
+} from '../../../models/Appointment';
+import { type AppointmentNavigationProp } from '../../../navigation/appointment';
+import { APPOINTMENT_ROUTES } from '../../../navigation/routes';
 import {
   getDisplayDateShort,
   getDisplayDayOfWeekShort,
@@ -21,12 +27,24 @@ export default function AppointmentListItem({
   item: appointment,
   summary,
 }: Props) {
+  const navigation = useNavigation<AppointmentNavigationProp>();
+
   const { color, title } = getBadgeConfig(appointment.exam.type);
+  const isEditable =
+    !summary && appointment.status === APPOINTMENT_STATUS.SCHEDULED;
 
   return (
     <TouchableOpacity
       style={[styles.card, { width: summary ? 284 : '100%' }]}
-      disabled={summary}
+      disabled={!isEditable}
+      onPress={() =>
+        navigation.navigate(APPOINTMENT_ROUTES.APPOINTMENT_FORM_SCREEN, {
+          appointment: {
+            ...appointment,
+            appointmentDate: appointment.appointmentDate!.toISOString(),
+          },
+        })
+      }
     >
       <View style={styles.dateContainer}>
         <View>
@@ -64,13 +82,13 @@ export default function AppointmentListItem({
         )}
       </View>
 
-      {summary ? (
-        <View style={styles.actionButton}>
-          {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
-        </View>
-      ) : (
+      {isEditable ? (
         <View style={[styles.actionButton, { justifyContent: 'center' }]}>
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
+        </View>
+      ) : (
+        <View style={styles.actionButton}>
+          {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
         </View>
       )}
     </TouchableOpacity>

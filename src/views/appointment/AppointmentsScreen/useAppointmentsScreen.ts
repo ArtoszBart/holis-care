@@ -1,9 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
-import { APPOINTMENT_STATUS, type Appointment } from '../../models/Appointment';
-import { type MainNavigationProp } from '../../navigation/main';
-import { useAppointmentStore } from '../../stores/appointmentStore';
-import { TabOptions } from './consts';
+import {
+  APPOINTMENT_STATUS,
+  type Appointment,
+} from '../../../models/Appointment';
+import { type MainNavigationProp } from '../../../navigation/main';
+import { useAppointmentStore } from '../../../stores/appointmentStore';
+import { TabOptions } from '../consts';
 
 export interface IAppointmentScreenHook {
   navigation: MainNavigationProp;

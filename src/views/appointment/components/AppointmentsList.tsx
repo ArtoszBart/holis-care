@@ -5,7 +5,7 @@ import AppointmentListItem from '../../common/lists/AppointmentListItem';
 import AppointmentListItemSkeleton from '../../common/lists/AppointmentListItemSkeleton';
 import List from '../../common/lists/List';
 import ListItemPlaceholder from '../../common/lists/ListItemPlaceholder';
-import { type IAppointmentScreenHook } from '../useAppointmentsScreen';
+import { type IAppointmentScreenHook } from '../AppointmentsScreen/useAppointmentsScreen';
 
 interface IProps {
   items: Appointment[] | undefined;
