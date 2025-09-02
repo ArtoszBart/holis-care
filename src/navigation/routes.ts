@@ -25,7 +25,7 @@ export enum PERSONALIZATION_ROUTES {
 
 export enum MAIN_ROUTES {
   DASHBOARD_SCREEN = 'DashboardScreen',
-  APPOINTMENTS_SCREEN = 'AppointmentsScreen',
+  APPOINTMENTS_SCREEN = 'AppointmentsNavigator',
   RECOMMENDATIONS_NAVIGATOR = 'RecommendationsNavigator',
   TIPS_SCREEN = 'TipsScreen',
   ACCOUNT_NAVIGATOR = 'AccountNavigator',
@@ -36,6 +36,11 @@ export enum RECOMMENDATIONS_ROUTES {
   RECOMMENDATION_INFO_SCREEN = 'RecommendationInfoScreen',
   RECOMMENDATION_FORM_SCREEN = 'RecommendationFormScreen',
   RECOMMENDATION_SUCCESS_SCREEN = 'RecommendationSuccessScreen',
+}
+
+export enum APPOINTMENT_ROUTES {
+  APPOINTMENTS_SCREEN = 'AppointmentsScreen',
+  APPOINTMENT_FORM_SCREEN = 'AppointmentEditScreen',
 }
 
 export enum ACCOUNT_ROUTES {

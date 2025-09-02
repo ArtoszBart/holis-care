@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { signUpAppointmentRequest } from '../../../api/appointment';
 import {
   APPOINTMENT_STATUS,
+  type AppointmentNavigationParam,
   type SignUpAppointmentDTO,
   type SignUpAppointmentFormValues,
 } from '../../../models/Appointment';
@@ -10,11 +11,12 @@ import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
 import { useAppointmentStore } from '../../../stores/appointmentStore';
 import useLoadingStore from '../../../stores/loaderStore';
 import { toPayloadISODate } from '../../../utils/dateTime';
+import { showToast, TOAST_TYPE } from '../../common/toast';
 
-const useRecommendationFormScreen = (recommendationId: string) => {
+const useAppointmentFormScreen = (appointment: AppointmentNavigationParam) => {
   const navigation = useNavigation<RecommendationNavigationProp>();
   const { setIsLoading } = useLoadingStore();
-  const { signUpAppointment } = useAppointmentStore();
+  const { updateAppointment } = useAppointmentStore();
 
   const onSubmit = async (data: SignUpAppointmentFormValues) => {
     setIsLoading(true);
@@ -26,16 +28,23 @@ const useRecommendationFormScreen = (recommendationId: string) => {
       status: APPOINTMENT_STATUS.SCHEDULED,
     };
 
-    const response = await signUpAppointmentRequest(recommendationId, payload);
+    const response = await signUpAppointmentRequest(appointment.id, payload);
     setIsLoading(false);
 
     if (!response.ok) return;
 
-    signUpAppointment(response.data);
-    navigation.navigate(RECOMMENDATIONS_ROUTES.RECOMMENDATION_SUCCESS_SCREEN);
+    updateAppointment(response.data);
+
+    if (appointment.status === APPOINTMENT_STATUS.TO_PLAN)
+      return navigation.navigate(
+        RECOMMENDATIONS_ROUTES.RECOMMENDATION_SUCCESS_SCREEN,
+      );
+
+    showToast('Zapisano zmiany', TOAST_TYPE.SUCCESS);
+    navigation.pop();
   };
 
   return { onSubmit };
 };
 
-export default useRecommendationFormScreen;
+export default useAppointmentFormScreen;

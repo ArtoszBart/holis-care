@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import TopTabsNavigation from '../common/navigation/TopTabsNavigation';
-import PageWrapper from '../common/pageWrapper/PageWrapper';
-import AppointmentsList from './components/AppointmentsList';
-import { TabOptions, tabOptions } from './consts';
+import TopTabsNavigation from '../../common/navigation/TopTabsNavigation';
+import PageWrapper from '../../common/pageWrapper/PageWrapper';
+import AppointmentsList from '../components/AppointmentsList';
+import { TabOptions, tabOptions } from '../consts';
 import useAppointmentsScreen from './useAppointmentsScreen';
 
 export default function AppointmentsScreen() {

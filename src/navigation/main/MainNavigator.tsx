@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '../../constants/colors';
-import AppointmentsScreen from '../../views/appointmentsScreen/AppointmentsScreen';
 import Header from '../../views/common/Header';
 import { ICONS } from '../../views/common/icon';
 import BottomTabsButton from '../../views/common/navigation/BottomTabsButton';
@@ -10,6 +9,7 @@ import BottomTabsMainButton from '../../views/common/navigation/BottomTabsMainBu
 import DashboardScreen from '../../views/dashboardScreen/DashboardScreen';
 import TipsScreen from '../../views/TipsScreen';
 import { AccountNavigator } from '../account';
+import { AppointmentNavigator } from '../appointment';
 import { RecommendationNavigator } from '../recommendation';
 import { MAIN_ROUTES } from '../routes';
 
@@ -47,10 +47,11 @@ export default function MainNavigator() {
       />
       <Tab.Screen
         name={MAIN_ROUTES.APPOINTMENTS_SCREEN}
-        component={AppointmentsScreen}
+        component={AppointmentNavigator}
         options={{
           title: 'Terminy',
           tabBarAccessibilityLabel: 'Terminy',
+          headerShown: false,
           tabBarIcon: (props) => (
             <BottomTabsButton icon={ICONS.CALENDAR} {...props} />
           ),

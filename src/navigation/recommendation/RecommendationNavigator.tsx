@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AppointmentFormScreen from '../../views/appointment/AppointmentFormScreen';
 import Header from '../../views/common/Header';
-import RecommendationFormScreen from '../../views/recomendation/RecommendationFormScreen';
 import RecommendationInfoScreen from '../../views/recomendation/RecommendationInfoScreen';
 import RecommendationsScreen from '../../views/recomendation/RecommendationsScreen/RecommendationsScreen';
 import RecommendationSuccessScreen from '../../views/recomendation/RecommendationSuccessScreen';
@@ -36,7 +36,7 @@ export default function RecommendationNavigator() {
       />
       <Stack.Screen
         name={RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN}
-        component={RecommendationFormScreen}
+        component={AppointmentFormScreen}
         options={{
           title: 'Nowa wizyta',
           header: ({ options }) => <Header title={options.title} withBack />,
