@@ -7,7 +7,7 @@ type AppointmentStore = {
   storedAppointments: Appointment[];
   updateAppointment: (newAppointment: Appointment) => Promise<void>;
   setAppointments: (newAppointments: Appointment[]) => void;
-  getRefreshedAppointments: () => Promise<Appointment[]>;
+  fetchAppointments: () => Promise<void>;
 };
 
 export const useAppointmentStore = create<AppointmentStore>((set, get) => ({
@@ -23,6 +23,7 @@ export const useAppointmentStore = create<AppointmentStore>((set, get) => ({
     const index = newAppointments.findIndex(
       (appointment) => appointment.id === newAppointment.id,
     );
+
     if (index !== -1) {
       newAppointments[index] = newAppointment;
     }
@@ -30,14 +31,12 @@ export const useAppointmentStore = create<AppointmentStore>((set, get) => ({
     set({ storedAppointments: [...newAppointments] });
   },
 
-  getRefreshedAppointments: async () => {
+  fetchAppointments: async () => {
     const appointmentsResponse = await getAppointmentsRequest();
     if (appointmentsResponse.ok) {
       set({ storedAppointments: appointmentsResponse.data });
-      return appointmentsResponse.data;
     } else {
       showToast('Wystąpił błąd podczas pobierania danych', TOAST_TYPE.WARN);
-      return get().storedAppointments;
     }
   },
 }));

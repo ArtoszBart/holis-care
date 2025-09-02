@@ -22,7 +22,7 @@ export interface IAppointmentScreenHook {
 
 const useAppointmentsScreen = () => {
   const navigation = useNavigation<MainNavigationProp>();
-  const { getRefreshedAppointments } = useAppointmentStore();
+  const { storedAppointments, fetchAppointments } = useAppointmentStore();
 
   const [activeTab, setActiveTab] = useState<TabOptions>(TabOptions.UPCOMING);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -33,19 +33,29 @@ const useAppointmentsScreen = () => {
 
   useEffect(() => {
     const initDataLoad = async () => {
-      await fetchAppointments();
+      await fetchData();
       setIsInitLoaded(true);
     };
 
     initDataLoad();
   }, []);
 
-  const fetchAppointments = async () => {
-    if (isInitLoaded) setIsRefreshing(true);
-    const appointments = await getRefreshedAppointments();
+  useEffect(() => {
+    prepareData();
+  }, [storedAppointments]);
 
+  const fetchData = async () => {
+    if (isInitLoaded) setIsRefreshing(true);
+    await fetchAppointments();
+
+    prepareData();
+
+    setIsRefreshing(false);
+  };
+
+  const prepareData = () => {
     const { pastAppointments, upcomingAppointments, hasRecommendations } =
-      appointments.reduce(
+      storedAppointments.reduce(
         (acc, appointment) => {
           if (appointment.status === APPOINTMENT_STATUS.COMPLETED) {
             acc.pastAppointments.push(appointment);
@@ -61,11 +71,17 @@ const useAppointmentsScreen = () => {
           hasRecommendations: false,
         },
       );
-    setPastAppointments(pastAppointments);
-    setUpcAppointments(upcomingAppointments);
+    setPastAppointments(
+      pastAppointments.sort(
+        (a, b) => a.appointmentDate!.getTime() - b.appointmentDate!.getTime(),
+      ),
+    );
+    setUpcAppointments(
+      upcomingAppointments.sort(
+        (a, b) => a.appointmentDate!.getTime() - b.appointmentDate!.getTime(),
+      ),
+    );
     setHasRecommendations(hasRecommendations);
-
-    setIsRefreshing(false);
   };
 
   const hookOptions: IAppointmentScreenHook = {
@@ -75,7 +91,7 @@ const useAppointmentsScreen = () => {
     upcAppointments,
     pastAppointments,
     hasRecommendations,
-    fetchAppointments,
+    fetchAppointments: fetchData,
     isRefreshing,
     isInitLoaded,
   };
