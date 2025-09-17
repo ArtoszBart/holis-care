@@ -61,7 +61,7 @@ export default function DashboardScreen() {
           items={hook.appointments}
           ItemComponent={AppointmentListItem}
           onSeeAllPress={() =>
-            hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)
+            hook.navigation.navigate(MAIN_ROUTES.APPOINTMENTS_NAVIGATOR)
           }
           placeholder={() =>
             hook.recommendations.length > 0 ? (

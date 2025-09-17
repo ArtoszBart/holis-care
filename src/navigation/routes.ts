@@ -25,7 +25,7 @@ export enum PERSONALIZATION_ROUTES {
 
 export enum MAIN_ROUTES {
   DASHBOARD_SCREEN = 'DashboardScreen',
-  APPOINTMENTS_SCREEN = 'AppointmentsNavigator',
+  APPOINTMENTS_NAVIGATOR = 'AppointmentsNavigator',
   RECOMMENDATIONS_NAVIGATOR = 'RecommendationsNavigator',
   TIPS_SCREEN = 'TipsScreen',
   ACCOUNT_NAVIGATOR = 'AccountNavigator',

@@ -23,6 +23,7 @@ export default function RecommendationNavigator() {
         component={RecommendationsScreen}
         options={{
           title: 'Twoje zalecenia',
+          gestureEnabled: false,
           header: ({ options }) => <Header title={options.title} />,
         }}
       />
