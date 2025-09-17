@@ -49,7 +49,9 @@ export default function RecommendationSuccessScreen() {
         />
         <Button
           label='Zamknij'
-          onPress={() => navigation.navigate(MAIN_ROUTES.APPOINTMENTS_SCREEN)}
+          onPress={() =>
+            navigation.navigate(MAIN_ROUTES.APPOINTMENTS_NAVIGATOR)
+          }
           invertedStyle
         />
       </View>

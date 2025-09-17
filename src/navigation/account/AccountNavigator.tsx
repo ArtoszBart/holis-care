@@ -21,9 +21,11 @@ export default function AccountNavigator() {
         component={AccountScreen}
         options={{
           title: 'Moje konto',
+          gestureEnabled: false,
           header: ({ options }) => <Header title={options.title} />,
         }}
       />
+
       <Stack.Screen
         name={ACCOUNT_ROUTES.ACCOUNT_SETTINGS_SCREEN}
         component={AccountSettings}

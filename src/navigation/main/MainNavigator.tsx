@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '../../constants/colors';
+import { navigateTabWithReset } from '../../utils/navigation';
 import Header from '../../views/common/Header';
 import { ICONS } from '../../views/common/icon';
 import BottomTabsButton from '../../views/common/navigation/BottomTabsButton';
@@ -45,18 +46,28 @@ export default function MainNavigator() {
           ),
         }}
       />
+
       <Tab.Screen
-        name={MAIN_ROUTES.APPOINTMENTS_SCREEN}
+        name={MAIN_ROUTES.APPOINTMENTS_NAVIGATOR}
         component={AppointmentNavigator}
         options={{
-          title: 'Terminy',
-          tabBarAccessibilityLabel: 'Terminy',
+          title: 'Wizyty',
+          tabBarAccessibilityLabel: 'Wizyty',
           headerShown: false,
           tabBarIcon: (props) => (
             <BottomTabsButton icon={ICONS.CALENDAR} {...props} />
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: (e) =>
+            navigateTabWithReset(
+              e,
+              navigation,
+              MAIN_ROUTES.APPOINTMENTS_NAVIGATOR,
+            ),
+        })}
       />
+
       <Tab.Screen
         name={MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR}
         component={RecommendationNavigator}
@@ -68,7 +79,16 @@ export default function MainNavigator() {
             <BottomTabsMainButton icon={ICONS.PLUS} {...props} />
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: (e) =>
+            navigateTabWithReset(
+              e,
+              navigation,
+              MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR,
+            ),
+        })}
       />
+
       <Tab.Screen
         name={MAIN_ROUTES.TIPS_SCREEN}
         component={TipsScreen}
@@ -80,6 +100,7 @@ export default function MainNavigator() {
           ),
         }}
       />
+
       <Tab.Screen
         name={MAIN_ROUTES.ACCOUNT_NAVIGATOR}
         component={AccountNavigator}

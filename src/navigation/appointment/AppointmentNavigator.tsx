@@ -21,6 +21,7 @@ export default function AppointmentNavigator() {
         component={AppointmentsScreen}
         options={{
           title: 'Twoje zalecenia',
+          gestureEnabled: false,
           header: ({ options }) => <Header title={options.title} />,
         }}
       />

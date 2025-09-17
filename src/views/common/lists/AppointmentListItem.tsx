@@ -7,8 +7,8 @@ import {
   APPOINTMENT_STATUS,
   type Appointment,
 } from '../../../models/Appointment';
-import { type AppointmentNavigationProp } from '../../../navigation/appointment';
-import { APPOINTMENT_ROUTES } from '../../../navigation/routes';
+import { type MainNavigationProp } from '../../../navigation/main';
+import { APPOINTMENT_ROUTES, MAIN_ROUTES } from '../../../navigation/routes';
 import {
   getDisplayDateShort,
   getDisplayDayOfWeekShort,
@@ -27,24 +27,26 @@ export default function AppointmentListItem({
   item: appointment,
   summary,
 }: Props) {
-  const navigation = useNavigation<AppointmentNavigationProp>();
+  const navigation = useNavigation<MainNavigationProp>();
 
   const { color, title } = getBadgeConfig(appointment.exam.type);
-  const isEditable =
-    !summary && appointment.status === APPOINTMENT_STATUS.SCHEDULED;
+  const isEditable = appointment.status === APPOINTMENT_STATUS.SCHEDULED;
 
   return (
     <TouchableOpacity
       style={[styles.card, { width: summary ? 284 : '100%' }]}
       disabled={!isEditable}
-      onPress={() =>
-        navigation.navigate(APPOINTMENT_ROUTES.APPOINTMENT_FORM_SCREEN, {
-          appointment: {
-            ...appointment,
-            appointmentDate: appointment.appointmentDate!.toISOString(),
+      onPress={() => {
+        navigation.navigate(MAIN_ROUTES.APPOINTMENTS_NAVIGATOR, {
+          screen: APPOINTMENT_ROUTES.APPOINTMENT_FORM_SCREEN,
+          params: {
+            appointment: {
+              ...appointment,
+              appointmentDate: appointment.appointmentDate!.toISOString(),
+            },
           },
-        })
-      }
+        });
+      }}
     >
       <View style={styles.dateContainer}>
         <View>

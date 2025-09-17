@@ -5,8 +5,11 @@ import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
 import { getMonthString } from '../../../constants/lang/polish';
 import { type Appointment } from '../../../models/Appointment';
-import { type RecommendationNavigationProp } from '../../../navigation/recommendation';
-import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
+import { type MainNavigationProp } from '../../../navigation/main';
+import {
+  MAIN_ROUTES,
+  RECOMMENDATIONS_ROUTES,
+} from '../../../navigation/routes';
 import Badge from '../Badge';
 import CustomText from '../CustomText';
 import { Icon, ICONS } from '../icon';
@@ -20,16 +23,18 @@ export default function RecommendationListItem({
   item: recommendation,
   summary,
 }: Props) {
-  const navigation = useNavigation<RecommendationNavigationProp>();
+  const navigation = useNavigation<MainNavigationProp>();
   const { color, title } = getBadgeConfig(recommendation.exam.type);
 
   return (
     <TouchableOpacity
       style={[styles.card, { width: summary ? 284 : '100%' }]}
-      disabled={summary}
       onPress={() => {
-        navigation.navigate(RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN, {
-          recommendation,
+        navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR, {
+          screen: RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN,
+          params: {
+            recommendation,
+          },
         });
       }}
     >
@@ -44,15 +49,9 @@ export default function RecommendationListItem({
         </CustomText>
       </View>
 
-      {summary ? (
-        <View style={styles.actionButton}>
-          {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
-        </View>
-      ) : (
-        <View style={[styles.actionButton, { justifyContent: 'center' }]}>
-          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
-        </View>
-      )}
+      <View style={[styles.actionButton, { justifyContent: 'center' }]}>
+        <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
+      </View>
     </TouchableOpacity>
   );
 }
