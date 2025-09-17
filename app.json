@@ -2,7 +2,7 @@
   "expo": {
     "name": "Holis Care",
     "slug": "holis-mobile",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./src/assets/icons/ios-light.png",
     "userInterfaceStyle": "light",
