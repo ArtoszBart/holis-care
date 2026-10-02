@@ -9,7 +9,7 @@ import {
 export const ICONS = {
   ARROW_LEFT: {
     provider: AntDesign,
-    name: 'arrowleft',
+    name: 'arrow-left',
   },
   BELL: {
     provider: Feather,

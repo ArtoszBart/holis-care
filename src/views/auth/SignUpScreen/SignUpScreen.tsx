@@ -1,7 +1,7 @@
-import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RegisterDTO, registerSchema } from '../../../models/Auth';
 import CustomText from '../../common/CustomText';
+import DemoInfo from '../../common/DemoInfo';
 import Form from '../../common/forms/Form';
 import TextInput from '../../common/forms/TextInput';
 import LinkButton from '../../common/LinkButton';
@@ -62,6 +62,8 @@ export default function SignUpScreen() {
           spellCheck={false}
         />
       </Form>
+
+      <DemoInfo />
 
       <LinkButton
         label='Masz konto? Zaloguj się'
