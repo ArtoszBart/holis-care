@@ -6,12 +6,6 @@
     "orientation": "portrait",
     "icon": "./src/assets/icons/ios-light.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./src/assets/icons/splash-icon-dark.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.artoszbart.holismobile",
