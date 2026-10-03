@@ -1,6 +1,7 @@
 import {
   AntDesign,
   Feather,
+  FontAwesome,
   MaterialCommunityIcons,
   MaterialIcons,
   Octicons,
@@ -56,12 +57,12 @@ export const ICONS = {
     name: 'eye-off',
   },
   HEART: {
-    provider: AntDesign,
+    provider: FontAwesome,
     name: 'heart',
   },
   HEART_OUTLINE: {
-    provider: AntDesign,
-    name: 'hearto',
+    provider: FontAwesome,
+    name: 'heart-o',
   },
   PERSON: {
     provider: Octicons,

@@ -1,9 +1,9 @@
 import { useNavigation, usePreventRemove } from '@react-navigation/native';
-import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { AuthNavigationProp } from '../../navigation/auth';
 import { AUTH_ROUTES } from '../../navigation/routes';
 import Button from '../common/Button';
+import DemoInfo from '../common/demo/DemoInfo';
 import Logo from '../common/Logo';
 import PageWrapper from '../common/pageWrapper/PageWrapper';
 
@@ -26,6 +26,8 @@ export default function MainAuthScreen() {
       opacity={1}
     >
       <Logo />
+
+      <DemoInfo />
 
       <View style={styles.buttonContainer}>
         <Button

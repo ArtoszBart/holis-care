@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react-hooks/refs */
 import { Animated, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import CustomText from '../common/CustomText';

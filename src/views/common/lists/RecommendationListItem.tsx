@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
@@ -33,7 +32,10 @@ export default function RecommendationListItem({
         navigation.navigate(MAIN_ROUTES.RECOMMENDATIONS_NAVIGATOR, {
           screen: RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN,
           params: {
-            recommendation,
+            recommendation: {
+              ...recommendation,
+              appointmentDate: recommendation.appointmentDate?.toISOString(),
+            },
           },
         });
       }}

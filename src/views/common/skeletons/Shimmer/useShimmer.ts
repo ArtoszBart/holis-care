@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Animated, LayoutChangeEvent } from 'react-native';
 
 const useShimmer = ({ gradientWidth }: { gradientWidth: number }) => {
+  // eslint-disable-next-line react-hooks/refs
   const animationRef = useRef(new Animated.Value(-gradientWidth - 100)).current;
   const [componentWidth, setComponentWidth] = useState(0);
 

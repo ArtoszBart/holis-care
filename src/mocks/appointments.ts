@@ -1,7 +1,7 @@
 import { type Appointment, APPOINTMENT_STATUS } from '../models/Appointment';
 import { EXAM_CATEGORY } from '../models/Exam';
 
-export const appointments: Appointment[] = [
+export const demoAppointments: Appointment[] = [
   {
     id: '307be6c7-0b3e-447b-9be5-e50e5b556695',
     status: APPOINTMENT_STATUS.TO_PLAN,
@@ -20,7 +20,7 @@ export const appointments: Appointment[] = [
     text: null,
     doctorName: null,
     location: null,
-    locationString: 'ul. Dębowa 2',
+    locationString: null,
     periodMonths: 3,
   },
   {
@@ -83,7 +83,7 @@ export const appointments: Appointment[] = [
     text: null,
     doctorName: null,
     location: null,
-    locationString: 'ul. Słowackiego 18/4, 00-950 Warszawa',
+    locationString: null,
     periodMonths: 24,
   },
   {

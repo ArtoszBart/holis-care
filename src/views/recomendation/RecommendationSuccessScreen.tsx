@@ -4,7 +4,6 @@ import {
   useNavigation,
   usePreventRemove,
 } from '@react-navigation/native';
-import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { type MainNavigationProp } from '../../navigation/main';
@@ -21,12 +20,11 @@ type ThisNavigationProp = CompositeNavigationProp<
 >;
 
 export default function RecommendationSuccessScreen() {
+  const navigation = useNavigation<ThisNavigationProp>();
   usePreventRemove(true, ({ data }) => {
     if (data.action.type === StackActions.popToTop().type)
       navigation.dispatch(data.action);
   });
-
-  const navigation = useNavigation<ThisNavigationProp>();
 
   return (
     <PageWrapper

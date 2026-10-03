@@ -1,4 +1,3 @@
-import React from 'react';
 import { type Appointment } from '../../../models/Appointment';
 import { MAIN_ROUTES } from '../../../navigation/routes';
 import AppointmentListItem from '../../common/lists/AppointmentListItem';
@@ -27,9 +26,6 @@ export default function AppointmentsList({
       items={items}
       ItemComponent={AppointmentListItem}
       Skeleton={AppointmentListItemSkeleton}
-      isInitFetching={!hook.isInitLoaded}
-      isRefreshing={hook.isRefreshing}
-      onRefresh={hook.fetchAppointments}
       placeholder={() =>
         hook.hasRecommendations ? (
           <ListItemPlaceholder

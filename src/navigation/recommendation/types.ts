@@ -13,7 +13,9 @@ export type RecommendationNavigatorParamList = CreateParamList<
   typeof RECOMMENDATIONS_ROUTES,
   {
     [RECOMMENDATIONS_ROUTES.RECOMMENDATION_INFO_SCREEN]: {
-      recommendation: Appointment;
+      recommendation: Omit<Appointment, 'appointmentDate'> & {
+        appointmentDate: string | undefined;
+      };
     };
     [RECOMMENDATIONS_ROUTES.RECOMMENDATION_FORM_SCREEN]: {
       appointment: AppointmentNavigationParam;

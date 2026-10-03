@@ -10,6 +10,7 @@ const useTipListItem = (tip: Tip) => {
     useState<boolean>(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLiked(tip.userLiked);
   }, [tip]);
 

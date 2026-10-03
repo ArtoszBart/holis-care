@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
-import { updateSelfRequest } from '../../api/user';
+import { DEMO_USERS } from '../../demo/credentials';
 import AppStorage, { STORAGE_KEYS } from '../../lib/storage';
-import { type UserForm } from '../../models/User';
+import { User, type UserForm } from '../../models/User';
 import { type AccountNavigationProp } from '../../navigation/account';
 import useLoadingStore from '../../stores/loaderStore';
 import { useUserStore } from '../../stores/userStore';
@@ -14,18 +14,20 @@ const useAccountSettings = () => {
   const { user, setUser } = useUserStore();
 
   const onSaveButtonPress = async (userFormData: UserForm): Promise<void> => {
-    const userData = {
-      ...userFormData,
-      sex: user!.sex,
-    };
+    setIsLoading(true);
 
-    const response = await updateSelfRequest(userData);
-    if (!response.ok) {
-      return setIsLoading(false);
-    }
+    const demoUser = DEMO_USERS.find(
+      (user) => user.email === userFormData.email,
+    );
+    if (!demoUser) return showToast();
+    demoUser.firstName = userFormData.firstName;
+    demoUser.lastName = userFormData.lastName;
+    demoUser.dateOfBirth = new Date(userFormData.dateOfBirth);
+    demoUser.phoneNumber = userFormData.phoneNumber;
+    demoUser.city = userFormData.city;
 
-    await AppStorage.set(STORAGE_KEYS.USER, response.data);
-    setUser(response.data);
+    await AppStorage.set(STORAGE_KEYS.USER, demoUser);
+    setUser(demoUser as User);
 
     setIsLoading(false);
     showToast('Zapisano zmiany', TOAST_TYPE.SUCCESS);

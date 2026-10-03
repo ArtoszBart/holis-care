@@ -20,7 +20,7 @@ export default function AppointmentNavigator() {
         name={APPOINTMENT_ROUTES.APPOINTMENTS_SCREEN}
         component={AppointmentsScreen}
         options={{
-          title: 'Twoje zalecenia',
+          title: 'Twoje wizyty',
           gestureEnabled: false,
           header: ({ options }) => <Header title={options.title} />,
         }}

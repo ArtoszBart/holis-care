@@ -8,6 +8,7 @@ const useScrollView = () => {
 
   useEffect(() => {
     if (containerHeight !== null && contentHeight !== null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setScrollEnabled(contentHeight > containerHeight);
     }
   }, [containerHeight, contentHeight]);

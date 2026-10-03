@@ -26,7 +26,6 @@ export default function MainNavigator() {
       screenOptions={{
         tabBarHideOnKeyboard: true,
         popToTopOnBlur: true,
-        animation: 'shift',
         header: ({ options }) => <Header title={options.title} />,
         headerTransparent: true,
         tabBarShowLabel: false,

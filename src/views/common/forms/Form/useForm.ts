@@ -60,6 +60,7 @@ const useForm = <T extends FieldValues>({
             setValue(fieldName as Path<T>, date as PathValue<T, Path<T>>, {
               shouldValidate,
             }),
+          // eslint-disable-next-line react-hooks/incompatible-library
           value: watch(fieldName as Path<T>),
           errorMessage: errors[fieldName]?.message as string,
         });

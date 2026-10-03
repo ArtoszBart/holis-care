@@ -13,7 +13,6 @@ export enum AUTH_ROUTES {
   MAIN_SCREEN = 'MainAuthScreen',
   SIGN_UP_SCREEN = 'SignUpScreen',
   SIGN_IN_SCREEN = 'SignInScreen',
-  CONFIRMATION_SCREEN = 'ConfirmationScreen',
 }
 
 export enum PERSONALIZATION_ROUTES {

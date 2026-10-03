@@ -1,5 +1,4 @@
 import { Image } from 'expo-image';
-import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import { MAX_BIRTH_DATE } from '../../constants/age';
 import { COLORS } from '../../constants/colors';
@@ -23,7 +22,7 @@ export default function AccountSettings() {
           source={require('../../assets/images/profile-default.webp')}
         />
         <LinkButton
-          label='Zmień zdjęcie'
+          label='Zmień zdjęciea'
           onPress={() => {}}
           textStyle={styles.linkButton}
         />

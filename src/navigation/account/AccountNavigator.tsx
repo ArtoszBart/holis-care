@@ -30,7 +30,7 @@ export default function AccountNavigator() {
         name={ACCOUNT_ROUTES.ACCOUNT_SETTINGS_SCREEN}
         component={AccountSettings}
         options={{
-          title: 'Informacje',
+          title: 'Moje dane',
           header: ({ options }) => <Header title={options.title} withBack />,
         }}
       />

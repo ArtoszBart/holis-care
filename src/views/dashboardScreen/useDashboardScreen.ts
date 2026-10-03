@@ -14,7 +14,10 @@ const useDashboardScreen = () => {
     (acc, appointment) => {
       if (appointment.status === APPOINTMENT_STATUS.TO_PLAN) {
         acc.recommendations.push(appointment);
-      } else if (appointment.status === APPOINTMENT_STATUS.SCHEDULED) {
+      } else if (
+        appointment.status === APPOINTMENT_STATUS.SCHEDULED &&
+        appointment.appointmentDate! > new Date()
+      ) {
         acc.appointments.push(appointment);
       }
       return acc;

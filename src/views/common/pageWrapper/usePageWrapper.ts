@@ -11,6 +11,7 @@ const usePageWrapper = () => {
   const tabBarHeight = useContext(BottomTabBarHeightContext);
 
   if (updatedHeaderHeight !== 0) {
+    // eslint-disable-next-line react-hooks/globals
     headerHeight = updatedHeaderHeight;
   }
 

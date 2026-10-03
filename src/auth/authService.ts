@@ -1,10 +1,8 @@
-import { signInRequest, signOutRequest } from '../api/auth';
-import { getSelfRequest } from '../api/user';
-import { logError } from '../lib/logger';
+import { DEMO_USERS } from '../demo/credentials';
 import AppStorage, { STORAGE_KEYS } from '../lib/storage';
 import { type LoginDTO } from '../models/Auth';
+import { User } from '../models/User';
 import { UserStore } from '../stores/userStore';
-import { getAccessToken, saveTokens } from './tokenStorage';
 import { unauth } from './unauth';
 
 export enum LOGIN_STATE {
@@ -15,34 +13,25 @@ export enum LOGIN_STATE {
 }
 
 export const login = async (loginData: LoginDTO): Promise<LOGIN_STATE> => {
-  const cognitoRes = await signInRequest(loginData);
-  if (!cognitoRes.ok) return LOGIN_STATE.UNAUTHENTICATED;
+  const demoUser = DEMO_USERS.find(
+    (credentials) =>
+      credentials.email === loginData.email &&
+      credentials.password === loginData.password,
+  );
 
-  const { AccessToken, RefreshToken } = cognitoRes.data.AuthenticationResult;
-  await saveTokens(AccessToken, RefreshToken);
+  if (!demoUser) return LOGIN_STATE.UNAUTHENTICATED;
 
-  const apiRes = await getSelfRequest();
-  if (!apiRes.ok) return LOGIN_STATE.OTHER_ERROR;
-  if (apiRes.status === 204) {
+  if (!demoUser.sex) {
     await AppStorage.set(STORAGE_KEYS.USER, { email: loginData.email });
     return LOGIN_STATE.NEEDS_PERSONALIZATION;
   }
 
-  UserStore.setUser(apiRes.data);
-  await AppStorage.set(STORAGE_KEYS.USER, apiRes.data);
+  UserStore.setUser(demoUser as User);
+  await AppStorage.set(STORAGE_KEYS.USER, demoUser);
   return LOGIN_STATE.AUTHENTICATED;
 };
 
 export const logout = async () => {
-  const accessToken = await getAccessToken();
-  const response = await signOutRequest(accessToken!);
-
-  if (response.ok) {
-    await unauth();
-    return true;
-  }
-
-  logError(response);
-  console.error('Error while logging out:', response);
-  return false;
+  await unauth();
+  return true;
 };

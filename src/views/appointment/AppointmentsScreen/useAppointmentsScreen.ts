@@ -15,51 +15,27 @@ export interface IAppointmentScreenHook {
   upcAppointments: Appointment[] | undefined;
   pastAppointments: Appointment[] | undefined;
   hasRecommendations: boolean | undefined;
-  fetchAppointments: () => Promise<void>;
-  isRefreshing: boolean;
-  isInitLoaded: boolean;
 }
 
 const useAppointmentsScreen = () => {
   const navigation = useNavigation<MainNavigationProp>();
-  const { storedAppointments, fetchAppointments } = useAppointmentStore();
+  const { storedAppointments } = useAppointmentStore();
 
   const [activeTab, setActiveTab] = useState<TabOptions>(TabOptions.UPCOMING);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isInitLoaded, setIsInitLoaded] = useState(false);
   const [pastAppointments, setPastAppointments] = useState<Appointment[]>([]);
   const [upcAppointments, setUpcAppointments] = useState<Appointment[]>([]);
   const [hasRecommendations, setHasRecommendations] = useState(false);
 
-  useEffect(() => {
-    const initDataLoad = async () => {
-      await fetchData();
-      setIsInitLoaded(true);
-    };
-
-    initDataLoad();
-  }, []);
-
-  useEffect(() => {
-    prepareData();
-  }, [storedAppointments]);
-
-  const fetchData = async () => {
-    if (isInitLoaded) setIsRefreshing(true);
-    await fetchAppointments();
-
-    prepareData();
-
-    setIsRefreshing(false);
-  };
-
   const prepareData = () => {
+    const today = new Date();
     const { pastAppointments, upcomingAppointments, hasRecommendations } =
       storedAppointments.reduce(
         (acc, appointment) => {
-          if (appointment.status === APPOINTMENT_STATUS.COMPLETED) {
+          if (appointment.status === APPOINTMENT_STATUS.TO_PLAN) return acc;
+
+          if (appointment.appointmentDate! < today) {
             acc.pastAppointments.push(appointment);
-          } else if (appointment.status === APPOINTMENT_STATUS.SCHEDULED) {
+          } else {
             acc.upcomingAppointments.push(appointment);
           }
 
@@ -84,6 +60,11 @@ const useAppointmentsScreen = () => {
     setHasRecommendations(hasRecommendations);
   };
 
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    prepareData();
+  }, [storedAppointments]);
+
   const hookOptions: IAppointmentScreenHook = {
     navigation,
     activeTab,
@@ -91,9 +72,6 @@ const useAppointmentsScreen = () => {
     upcAppointments,
     pastAppointments,
     hasRecommendations,
-    fetchAppointments: fetchData,
-    isRefreshing,
-    isInitLoaded,
   };
 
   return hookOptions;

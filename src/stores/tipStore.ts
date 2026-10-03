@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { likeTipRequest, unlikeTipRequest } from '../api/tips';
+import { tips as tipsMock } from '../mocks/tips';
 import { type Tip } from '../models/Tip';
 
 type TipStore = {
@@ -9,21 +9,13 @@ type TipStore = {
 };
 
 export const useTipStore = create<TipStore>((set, get) => ({
-  tips: [],
+  tips: tipsMock,
 
   setTips: async (newTips: Tip[]) => {
     set({ tips: newTips });
   },
 
   toggleLikeTip: async (id: string, newValue: boolean) => {
-    const response = newValue
-      ? await likeTipRequest(id)
-      : await unlikeTipRequest(id);
-
-    if (!response.ok) {
-      return false;
-    }
-
     const { tips } = get();
     const newTips = [...(tips ?? [])];
     const index = newTips.findIndex((tip) => tip.id === id);

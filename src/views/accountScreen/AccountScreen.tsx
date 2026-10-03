@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
 import { COLORS } from '../../constants/colors';
 import { EXTERNAL_LINKS } from '../../constants/externalLinks';
@@ -20,7 +19,7 @@ export default function AccountScreen() {
       <UserContainer />
 
       <AccountListItem
-        label='Ustawienia'
+        label='Moje dane'
         onPress={() =>
           navigation.navigate(ACCOUNT_ROUTES.ACCOUNT_SETTINGS_SCREEN)
         }
@@ -28,13 +27,6 @@ export default function AccountScreen() {
           <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
         }
       />
-      {/* <AccountListItem
-        label='Ustawienia powiadomień'
-        onPress={() => {}}
-        navigationIcon={
-          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.nextIcon} />
-        }
-      /> */}
       <AccountListItem
         label='Regulamin'
         onPress={() => Linking.openURL(EXTERNAL_LINKS.TERMS_OF_SERVICE_URL)}

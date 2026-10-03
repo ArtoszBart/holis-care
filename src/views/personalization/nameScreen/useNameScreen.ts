@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { createSelfRequest } from '../../../api/user';
+import { DEMO_USERS } from '../../../demo/credentials';
 import AppStorage, { STORAGE_KEYS } from '../../../lib/storage';
 import {
   type PersonalizationDTO,
   personalizationSchema,
+  User,
 } from '../../../models/User';
 import { type PersonalizationNavigationProp } from '../../../navigation/personalization';
 import { PERSONALIZATION_ROUTES } from '../../../navigation/routes';
@@ -27,11 +28,14 @@ const useNameScreen = () => {
     const userData = await prepareData();
     if (!userData) return showToast();
 
-    const response = await createSelfRequest(userData);
-    if (!response.ok) return;
+    const demoUser = DEMO_USERS.find((user) => user.email === userData.email);
+    if (!demoUser) return showToast();
+    demoUser.sex = userData.sex;
+    demoUser.dateOfBirth = new Date(userData.dateOfBirth);
+    demoUser.firstName = userData.firstName;
 
-    await AppStorage.set(STORAGE_KEYS.USER, response.data);
-    setUser(response.data);
+    await AppStorage.set(STORAGE_KEYS.USER, demoUser);
+    setUser(demoUser as User);
     navigation.navigate(PERSONALIZATION_ROUTES.GET_STARTED_SCREEN);
   };
 

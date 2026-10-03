@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet } from 'react-native';
 import { type Appointment } from '../../../models/Appointment';
 import { MAIN_ROUTES } from '../../../navigation/routes';
@@ -9,16 +8,13 @@ import PageWrapper from '../../common/pageWrapper/PageWrapper';
 import useRecommendationsScreen from './useRecommendationsScreen';
 
 export default function RecommendationsScreen() {
-  const { recommendations, fetchRecommendations, isRefreshing, navigation } =
-    useRecommendationsScreen();
+  const { recommendations, navigation } = useRecommendationsScreen();
 
   return (
     <PageWrapper style={styles.wrapper}>
       <List<Appointment>
         items={recommendations}
         ItemComponent={RecommendationListItem}
-        isRefreshing={isRefreshing}
-        onRefresh={fetchRecommendations}
         placeholder={() => (
           <ListItemPlaceholder
             title='Brak nowych zaleceń. Świetna robota!'

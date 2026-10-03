@@ -1,16 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
-import { signUpAppointmentRequest } from '../../../api/appointment';
+import { demoAppointments } from '../../../mocks/appointments';
 import {
   APPOINTMENT_STATUS,
   type AppointmentNavigationParam,
-  type SignUpAppointmentDTO,
   type SignUpAppointmentFormValues,
 } from '../../../models/Appointment';
 import { type RecommendationNavigationProp } from '../../../navigation/recommendation';
 import { RECOMMENDATIONS_ROUTES } from '../../../navigation/routes';
 import { useAppointmentStore } from '../../../stores/appointmentStore';
 import useLoadingStore from '../../../stores/loaderStore';
-import { toPayloadISODate } from '../../../utils/dateTime';
 import { showToast, TOAST_TYPE } from '../../common/toast';
 
 const useAppointmentFormScreen = (appointment: AppointmentNavigationParam) => {
@@ -21,19 +19,19 @@ const useAppointmentFormScreen = (appointment: AppointmentNavigationParam) => {
   const onSubmit = async (data: SignUpAppointmentFormValues) => {
     setIsLoading(true);
 
-    const { date, time, ...rest } = data;
-    const payload: SignUpAppointmentDTO = {
-      ...rest,
-      appointmentDate: toPayloadISODate(date, time),
-      status: APPOINTMENT_STATUS.SCHEDULED,
-    };
+    const demoAppointment = demoAppointments.find(
+      (demoAppointment) => demoAppointment.id === appointment.id,
+    );
+    if (!demoAppointment) return showToast();
+    demoAppointment.status = APPOINTMENT_STATUS.SCHEDULED;
+    demoAppointment.text = data.text ?? null;
+    demoAppointment.doctorName = data.doctorName ?? null;
+    demoAppointment.locationString = data.locationString ?? null;
+    demoAppointment.appointmentDate = new Date(data.date);
 
-    const response = await signUpAppointmentRequest(appointment.id, payload);
     setIsLoading(false);
 
-    if (!response.ok) return;
-
-    updateAppointment(response.data);
+    updateAppointment(demoAppointment);
 
     if (appointment.status === APPOINTMENT_STATUS.TO_PLAN)
       return navigation.navigate(

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { loginSchema, type LoginDTO } from '../../../models/Auth';
-import DemoInfo from '../../common/DemoInfo';
+import DemoCredentials from '../../common/demo/DemoCredentials';
 import Form from '../../common/forms/Form';
 import TextInput from '../../common/forms/TextInput';
 import LinkButton from '../../common/LinkButton';
@@ -44,7 +44,7 @@ export default function SignInScreen() {
         />
       </Form>
 
-      <DemoInfo />
+      <DemoCredentials />
 
       {/* <LinkButton label='Nie pamiętasz hasła?' onPress={() => {}} /> */}
 

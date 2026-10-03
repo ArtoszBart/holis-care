@@ -1,12 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { getBadgeConfig } from '../../../constants/badges';
 import { COLORS } from '../../../constants/colors';
-import {
-  APPOINTMENT_STATUS,
-  type Appointment,
-} from '../../../models/Appointment';
+import { type Appointment } from '../../../models/Appointment';
 import { type MainNavigationProp } from '../../../navigation/main';
 import { APPOINTMENT_ROUTES, MAIN_ROUTES } from '../../../navigation/routes';
 import {
@@ -30,12 +26,10 @@ export default function AppointmentListItem({
   const navigation = useNavigation<MainNavigationProp>();
 
   const { color, title } = getBadgeConfig(appointment.exam.type);
-  const isEditable = appointment.status === APPOINTMENT_STATUS.SCHEDULED;
 
   return (
     <TouchableOpacity
       style={[styles.card, { width: summary ? 284 : '100%' }]}
-      disabled={!isEditable}
       onPress={() => {
         navigation.navigate(MAIN_ROUTES.APPOINTMENTS_NAVIGATOR, {
           screen: APPOINTMENT_ROUTES.APPOINTMENT_FORM_SCREEN,
@@ -84,15 +78,9 @@ export default function AppointmentListItem({
         )}
       </View>
 
-      {isEditable ? (
-        <View style={[styles.actionButton, { justifyContent: 'center' }]}>
-          <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
-        </View>
-      ) : (
-        <View style={styles.actionButton}>
-          {/* <Icon icon={ICONS.BELL_FILL} style={styles.summaryActionButtonIcon} /> */}
-        </View>
-      )}
+      <View style={[styles.actionButton, { justifyContent: 'center' }]}>
+        <Icon icon={ICONS.CHEVRON_RIGHT} style={styles.actionButtonIcon} />
+      </View>
     </TouchableOpacity>
   );
 }

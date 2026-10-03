@@ -1,8 +1,8 @@
 import { usePreventRemove } from '@react-navigation/native';
 import { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
-import { getAppointmentsRequest } from '../../../api/appointment';
-import { getTipsRequest } from '../../../api/tips';
+import { demoAppointments } from '../../../mocks/appointments';
+import { tips } from '../../../mocks/tips';
 import { useAppointmentStore } from '../../../stores/appointmentStore';
 import { useAuthStore } from '../../../stores/authStore';
 import { useTipStore } from '../../../stores/tipStore';
@@ -14,27 +14,8 @@ const useGetStartedScreen = () => {
   const { setTips } = useTipStore();
   const { setAppointments } = useAppointmentStore();
 
+  // eslint-disable-next-line react-hooks/refs
   const textAnimationRef = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    const start = async () => {
-      await sleep(500);
-      animateTextIn();
-
-      await Promise.all([fetchData(), sleep(1500)]);
-
-      animateTextOut();
-    };
-
-    start();
-  }, []);
-
-  const fetchData = async () => {
-    const tipsResponse = await getTipsRequest();
-    if (tipsResponse.ok) setTips(tipsResponse.data);
-    const appointmentsResponse = await getAppointmentsRequest();
-    if (appointmentsResponse.ok) setAppointments(appointmentsResponse.data);
-  };
 
   const animateTextIn = () =>
     Animated.timing(textAnimationRef, {
@@ -51,6 +32,22 @@ const useGetStartedScreen = () => {
     }).start(() => {
       setIsAuth(true);
     });
+
+  useEffect(() => {
+    const start = async () => {
+      await sleep(500);
+      animateTextIn();
+
+      setTips(tips);
+      setAppointments(demoAppointments);
+
+      await Promise.all([sleep(1500)]);
+
+      animateTextOut();
+    };
+
+    start();
+  }, []);
 
   return { textAnimationRef };
 };

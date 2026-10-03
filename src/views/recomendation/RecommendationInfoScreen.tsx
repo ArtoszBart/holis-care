@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { getBadgeConfig } from '../../constants/badges';
 import { COLORS } from '../../constants/colors';
@@ -51,9 +50,7 @@ export default function RecommendationInfoScreen({
               {
                 appointment: {
                   ...recommendation,
-                  appointmentDate: recommendation.appointmentDate
-                    ? recommendation.appointmentDate.toISOString()
-                    : null,
+                  appointmentDate: recommendation.appointmentDate ?? null,
                 },
               },
             )

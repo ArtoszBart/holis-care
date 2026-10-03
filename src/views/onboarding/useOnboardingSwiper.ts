@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 import { useNavigation } from '@react-navigation/native';
 import { useCallback, useRef, useState } from 'react';
 import { Animated, FlatList, ViewToken } from 'react-native';

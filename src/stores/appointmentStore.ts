@@ -1,17 +1,15 @@
 import { create } from 'zustand';
-import { getAppointmentsRequest } from '../api/appointment';
+import { demoAppointments } from '../mocks/appointments';
 import { type Appointment } from '../models/Appointment';
-import { showToast, TOAST_TYPE } from '../views/common/toast';
 
 type AppointmentStore = {
   storedAppointments: Appointment[];
   updateAppointment: (newAppointment: Appointment) => Promise<void>;
   setAppointments: (newAppointments: Appointment[]) => void;
-  fetchAppointments: () => Promise<void>;
 };
 
 export const useAppointmentStore = create<AppointmentStore>((set, get) => ({
-  storedAppointments: [],
+  storedAppointments: demoAppointments,
 
   setAppointments: (newAppointments: Appointment[]) => {
     set({ storedAppointments: newAppointments });
@@ -29,14 +27,5 @@ export const useAppointmentStore = create<AppointmentStore>((set, get) => ({
     }
 
     set({ storedAppointments: [...newAppointments] });
-  },
-
-  fetchAppointments: async () => {
-    const appointmentsResponse = await getAppointmentsRequest();
-    if (appointmentsResponse.ok) {
-      set({ storedAppointments: appointmentsResponse.data });
-    } else {
-      showToast('Wystąpił błąd podczas pobierania danych', TOAST_TYPE.WARN);
-    }
   },
 }));
