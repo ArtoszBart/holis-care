@@ -1,5 +1,4 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import * as Sentry from '@sentry/react-native';
 import {
   setStatusBarBackgroundColor,
   setStatusBarStyle,
@@ -7,15 +6,12 @@ import {
 } from 'expo-status-bar';
 import { Platform, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { SENTRY_CONFIG } from './src/config/sentry';
 import useApp from './src/config/useApp';
 import RootNavigator from './src/navigation/RootNavigator';
 import Loader from './src/views/common/loader/Loader';
 import Toast from './src/views/common/toast';
 
-Sentry.init(SENTRY_CONFIG);
-
-export default Sentry.wrap(function App() {
+export default function App() {
   const { appIsReady, onLayoutRootView } = useApp();
 
   const Theme = {
@@ -48,4 +44,4 @@ export default Sentry.wrap(function App() {
       </SafeAreaProvider>
     </View>
   );
-});
+}
